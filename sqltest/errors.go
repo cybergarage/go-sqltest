@@ -17,10 +17,10 @@ package sqltest
 const (
 	errorInvalidScenarioCases          = "query cases [%d] are not equal with result cases [%d]"
 	errorClientNotFound                = "client for testing is not found"
-	errorInvalidJSONResponse           = "invalid JSON response : %v"
+	errorInvalidJSONResponse           = "JSON response (%v) is invalid"
 	errorJSONResponseNotFound          = "JSON response is not found"
-	errorJSONResponseRowsNotFound      = "JSON response (%v) has no '%s'"
-	errorJSONResponseHasNoRow          = "JSON response (%v) has no %v"
+	errorJSONResponseRowsNotFound      = "JSON response (%v) is different from the expected response ('%v')"
+	errorJSONResponseHasNoRow          = "JSON response (%v) is different from the expected rows (%v)"
 	queryLinePrefix                    = "[%d] %s"
 	goodQueryPrefix                    = "O " + queryLinePrefix + " : "
 	errorQueryPrefix                   = "X " + queryLinePrefix + " : "
