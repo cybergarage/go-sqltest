@@ -42,6 +42,13 @@ func NewSQLScenarioWithFile(filename string) (*SQLScenario, error) {
 	return file, err
 }
 
+// NewSQLScenarioWithBytes return a scenario instance for the specified test scenario bytes.
+func NewSQLScenarioWithBytes(name string, b []byte) (*SQLScenario, error) {
+	file := NewSQLScenario()
+	err := file.ParseBytes(name, b)
+	return file, err
+}
+
 // Name returns the loaded scenario file name.
 func (file *SQLScenario) Name() string {
 	return file.Filename
