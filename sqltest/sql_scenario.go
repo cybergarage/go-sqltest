@@ -37,70 +37,70 @@ func NewSQLScenario() *SQLScenario {
 
 // NewSQLScenarioWithFile return a scenario instance for the specified test scenario file.
 func NewSQLScenarioWithFile(filename string) (*SQLScenario, error) {
-	file := NewSQLScenario()
-	err := file.LoadFile(filename)
-	return file, err
+	scn := NewSQLScenario()
+	err := scn.LoadFile(filename)
+	return scn, err
 }
 
 // NewSQLScenarioWithBytes return a scenario instance for the specified test scenario bytes.
 func NewSQLScenarioWithBytes(name string, b []byte) (*SQLScenario, error) {
-	file := NewSQLScenario()
-	err := file.ParseBytes(name, b)
-	return file, err
+	scn := NewSQLScenario()
+	err := scn.ParseBytes(name, b)
+	return scn, err
 }
 
 // Name returns the loaded scenario file name.
-func (file *SQLScenario) Name() string {
-	return file.Filename
+func (scn *SQLScenario) Name() string {
+	return scn.Filename
 }
 
 // IsValid checks whether the loaded scenario is available.
-func (file *SQLScenario) IsValid() error {
-	if len(file.Queries) != len(file.Results) {
-		return fmt.Errorf(errorInvalidScenarioCases, len(file.Queries), len(file.Results))
+func (scn *SQLScenario) IsValid() error {
+	if len(scn.Queries) != len(scn.Results) {
+		return fmt.Errorf(errorInvalidScenarioCases, len(scn.Queries), len(scn.Results))
 	}
 	return nil
 }
 
 // LoadFile loads the specified scenario.
-func (file *SQLScenario) LoadFile(filename string) error {
-	lines, err := file.SQLTestFile.LoadFile(filename)
+func (scn *SQLScenario) LoadFile(filename string) error {
+	lines, err := scn.SQLTestFile.LoadFile(filename)
 	if err != nil {
 		return err
 	}
 
-	err = file.ParseLineStrings(lines)
+	err = scn.ParseLineStrings(lines)
 	if err != nil {
 		return fmt.Errorf("%s : %w", filename, err)
 	}
 
-	file.Filename = filename
+	scn.Filename = filename
 
 	return nil
 }
 
 // ParseBytes parses the specified scenario bytes.
-func (file *SQLScenario) ParseBytes(name string, b []byte) error {
+func (scn *SQLScenario) ParseBytes(name string, b []byte) error {
 	lines := strings.Split(string(b), "\r\n")
-	err := file.ParseLineStrings(lines)
+	err := scn.ParseLineStrings(lines)
 	if err != nil {
 		return fmt.Errorf("%s : %w", name, err)
 	}
-	file.Filename = name
+	scn.Filename = name
 	return nil
 }
 
 // ParseLineStrings parses the specified scenario line strings.
-func (file *SQLScenario) ParseLineStrings(lines []string) error {
+func (scn *SQLScenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
-	file.Queries = make([]string, 0)
-	file.Results = make([]*SQLResponse, 0)
+	scn.Queries = make([]string, 0)
+	scn.Results = make([]*SQLResponse, 0)
 
 	appendQuery := func() {
 		if len(queryStr) <= 0 {
 			return
 		}
-		file.Queries = append(file.Queries, strings.TrimSpace(queryStr))
+		scn.Queries = append(scn.Queries, strings.TrimSpace(queryStr))
 		queryStr = ""
 	}
 	appendResult := func() error {
@@ -111,7 +111,7 @@ func (file *SQLScenario) ParseLineStrings(lines []string) error {
 		if err != nil {
 			return err
 		}
-		file.Results = append(file.Results, result)
+		scn.Results = append(scn.Results, result)
 		resultStr = ""
 		return nil
 	}
@@ -140,17 +140,17 @@ func (file *SQLScenario) ParseLineStrings(lines []string) error {
 		}
 	}
 
-	return file.IsValid()
+	return scn.IsValid()
 }
 
 // String returns the string representation.
-func (file *SQLScenario) String() string {
+func (scn *SQLScenario) String() string {
 	var str string
-	nResults := len(file.Results)
-	for n, query := range file.Queries {
+	nResults := len(scn.Results)
+	for n, query := range scn.Queries {
 		str += query + "\n"
 		if n < nResults {
-			str += file.Results[n].String() + "\n"
+			str += scn.Results[n].String() + "\n"
 		}
 	}
 	return str
