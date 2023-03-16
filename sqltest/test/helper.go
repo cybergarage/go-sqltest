@@ -18,7 +18,7 @@ import (
 	_ "embed"
 )
 
-var queryScenarios = map[string][]byte{
+var QueryScenarios = map[string][]byte{
 	"MysqlBasicQuery":   mysqlBasicQuery,
 	"MysqlYcsbWorkload": mysqlYcsbWorkload,
 }
