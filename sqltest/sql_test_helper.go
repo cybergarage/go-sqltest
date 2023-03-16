@@ -17,14 +17,12 @@ package sqltest
 import (
 	"path"
 	"testing"
-
-	"github.com/cybergarage/go-mysql/mysqltest/client"
 )
 
 func RunSQLTestFiles(t *testing.T, testFilenames []string) {
 	t.Helper()
 
-	client := client.NewDefaultClient()
+	client := NewClient()
 	client.SetDatabase(sqlTestDatabase)
 	err := client.CreateDatabase(sqlTestDatabase)
 	if err != nil {
