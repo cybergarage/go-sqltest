@@ -18,8 +18,7 @@ import (
 	"fmt"
 	"regexp"
 
-	"github.com/cybergarage/go-mysql/mysqltest/client"
-	"github.com/cybergarage/go-mysql/mysqltest/util"
+	"github.com/cybergarage/go-sqltest/sqltest/util"
 )
 
 const (
@@ -29,7 +28,7 @@ const (
 // SQLTestSuite represents a SQL test suite.
 type SQLTestSuite struct {
 	Tests  []*SQLTest
-	client *client.Client
+	client *Client
 }
 
 // NewSQLTestSuite returns a SQL test suite instance.
@@ -41,7 +40,7 @@ func NewSQLTestSuite() *SQLTestSuite {
 }
 
 // SetClient sets a client for testing.
-func (suite *SQLTestSuite) SetClient(c *client.Client) {
+func (suite *SQLTestSuite) SetClient(c *Client) {
 	suite.client = c
 }
 

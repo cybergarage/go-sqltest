@@ -18,7 +18,6 @@ import (
 	"fmt"
 
 	"github.com/cybergarage/go-logger/log"
-	"github.com/cybergarage/go-mysql/mysqltest/client"
 )
 
 const (
@@ -28,7 +27,7 @@ const (
 // SQLTest represents a SQL test.
 type SQLTest struct {
 	Scenario *SQLScenario
-	client   *client.Client
+	client   *Client
 }
 
 // NewSQLTest returns a SQL test instance.
@@ -52,7 +51,7 @@ func NewSQLTestWithBytes(name string, b []byte) (*SQLTest, error) {
 }
 
 // SetClient sets a client for testing.
-func (tst *SQLTest) SetClient(c *client.Client) {
+func (tst *SQLTest) SetClient(c *Client) {
 	tst.client = c
 }
 

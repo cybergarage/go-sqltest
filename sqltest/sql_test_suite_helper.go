@@ -17,7 +17,6 @@ package sqltest
 import (
 	"testing"
 
-	"github.com/cybergarage/go-mysql/mysqltest/client"
 	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
@@ -32,7 +31,7 @@ func RunSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	client := client.NewDefaultClient()
+	client := NewClient()
 	client.SetDatabase(sqlTestDatabase)
 	err = client.CreateDatabase(sqlTestDatabase)
 	if err != nil {
@@ -66,7 +65,7 @@ func RunLocalSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	client := client.NewDefaultClient()
+	client := NewClient()
 	client.SetDatabase(sqlTestDatabase)
 	err = client.CreateDatabase(sqlTestDatabase)
 	if err != nil {
