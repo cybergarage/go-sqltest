@@ -33,18 +33,18 @@ func NewSQLTestFile() *SQLTestFile {
 }
 
 // LoadFile loads the specified test file.
-func (file *SQLTestFile) LoadFile(filename string) ([]Line, error) {
+func (tst *SQLTestFile) LoadFile(filename string) ([]Line, error) {
 	fileBytes, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	return file.ParseBytes(fileBytes)
+	return tst.ParseBytes(fileBytes)
 }
 
 // ParseBytes parses the specified line bytes.
-func (file *SQLTestFile) ParseBytes(fileBytes []byte) ([]Line, error) {
+func (tst *SQLTestFile) ParseBytes(fileBytes []byte) ([]Line, error) {
 	lines := make([]Line, 0)
-	for _, line := range strings.Split(string(fileBytes), "\n") {
+	for _, line := range strings.Split(string(fileBytes), "\n\r") {
 		// Skip blank or comment lines
 		if len(line) == 0 || strings.HasPrefix(line, "-") {
 			continue
