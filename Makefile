@@ -1,4 +1,4 @@
-# Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+# Copyright (C) 2022 The go-sqltest Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,47 +14,37 @@
 
 SHELL := bash
 
-PREFIX?=$(shell pwd)
-
-GIT_ROOT=github.com/cybergarage/
-PRODUCT_NAME=go-sqltest
 PKG_NAME=sqltest
 
-MODULE_ROOT=${PKG_NAME}
-MODULE_PKG_ROOT=${GIT_ROOT}${PRODUCT_NAME}/${MODULE_ROOT}
-MODULE_SRC_DIR=${PKG_NAME}
-MODULE_SRCS=\
-	${MODULE_SRC_DIR}
-MODULE_PKGS=\
-	${MODULE_PKG_ROOT}
+MODULE_ROOT=github.com/cybergarage/go-sqltest
 
-ALL_ROOTS=\
-	${MODULE_ROOT}
+PKG_ROOT=${PKG_NAME}
+PKG=\
+	${MODULE_ROOT}/${PKG_ROOT}/...
 
-ALL_SRCS=\
-	${MODULE_SRCS}
+TEST_DIR=test
+TEST_HELPER_NAME=helper
+TEST_HELPER=\
+	${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.go
 
-ALL_PKGS=\
-	${MODULE_PKGS}
-
-.PHONY: clean test
+.PHONY: test format vet lint clean
 
 all: test
 
-format:
-	gofmt -s -w ${ALL_ROOTS}
+${TEST_HELPER} : ${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.pl
+	perl $< > $@
+
+format: ${TEST_HELPER}
+	gofmt -s -w ${PKG_ROOT}
 
 vet: format
-	go vet ${ALL_PKGS}
+	go vet ${PKG}
 
-lint: vet
-	golangci-lint run ${ALL_SRCS}
-
-build: vet
-	go build -v ${MODULE_PKGS}
+lint: format
+	golangci-lint run ${PKG_ROOT}/...
 
 test: lint
-	go test -v -cover -p=1 ${ALL_PKGS}
+	go test -v -cover -timeout 60s ${PKG}/...
 
 clean:
-	go clean -i ${ALL_PKGS}
+	go clean -i ${PKG}
