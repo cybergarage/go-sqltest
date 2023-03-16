@@ -40,16 +40,16 @@ func NewSQLTestSuite() *SQLTestSuite {
 	return suite
 }
 
+// SetClient sets a client for testing.
+func (suite *SQLTestSuite) SetClient(c *client.Client) {
+	suite.client = c
+}
+
 // NewSQLTestSuiteWithDirectory returns a SQL test suite instance which loads under the specified directory.
 func NewSQLTestSuiteWithDirectory(dir string) (*SQLTestSuite, error) {
 	suite := NewSQLTestSuite()
 	err := suite.LoadDirectory(dir)
 	return suite, err
-}
-
-// SetClient sets a client for testing.
-func (suite *SQLTestSuite) SetClient(c *client.Client) {
-	suite.client = c
 }
 
 // LoadDirectory loads all test files in the specified directory.
@@ -68,14 +68,27 @@ func (suite *SQLTestSuite) LoadDirectory(dir string) error {
 
 	suite.Tests = make([]*SQLTest, 0)
 	for _, file := range files {
-		cs, err := NewSQLTestWithFile(file.Path)
+		s, err := NewSQLTestWithFile(file.Path)
 		if err != nil {
 			return err
 		}
-		suite.Tests = append(suite.Tests, cs)
+		suite.Tests = append(suite.Tests, s)
 	}
 
 	return nil
+}
+
+// NeweEmbedSQLTestSuite returns a SQL test suite instance which loads under the specified directory.
+func NeweEmbedSQLTestSuite(tests map[string][]byte) (*SQLTestSuite, error) {
+	suite := NewSQLTestSuite()
+	for name, b := range tests {
+		s, err := NewSQLTestWithBytes(name, b)
+		if err != nil {
+			return nil, err
+		}
+		suite.Tests = append(suite.Tests, s)
+	}
+	return suite, nil
 }
 
 // Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
