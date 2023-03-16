@@ -1,4 +1,4 @@
-github.com/cybergarage/go-logger v1.3.0 h1:5NYcPLBpmKfkC+oH0GPZXoOggHO/tBZCE9RW3kKwLyQ=
-github.com/cybergarage/go-logger v1.3.0/go.mod h1:4N4xo4/FUVjvc0mILUwFItBGhVglCPN4hSLK38zRLTk=
+github.com/cybergarage/go-logger v1.3.2 h1:eFLeIsBS5/bRpyQoh8QoGX8sTUfdGww1P/dT41Qa9BY=
+github.com/cybergarage/go-logger v1.3.2/go.mod h1:4N4xo4/FUVjvc0mILUwFItBGhVglCPN4hSLK38zRLTk=
 github.com/go-sql-driver/mysql v1.7.0 h1:ueSltNNllEqE3qcWBTD0iQd3IpL/6U+mJxLkazJ7YPc=
 github.com/go-sql-driver/mysql v1.7.0/go.mod h1:OXbVy3sEdcQ2Doequ6Z5BW6fXNQTmx+9S1MCJN5yJMI=
