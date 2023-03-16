@@ -33,6 +33,19 @@ find(
   },
 , $test_dir);
 
+my @embed_test_files = ();
+my @embed_test_names = ();
+
+foreach my $test_file(@test_files){
+  my @test_file_paths = split(/\//, $test_file);
+  my $test_file_name = $test_file_paths[-1];
+  push(@embed_test_files, $test_file_name);
+  my @test_file_names = split(/\./, $test_file_name);
+  my $snake_case_test_name = $test_file_names[0];
+  my $camel_case_test_name = join('', map{ucfirst($_)} split(/_/, $snake_case_test_name));
+  push(@embed_test_names, $camel_case_test_name);
+}
+
 print<<HEADER;
 // Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
 //
@@ -48,11 +61,25 @@ print<<HEADER;
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var queryScenarioFiles = []string {
+package test
+
+import (
+	_ "embed"
+)
+
+var queryScenarios = map[string][]byte {
 HEADER
-foreach my $test_file(@test_files){
-  printf("%s\n", $test_file);
+foreach my $name(@embed_test_names){
+  printf("\t\"%s\": %s,\n", $name, lcfirst($name));
 }
 print<<FOTTER;
 }
+
 FOTTER
+print<<HEADER;
+HEADER
+my $n;
+foreach my $name(@embed_test_names){
+  printf("//go:embed %s\n", $embed_test_files[$n++]);
+  printf("var %s []byte\n\n", lcfirst($name));
+}
