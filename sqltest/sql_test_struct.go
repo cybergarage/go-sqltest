@@ -22,7 +22,7 @@ import (
 )
 
 const (
-	SQLTestFileExt = "test"
+	SQLTestFileExt = "qst"
 )
 
 // SQLTest represents a SQL test.
