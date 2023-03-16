@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	SQLTestSuiteDefaultTestDirectory = "./tests"
+	SQLTestSuiteDefaultTestDirectory = "./test"
 )
 
 // SQLTestSuite represents a SQL test suite.
