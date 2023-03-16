@@ -33,41 +33,41 @@ type SQLTest struct {
 
 // NewSQLTest returns a SQL test instance.
 func NewSQLTest() *SQLTest {
-	test := &SQLTest{}
-	return test
+	tst := &SQLTest{}
+	return tst
 }
 
 // NewSQLTestWithFile return a SQL test instance for the specified test scenario file.
 func NewSQLTestWithFile(filename string) (*SQLTest, error) {
-	file := NewSQLTest()
-	err := file.LoadFile(filename)
-	return file, err
+	tst := NewSQLTest()
+	err := tst.LoadFile(filename)
+	return tst, err
 }
 
 // SetClient sets a client for testing.
-func (ct *SQLTest) SetClient(c *client.Client) {
-	ct.client = c
+func (tst *SQLTest) SetClient(c *client.Client) {
+	tst.client = c
 }
 
 // Name returns the loaded senario name.
-func (ct *SQLTest) Name() string {
-	return ct.Scenario.Name()
+func (tst *SQLTest) Name() string {
+	return tst.Scenario.Name()
 }
 
 // LoadFile loads a specified SQL test file.
-func (ct *SQLTest) LoadFile(filename string) error {
-	ct.Scenario = NewSQLScenario()
-	return ct.Scenario.LoadFile(filename)
+func (tst *SQLTest) LoadFile(filename string) error {
+	tst.Scenario = NewSQLScenario()
+	return tst.Scenario.LoadFile(filename)
 }
 
 // LoadFileWithBasename loads a SQL test file which has specified basename.
-func (ct *SQLTest) LoadFileWithBasename(basename string) error {
-	return ct.LoadFile(basename + "." + SQLTestFileExt)
+func (tst *SQLTest) LoadFileWithBasename(basename string) error {
+	return tst.LoadFile(basename + "." + SQLTestFileExt)
 }
 
 // Run runs a loaded scenario test.
-func (ct *SQLTest) Run() error {
-	scenario := ct.Scenario
+func (tst *SQLTest) Run() error {
+	scenario := tst.Scenario
 	if scenario == nil {
 		return nil
 	}
@@ -77,7 +77,7 @@ func (ct *SQLTest) Run() error {
 		return err
 	}
 
-	client := ct.client
+	client := tst.client
 	if client == nil {
 		return fmt.Errorf(errorClientNotFound)
 	}
@@ -88,7 +88,7 @@ func (ct *SQLTest) Run() error {
 	}
 
 	errTraceMsg := func(n int) string {
-		errTraceMsg := ct.Name() + "\n"
+		errTraceMsg := tst.Name() + "\n"
 		for i := 0; i < n; i++ {
 			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, scenario.Queries[i])
 			errTraceMsg += "\n"
