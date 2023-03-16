@@ -18,7 +18,7 @@ import (
 	"testing"
 
 	"github.com/cybergarage/go-mysql/mysqltest/client"
-	// "github.com/cybergarage/go-sqltest/sqltest/test"
+	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
 const sqlTestDatabase = "tst"
@@ -26,7 +26,7 @@ const sqlTestDatabase = "tst"
 func RunSQLTestSuite(t *testing.T) {
 	t.Helper()
 
-	cs, err := NewSQLTestSuiteWithDirectory(SQLTestSuiteDefaultTestDirectory)
+	cs, err := NeweEmbedSQLTestSuite(test.QueryScenarios)
 	if err != nil {
 		t.Error(err)
 		return
