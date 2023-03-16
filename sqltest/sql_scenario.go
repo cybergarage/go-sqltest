@@ -72,6 +72,17 @@ func (file *SQLScenario) LoadFile(filename string) error {
 	return nil
 }
 
+// ParseBytes parses the specified scenario bytes.
+func (file *SQLScenario) ParseBytes(name string, b []byte) error {
+	lines := strings.Split(string(b), "\r\n")
+	err := file.ParseLineStrings(lines)
+	if err != nil {
+		return fmt.Errorf("%s : %w", name, err)
+	}
+	file.Filename = name
+	return nil
+}
+
 // ParseLineStrings parses the specified scenario line strings.
 func (file *SQLScenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
