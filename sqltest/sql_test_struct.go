@@ -44,6 +44,13 @@ func NewSQLTestWithFile(filename string) (*SQLTest, error) {
 	return tst, err
 }
 
+// NewSQLTestWithBytes return a SQL test instance for the specified test scenario bytes.
+func NewSQLTestWithBytes(name string, b []byte) (*SQLTest, error) {
+	tst := NewSQLTest()
+	err := tst.ParseBytes(name, b)
+	return tst, err
+}
+
 // SetClient sets a client for testing.
 func (tst *SQLTest) SetClient(c *client.Client) {
 	tst.client = c
@@ -58,6 +65,12 @@ func (tst *SQLTest) Name() string {
 func (tst *SQLTest) LoadFile(filename string) error {
 	tst.Scenario = NewSQLScenario()
 	return tst.Scenario.LoadFile(filename)
+}
+
+// ParseBytes loads a specified SQL test bytes.
+func (tst *SQLTest) ParseBytes(name string, b []byte) error {
+	tst.Scenario = NewSQLScenario()
+	return tst.Scenario.ParseBytes(name, b)
 }
 
 // LoadFileWithBasename loads a SQL test file which has specified basename.
