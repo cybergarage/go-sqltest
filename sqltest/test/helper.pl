@@ -67,7 +67,7 @@ import (
 	_ "embed"
 )
 
-var queryScenarios = map[string][]byte {
+var QueryScenarios = map[string][]byte {
 HEADER
 foreach my $name(@embed_test_names){
   printf("\t\"%s\": %s,\n", $name, lcfirst($name));
