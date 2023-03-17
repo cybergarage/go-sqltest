@@ -9,7 +9,7 @@ The go-sqltest imports the scenario test files and runs the scenario test to the
 
 ![](doc/img/framework.png)
 
-The scenario testing framework will be used in SQL-compatible database projects such as [go-mysql](https://github.com/cybergarage/go-mysql).
+The scenario testing framework will be used in my SQL-compatible database projects such as [go-mysql](https://github.com/cybergarage/go-mysql).
 
 ## Client
 
