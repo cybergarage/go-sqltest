@@ -16,12 +16,15 @@ package sqltest
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
+// Line represents a line of a SQL test file.
+type Line = string
+
 // SQLScenario represents a scenario.
 type SQLScenario struct {
-	*SQLTestFile
 	Filename string
 	Queries  []string
 	Results  []*SQLResponse
@@ -29,9 +32,7 @@ type SQLScenario struct {
 
 // NewSQLScenario return a scenario instance.
 func NewSQLScenario() *SQLScenario {
-	file := &SQLScenario{
-		SQLTestFile: NewSQLTestFile(),
-	}
+	file := &SQLScenario{}
 	return file
 }
 
@@ -64,7 +65,7 @@ func (scn *SQLScenario) IsValid() error {
 
 // LoadFile loads the specified scenario.
 func (scn *SQLScenario) LoadFile(filename string) error {
-	lines, err := scn.SQLTestFile.LoadFile(filename)
+	lines, err := scn.loadFileLines(filename)
 	if err != nil {
 		return err
 	}
@@ -79,15 +80,42 @@ func (scn *SQLScenario) LoadFile(filename string) error {
 	return nil
 }
 
+// LoadFile loads the specified test file.
+func (scn *SQLScenario) loadFileLines(filename string) ([]Line, error) {
+	fileBytes, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+	return scn.parseLineBytes(fileBytes)
+}
+
 // ParseBytes parses the specified scenario bytes.
 func (scn *SQLScenario) ParseBytes(name string, b []byte) error {
-	lines := strings.Split(string(b), "\n")
-	err := scn.ParseLineStrings(lines)
+	lines, err := scn.parseLineBytes(b)
+	if err != nil {
+		return err
+	}
+
+	err = scn.ParseLineStrings(lines)
 	if err != nil {
 		return fmt.Errorf("%s : %w", name, err)
 	}
+
 	scn.Filename = name
 	return nil
+}
+
+// ParseBytes parses the specified line bytes.
+func (scn *SQLScenario) parseLineBytes(fileBytes []byte) ([]Line, error) {
+	lines := make([]Line, 0)
+	for _, line := range strings.Split(string(fileBytes), "\n\r") {
+		// Skip blank or comment lines
+		if len(line) == 0 || strings.HasPrefix(line, "-") {
+			continue
+		}
+		lines = append(lines, line)
+	}
+	return lines, nil
 }
 
 // ParseLineStrings parses the specified scenario line strings.
