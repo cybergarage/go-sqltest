@@ -22,7 +22,7 @@ import (
 
 const sqlTestDatabase = "tst"
 
-func RunSQLTestSuite(t *testing.T) {
+func RunSQLTestSuite(t *testing.T, client Client) {
 	t.Helper()
 
 	cs, err := NeweEmbedSQLTestSuite(test.EmbedTests)
@@ -31,7 +31,6 @@ func RunSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	client := NewMySQLClient()
 	client.SetDatabase(sqlTestDatabase)
 
 	err = client.Open()
