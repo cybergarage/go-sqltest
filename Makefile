@@ -31,7 +31,7 @@ TEST_HELPER=\
 
 all: test
 
-${TEST_HELPER} : ${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.pl
+${TEST_HELPER} : ${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.pl $(wildcard ${PKG_ROOT}/${TEST_DIR}/*.qst)
 	perl $< > $@
 
 format: ${TEST_HELPER}
