@@ -81,7 +81,7 @@ func (scn *SQLScenario) LoadFile(filename string) error {
 
 // ParseBytes parses the specified scenario bytes.
 func (scn *SQLScenario) ParseBytes(name string, b []byte) error {
-	lines := strings.Split(string(b), "\r\n")
+	lines := strings.Split(string(b), "\n")
 	err := scn.ParseLineStrings(lines)
 	if err != nil {
 		return fmt.Errorf("%s : %w", name, err)
