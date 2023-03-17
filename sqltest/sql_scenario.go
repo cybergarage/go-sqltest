@@ -80,18 +80,17 @@ func (scn *SQLScenario) LoadFile(filename string) error {
 	return nil
 }
 
-// LoadFile loads the specified test file.
 func (scn *SQLScenario) loadFileLines(filename string) ([]Line, error) {
 	fileBytes, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
-	return scn.parseLineBytes(fileBytes)
+	return scn.parseByteLines(fileBytes)
 }
 
 // ParseBytes parses the specified scenario bytes.
 func (scn *SQLScenario) ParseBytes(name string, b []byte) error {
-	lines, err := scn.parseLineBytes(b)
+	lines, err := scn.parseByteLines(b)
 	if err != nil {
 		return err
 	}
@@ -105,10 +104,9 @@ func (scn *SQLScenario) ParseBytes(name string, b []byte) error {
 	return nil
 }
 
-// ParseBytes parses the specified line bytes.
-func (scn *SQLScenario) parseLineBytes(fileBytes []byte) ([]Line, error) {
+func (scn *SQLScenario) parseByteLines(fileBytes []byte) ([]Line, error) {
 	lines := make([]Line, 0)
-	for _, line := range strings.Split(string(fileBytes), "\n\r") {
+	for _, line := range strings.Split(string(fileBytes), "\n") {
 		// Skip blank or comment lines
 		if len(line) == 0 || strings.HasPrefix(line, "-") {
 			continue
