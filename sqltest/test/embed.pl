@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+# Copyright (C) 2020 Snm                                                     atoshi Konno. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
 
 use strict;
 use warnings;
@@ -67,7 +68,7 @@ import (
 	_ "embed"
 )
 
-var QueryScenarios = map[string][]byte {
+var EmbedTests = map[string][]byte {
 HEADER
 foreach my $name(@embed_test_names){
   printf("\t\"%s\": %s,\n", $name, lcfirst($name));

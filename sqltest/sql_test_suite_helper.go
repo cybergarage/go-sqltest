@@ -25,7 +25,7 @@ const sqlTestDatabase = "tst"
 func RunSQLTestSuite(t *testing.T) {
 	t.Helper()
 
-	cs, err := NeweEmbedSQLTestSuite(test.QueryScenarios)
+	cs, err := NeweEmbedSQLTestSuite(test.EmbedTests)
 	if err != nil {
 		t.Error(err)
 		return
