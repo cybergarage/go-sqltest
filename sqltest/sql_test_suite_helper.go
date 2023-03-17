@@ -33,9 +33,16 @@ func RunSQLTestSuite(t *testing.T) {
 
 	client := NewClient()
 	client.SetDatabase(sqlTestDatabase)
+	err = client.Open()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
 	err = client.CreateDatabase(sqlTestDatabase)
 	if err != nil {
 		t.Error(err)
+		return
 	}
 
 	cs.SetClient(client)
@@ -51,6 +58,11 @@ func RunSQLTestSuite(t *testing.T) {
 	}
 
 	err = client.DropDatabase(sqlTestDatabase)
+	if err != nil {
+		t.Error(err)
+	}
+
+	err = client.Close()
 	if err != nil {
 		t.Error(err)
 	}
