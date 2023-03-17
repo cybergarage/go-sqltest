@@ -22,7 +22,7 @@ import (
 func RunSQLTestFiles(t *testing.T, testFilenames []string) {
 	t.Helper()
 
-	client := NewClient()
+	client := NewMySQLClient()
 	client.SetDatabase(sqlTestDatabase)
 	err := client.CreateDatabase(sqlTestDatabase)
 	if err != nil {

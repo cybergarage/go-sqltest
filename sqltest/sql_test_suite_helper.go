@@ -31,7 +31,7 @@ func RunSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	client := NewClient()
+	client := NewMySQLClient()
 	client.SetDatabase(sqlTestDatabase)
 
 	err = client.Open()
@@ -78,7 +78,7 @@ func RunLocalSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	client := NewClient()
+	client := NewMySQLClient()
 	client.SetDatabase(sqlTestDatabase)
 
 	err = client.Open()
