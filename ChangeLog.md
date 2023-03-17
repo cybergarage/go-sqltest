@@ -5,7 +5,7 @@
 
 ## v0.9.1 (2023-03-17)
 - Embed scenario test files
-- Remove tests using go-mysql
+- Add Client interface
 
 ## v0.9.0 (2023-02-28)
 - Initial public release  
