@@ -28,7 +28,7 @@ const (
 // SQLTestSuite represents a SQL test suite.
 type SQLTestSuite struct {
 	Tests  []*SQLTest
-	client *Client
+	client Client
 }
 
 // NewSQLTestSuite returns a SQL test suite instance.
@@ -40,7 +40,7 @@ func NewSQLTestSuite() *SQLTestSuite {
 }
 
 // SetClient sets a client for testing.
-func (suite *SQLTestSuite) SetClient(c *Client) {
+func (suite *SQLTestSuite) SetClient(c Client) {
 	suite.client = c
 }
 

@@ -16,91 +16,17 @@ package sqltest
 
 import (
 	"database/sql"
-	"fmt"
-	"time"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
-// Client represents a client for MySQL server.
-type Client struct {
-	*Config
-	db *sql.DB
-}
-
-// NewClient returns a client instance.
-func NewClient() *Client {
-	client := &Client{
-		Config: NewDefaultConfig(),
-		db:     nil,
-	}
-	return client
-}
-
-// Open opens a database specified by the internal configuration.
-func (client *Client) Open() error {
-	dsName := fmt.Sprintf("tcp(%s:%d)/%s", client.Host, client.Port, client.Database)
-	db, err := sql.Open("mysql", dsName)
-	if err != nil {
-		return err
-	}
-
-	// See: https://github.com/go-sql-driver/mysql
-	// Important settings
-	db.SetConnMaxLifetime(time.Minute * 3)
-	db.SetMaxOpenConns(10)
-	db.SetMaxIdleConns(10)
-	client.db = db
-	return nil
-}
-
-// Close closes opens a database specified by the internal configuration.
-func (client *Client) Close() error {
-	if client.db == nil {
-		return nil
-	}
-	if err := client.db.Close(); err != nil {
-		return err
-	}
-	client.db = nil
-	return nil
-}
-
-// Query executes a query that returns rows.
-func (client *Client) Query(query string, args ...interface{}) (*sql.Rows, error) {
-	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return nil, err
-		}
-	}
-	return client.db.Query(query, args...)
-}
-
-// CreateDatabase creates a specified database.
-func (client *Client) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	return nil
-}
-
-// DropDatabase dtops a specified database.
-func (client *Client) DropDatabase(name string) error {
-	query := fmt.Sprintf("DROP DATABASE IF EXISTS %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	return nil
-}
-
-// Use sets a target database.
-func (client *Client) Use(name string) error {
-	client.Database = name
-	return nil
+// Client represents a client interface for SQL databases.
+type Client interface {
+	SetHost(host string)
+	SetPort(port int)
+	SetDatabase(db string)
+	Open() error
+	Close() error
+	CreateDatabase(name string) error
+	DropDatabase(name string) error
+	Use(name string) error
+	Query(query string, args ...interface{}) (*sql.Rows, error)
 }
