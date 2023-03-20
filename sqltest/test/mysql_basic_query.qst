@@ -18,6 +18,7 @@ CREATE TABLE test (
 );
 {
 }
+- INSERT (foo, 0)
 INSERT INTO test (k, v) VALUES ('foo', 0);
 {
 }
@@ -31,9 +32,6 @@ SELECT * FROM test WHERE k = 'foo';
             }
     ]
 }
-INSERT INTO test (k, v) VALUES ('bar', 1);
-{
-}
 SELECT * FROM test;
 {
 	"rows" : 
@@ -41,7 +39,17 @@ SELECT * FROM test;
             {
                 "k" : "foo",
                 "v" : 0
-            },
+            }
+    ]
+}
+- INSERT (bar, 1)
+INSERT INTO test (k, v) VALUES ('bar', 1);
+{
+}
+SELECT * FROM test WHERE k = 'bar';
+{
+	"rows" : 
+    [
             {
                 "k" : "bar",
                 "v" : 1
@@ -58,6 +66,21 @@ SELECT * FROM test WHERE k = 'foo';
             }
     ]
 }
+SELECT * FROM test;
+{
+	"rows" : 
+    [
+            {
+                "k" : "foo",
+                "v" : 0
+            },
+            {
+                "k" : "bar",
+                "v" : 1
+            }
+    ]
+}
+- UPDATE (bar, 100)
 UPDATE test SET v = 100 WHERE k = 'bar';
 {
 }
@@ -75,6 +98,27 @@ SELECT * FROM test;
             }
     ]
 }
+SELECT * FROM test WHERE k = 'bar';
+{
+	"rows" : 
+    [
+            {
+                "k" : "bar",
+                "v" : 100
+            }
+    ]
+}
+SELECT * FROM test WHERE k = 'foo';
+{
+	"rows" : 
+    [
+            {
+                "k" : "foo",
+                "v" : 0
+            }
+    ]
+}
+- DELETE (foo, 0)
 DELETE FROM test WHERE k = 'foo';
 {
 }
@@ -90,4 +134,14 @@ SELECT * FROM test;
                 "v" : 100
             }
     ]
+}
+- DELETE (bar, 100)
+DELETE FROM test WHERE k = 'bar';
+{
+}
+SELECT * FROM test WHERE k = 'bar';
+{
+}
+SELECT * FROM test;
+{
 }
