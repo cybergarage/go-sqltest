@@ -22,66 +22,56 @@ import (
 )
 
 const (
-	SQLTestSuiteDefaultTestDirectory = "./test"
+	SuiteDefaultTestDirectory = "./test"
 )
 
-// SQLTestSuite represents a SQL test suite.
-type SQLTestSuite struct {
-	Tests  []*SQLTest
+// Suite represents a scenario test suite.
+type Suite struct {
+	Tests  []*ScenarioTest
 	client Client
 }
 
-// NewSQLTestSuite returns a SQL test suite instance.
-func NewSQLTestSuite() *SQLTestSuite {
-	suite := &SQLTestSuite{
-		Tests: make([]*SQLTest, 0),
+// NewSuite returns a scenario test suite instance.
+func NewSuite() *Suite {
+	suite := &Suite{
+		Tests: make([]*ScenarioTest, 0),
 	}
 	return suite
 }
 
 // SetClient sets a client for testing.
-func (suite *SQLTestSuite) SetClient(c Client) {
+func (suite *Suite) SetClient(c Client) {
 	suite.client = c
 }
 
-// NewSQLTestSuiteWithDirectory returns a SQL test suite instance which loads under the specified directory.
-func NewSQLTestSuiteWithDirectory(dir string) (*SQLTestSuite, error) {
-	suite := NewSQLTestSuite()
-	err := suite.LoadDirectory(dir)
-	return suite, err
-}
+// NewSuiteWithDirectory returns a scenario test suite instance which loads under the specified directory.
+func NewSuiteWithDirectory(dir string) (*Suite, error) {
+	suite := NewSuite()
 
-// LoadDirectory loads all test files in the specified directory.
-func (suite *SQLTestSuite) LoadDirectory(dir string) error {
+	re := regexp.MustCompile(".*\\." + ScenarioTestFileExt)
 	findPath := util.NewFileWithPath(dir)
-
-	re, err := regexp.Compile(".*\\." + SQLTestFileExt)
-	if err != nil {
-		return err
-	}
-
 	files, err := findPath.ListFilesWithRegexp(re)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	suite.Tests = make([]*SQLTest, 0)
+	suite.Tests = make([]*ScenarioTest, 0)
 	for _, file := range files {
-		s, err := NewSQLTestWithFile(file.Path)
+		s, err := NewScenarioTestWithFile(file.Path)
 		if err != nil {
-			return err
+			return nil, err
 		}
 		suite.Tests = append(suite.Tests, s)
 	}
 
-	return nil
+	return suite, nil
 }
 
-// NeweEmbedSQLTestSuite returns a SQL test suite instance which loads under the specified directory.
-func NeweEmbedSQLTestSuite(tests map[string][]byte) (*SQLTestSuite, error) {
-	suite := NewSQLTestSuite()
+// NeweEmbedSuite returns a scenario test suite instance which loads under the specified directory.
+func NeweEmbedSuite(tests map[string][]byte) (*Suite, error) {
+	suite := NewSuite()
 	for name, b := range tests {
-		s, err := NewSQLTestWithBytes(name, b)
+		s, err := NewScenarioTestWithBytes(name, b)
 		if err != nil {
 			return nil, err
 		}
@@ -91,7 +81,7 @@ func NeweEmbedSQLTestSuite(tests map[string][]byte) (*SQLTestSuite, error) {
 }
 
 // Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
-func (suite *SQLTestSuite) Run() error {
+func (suite *Suite) Run() error {
 	for _, test := range suite.Tests {
 		test.SetClient(suite.client)
 		err := test.Run()

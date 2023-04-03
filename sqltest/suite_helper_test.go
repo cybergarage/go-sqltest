@@ -16,27 +16,21 @@ package sqltest
 
 import (
 	"testing"
+
+	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
-func TestSQLScenario(t *testing.T) {
-	testLines := []string{
-		"USE system",
-		"{",
-		"}",
-		"SELECT * FROM system.local",
-		"{",
-		"}",
-	}
-
-	s := NewSQLScenario()
-	err := s.ParseLineStrings(testLines)
+func TestEmbedSuite(t *testing.T) {
+	suite, err := NeweEmbedSuite(test.EmbedTests)
 	if err != nil {
 		t.Error(err)
-		return
 	}
-
-	err = s.IsValid()
-	if err != nil {
-		t.Error(err)
+	for _, tst := range suite.Tests {
+		t.Run(tst.Name(), func(t *testing.T) {
+			scn := tst.Scenario
+			if scn == nil || (len(scn.Queries) == 0) {
+				t.Errorf("%s scenario is empty", tst.Name())
+			}
+		})
 	}
 }

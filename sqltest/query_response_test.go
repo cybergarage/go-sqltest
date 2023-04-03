@@ -19,14 +19,14 @@ import (
 	"testing"
 )
 
-func TestSQLResponse(t *testing.T) {
+func TestQueryResponse(t *testing.T) {
 	testJSONStrs := []string{
 		"{}",
 		"{ \"rows\" : [ { \"k\" : \"0\", \"v1\" : \"0\", \"v2\" : \"0\" } ]}",
 		"{ \"rows\" : [ { \"k\" : \"0\", \"v1\" : \"0\", \"v2\" : \"0\" }, { \"k\" : \"1\", \"v1\" : \"1\", \"v2\" : \"1\" } ]}",
 	}
 
-	res := NewSQLResponse()
+	res := NewQueryResponse()
 	for _, jsonStr := range testJSONStrs {
 		err := res.ParseString(jsonStr)
 		if err != nil {
@@ -35,21 +35,21 @@ func TestSQLResponse(t *testing.T) {
 	}
 }
 
-func TestSQLResponseRows(t *testing.T) {
-	testRows := SQLResponseRows{
-		SQLResponseRow{
+func TestQueryResponseRows(t *testing.T) {
+	testRows := QueryResponseRows{
+		QueryResponseRow{
 			"k":  0,
 			"v1": 0,
 			"v2": 0,
 		},
-		SQLResponseRow{
+		QueryResponseRow{
 			"k":  1,
 			"v1": 1,
 			"v2": 1,
 		},
 	}
-	testResData := SQLResponseData{
-		SQLResponseRowsKey: testRows,
+	testResData := QueryResponseData{
+		QueryResponseRowsKey: testRows,
 	}
 
 	jsonStr, err := json.Marshal(testResData)
@@ -58,7 +58,7 @@ func TestSQLResponseRows(t *testing.T) {
 		return
 	}
 
-	res := NewSQLResponse()
+	res := NewQueryResponse()
 	err = res.ParseString(string(jsonStr))
 	if err != nil {
 		t.Error(err)

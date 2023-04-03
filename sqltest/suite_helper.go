@@ -20,18 +20,18 @@ import (
 	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
-const sqlTestDatabase = "tst"
+const ScenarioTestDatabase = "tst"
 
-func RunSQLTestSuite(t *testing.T, client Client) {
+func RunEmbedSuite(t *testing.T, client Client) {
 	t.Helper()
 
-	cs, err := NeweEmbedSQLTestSuite(test.EmbedTests)
+	cs, err := NeweEmbedSuite(test.EmbedTests)
 	if err != nil {
 		t.Error(err)
 		return
 	}
 
-	client.SetDatabase(sqlTestDatabase)
+	client.SetDatabase(ScenarioTestDatabase)
 
 	err = client.Open()
 	if err != nil {
@@ -39,7 +39,7 @@ func RunSQLTestSuite(t *testing.T, client Client) {
 		return
 	}
 
-	err = client.CreateDatabase(sqlTestDatabase)
+	err = client.CreateDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 		return
@@ -57,7 +57,7 @@ func RunSQLTestSuite(t *testing.T, client Client) {
 		})
 	}
 
-	err = client.DropDatabase(sqlTestDatabase)
+	err = client.DropDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 	}
@@ -68,17 +68,17 @@ func RunSQLTestSuite(t *testing.T, client Client) {
 	}
 }
 
-func RunLocalSQLTestSuite(t *testing.T) {
+func RunLocalSuite(t *testing.T) {
 	t.Helper()
 
-	cs, err := NewSQLTestSuiteWithDirectory(SQLTestSuiteDefaultTestDirectory)
+	cs, err := NewSuiteWithDirectory(SuiteDefaultTestDirectory)
 	if err != nil {
 		t.Error(err)
 		return
 	}
 
 	client := NewMySQLClient()
-	client.SetDatabase(sqlTestDatabase)
+	client.SetDatabase(ScenarioTestDatabase)
 
 	err = client.Open()
 	if err != nil {
@@ -86,7 +86,7 @@ func RunLocalSQLTestSuite(t *testing.T) {
 		return
 	}
 
-	err = client.CreateDatabase(sqlTestDatabase)
+	err = client.CreateDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 	}
@@ -103,7 +103,7 @@ func RunLocalSQLTestSuite(t *testing.T) {
 		})
 	}
 
-	err = client.DropDatabase(sqlTestDatabase)
+	err = client.DropDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 	}

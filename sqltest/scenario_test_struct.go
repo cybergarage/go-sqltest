@@ -21,64 +21,64 @@ import (
 )
 
 const (
-	SQLTestFileExt = "qst"
+	ScenarioTestFileExt = "qst"
 )
 
-// SQLTest represents a SQL test.
-type SQLTest struct {
-	Scenario *SQLScenario
+// ScenarioTest represents a scenario test.
+type ScenarioTest struct {
+	Scenario *Scenario
 	client   Client
 }
 
-// NewSQLTest returns a SQL test instance.
-func NewSQLTest() *SQLTest {
-	tst := &SQLTest{}
+// NewScenarioTest returns a scenario test instance.
+func NewScenarioTest() *ScenarioTest {
+	tst := &ScenarioTest{}
 	return tst
 }
 
-// NewSQLTestWithFile return a SQL test instance for the specified test scenario file.
-func NewSQLTestWithFile(filename string) (*SQLTest, error) {
-	tst := NewSQLTest()
+// NewScenarioTestWithFile return a scenario test instance for the specified test scenario file.
+func NewScenarioTestWithFile(filename string) (*ScenarioTest, error) {
+	tst := NewScenarioTest()
 	err := tst.LoadFile(filename)
 	return tst, err
 }
 
-// NewSQLTestWithBytes return a SQL test instance for the specified test scenario bytes.
-func NewSQLTestWithBytes(name string, b []byte) (*SQLTest, error) {
-	tst := NewSQLTest()
+// NewScenarioTestWithBytes return a scenario test instance for the specified test scenario bytes.
+func NewScenarioTestWithBytes(name string, b []byte) (*ScenarioTest, error) {
+	tst := NewScenarioTest()
 	err := tst.ParseBytes(name, b)
 	return tst, err
 }
 
 // SetClient sets a client for testing.
-func (tst *SQLTest) SetClient(c Client) {
+func (tst *ScenarioTest) SetClient(c Client) {
 	tst.client = c
 }
 
 // Name returns the loaded senario name.
-func (tst *SQLTest) Name() string {
+func (tst *ScenarioTest) Name() string {
 	return tst.Scenario.Name()
 }
 
-// LoadFile loads a specified SQL test file.
-func (tst *SQLTest) LoadFile(filename string) error {
-	tst.Scenario = NewSQLScenario()
+// LoadFile loads a specified scenario test file.
+func (tst *ScenarioTest) LoadFile(filename string) error {
+	tst.Scenario = NewScenario()
 	return tst.Scenario.LoadFile(filename)
 }
 
-// ParseBytes loads a specified SQL test bytes.
-func (tst *SQLTest) ParseBytes(name string, b []byte) error {
-	tst.Scenario = NewSQLScenario()
+// ParseBytes loads a specified scenario test bytes.
+func (tst *ScenarioTest) ParseBytes(name string, b []byte) error {
+	tst.Scenario = NewScenario()
 	return tst.Scenario.ParseBytes(name, b)
 }
 
-// LoadFileWithBasename loads a SQL test file which has specified basename.
-func (tst *SQLTest) LoadFileWithBasename(basename string) error {
-	return tst.LoadFile(basename + "." + SQLTestFileExt)
+// LoadFileWithBasename loads a scenario test file which has specified basename.
+func (tst *ScenarioTest) LoadFileWithBasename(basename string) error {
+	return tst.LoadFile(basename + "." + ScenarioTestFileExt)
 }
 
 // Run runs a loaded scenario test.
-func (tst *SQLTest) Run() error {
+func (tst *ScenarioTest) Run() error {
 	scenario := tst.Scenario
 	if scenario == nil {
 		return nil
