@@ -15,21 +15,33 @@
 package sqltest
 
 import (
+	"path"
 	"testing"
-
-	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
-func TestEmbedSQLTestSuite(t *testing.T) {
-	suite, err := NeweEmbedSQLTestSuite(test.EmbedTests)
+func RunScenarioTestFiles(t *testing.T, testFilenames []string) {
+	t.Helper()
+
+	client := NewMySQLClient()
+	client.SetDatabase(ScenarioTestDatabase)
+	err := client.CreateDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 	}
-	for _, tst := range suite.Tests {
-		t.Run(tst.Name(), func(t *testing.T) {
-			scn := tst.Scenario
-			if scn == nil || (len(scn.Queries) == 0) {
-				t.Errorf("%s scenario is empty", tst.Name())
+
+	for _, testFilename := range testFilenames {
+		t.Run(testFilename, func(t *testing.T) {
+			ct := NewScenarioTest()
+			err = ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			ct.SetClient(client)
+
+			err = ct.Run()
+			if err != nil {
+				t.Error(err)
 			}
 		})
 	}

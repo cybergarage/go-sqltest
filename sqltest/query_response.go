@@ -23,38 +23,38 @@ import (
 )
 
 const (
-	SQLResponseRowsKey = "rows"
+	QueryResponseRowsKey = "rows"
 )
 
-// SQLResponseData defines a JSON response data type.
-type SQLResponseData = map[string]interface{}
+// QueryResponseData defines a JSON response data type.
+type QueryResponseData = map[string]interface{}
 
-// SQLResponseRows defines a JSON response rows type.
-type SQLResponseRows = []interface{}
+// QueryResponseRows defines a JSON response rows type.
+type QueryResponseRows = []interface{}
 
-// SQLResponseRow defines a JSON response row type.
-type SQLResponseRow = map[string]interface{}
+// QueryResponseRow defines a JSON response row type.
+type QueryResponseRow = map[string]interface{}
 
-// SQLResponse represents a response of a query.
-type SQLResponse struct {
-	Data SQLResponseData
+// QueryResponse represents a response of a query.
+type QueryResponse struct {
+	Data QueryResponseData
 }
 
-// NewSQLResponse returns a response instance.
-func NewSQLResponse() *SQLResponse {
-	res := &SQLResponse{}
+// NewQueryResponse returns a response instance.
+func NewQueryResponse() *QueryResponse {
+	res := &QueryResponse{}
 	return res
 }
 
-// NewSQLResponseWithString returns a response instance of the specified JSON response.
-func NewSQLResponseWithString(json string) (*SQLResponse, error) {
-	res := NewSQLResponse()
+// NewQueryResponseWithString returns a response instance of the specified JSON response.
+func NewQueryResponseWithString(json string) (*QueryResponse, error) {
+	res := NewQueryResponse()
 	err := res.ParseString(json)
 	return res, err
 }
 
 // ParseString parses a specified string response as a JSON data.
-func (res *SQLResponse) ParseString(jsonStr string) error {
+func (res *QueryResponse) ParseString(jsonStr string) error {
 	var rootObj interface{}
 	err := json.Unmarshal([]byte(jsonStr), &rootObj)
 	if err != nil {
@@ -62,7 +62,7 @@ func (res *SQLResponse) ParseString(jsonStr string) error {
 	}
 
 	var ok bool
-	res.Data, ok = rootObj.(SQLResponseData)
+	res.Data, ok = rootObj.(QueryResponseData)
 	if !ok {
 		return fmt.Errorf(errorInvalidJSONResponse, rootObj)
 	}
@@ -71,19 +71,19 @@ func (res *SQLResponse) ParseString(jsonStr string) error {
 }
 
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.
-func (res *SQLResponse) Rows() (SQLResponseRows, error) {
+func (res *QueryResponse) Rows() (QueryResponseRows, error) {
 	if res.Data == nil {
 		return nil, fmt.Errorf(errorJSONResponseNotFound)
 	}
 
-	rowsData, ok := res.Data[SQLResponseRowsKey]
+	rowsData, ok := res.Data[QueryResponseRowsKey]
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, SQLResponseRowsKey)
+		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryResponseRowsKey)
 	}
 
-	rows, ok := rowsData.(SQLResponseRows)
+	rows, ok := rowsData.(QueryResponseRows)
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, SQLResponseRowsKey)
+		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryResponseRowsKey)
 	}
 
 	return rows, nil
@@ -91,8 +91,8 @@ func (res *SQLResponse) Rows() (SQLResponseRows, error) {
 
 // HasRow returns true when the response has a specified row, otherwise false.
 // nolint: gocyclo
-func (res *SQLResponse) HasRow(row interface{}) error {
-	rowMap, ok := row.(SQLResponseRow)
+func (res *QueryResponse) HasRow(row interface{}) error {
+	rowMap, ok := row.(QueryResponseRow)
 	if !ok {
 		return fmt.Errorf(errorJSONResponseHasNoRow, rowMap, row)
 	}
@@ -186,7 +186,7 @@ func (res *SQLResponse) HasRow(row interface{}) error {
 	}
 
 	for _, resRow := range resRows {
-		resMap, ok := resRow.(SQLResponseRow)
+		resMap, ok := resRow.(QueryResponseRow)
 		if !ok {
 			continue
 		}
@@ -218,6 +218,6 @@ func (res *SQLResponse) HasRow(row interface{}) error {
 }
 
 // String returns the string representation.
-func (res *SQLResponse) String() string {
+func (res *QueryResponse) String() string {
 	return fmt.Sprintf("%v", res.Data)
 }

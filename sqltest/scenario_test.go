@@ -15,34 +15,28 @@
 package sqltest
 
 import (
-	"path"
 	"testing"
 )
 
-func RunSQLTestFiles(t *testing.T, testFilenames []string) {
-	t.Helper()
-
-	client := NewMySQLClient()
-	client.SetDatabase(sqlTestDatabase)
-	err := client.CreateDatabase(sqlTestDatabase)
-	if err != nil {
-		t.Error(err)
+func TestScenario(t *testing.T) {
+	testLines := []string{
+		"USE system",
+		"{",
+		"}",
+		"SELECT * FROM system.local",
+		"{",
+		"}",
 	}
 
-	for _, testFilename := range testFilenames {
-		t.Run(testFilename, func(t *testing.T) {
-			ct := NewSQLTest()
-			err = ct.LoadFile(path.Join(SQLTestSuiteDefaultTestDirectory, testFilename))
-			if err != nil {
-				t.Error(err)
-				return
-			}
-			ct.SetClient(client)
+	s := NewScenario()
+	err := s.ParseLineStrings(testLines)
+	if err != nil {
+		t.Error(err)
+		return
+	}
 
-			err = ct.Run()
-			if err != nil {
-				t.Error(err)
-			}
-		})
+	err = s.IsValid()
+	if err != nil {
+		t.Error(err)
 	}
 }
