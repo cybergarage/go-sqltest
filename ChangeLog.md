@@ -3,6 +3,9 @@
 ## v1.0.0 (2023-xx-xx)
 - Independent from MySQL protocol
 
+## v0.9.3 (2023-xx-xx)
+- Update interfaces
+
 ## v0.9.2 (2023-03-18)
 - Add Client interface
 
