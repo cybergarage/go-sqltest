@@ -175,7 +175,7 @@ func (tst *ScenarioTest) Run() error {
 			rsRows = append(rsRows, row)
 		}
 
-		expectedRes := scenario.Results[n]
+		expectedRes := scenario.Expected[n]
 		expectedRows, err := expectedRes.Rows()
 		if err != nil {
 			if len(rsRows) != 0 {
