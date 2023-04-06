@@ -84,20 +84,6 @@ SELECT * FROM test;
 UPDATE test SET v = 100 WHERE k = 'bar';
 {
 }
-SELECT * FROM test;
-{
-	"rows" : 
-    [
-            {
-                "k" : "foo",
-                "v" : 0
-            },
-            {
-                "k" : "bar",
-                "v" : 100
-            }
-    ]
-}
 SELECT * FROM test WHERE k = 'bar';
 {
 	"rows" : 
@@ -115,6 +101,20 @@ SELECT * FROM test WHERE k = 'foo';
             {
                 "k" : "foo",
                 "v" : 0
+            }
+    ]
+}
+SELECT * FROM test;
+{
+	"rows" : 
+    [
+            {
+                "k" : "foo",
+                "v" : 0
+            },
+            {
+                "k" : "bar",
+                "v" : 100
             }
     ]
 }
