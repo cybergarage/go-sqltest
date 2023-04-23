@@ -31,40 +31,39 @@ func RunEmbedSuite(t *testing.T, client Client) error {
 		return err
 	}
 
-	client.SetDatabase(ScenarioTestDatabase)
-
-	err = client.Open()
-	if err != nil {
-		t.Error(err)
-		return err
-	}
-
-	defer func() {
-		err := client.Close()
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	err = client.CreateDatabase(ScenarioTestDatabase)
-	if err != nil {
-		t.Error(err)
-		return err
-	}
-
-	defer func() {
-		err := client.DropDatabase(ScenarioTestDatabase)
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	cs.SetClient(client)
-
 	for _, test := range cs.Tests {
 		var err error
 		t.Run(test.Name(), func(t *testing.T) {
-			test.SetClient(cs.client)
+			client.SetDatabase(ScenarioTestDatabase)
+
+			err = client.Open()
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			defer func() {
+				err := client.Close()
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+
+			err = client.CreateDatabase(ScenarioTestDatabase)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			defer func() {
+				err := client.DropDatabase(ScenarioTestDatabase)
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+
+			test.SetClient(client)
+
 			err = test.Run()
 			if err != nil {
 				t.Errorf("%s : %s", test.Name(), err.Error())
@@ -87,39 +86,36 @@ func RunLocalSuite(t *testing.T) {
 		return
 	}
 
-	client := NewMySQLClient()
-	client.SetDatabase(ScenarioTestDatabase)
-
-	err = client.Open()
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	defer func() {
-		err := client.Close()
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	err = client.CreateDatabase(ScenarioTestDatabase)
-	if err != nil {
-		t.Error(err)
-	}
-
-	defer func() {
-		err := client.DropDatabase(ScenarioTestDatabase)
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	cs.SetClient(client)
-
 	for _, test := range cs.Tests {
 		t.Run(test.Name(), func(t *testing.T) {
-			test.SetClient(cs.client)
+			client := NewMySQLClient()
+			client.SetDatabase(ScenarioTestDatabase)
+
+			err = client.Open()
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			defer func() {
+				err := client.Close()
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+
+			err = client.CreateDatabase(ScenarioTestDatabase)
+			if err != nil {
+				t.Error(err)
+			}
+
+			defer func() {
+				err := client.DropDatabase(ScenarioTestDatabase)
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+			test.SetClient(client)
 			err := test.Run()
 			if err != nil {
 				t.Errorf("%s : %s", test.Name(), err.Error())
