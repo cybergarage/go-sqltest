@@ -3,8 +3,12 @@
 ## v1.0.0 (2023-xx-xx)
 - Independent from MySQL protocol
 
+## v0.9.4 (2023-04-23)
+- Update embed test interfaces
+- Fix compiler warnings
+
 ## v0.9.3 (2023-04-09)
-- Update interfaces
+- Update scenario test interfaces
 
 ## v0.9.2 (2023-03-18)
 - Add Client interface
