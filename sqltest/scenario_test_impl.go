@@ -110,19 +110,23 @@ func (tst *ScenarioTest) Run() error {
 
 	for n, query := range scenario.Queries {
 		log.Infof("[%d] %s", n, query)
-		rs, err := client.Query(query)
+		rows, err := client.Query(query)
 		if err != nil {
 			return fmt.Errorf("%s%w", errTraceMsg(n), err)
 		}
-		defer rs.Close()
+		err = rows.Err()
+		if err != nil {
+			return err
+		}
+		defer rows.Close()
 
-		columns, err := rs.Columns()
+		columns, err := rows.Columns()
 		if err != nil {
 			return err
 		}
 		columnCnt := len(columns)
 
-		columnTypes, err := rs.ColumnTypes()
+		columnTypes, err := rows.ColumnTypes()
 		if err != nil {
 			return err
 		}
@@ -150,8 +154,8 @@ func (tst *ScenarioTest) Run() error {
 		}
 
 		rsRows := make([]interface{}, 0)
-		for rs.Next() {
-			err = rs.Scan(values...)
+		for rows.Next() {
+			err = rows.Scan(values...)
 			if err != nil {
 				return err
 			}

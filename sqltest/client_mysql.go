@@ -85,6 +85,10 @@ func (client *MySQLClient) CreateDatabase(name string) error {
 		return err
 	}
 	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -96,6 +100,10 @@ func (client *MySQLClient) DropDatabase(name string) error {
 		return err
 	}
 	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
