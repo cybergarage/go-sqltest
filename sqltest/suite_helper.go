@@ -22,13 +22,13 @@ import (
 
 const ScenarioTestDatabase = "tst"
 
-func RunEmbedSuite(t *testing.T, client Client) {
+func RunEmbedSuite(t *testing.T, client Client) error {
 	t.Helper()
 
 	cs, err := NeweEmbedSuite(test.EmbedTests)
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
 
 	client.SetDatabase(ScenarioTestDatabase)
@@ -36,36 +36,46 @@ func RunEmbedSuite(t *testing.T, client Client) {
 	err = client.Open()
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
+
+	defer func() {
+		err := client.Close()
+		if err != nil {
+			t.Error(err)
+		}
+	}()
 
 	err = client.CreateDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
+
+	defer func() {
+		err := client.DropDatabase(ScenarioTestDatabase)
+		if err != nil {
+			t.Error(err)
+		}
+	}()
 
 	cs.SetClient(client)
 
 	for _, test := range cs.Tests {
+		var err error
 		t.Run(test.Name(), func(t *testing.T) {
 			test.SetClient(cs.client)
-			err := test.Run()
+			err = test.Run()
 			if err != nil {
 				t.Errorf("%s : %s", test.Name(), err.Error())
 			}
 		})
+		if err != nil {
+			return err
+		}
 	}
 
-	err = client.DropDatabase(ScenarioTestDatabase)
-	if err != nil {
-		t.Error(err)
-	}
-
-	err = client.Close()
-	if err != nil {
-		t.Error(err)
-	}
+	return nil
 }
 
 func RunLocalSuite(t *testing.T) {
@@ -86,10 +96,24 @@ func RunLocalSuite(t *testing.T) {
 		return
 	}
 
+	defer func() {
+		err := client.Close()
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+
 	err = client.CreateDatabase(ScenarioTestDatabase)
 	if err != nil {
 		t.Error(err)
 	}
+
+	defer func() {
+		err := client.DropDatabase(ScenarioTestDatabase)
+		if err != nil {
+			t.Error(err)
+		}
+	}()
 
 	cs.SetClient(client)
 
@@ -101,10 +125,5 @@ func RunLocalSuite(t *testing.T) {
 				t.Errorf("%s : %s", test.Name(), err.Error())
 			}
 		})
-	}
-
-	err = client.DropDatabase(ScenarioTestDatabase)
-	if err != nil {
-		t.Error(err)
 	}
 }
