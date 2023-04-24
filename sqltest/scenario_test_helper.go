@@ -15,28 +15,55 @@
 package sqltest
 
 import (
+	"fmt"
 	"path"
 	"testing"
+	"time"
 )
 
 func RunScenarioTestFiles(t *testing.T, testFilenames []string) {
 	t.Helper()
 
-	client := NewMySQLClient()
-	client.SetDatabase(ScenarioTestDatabase)
-	err := client.CreateDatabase(ScenarioTestDatabase)
-	if err != nil {
-		t.Error(err)
-	}
-
 	for _, testFilename := range testFilenames {
 		t.Run(testFilename, func(t *testing.T) {
 			ct := NewScenarioTest()
-			err = ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
+			err := ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
 			if err != nil {
 				t.Error(err)
 				return
 			}
+
+			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+
+			client := NewMySQLClient()
+			client.SetDatabase(testDBName)
+
+			err = client.Open()
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			defer func() {
+				err := client.Close()
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+
+			err = client.CreateDatabase(testDBName)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+
+			defer func() {
+				err := client.DropDatabase(testDBName)
+				if err != nil {
+					t.Error(err)
+				}
+			}()
+
 			ct.SetClient(client)
 
 			err = ct.Run()
