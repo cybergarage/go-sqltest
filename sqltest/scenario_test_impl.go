@@ -94,11 +94,6 @@ func (tst *ScenarioTest) Run() error {
 		return fmt.Errorf(errorClientNotFound)
 	}
 
-	err = client.Open()
-	if err != nil {
-		return err
-	}
-
 	errTraceMsg := func(n int) string {
 		errTraceMsg := tst.Name() + "\n"
 		for i := 0; i < n; i++ {
@@ -141,10 +136,7 @@ func (tst *ScenarioTest) Run() error {
 			case "FLOAT", "DOUBLE":
 				var v float64
 				values[n] = &v
-			case "TEXT", "NVARCHAR":
-				var v string
-				values[n] = &v
-			case "VARBINARY", "BINARY":
+			case "TEXT", "NVARCHAR", "VARBINARY", "BINARY":
 				var v string
 				values[n] = &v
 			default:
@@ -197,11 +189,6 @@ func (tst *ScenarioTest) Run() error {
 				return fmt.Errorf("%s"+errorQueryPrefix+"%w", errTraceMsg(n), n, query, err)
 			}
 		}
-	}
-
-	err = client.Close()
-	if err != nil {
-		return err
 	}
 
 	return nil
