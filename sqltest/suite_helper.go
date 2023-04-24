@@ -15,12 +15,14 @@
 package sqltest
 
 import (
+	"fmt"
 	"testing"
+	"time"
 
 	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
-const ScenarioTestDatabase = "tst"
+const TestDBNamePrefix = "sqltest"
 
 func RunEmbedSuite(t *testing.T, client Client) error {
 	t.Helper()
@@ -34,7 +36,9 @@ func RunEmbedSuite(t *testing.T, client Client) error {
 	for _, test := range cs.Tests {
 		var err error
 		t.Run(test.Name(), func(t *testing.T) {
-			client.SetDatabase(ScenarioTestDatabase)
+			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+
+			client.SetDatabase(testDBName)
 
 			err = client.Open()
 			if err != nil {
@@ -49,14 +53,14 @@ func RunEmbedSuite(t *testing.T, client Client) error {
 				}
 			}()
 
-			err = client.CreateDatabase(ScenarioTestDatabase)
+			err = client.CreateDatabase(testDBName)
 			if err != nil {
 				t.Error(err)
 				return
 			}
 
 			defer func() {
-				err := client.DropDatabase(ScenarioTestDatabase)
+				err := client.DropDatabase(testDBName)
 				if err != nil {
 					t.Error(err)
 				}
@@ -88,8 +92,10 @@ func RunLocalSuite(t *testing.T) {
 
 	for _, test := range cs.Tests {
 		t.Run(test.Name(), func(t *testing.T) {
+			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+
 			client := NewMySQLClient()
-			client.SetDatabase(ScenarioTestDatabase)
+			client.SetDatabase(testDBName)
 
 			err = client.Open()
 			if err != nil {
@@ -104,13 +110,13 @@ func RunLocalSuite(t *testing.T) {
 				}
 			}()
 
-			err = client.CreateDatabase(ScenarioTestDatabase)
+			err = client.CreateDatabase(testDBName)
 			if err != nil {
 				t.Error(err)
 			}
 
 			defer func() {
-				err := client.DropDatabase(ScenarioTestDatabase)
+				err := client.DropDatabase(testDBName)
 				if err != nil {
 					t.Error(err)
 				}
