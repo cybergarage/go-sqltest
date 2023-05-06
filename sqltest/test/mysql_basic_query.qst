@@ -145,3 +145,7 @@ SELECT * FROM test WHERE k = 'bar';
 SELECT * FROM test;
 {
 }
+- DROP TABLE
+DROP TABLE test;
+{
+}
