@@ -5,6 +5,7 @@
 
 ## v0.9.4 (2023-04-23)
 - Update embed test interfaces
+- Update to use an empty database for each scenario test
 - Fix compiler warnings
 
 ## v0.9.3 (2023-04-09)
