@@ -19,12 +19,16 @@ import (
 )
 
 var EmbedTests = map[string][]byte{
-	"SqlInsertSelect": sqlInsertSelect,
-	"YcsbWorkload":    ycsbWorkload,
+	"SimpAlterAdd":     simpAlterAdd,
+	"YcsbWorkload":     ycsbWorkload,
+	"SimpInsertSelect": simpInsertSelect,
 }
 
-//go:embed sql_insert_select.qst
-var sqlInsertSelect []byte
+//go:embed simp_alter_add.qst
+var simpAlterAdd []byte
 
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
+
+//go:embed simp_insert_select.qst
+var simpInsertSelect []byte
