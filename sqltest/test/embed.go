@@ -19,12 +19,12 @@ import (
 )
 
 var EmbedTests = map[string][]byte{
-	"MysqlBasicQuery":   mysqlBasicQuery,
+	"SqlInsertSelect":   sqlInsertSelect,
 	"MysqlYcsbWorkload": mysqlYcsbWorkload,
 }
 
-//go:embed mysql_basic_query.qst
-var mysqlBasicQuery []byte
+//go:embed sql_insert_select.qst
+var sqlInsertSelect []byte
 
 //go:embed mysql_ycsb_workload.qst
 var mysqlYcsbWorkload []byte
