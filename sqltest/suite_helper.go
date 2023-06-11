@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 	"time"
 
@@ -24,7 +25,8 @@ import (
 
 const TestDBNamePrefix = "sqltest"
 
-func RunEmbedSuite(t *testing.T, client Client) error {
+// RunEmbedSuites runs the embedded test suites.
+func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 	t.Helper()
 
 	cs, err := NeweEmbedSuite(test.EmbedTests)
@@ -34,6 +36,19 @@ func RunEmbedSuite(t *testing.T, client Client) error {
 	}
 
 	for _, test := range cs.Tests {
+		if 0 < len(testNames) {
+			found := false
+			for _, testName := range testNames {
+				if strings.EqualFold(test.Name(), testName) {
+					found = true
+					break
+				}
+			}
+			if !found {
+				continue
+			}
+		}
+
 		var err error
 		t.Run(test.Name(), func(t *testing.T) {
 			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
