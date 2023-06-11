@@ -3,6 +3,9 @@
 ## v1.0.0 (2023-xx-xx)
 - Independent from MySQL protocol
 
+## v0.9.5 (2023-06-11)
+- Update RunEmbedSuites() to run only specified tests
+
 ## v0.9.4 (2023-04-23)
 - Update embed test interfaces
 - Update to use an empty database for each scenario test
