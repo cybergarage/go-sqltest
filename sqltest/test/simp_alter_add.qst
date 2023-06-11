@@ -18,7 +18,9 @@ CREATE TABLE test (
 );
 {
 }
-- DROP TABLE
+ALTER TABLE test ADD v1 int;
+{
+}
 DROP TABLE test;
 {
 }
