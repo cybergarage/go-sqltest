@@ -68,6 +68,7 @@ import (
 	_ "embed"
 )
 
+// EmbedTests is a map of test names and test queries.
 var EmbedTests = map[string][]byte {
 HEADER
 foreach my $name(@embed_test_names){
