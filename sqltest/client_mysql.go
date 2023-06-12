@@ -22,6 +22,10 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+const (
+	defaultMysqlPort = 3306
+)
+
 // MySQLClient represents a client for MySQL server.
 type MySQLClient struct {
 	*Config
@@ -34,6 +38,7 @@ func NewMySQLClient() Client {
 		Config: NewDefaultConfig(),
 		db:     nil,
 	}
+	client.SetPort(defaultMysqlPort)
 	return client
 }
 
