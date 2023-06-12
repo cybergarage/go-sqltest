@@ -30,7 +30,7 @@ type Config struct {
 func NewDefaultConfig() *Config {
 	config := &Config{
 		Host: defaultHost,
-		Port: defaultPort,
+		Port: 0,
 	}
 	return config
 }
