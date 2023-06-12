@@ -3,6 +3,9 @@
 ## v1.0.0 (2023-xx-xx)
 - Independent from MySQL protocol
 
+## v0.9.6 (2023-06-xxx)
+- Add PostgreSQL clinet
+
 ## v0.9.5 (2023-06-11)
 - Update RunEmbedSuites() to run only specified tests
 
