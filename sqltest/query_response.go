@@ -94,7 +94,7 @@ func (res *QueryResponse) Rows() (QueryResponseRows, error) {
 func (res *QueryResponse) HasRow(row interface{}) error {
 	rowMap, ok := row.(QueryResponseRow)
 	if !ok {
-		return fmt.Errorf(errorJSONResponseHasNoRow, rowMap, row)
+		return fmt.Errorf(errorJSONResponseHasNoRow, row, rowMap)
 	}
 
 	resRows, err := res.Rows()
@@ -214,7 +214,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 		}
 	}
 
-	return fmt.Errorf(errorJSONResponseHasNoRow, res.Data, row)
+	return fmt.Errorf(errorJSONResponseHasNoRow, row, res.Data)
 }
 
 // String returns the string representation.
