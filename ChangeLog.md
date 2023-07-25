@@ -5,6 +5,7 @@
 
 ## v0.9.6 (2023-06-xxx)
 - Add PostgreSQL clinet
+- Update error messages
 
 ## v0.9.5 (2023-06-11)
 - Update RunEmbedSuites() to run only specified tests
