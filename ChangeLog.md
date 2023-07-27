@@ -1,9 +1,10 @@
 # Changelog
 
 ## v1.0.0 (2023-xx-xx)
-- Independent from MySQL protocol
+- Fix interfaces
 
-## v0.9.6 (2023-06-xxx)
+## v0.9.6 (2023-07-28)
+- Independent from MySQL protocol
 - Add PostgreSQL clinet
 - Update error messages
 
