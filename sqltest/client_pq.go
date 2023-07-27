@@ -84,6 +84,10 @@ func (client *PostgresClient) CreateDatabase(name string) error {
 		return err
 	}
 	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -95,6 +99,10 @@ func (client *PostgresClient) DropDatabase(name string) error {
 		return err
 	}
 	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
