@@ -182,7 +182,9 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 			return deepEqual(sv1, iv2)
 		}
 
-		return false
+		sv1 := fmt.Sprintf("%v", iv1)
+		sv2 := fmt.Sprintf("%v", iv2)
+		return deepEqual(sv1, sv2)
 	}
 
 	for _, resRow := range resRows {
