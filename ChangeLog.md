@@ -2,6 +2,7 @@
 
 ## v1.0.0 (2023-xx-xx)
 - Fix interfaces
+- Add pgbench test
 
 ## v0.9.6 (2023-07-28)
 - Independent from MySQL protocol
