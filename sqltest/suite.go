@@ -27,14 +27,14 @@ const (
 
 // Suite represents a scenario test suite.
 type Suite struct {
-	Tests  []*ScenarioTest
+	tests  []*ScenarioTest
 	client Client
 }
 
 // NewSuite returns a scenario test suite instance.
 func NewSuite() *Suite {
 	suite := &Suite{
-		Tests: make([]*ScenarioTest, 0),
+		tests: make([]*ScenarioTest, 0),
 	}
 	return suite
 }
@@ -55,13 +55,13 @@ func NewSuiteWithDirectory(dir string) (*Suite, error) {
 		return nil, err
 	}
 
-	suite.Tests = make([]*ScenarioTest, 0)
+	suite.tests = make([]*ScenarioTest, 0)
 	for _, file := range files {
 		s, err := NewScenarioTestWithFile(file.Path)
 		if err != nil {
 			return nil, err
 		}
-		suite.Tests = append(suite.Tests, s)
+		suite.tests = append(suite.tests, s)
 	}
 
 	return suite, nil
@@ -75,14 +75,19 @@ func NeweEmbedSuite(tests map[string][]byte) (*Suite, error) {
 		if err != nil {
 			return nil, err
 		}
-		suite.Tests = append(suite.Tests, s)
+		suite.tests = append(suite.tests, s)
 	}
 	return suite, nil
 }
 
+// ScenarioTests returns all loaded scenario tests.
+func (suite *Suite) ScenarioTests() []*ScenarioTest {
+	return suite.tests
+}
+
 // Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
 func (suite *Suite) Run() error {
-	for _, test := range suite.Tests {
+	for _, test := range suite.tests {
 		test.SetClient(suite.client)
 		err := test.Run()
 		if err != nil {

@@ -23,6 +23,7 @@ var EmbedTests = map[string][]byte{
 	"SimpAlterAdd":     simpAlterAdd,
 	"YcsbWorkload":     ycsbWorkload,
 	"SimpInsertSelect": simpInsertSelect,
+	"Pgbench":          pgbench,
 }
 
 //go:embed simp_alter_add.qst
@@ -33,3 +34,6 @@ var ycsbWorkload []byte
 
 //go:embed simp_insert_select.qst
 var simpInsertSelect []byte
+
+//go:embed pgbench.qst
+var pgbench []byte
