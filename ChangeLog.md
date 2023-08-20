@@ -1,12 +1,14 @@
 # Changelog
 
-## v1.0.0 (2023-xx-xx)
-- Fix interfaces
+## v1.1.0 (2023-xx-xx)
 - Add pgbench test
 
-## v0.9.6 (2023-07-28)
+## v1.0.0 (2023-xx-xx)
+- Fix interfaces
 - Independent from MySQL protocol
 - Add PostgreSQL clinet
+
+## v0.9.6 (2023-07-28)
 - Update error messages
 
 ## v0.9.5 (2023-06-11)
