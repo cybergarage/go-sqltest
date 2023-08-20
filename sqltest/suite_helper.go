@@ -35,7 +35,7 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 		return err
 	}
 
-	for _, test := range cs.Tests {
+	for _, test := range cs.ScenarioTests() {
 		if 0 < len(testNames) {
 			found := false
 			for _, testName := range testNames {
@@ -105,7 +105,7 @@ func RunLocalSuite(t *testing.T) {
 		return
 	}
 
-	for _, test := range cs.Tests {
+	for _, test := range cs.tests {
 		t.Run(test.Name(), func(t *testing.T) {
 			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
 
