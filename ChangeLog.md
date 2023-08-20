@@ -3,7 +3,7 @@
 ## v1.1.0 (2023-xx-xx)
 - Add pgbench test
 
-## v1.0.0 (2023-xx-xx)
+## v1.0.0 (2023-08-20)
 - Fix embed test interfaces
 
 ## v0.9.6 (2023-07-28)
