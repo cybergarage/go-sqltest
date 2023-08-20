@@ -17,6 +17,7 @@ package sqltest
 import (
 	"fmt"
 	"regexp"
+	"strings"
 
 	"github.com/cybergarage/go-sqltest/sqltest/util"
 )
@@ -83,6 +84,25 @@ func NeweEmbedSuite(tests map[string][]byte) (*Suite, error) {
 // ScenarioTests returns all loaded scenario tests.
 func (suite *Suite) ScenarioTests() []*ScenarioTest {
 	return suite.tests
+}
+
+// ExtractScenarioTests returns scenario tests with the specified names.
+func (suite *Suite) ExtractScenarioTests(names ...string) ([]*ScenarioTest, error) {
+	tests := make([]*ScenarioTest, 0)
+	for _, name := range names {
+		isFound := false
+		for _, test := range suite.tests {
+			if strings.EqualFold(test.Name(), name) {
+				tests = append(tests, test)
+				isFound = true
+				break
+			}
+		}
+		if !isFound {
+			return nil, fmt.Errorf("%s is not found", name)
+		}
+	}
+	return tests, nil
 }
 
 // Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
