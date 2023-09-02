@@ -14,10 +14,10 @@
 
 SHELL := bash
 
-TEST_HELPER_NAME=embed
-TEST_HELPER=${TEST_HELPER_NAME}.go
+TEST_HELPERES= \
+	embed.go
 
-all: ${TEST_HELPER}
+all: ${TEST_HELPERES}
 
-${TEST_HELPER} : ${TEST_HELPER_NAME}.pl $(wildcard *.qst)
+%.go : %.pl $(wildcard *.qst)
 	perl $< > $@
