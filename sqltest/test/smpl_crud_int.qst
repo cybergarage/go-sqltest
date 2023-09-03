@@ -1,0 +1,205 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test (
+	ctext TEXT,
+	cint INT PRIMARY KEY
+);
+{
+}
+INSERT INTO test (ctext, cint) VALUES ("a", -1);
+{
+}
+UPDATE SET ctext = "a" WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE SET ctext = "ab" WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE SET ctext = "abc" WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE SET ctext = "ab" WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE SET ctext = "a" WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE SET ctext = "ab" WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE SET ctext = "a" WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE SET ctext = "a" WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE SET ctext = "ab" WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE SET ctext = "abc" WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE SET ctext = "abc" WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE SET ctext = "abc" WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE SET ctext = "abc" WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE SET ctext = "ab" WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
