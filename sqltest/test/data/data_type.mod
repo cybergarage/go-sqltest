@@ -1,4 +1,4 @@
-TEXT: "a", "ab", "abc"
+TEXT: 'a', 'ab', 'abc'
 # TINYINT: -1, 0, 1, 127, -128
 # SMALLINT: -1, 0, 1, 32767, -32768
 # BIGINT: -1, 0, 1, 9223372036854775807, -9223372036854775808
@@ -6,4 +6,4 @@ INT: -1, 0, 1, 2147483647, -2147483648
 # BOOLEAN: true, false
 # FLOAT: 0.0, 1.0
 # DOUBLE: 0.0, 1.0
-# BLOB: "a", "ab", "abc"
+# BLOB: 'a', 'ab', 'abc'
