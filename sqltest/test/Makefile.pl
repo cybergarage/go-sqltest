@@ -5,6 +5,9 @@
 
 use strict;
 use warnings;
+use FindBin;
+
+my $script_dir = $FindBin::Bin;
 
 print<<HEADER;
 # Copyright (C) 2022 The go-sqltest Authors. All rights reserved.
@@ -25,12 +28,12 @@ SHELL := bash
 
 all: embed.go
 
-%.go : %.pl tests \$(wildcard *.qst)
+%.go : %.pl \$(wildcard *.qst)
 	perl \$< > \$@
 
 HEADER
 
-my $data_type_file = "data/data_type.pict";
+my $data_type_file = "${script_dir}/data/data_type.pict";
 open(IN, $data_type_file) or die "Failed to open $data_type_file: $!";
 
 my @data_types;
