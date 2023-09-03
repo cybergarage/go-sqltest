@@ -78,8 +78,6 @@ print<<FOTTER;
 }
 
 FOTTER
-print<<HEADER;
-HEADER
 my $n;
 foreach my $name(@embed_test_names){
   printf("//go:embed %s\n", $embed_test_files[$n++]);
