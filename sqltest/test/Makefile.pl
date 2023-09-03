@@ -23,12 +23,9 @@ print<<HEADER;
 
 SHELL := bash
 
-all: \${TEST_HELPERES} \${PICT_TESTS}
+all: embed.go
 
-TEST_HELPERES= \\
-	embed.go
-
-%.go : %.pl \$(wildcard *.qst)
+%.go : %.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
 HEADER
@@ -44,7 +41,7 @@ while(<IN>){
 }
 close(IN);
 
-my $pict_prefix = "simple_crud";
+my $pict_prefix = "smpl_crud";
 print "PICT_TESTS = \\\n";
 for (my $n = 0; $n < scalar(@data_types); $n++) {
     my $data_type = lc($data_types[$n]);
@@ -57,10 +54,15 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
 }
 print "\n";
 
+print<<FOTTER;
+tests: \${PICT_TESTS}
+
+FOTTER
+
 for (my $n = 0; $n < scalar(@data_types); $n++) {
     my $data_type = lc($data_types[$n]);
     my $scenario_name = "${pict_prefix}_${data_type}.qst";
     print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
     print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
+    print "\tgit add ${scenario_name}\n\n";
 }
-print "\n";
