@@ -8,7 +8,7 @@ use warnings;
 
 my $pr_key_type = "";
 if (1 <= @ARGV){
-  $pr_key_type = $ARGV[0];
+  $pr_key_type = lc($ARGV[0]);
 }
 
 print<<HEADER;
@@ -32,28 +32,97 @@ my $pg_type_file = "data/data_type.pict";
 open(IN, $pg_type_file) or die "Failed to open $pg_type_file: $!";
 my $line_no = 0;
 my $pr_key_idx = -1;
+my @data_type_row;
 while(<IN>){
   $line_no++;
   chomp($_);
   my @row = split(/\t/, $_, -1);
   if ($line_no <= 1) {
+    @data_type_row = @row;
     print "CREATE TABLE test (\n";  
     for (my $i = 0; $i < scalar(@row); $i++) {
-      my $type_name = $row[$i];
-      my $column_name = "col" . $type_name;
+      my $type_name = lc($row[$i]);
+      my $column_type = uc($type_name);
+      my $column_name = "c" . $type_name;
       if ($type_name eq $pr_key_type) {
-        print "\t" . $column_name . " " . $type_name . " PRIMARY KEY\n";  
+        print "\t$column_name $column_type PRIMARY KEY";  
+        $pr_key_idx = $i;
       } else {
-        print "\t" . $column_name . " " . $type_name . "\n";  
+        print "\t$column_name $column_type";  
       }
+      if ($i < ((@row) - 1)) {
+        print ",";  
+      }
+      print "\n";  
     }
     print ");\n";  
     print "{\n";  
     print "}\n";  
+    next;
   }
+  if ($pr_key_idx < 0) {
+    die "The primary key type ($pr_key_type) is not found in $pg_type_file";
+  }
+  if ($line_no <= 2) {
+    print "INSERT INTO test (";  
+    for (my $i = 0; $i < scalar(@row); $i++) {
+      my $type_name = lc($data_type_row[$i]);
+      my $column_name = "c" . $type_name;
+      if (0 < $i) {
+        print ", ";
+      }
+      print $column_name;
+    }
+    print ") VALUES (";  
+    for (my $i = 0; $i < scalar(@row); $i++) {
+      if (0 < $i) {
+        print ", ";  
+      }
+      print $row[$i];
+    }
+    print ");\n";  
+    print "{\n";  
+    print "}\n";  
+    next;
+  } else {
+    print "UPDATE SET ";  
+    my $n_colums = 0;
+    for (my $i = 0; $i < scalar(@row); $i++) {
+      my $type_name = lc($data_type_row[$i]);
+      my $column_name = "c" . $type_name;
+      if ($i == $pr_key_idx) {
+        next;
+      }
+      if (0 < $n_colums) {
+        print ", ";  
+      }
+      print "$column_name = $row[$i]";
+      $n_colums++;
+    }
+    my $type_name = lc($data_type_row[$pr_key_idx]);
+    my $column_name = "c" . $type_name;
+    print " WHERE $column_name = $row[$pr_key_idx];\n";    
+    print "{\n";  
+    print "}\n";  
+  }
+  my $type_name = lc($data_type_row[$pr_key_idx]);
+  my $column_name = "c" . $type_name;
+  print "SELECT * FROM test WHERE $column_name = $row[$pr_key_idx];\n";  
+  print "{\n";  
+  print "\t\"rows\" :\n";  
+  print "\t[\n";  
+  print "\t\t{\n";  
+  for (my $i = 0; $i < scalar(@row); $i++) {
+    my $type_name = lc($data_type_row[$i]);
+    my $column_name = "c" . $type_name;
+    print "\t\t\t\"$column_name\" : $row[$i]";
+    if ($i < ((@row) - 1)) {
+      print ",";  
+    }
+    print "\n";
+  }
+  print "\t\t}\n";  
+  print "\t]\n";  
+  print "}\n";  
 }
 close(IN);
-
-print<<FOTTER;
-}
-FOTTER
