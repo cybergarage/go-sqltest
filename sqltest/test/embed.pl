@@ -13,12 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 use strict;
 use warnings;
 use File::Find;
+use FindBin;
 
-my $test_dir = "./";
+my $script_dir = $FindBin::Bin;
+my $test_dir = "${script_dir}/";
 
 if (1 <= @ARGV){
   $test_dir = $ARGV[0];
