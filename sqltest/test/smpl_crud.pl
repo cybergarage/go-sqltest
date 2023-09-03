@@ -28,8 +28,8 @@ print<<HEADER;
 
 HEADER
 
-my $pg_type_file = "data/data_type.pict";
-open(IN, $pg_type_file) or die "Failed to open $pg_type_file: $!";
+my $data_type_file = "data/data_type.pict";
+open(IN, $data_type_file) or die "Failed to open $data_type_file: $!";
 my $line_no = 0;
 my $pr_key_idx = -1;
 my @data_type_row;
@@ -62,7 +62,7 @@ while(<IN>){
     next;
   }
   if ($pr_key_idx < 0) {
-    die "The primary key type ($pr_key_type) is not found in $pg_type_file";
+    die "The primary key type ($pr_key_type) is not found in $data_type_file";
   }
   if ($line_no <= 2) {
     print "INSERT INTO ${tbl_name} (";  
