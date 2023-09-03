@@ -19,17 +19,3 @@ all: embed.go
 %.go : %.pl tests $(wildcard *.qst)
 	perl $< > $@
 
-PICT_TESTS = \
-	smpl_crud_text.qst \
-	smpl_crud_int.qst
-
-tests: ${PICT_TESTS}
-
-smpl_crud_text.qst: smpl_crud.pl data/data_type.pict
-	perl smpl_crud.pl text > smpl_crud_text.qst
-	git add smpl_crud_text.qst
-
-smpl_crud_int.qst: smpl_crud.pl data/data_type.pict
-	perl smpl_crud.pl int > smpl_crud_int.qst
-	git add smpl_crud_int.qst
-

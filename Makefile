@@ -22,19 +22,23 @@ PKG_ROOT=${PKG_NAME}
 PKG=\
 	${MODULE_ROOT}/${PKG_ROOT}/...
 
-TEST_DIR=test
-TEST_HELPER_NAME=embed
-TEST_HELPER=\
-	${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.go
+TEST_DIR=${PKG_ROOT}/test
+TEST_HELPER=${TEST_DIR}/embed
+TEST_MAKEFILE=${TEST_DIR}/Makefile
 
 .PHONY: test format vet lint clean
 
 all: test
 
-${TEST_HELPER} : ${PKG_ROOT}/${TEST_DIR}/${TEST_HELPER_NAME}.pl $(wildcard ${PKG_ROOT}/${TEST_DIR}/*.qst)
+scenarios: ${TEST_MAKEFILE} ${TEST_HELPER}.go
+
+${TEST_MAKEFILE} : ${TEST_MAKEFILE}.pl $(wildcard ${TEST_DIR}/data/*.pict)
 	perl $< > $@
 
-format: ${TEST_HELPER}
+${TEST_HELPER}.go : ${TEST_HELPER}.pl ${TEST_MAKEFILE} $(wildcard ${TEST_DIR}/*.qst)
+	perl $< > $@
+
+format:
 	gofmt -s -w ${PKG_ROOT}
 
 vet: format
@@ -43,7 +47,7 @@ vet: format
 lint: format
 	golangci-lint run ${PKG_ROOT}/...
 
-test: lint
+test: scenarios lint
 	go test -v -cover -timeout 60s ${PKG}/...
 
 clean:
