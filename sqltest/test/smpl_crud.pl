@@ -33,13 +33,14 @@ open(IN, $pg_type_file) or die "Failed to open $pg_type_file: $!";
 my $line_no = 0;
 my $pr_key_idx = -1;
 my @data_type_row;
+my $tbl_name = "test";
 while(<IN>){
   $line_no++;
   chomp($_);
   my @row = split(/\t/, $_, -1);
   if ($line_no <= 1) {
     @data_type_row = @row;
-    print "CREATE TABLE test (\n";  
+    print "CREATE TABLE ${tbl_name} (\n";  
     for (my $i = 0; $i < scalar(@row); $i++) {
       my $type_name = lc($row[$i]);
       my $column_type = uc($type_name);
@@ -64,7 +65,7 @@ while(<IN>){
     die "The primary key type ($pr_key_type) is not found in $pg_type_file";
   }
   if ($line_no <= 2) {
-    print "INSERT INTO test (";  
+    print "INSERT INTO ${tbl_name} (";  
     for (my $i = 0; $i < scalar(@row); $i++) {
       my $type_name = lc($data_type_row[$i]);
       my $column_name = "c" . $type_name;
@@ -83,9 +84,8 @@ while(<IN>){
     print ");\n";  
     print "{\n";  
     print "}\n";  
-    next;
   } else {
-    print "UPDATE SET ";  
+    print "UPDATE ${tbl_name} SET ";  
     my $n_colums = 0;
     for (my $i = 0; $i < scalar(@row); $i++) {
       my $type_name = lc($data_type_row[$i]);
@@ -107,7 +107,7 @@ while(<IN>){
   }
   my $type_name = lc($data_type_row[$pr_key_idx]);
   my $column_name = "c" . $type_name;
-  print "SELECT * FROM test WHERE $column_name = $row[$pr_key_idx];\n";  
+  print "SELECT * FROM ${tbl_name} WHERE $column_name = $row[$pr_key_idx];\n";  
   print "{\n";  
   print "\t\"rows\" :\n";  
   print "\t[\n";  
@@ -115,7 +115,9 @@ while(<IN>){
   for (my $i = 0; $i < scalar(@row); $i++) {
     my $type_name = lc($data_type_row[$i]);
     my $column_name = "c" . $type_name;
-    print "\t\t\t\"$column_name\" : $row[$i]";
+    my $column_val = $row[$i];
+    $column_val =~ s/'/"/g;
+    print "\t\t\t\"$column_name\" : $column_val";
     if ($i < ((@row) - 1)) {
       print ",";  
     }
