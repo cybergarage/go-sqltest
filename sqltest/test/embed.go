@@ -23,6 +23,8 @@ var EmbedTests = map[string][]byte {
 	"SmplInsertSelect": smplInsertSelect,
 	"SmplAlterAdd": smplAlterAdd,
 	"YcsbWorkload": ycsbWorkload,
+	"SmplCrudInt": smplCrudInt,
+	"SmplCrudText": smplCrudText,
 	"Pgbench": pgbench,
 }
 
@@ -34,6 +36,12 @@ var smplAlterAdd []byte
 
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
+
+//go:embed smpl_crud_int.qst
+var smplCrudInt []byte
+
+//go:embed smpl_crud_text.qst
+var smplCrudText []byte
 
 //go:embed pgbench.qst
 var pgbench []byte
