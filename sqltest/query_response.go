@@ -184,7 +184,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 				break
 			}
 
-			if !deepEqual(rowData, resData) && !deepEqual(resData, rowData) {
+			if !deepEqual(resData, rowData) {
 				hasAllColumn = false
 				break
 			}
