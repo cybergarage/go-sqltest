@@ -30,37 +30,44 @@ HEADER
 
 my $data_type_file = "data/data_type.pict";
 my @data_type_row;
+my @data_rows;
 my $pr_key_idx = -1;
 my $tbl_name = "test";
 my $line_no = 0;
 
+$line_no = 0;
 open(IN, $data_type_file) or die "Failed to open $data_type_file: $!";
 while(<IN>){
+  $line_no++;
   chomp($_);
   my @row = split(/\t/, $_, -1);
-  @data_type_row = @row;
-  print "CREATE TABLE ${tbl_name} (\n";  
-  for (my $i = 0; $i < scalar(@row); $i++) {
-    my $type_name = lc($row[$i]);
-    my $column_type = uc($type_name);
-    my $column_name = "c" . $type_name;
-    if ($type_name eq $pr_key_type) {
-      print "\t$column_name $column_type PRIMARY KEY";  
-      $pr_key_idx = $i;
-    } else {
-      print "\t$column_name $column_type";  
-    }
-    if ($i < ((@row) - 1)) {
-      print ",";  
-    }
-    print "\n";  
+  if ($line_no <= 1) {
+    @data_type_row = @row;
+  } else {
+    push(@data_rows, @row);
   }
-  print ");\n";  
-  print "{\n";  
-  print "}\n";
-  last;
 }
 close(IN);
+
+print "CREATE TABLE ${tbl_name} (\n";  
+for (my $i = 0; $i < scalar(@data_type_row); $i++) {
+  my $type_name = lc($data_type_row[$i]);
+  my $column_type = uc($type_name);
+  my $column_name = "c" . $type_name;
+  if ($type_name eq $pr_key_type) {
+    print "\t$column_name $column_type PRIMARY KEY";  
+    $pr_key_idx = $i;
+  } else {
+    print "\t$column_name $column_type";  
+  }
+  if ($i < ((@data_type_row) - 1)) {
+    print ",";  
+  }
+  print "\n";  
+}
+print ");\n";  
+print "{\n";  
+print "}\n";
 
 if ($pr_key_idx < 0) {
   die "The primary key type ($pr_key_type) is not found in $data_type_file";
