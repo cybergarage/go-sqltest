@@ -31,6 +31,12 @@ SELECT * FROM test WHERE ctext = 'a';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('a', -2147483648);
 {
 }
@@ -43,6 +49,12 @@ SELECT * FROM test WHERE ctext = 'a';
 			"cint" : -2147483648
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('ab', -2147483648);
 {
@@ -57,6 +69,12 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('abc', 0);
 {
 }
@@ -69,6 +87,12 @@ SELECT * FROM test WHERE ctext = 'abc';
 			"cint" : 0
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('ab', -1);
 {
@@ -83,6 +107,12 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('a', 0);
 {
 }
@@ -95,6 +125,12 @@ SELECT * FROM test WHERE ctext = 'a';
 			"cint" : 0
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('ab', 0);
 {
@@ -109,6 +145,12 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('a', 1);
 {
 }
@@ -121,6 +163,12 @@ SELECT * FROM test WHERE ctext = 'a';
 			"cint" : 1
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('a', 2147483647);
 {
@@ -135,6 +183,12 @@ SELECT * FROM test WHERE ctext = 'a';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('ab', 1);
 {
 }
@@ -147,6 +201,12 @@ SELECT * FROM test WHERE ctext = 'ab';
 			"cint" : 1
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('abc', -2147483648);
 {
@@ -161,6 +221,12 @@ SELECT * FROM test WHERE ctext = 'abc';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('abc', -1);
 {
 }
@@ -173,6 +239,12 @@ SELECT * FROM test WHERE ctext = 'abc';
 			"cint" : -1
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
 }
 INSERT INTO test (ctext, cint) VALUES ('abc', 2147483647);
 {
@@ -187,6 +259,12 @@ SELECT * FROM test WHERE ctext = 'abc';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('abc', 1);
 {
 }
@@ -200,6 +278,12 @@ SELECT * FROM test WHERE ctext = 'abc';
 		}
 	]
 }
+DELETE FROM test WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+}
 INSERT INTO test (ctext, cint) VALUES ('ab', 2147483647);
 {
 }
@@ -212,4 +296,10 @@ SELECT * FROM test WHERE ctext = 'ab';
 			"cint" : 2147483647
 		}
 	]
+}
+DELETE FROM test WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
 }
