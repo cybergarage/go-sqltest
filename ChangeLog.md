@@ -1,7 +1,12 @@
 # Changelog
 
-## v1.1.0 (2023-xx-xx)
-- Add pgbench test
+## v1.0.2 (2023-xx-xx)
+- Add new scenario tests like pgbench
+- Add new scenario tests for ALTER queries
+
+## v1.0.1 (2023-xx-xx)
+- Update ScenarioTest to compare rows more accurately.
+- Add new scenario tests using PICT
 
 ## v1.0.0 (2023-08-20)
 - Fix embed test interfaces
