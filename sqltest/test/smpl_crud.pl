@@ -145,8 +145,8 @@ for my $row_no (0 .. $#data_rows) {
     print "{\n";  
     print "}\n";  
 
-    my $type_name = lc($data_type_row[$pr_key_idx]);
-    my $column_name = "c" . $type_name;
+    $type_name = lc($data_type_row[$pr_key_idx]);
+    $column_name = "c" . $type_name;
     print "SELECT * FROM ${tbl_name} WHERE $column_name = $row[$pr_key_idx];\n";  
     print "{\n";  
     print "\t\"rows\" :\n";  
