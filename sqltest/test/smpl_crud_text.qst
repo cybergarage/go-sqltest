@@ -31,6 +31,188 @@ SELECT * FROM test WHERE ctext = 'a';
 		}
 	]
 }
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'a';
 {
 }
@@ -47,6 +229,188 @@ SELECT * FROM test WHERE ctext = 'a';
 		{
 			"ctext" : "a",
 			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
 		}
 	]
 }
@@ -69,6 +433,188 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'ab';
 {
 }
@@ -85,6 +631,188 @@ SELECT * FROM test WHERE ctext = 'abc';
 		{
 			"ctext" : "abc",
 			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
 		}
 	]
 }
@@ -107,6 +835,188 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'ab';
 {
 }
@@ -123,6 +1033,188 @@ SELECT * FROM test WHERE ctext = 'a';
 		{
 			"ctext" : "a",
 			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
 		}
 	]
 }
@@ -145,6 +1237,188 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'ab';
 {
 }
@@ -164,6 +1438,188 @@ SELECT * FROM test WHERE ctext = 'a';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'a';
 {
 }
@@ -171,6 +1627,188 @@ SELECT * FROM test WHERE ctext = 'a';
 {
 }
 INSERT INTO test (ctext, cint) VALUES ('a', 2147483647);
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'a';
+{
+}
+SELECT * FROM test WHERE ctext = 'a';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'a';
 {
 }
 SELECT * FROM test WHERE ctext = 'a';
@@ -202,6 +1840,188 @@ SELECT * FROM test WHERE ctext = 'ab';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'ab';
 {
 }
@@ -218,6 +2038,188 @@ SELECT * FROM test WHERE ctext = 'abc';
 		{
 			"ctext" : "abc",
 			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
 		}
 	]
 }
@@ -240,6 +2242,188 @@ SELECT * FROM test WHERE ctext = 'abc';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'abc';
 {
 }
@@ -247,6 +2431,188 @@ SELECT * FROM test WHERE ctext = 'abc';
 {
 }
 INSERT INTO test (ctext, cint) VALUES ('abc', 2147483647);
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
 {
 }
 SELECT * FROM test WHERE ctext = 'abc';
@@ -278,6 +2644,188 @@ SELECT * FROM test WHERE ctext = 'abc';
 		}
 	]
 }
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'abc';
+{
+}
+SELECT * FROM test WHERE ctext = 'abc';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'abc';
 {
 }
@@ -294,6 +2842,188 @@ SELECT * FROM test WHERE ctext = 'ab';
 		{
 			"ctext" : "ab",
 			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 0 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
+		}
+	]
+}
+UPDATE test SET cint = -2147483648 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648
+		}
+	]
+}
+UPDATE test SET cint = -1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1
+		}
+	]
+}
+UPDATE test SET cint = 2147483647 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647
+		}
+	]
+}
+UPDATE test SET cint = 1 WHERE ctext = 'ab';
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1
 		}
 	]
 }
