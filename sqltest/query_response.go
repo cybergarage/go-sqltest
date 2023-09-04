@@ -18,8 +18,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"reflect"
-	"strconv"
 	"strings"
+
+	"github.com/cybergarage/go-safecast/safecast"
 )
 
 const (
@@ -127,55 +128,33 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 
 		switch v1 := iv1.(type) {
 		case string:
-			switch v2 := iv2.(type) {
-			case string:
-				sv1 := trimString(v1)
-				sv2 := trimString(v2)
-				if sv1 == sv2 {
-					return true
-				}
-			case []uint8:
-				sv2 := uint8sToString(v2)
-				return deepEqual(v1, sv2)
-			case int:
-				sv2 := strconv.Itoa(v2)
-				return deepEqual(v1, sv2)
-			case float64:
-				sv2 := strconv.FormatFloat(v2, 'G', -1, 64)
-				return deepEqual(v1, sv2)
-			default:
-				sv2 := fmt.Sprintf("%s", iv2)
-				return deepEqual(v1, sv2)
+			var v2 string
+			err := safecast.ToString(iv2, &v2)
+			if err != nil {
+				return false
+			}
+			sv1 := trimString(v1)
+			sv2 := trimString(v2)
+			if sv1 == sv2 {
+				return true
 			}
 		case int:
-			switch v2 := iv2.(type) {
-			case string:
-				iv2, err := strconv.Atoi(trimString(v2))
-				if err == nil && v1 == iv2 {
-					return true
-				}
-			case float64:
-				if v1 == int(v2) {
-					return true
-				}
-			case []uint8:
-				sv2 := uint8sToString(v2)
-				return deepEqual(v1, sv2)
+			var v2 int
+			err := safecast.ToInt(iv2, &v2)
+			if err != nil {
+				return false
+			}
+			if v1 == v2 {
+				return true
 			}
 		case float64:
-			switch v2 := iv2.(type) {
-			case string:
-				fv2, err := strconv.ParseFloat(trimString(v2), 64)
-				if err == nil && v1 == fv2 {
-					return true
-				}
-			case int:
-				if int(v1) == v2 {
-					return true
-				}
-			case []uint8:
-				sv2 := uint8sToString(v2)
-				return deepEqual(v1, sv2)
+			var v2 float64
+			err := safecast.ToFloat64(iv2, &v2)
+			if err != nil {
+				return false
+			}
+			if v1 == v2 {
+				return true
 			}
 		case []uint8:
 			sv1 := uint8sToString(v1)
@@ -205,7 +184,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 				break
 			}
 
-			if !deepEqual(rowData, resData) {
+			if !deepEqual(rowData, resData) && !deepEqual(resData, rowData) {
 				hasAllColumn = false
 				break
 			}
