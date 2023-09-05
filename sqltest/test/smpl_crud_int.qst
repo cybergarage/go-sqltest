@@ -14,1418 +14,13 @@
 
 CREATE TABLE test (
 	ctext TEXT,
-	cint INT PRIMARY KEY
+	cint INT PRIMARY KEY,
+	cfloat FLOAT,
+	cdouble DOUBLE
 );
 {
 }
-INSERT INTO test (ctext, cint) VALUES ('a', -1);
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-DELETE FROM test WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('a', -2147483648);
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-DELETE FROM test WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('ab', -2147483648);
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-DELETE FROM test WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('abc', 0);
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-DELETE FROM test WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('ab', -1);
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-DELETE FROM test WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('a', 0);
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-DELETE FROM test WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('ab', 0);
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0
-		}
-	]
-}
-DELETE FROM test WHERE cint = 0;
-{
-}
-SELECT * FROM test WHERE cint = 0;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('a', 1);
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('a', 1, 0.1, 2.2);
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1434,11 +29,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1447,11 +44,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1460,11 +59,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1473,11 +74,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1486,11 +89,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1499,11 +104,28 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1512,24 +134,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1538,11 +149,28 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1551,11 +179,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1564,50 +194,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -1616,7 +209,39 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
@@ -1626,7 +251,1624 @@ DELETE FROM test WHERE cint = 1;
 SELECT * FROM test WHERE cint = 1;
 {
 }
-INSERT INTO test (ctext, cint) VALUES ('a', 2147483647);
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('a', 0, 1.1, 0.2);
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('a', -1, 0.1, 0.2);
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('ab', -2147483648, 1.1, 2.2);
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('abc', 1, 1.1, 0.2);
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('ab', -1, 1.1, 0.2);
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('ab', 0, 0.1, 2.2);
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('a', -2147483648, 0.1, 0.2);
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('a', 2147483647, 1.1, 0.2);
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1635,11 +1877,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1648,11 +1892,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1661,50 +1907,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1713,11 +1922,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1726,11 +1937,58 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1739,11 +1997,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1752,11 +2027,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1765,50 +2042,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -1817,7 +2057,39 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
@@ -1827,649 +2099,238 @@ DELETE FROM test WHERE cint = 2147483647;
 SELECT * FROM test WHERE cint = 2147483647;
 {
 }
-INSERT INTO test (ctext, cint) VALUES ('ab', 1);
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('abc', 0, 0.1, 2.2);
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "a",
-			"cint" : 1
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
+{
+}
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-DELETE FROM test WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = 1;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('abc', -2147483648);
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "abc",
-			"cint" : -2147483648
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
+SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "abc",
-			"cint" : -2147483648
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
+DELETE FROM test WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
+SELECT * FROM test WHERE cint = 0;
 {
 }
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648
-		}
-	]
-}
-DELETE FROM test WHERE cint = -2147483648;
-{
-}
-SELECT * FROM test WHERE cint = -2147483648;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('abc', -1);
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1
-		}
-	]
-}
-DELETE FROM test WHERE cint = -1;
-{
-}
-SELECT * FROM test WHERE cint = -1;
-{
-}
-INSERT INTO test (ctext, cint) VALUES ('abc', 2147483647);
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('ab', 2147483647, 0.1, 2.2);
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2478,37 +2339,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2517,24 +2354,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2543,11 +2369,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2556,11 +2384,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2569,11 +2399,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2582,37 +2414,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2621,7 +2429,129 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
@@ -2631,46 +2561,238 @@ DELETE FROM test WHERE cint = 2147483647;
 SELECT * FROM test WHERE cint = 2147483647;
 {
 }
-INSERT INTO test (ctext, cint) VALUES ('abc', 1);
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('abc', -2147483648, 0.1, 2.2);
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 1
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
 {
 }
-SELECT * FROM test WHERE cint = 1;
+SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -2147483648;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('ab', 1, 0.1, 2.2);
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2679,37 +2801,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2718,24 +2816,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2744,11 +2831,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 1;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2757,11 +2846,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2770,11 +2861,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2783,37 +2876,13 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'abc' WHERE cint = 1;
-{
-}
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1
-		}
-	]
-}
-UPDATE test SET ctext = 'ab' WHERE cint = 1;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
 {
 }
 SELECT * FROM test WHERE cint = 1;
@@ -2822,7 +2891,129 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 1
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = 1;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
@@ -2832,59 +3023,238 @@ DELETE FROM test WHERE cint = 1;
 SELECT * FROM test WHERE cint = 1;
 {
 }
-INSERT INTO test (ctext, cint) VALUES ('ab', 2147483647);
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('abc', -1, 0.1, 2.2);
 {
 }
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
+SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "a",
-			"cint" : 2147483647
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
 {
 }
-SELECT * FROM test WHERE cint = 2147483647;
+SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
 {
 }
-SELECT * FROM test WHERE cint = 2147483647;
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2 WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+DELETE FROM test WHERE cint = -1;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble) VALUES ('abc', 2147483647, 0.1, 0.2);
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2893,24 +3263,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2919,24 +3278,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
-{
-}
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647
-		}
-	]
-}
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2945,11 +3293,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'a' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2958,11 +3308,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'ab' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2971,11 +3323,13 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "ab",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2984,11 +3338,73 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 0.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -2997,11 +3413,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -3010,11 +3443,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
-UPDATE test SET ctext = 'abc' WHERE cint = 2147483647;
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2 WHERE cint = 2147483647;
 {
 }
 SELECT * FROM test WHERE cint = 2147483647;
@@ -3023,7 +3473,9 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "abc",
-			"cint" : 2147483647
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2
 		}
 	]
 }
