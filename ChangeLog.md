@@ -4,7 +4,7 @@
 - Add new scenario tests like pgbench
 - Add new scenario tests for ALTER queries
 
-## v1.0.1 (2023-xx-xx)
+## v1.0.1 (2023-09-05)
 - Update ScenarioTest to compare rows more accurately.
 - Add new scenario tests using PICT
 
