@@ -28,13 +28,13 @@ SHELL := bash
 
 all: embed.go
 
-%.go : %.pl \$(wildcard *.qst)
+embed.go : embed.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
 HEADER
 
-my $data_type_file = "${script_dir}/data/data_type.pict";
-open(IN, $data_type_file) or die "Failed to open $data_type_file: $!";
+my $data_type_file = "data/data_type.pict";
+open(IN, "${script_dir}/${data_type_file}") or die "Failed to open $data_type_file: $!";
 
 my @data_types;
 while(<IN>){
@@ -70,3 +70,5 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
     print "\tgit add ${scenario_name}\n";
     print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
 }
+
+system("touch ${script_dir}/${data_type_file}");
