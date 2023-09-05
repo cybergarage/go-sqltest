@@ -3,6 +3,7 @@
 ## v1.0.2 (2023-xx-xx)
 - Add new scenario tests like pgbench
 - Add new scenario tests for ALTER queries
+- Add new scenario tests using PICT
 
 ## v1.0.1 (2023-09-05)
 - Update ScenarioTest to compare rows more accurately.
