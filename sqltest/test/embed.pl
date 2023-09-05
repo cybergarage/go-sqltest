@@ -18,7 +18,8 @@ use warnings;
 use File::Find;
 use FindBin;
 
-my $script_dir = $FindBin::Bin;
+# my $script_dir = $FindBin::Bin;
+my $script_dir = ".";
 my $test_dir = "${script_dir}/";
 
 if (1 <= @ARGV){
