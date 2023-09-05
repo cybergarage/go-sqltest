@@ -20,19 +20,27 @@ import (
 
 // EmbedTests is a map of test names and test queries.
 var EmbedTests = map[string][]byte{
+	"SmplCrudDouble":   smplCrudDouble,
 	"SmplInsertSelect": smplInsertSelect,
 	"SmplAlterAdd":     smplAlterAdd,
+	"SmplCrudFloat":    smplCrudFloat,
 	"YcsbWorkload":     ycsbWorkload,
 	"SmplCrudInt":      smplCrudInt,
 	"SmplCrudText":     smplCrudText,
 	"Pgbench":          pgbench,
 }
 
+//go:embed smpl_crud_double.qst
+var smplCrudDouble []byte
+
 //go:embed smpl_insert_select.qst
 var smplInsertSelect []byte
 
 //go:embed smpl_alter_add.qst
 var smplAlterAdd []byte
+
+//go:embed smpl_crud_float.qst
+var smplCrudFloat []byte
 
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
