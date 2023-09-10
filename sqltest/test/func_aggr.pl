@@ -23,13 +23,21 @@ print<<HEADER;
 
 HEADER
 
+my $tbl_name_prefix = "test";
 my @data_types = ("INT", "FLOAT", "DOUBLE");
 my @data_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-my $tbl_name = "test";
+my $sum = 0;
+my $avg = 0;
+for my $value (@data_values) {
+    $sum += $value;
+}
+$avg = $sum / @data_values;
 
 for (my $t = 0; $t < @data_types; $t++){
   my $data_type = $data_types[$t];
+  my $tbl_name = $tbl_name_prefix . "_" . lc($data_type);
+
   my $column_type = uc($data_type);
   my $column_name = "c" . lc($data_type);
   print "CREATE TABLE ${tbl_name} (\n";  
@@ -44,4 +52,14 @@ for (my $t = 0; $t < @data_types; $t++){
     print "{\n";  
     print "}\n";
   }
+
+  print "SELECT COUNT(*) FROM ${tbl_name};\n";  
+  print "{\n";  
+  print "\t\"rows\" :\n";  
+  print "\t[\n";  
+  print "\t\t{\n";  
+  print "\t\t\t\"$column_name\" : @data_values\n";
+  print "\t\t}\n";  
+  print "\t]\n";  
+  print "}\n";  
 }
