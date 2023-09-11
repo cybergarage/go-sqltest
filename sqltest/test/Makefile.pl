@@ -70,6 +70,7 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
     print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
     print "\tgit add ${scenario_name}\n";
     print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
+    system("touch ${script_dir}/${scenario_name}");
 }
 
 system("touch ${script_dir}/${data_type_file}");
@@ -102,4 +103,5 @@ for (my $n = 0; $n < @aggr_data_types; $n++) {
     print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
     print "\tgit add ${scenario_name}\n";
     print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
+    system("touch ${script_dir}/${scenario_name}");
 }
