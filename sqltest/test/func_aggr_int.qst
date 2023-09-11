@@ -1,0 +1,94 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_int (
+	cint INT PRIMARY KEY
+);
+{
+}
+INSERT INTO test_int (cint) VALUES (1);
+{
+}
+INSERT INTO test_int (cint) VALUES (2);
+{
+}
+INSERT INTO test_int (cint) VALUES (3);
+{
+}
+INSERT INTO test_int (cint) VALUES (4);
+{
+}
+INSERT INTO test_int (cint) VALUES (5);
+{
+}
+INSERT INTO test_int (cint) VALUES (6);
+{
+}
+INSERT INTO test_int (cint) VALUES (7);
+{
+}
+INSERT INTO test_int (cint) VALUES (8);
+{
+}
+INSERT INTO test_int (cint) VALUES (9);
+{
+}
+INSERT INTO test_int (cint) VALUES (10);
+{
+}
+SELECT COUNT(*) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"COUNT(*)" : 10
+		}
+	]
+}
+SELECT AVG(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"AVG(cint)" : 5.5
+		}
+	]
+}
+SELECT SUM(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"SUM(cint)" : 55
+		}
+	]
+}
+SELECT MIN(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"MIN(cint)" : 1
+		}
+	]
+}
+SELECT MAX(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"MAX(cint)" : 10
+		}
+	]
+}
