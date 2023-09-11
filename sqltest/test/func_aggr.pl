@@ -48,8 +48,8 @@ my $column_type = uc($data_type);
 my $column_name = "c" . lc($data_type);
 print "CREATE TABLE ${tbl_name} (\n";  
 print "\t$column_name $column_type PRIMARY KEY";  
-print "\n);\n";  
-print "{\n";  
+print "\n);\n";
+print "{\n";
 print "}\n";
 
 for (my $n = 0; $n < @data_values; $n++){
@@ -66,12 +66,12 @@ for (my $n = 0; $n < @sels; $n++){
   my $sel = $sels[$n];
   my $exp = $expecteds[$n];
   print "SELECT $sel FROM ${tbl_name};\n";  
-  print "{\n";  
+  print "{\n"; 
   print "\t\"rows\" :\n";  
-  print "\t[\n";  
-  print "\t\t{\n";  
+  print "\t[\n";
+  print "\t\t{\n";
   print "\t\t\t\"$sel\" : $exp\n";
-  print "\t\t}\n";  
-  print "\t]\n";  
-  print "}\n";  
+  print "\t\t}\n";
+  print "\t]\n";
+  print "}\n";
 }
