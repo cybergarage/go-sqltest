@@ -31,7 +31,13 @@ all: embed.go
 embed.go : embed.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
+tests: \${PICT_TESTS} \${AGGR_TESTS}
+
 HEADER
+
+#
+# smpl_crud_<type>.qst
+#
 
 my $data_type_file = "data/data_type.pict";
 open(IN, "${script_dir}/${data_type_file}") or die "Failed to open $data_type_file: $!";
@@ -57,11 +63,6 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
 }
 print "\n";
 
-print<<FOTTER;
-tests: \${PICT_TESTS}
-
-FOTTER
-
 for (my $n = 0; $n < scalar(@data_types); $n++) {
     my $data_type = lc($data_types[$n]);
     my $scenario_name = "${pict_prefix}_${data_type}.qst";
@@ -72,3 +73,20 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
 }
 
 system("touch ${script_dir}/${data_type_file}");
+
+#
+# func_aggr_<type>.qst
+#
+
+my $aggr_prefix = "func_aggr";
+my @aggr_data_types = ("INT", "FLOAT", "DOUBLE");
+
+for (my $n = 0; $n < @aggr_data_types; $n++) {
+    my $data_type = $aggr_data_types[$n];
+    my $data_type_suffix = lc($data_type);
+    my $scenario_name = "${aggr_prefix}_${data_type_suffix}.qst";
+    print "${scenario_name}: ${aggr_prefix}.pl\n";
+    print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
+    print "\tgit add ${scenario_name}\n";
+    print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
+}
