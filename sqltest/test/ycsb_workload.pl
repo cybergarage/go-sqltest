@@ -35,7 +35,7 @@ my $key_cnt = 10;
 my $field_cnt = 10;
 # INSERT queries
 for my $key_no (0 .. $key_cnt - 1) {
-  my $key = "user${key_no}";
+  my $key = "user00${key_no}";
   print "INSERT INTO usertable (YCSB_KEY";
   for my $field_no (0 .. $field_cnt - 1) {
     print ", FIELD${field_no}";
@@ -50,3 +50,16 @@ for my $key_no (0 .. $key_cnt - 1) {
   print "}\n";
 }
 # UPDATE queries
+for my $key_no (0 .. $key_cnt - 1) {
+  my $key = "user00${key_no}";
+  for my $field_no (0 .. $field_cnt - 1) {
+    my $field = "value10${field_no}";
+    print "UPDATE usertable SET FIELD${field_no} = '${field}' WHERE YCSB_KEY = '${key}';\n";
+    print "{\n";
+    print "}\n";
+    # SELECT queries
+    print "SELECT * FROM usertable WHERE YCSB_KEY = '${key}';\n";
+    print "{\n";
+    print "}\n";
+  }
+}
