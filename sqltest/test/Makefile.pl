@@ -81,6 +81,19 @@ system("touch ${script_dir}/${data_type_file}");
 my $aggr_prefix = "func_aggr";
 my @aggr_data_types = ("INT", "FLOAT", "DOUBLE");
 
+print "AGGR_TESTS = \\\n";
+for (my $n = 0; $n < @aggr_data_types; $n++) {
+    my $data_type = $aggr_data_types[$n];
+    my $aggr_data_types = lc($data_type);
+    my $scenario_name = "${aggr_prefix}_${aggr_data_types}.qst";
+    print "\t${scenario_name}";
+    if ($n < ((@aggr_data_types) - 1)) {
+        print " \\";
+    }
+    print "\n";
+}
+print "\n";
+
 for (my $n = 0; $n < @aggr_data_types; $n++) {
     my $data_type = $aggr_data_types[$n];
     my $data_type_suffix = lc($data_type);
