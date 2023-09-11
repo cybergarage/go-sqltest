@@ -19,13 +19,13 @@ all: embed.go
 embed.go : embed.pl tests $(wildcard *.qst)
 	perl $< > $@
 
+tests: ${PICT_TESTS} ${AGGR_TESTS}
+
 PICT_TESTS = \
 	smpl_crud_text.qst \
 	smpl_crud_int.qst \
 	smpl_crud_float.qst \
 	smpl_crud_double.qst
-
-tests: ${PICT_TESTS}
 
 smpl_crud_text.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl text > smpl_crud_text.qst
@@ -46,4 +46,24 @@ smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
 	git add smpl_crud_double.qst
 	git commit -m "Update smpl_crud_double.qst" smpl_crud_double.qst
+
+AGGR_TESTS = \
+	func_aggr_int.qst \
+	func_aggr_float.qst \
+	func_aggr_double.qst
+
+func_aggr_int.qst: func_aggr.pl
+	perl func_aggr.pl INT > func_aggr_int.qst
+	git add func_aggr_int.qst
+	git commit -m "Update func_aggr_int.qst" func_aggr_int.qst
+
+func_aggr_float.qst: func_aggr.pl
+	perl func_aggr.pl FLOAT > func_aggr_float.qst
+	git add func_aggr_float.qst
+	git commit -m "Update func_aggr_float.qst" func_aggr_float.qst
+
+func_aggr_double.qst: func_aggr.pl
+	perl func_aggr.pl DOUBLE > func_aggr_double.qst
+	git add func_aggr_double.qst
+	git commit -m "Update func_aggr_double.qst" func_aggr_double.qst
 
