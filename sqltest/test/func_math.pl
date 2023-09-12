@@ -31,7 +31,7 @@ print<<HEADER;
 HEADER
 
 my $tbl_name_prefix = "test";
-my @data_values = (-1.1, 2.3, 3.6, -4.1, 5.8, -6.2, 7.0, 8.1, -9.8, 10.1);
+my @data_values = (-1.2, 2.4, 3.6, -4.2, 5.8, -6.2, 7.0, 8.1, -9.8, 10.1);
 
 my $cnt = @data_values;
 my $min = $data_values[0];
@@ -73,4 +73,7 @@ for (my $n = 0; $n < @data_values; $n++){
     print "\t]\n";
     print "}\n";
   }
+  print "DELETE FROM ${tbl_name} WHERE $column_name = $data_value;\n";
+  print "{\n";  
+  print "}\n";
 }

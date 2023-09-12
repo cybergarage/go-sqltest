@@ -17,7 +17,7 @@ CREATE TABLE test_int (
 );
 {
 }
-INSERT INTO test_int (cint) VALUES (-1.1);
+INSERT INTO test_int (cint) VALUES (-1.2);
 {
 }
 SELECT ABS(cint) FROM test_int;
@@ -25,7 +25,7 @@ SELECT ABS(cint) FROM test_int;
 	"rows" :
 	[
 		{
-			"ABS(cint)" : 1.1
+			"ABS(cint)" : 1.2
 		}
 	]
 }
@@ -47,7 +47,10 @@ SELECT CEIL(cint) FROM test_int;
 		}
 	]
 }
-INSERT INTO test_int (cint) VALUES (2.3);
+DELETE FROM test_int WHERE cint = -1.2;
+{
+}
+INSERT INTO test_int (cint) VALUES (2.4);
 {
 }
 SELECT ABS(cint) FROM test_int;
@@ -55,7 +58,7 @@ SELECT ABS(cint) FROM test_int;
 	"rows" :
 	[
 		{
-			"ABS(cint)" : 2.3
+			"ABS(cint)" : 2.4
 		}
 	]
 }
@@ -76,6 +79,9 @@ SELECT CEIL(cint) FROM test_int;
 			"CEIL(cint)" : 3
 		}
 	]
+}
+DELETE FROM test_int WHERE cint = 2.4;
+{
 }
 INSERT INTO test_int (cint) VALUES (3.6);
 {
@@ -107,7 +113,10 @@ SELECT CEIL(cint) FROM test_int;
 		}
 	]
 }
-INSERT INTO test_int (cint) VALUES (-4.1);
+DELETE FROM test_int WHERE cint = 3.6;
+{
+}
+INSERT INTO test_int (cint) VALUES (-4.2);
 {
 }
 SELECT ABS(cint) FROM test_int;
@@ -115,7 +124,7 @@ SELECT ABS(cint) FROM test_int;
 	"rows" :
 	[
 		{
-			"ABS(cint)" : 4.1
+			"ABS(cint)" : 4.2
 		}
 	]
 }
@@ -136,6 +145,9 @@ SELECT CEIL(cint) FROM test_int;
 			"CEIL(cint)" : -4
 		}
 	]
+}
+DELETE FROM test_int WHERE cint = -4.2;
+{
 }
 INSERT INTO test_int (cint) VALUES (5.8);
 {
@@ -167,6 +179,9 @@ SELECT CEIL(cint) FROM test_int;
 		}
 	]
 }
+DELETE FROM test_int WHERE cint = 5.8;
+{
+}
 INSERT INTO test_int (cint) VALUES (-6.2);
 {
 }
@@ -196,6 +211,9 @@ SELECT CEIL(cint) FROM test_int;
 			"CEIL(cint)" : -6
 		}
 	]
+}
+DELETE FROM test_int WHERE cint = -6.2;
+{
 }
 INSERT INTO test_int (cint) VALUES (7);
 {
@@ -227,6 +245,9 @@ SELECT CEIL(cint) FROM test_int;
 		}
 	]
 }
+DELETE FROM test_int WHERE cint = 7;
+{
+}
 INSERT INTO test_int (cint) VALUES (8.1);
 {
 }
@@ -256,6 +277,9 @@ SELECT CEIL(cint) FROM test_int;
 			"CEIL(cint)" : 9
 		}
 	]
+}
+DELETE FROM test_int WHERE cint = 8.1;
+{
 }
 INSERT INTO test_int (cint) VALUES (-9.8);
 {
@@ -287,6 +311,9 @@ SELECT CEIL(cint) FROM test_int;
 		}
 	]
 }
+DELETE FROM test_int WHERE cint = -9.8;
+{
+}
 INSERT INTO test_int (cint) VALUES (10.1);
 {
 }
@@ -316,4 +343,7 @@ SELECT CEIL(cint) FROM test_int;
 			"CEIL(cint)" : 11
 		}
 	]
+}
+DELETE FROM test_int WHERE cint = 10.1;
+{
 }
