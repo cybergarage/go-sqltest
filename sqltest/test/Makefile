@@ -19,7 +19,7 @@ all: embed.go
 embed.go : embed.pl tests $(wildcard *.qst)
 	perl $< > $@
 
-tests: ${PICT_TESTS} ${AGGR_TESTS}
+tests: ${PICT_TESTS} ${AGGR_TESTS} ${YCSB_TESTS}
 
 PICT_TESTS = \
 	smpl_crud_text.qst \
@@ -67,3 +67,9 @@ func_aggr_double.qst: func_aggr.pl
 	git add func_aggr_double.qst
 	git commit -m "Update func_aggr_double.qst" func_aggr_double.qst
 
+
+YCSB_TESTS = \
+	ycsb_workload.qst
+
+ycsb_workload.qst: ycsb_workload.pl
+	perl ycsb_workload.pl > ycsb_workload.qst
