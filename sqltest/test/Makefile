@@ -35,6 +35,7 @@ smpl_crud_float.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl float > smpl_crud_float.qst
 smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
+
 AGGR_TESTS = \
 	func_aggr_int.qst \
 	func_aggr_float.qst \
@@ -46,6 +47,7 @@ func_aggr_float.qst: func_aggr.pl
 	perl func_aggr.pl FLOAT > func_aggr_float.qst
 func_aggr_double.qst: func_aggr.pl
 	perl func_aggr.pl DOUBLE > func_aggr_double.qst
+
 MATH_TESTS = \
 	func_math_int.qst \
 	func_math_float.qst \
