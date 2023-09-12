@@ -29,7 +29,6 @@ print<<HEADER;
 HEADER
 
 my $tbl_name_prefix = "test";
-my @data_types = ("INT", "FLOAT", "DOUBLE");
 my @data_values = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 my $cnt = @data_values;
