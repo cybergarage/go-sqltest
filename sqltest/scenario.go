@@ -143,13 +143,13 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 	}
 
 	inJSON := false
-	for _, line := range lines {
+	for n, line := range lines {
 		if inJSON {
 			if strings.HasPrefix(line, "}") {
 				resultStr += line
 				err := appendResult()
 				if err != nil {
-					return err
+					return fmt.Errorf("line [%d] : %w (%v)", n, err, line)
 				}
 				inJSON = false
 				continue
