@@ -31,7 +31,7 @@ all: embed.go
 embed.go : embed.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
-tests: \${PICT_TESTS} \${AGGR_TESTS} \${YCSB_TESTS}
+tests: \${PICT_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
 
 HEADER
 
@@ -68,8 +68,6 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
     my $scenario_name = "${pict_prefix}_${data_type}.qst";
     print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
     print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
-    print "\tgit add ${scenario_name}\n";
-    print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
     system("touch ${script_dir}/${scenario_name}");
 }
 
@@ -101,8 +99,35 @@ for (my $n = 0; $n < @aggr_data_types; $n++) {
     my $scenario_name = "${aggr_prefix}_${data_type_suffix}.qst";
     print "${scenario_name}: ${aggr_prefix}.pl\n";
     print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
-    print "\tgit add ${scenario_name}\n";
-    print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
+    system("touch ${script_dir}/${scenario_name}");
+}
+
+##
+# func_math_<type>.qst
+#
+
+my $math_prefix = "func_math";
+my @math_data_types = ("INT", "FLOAT", "DOUBLE");
+
+print "MATH_TESTS = \\\n";
+for (my $n = 0; $n < @math_data_types; $n++) {
+    my $data_type = $math_data_types[$n];
+    my $math_data_types = lc($data_type);
+    my $scenario_name = "${math_prefix}_${math_data_types}.qst";
+    print "\t${scenario_name}";
+    if ($n < ((@math_data_types) - 1)) {
+        print " \\";
+    }
+    print "\n";
+}
+print "\n";
+
+for (my $n = 0; $n < @math_data_types; $n++) {
+    my $data_type = $math_data_types[$n];
+    my $data_type_suffix = lc($data_type);
+    my $scenario_name = "${math_prefix}_${data_type_suffix}.qst";
+    print "${scenario_name}: ${math_prefix}.pl\n";
+    print "\tperl ${math_prefix}.pl ${data_type} > ${scenario_name}\n";
     system("touch ${script_dir}/${scenario_name}");
 }
 
