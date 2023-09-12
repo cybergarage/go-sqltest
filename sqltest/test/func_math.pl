@@ -55,6 +55,9 @@ print "}\n";
 
 for (my $n = 0; $n < @data_values; $n++){
   my $data_value = $data_values[$n];
+  if ($data_type eq "int") {
+    $data_value = int($data_value);
+  }
   print "INSERT INTO ${tbl_name} ($column_name) VALUES ($data_value);\n";  
   print "{\n";  
   print "}\n";
