@@ -35,6 +35,13 @@ my $key_cnt = 10;
 my $field_cnt = 10;
 # INSERT queries
 for my $key_no (0 .. $key_cnt - 1) {
+  # Initialize field values
+  my @field_values = ();   
+  for my $field_no (0 .. $field_cnt - 1) {
+    my $field_value = "value${key_no}i${field_no}";
+    push(@field_values, $field_value);
+  }
+  # INSERT queries
   my $key = "user00${key_no}";
   print "INSERT INTO usertable (YCSB_KEY";
   for my $field_no (0 .. $field_cnt - 1) {
@@ -42,8 +49,7 @@ for my $key_no (0 .. $key_cnt - 1) {
   }
   print ") VALUES ('${key}'";
   for my $field_no (0 .. $field_cnt - 1) {
-    my $field = "value00${field_no}";
-    print ", '${field}'";
+    print ", '$field_values[${field_no}]'";
   }
   print ");\n";
   print "{\n";
@@ -52,14 +58,45 @@ for my $key_no (0 .. $key_cnt - 1) {
 # UPDATE queries
 for my $key_no (0 .. $key_cnt - 1) {
   my $key = "user00${key_no}";
+  # Initialize field values
+  my @field_values = ();   
   for my $field_no (0 .. $field_cnt - 1) {
-    my $field = "value10${field_no}";
-    print "UPDATE usertable SET FIELD${field_no} = '${field}' WHERE YCSB_KEY = '${key}';\n";
+    my $field_value = "value${key_no}i${field_no}";
+    push(@field_values, $field_value);
+  }
+  for my $field_no (0 .. $field_cnt - 1) {
+    $field_values[$field_no] = "value${key_no}u${field_no}";
+    print "UPDATE usertable SET FIELD${field_no} = '$field_values[${field_no}]' WHERE YCSB_KEY = '${key}';\n";
     print "{\n";
     print "}\n";
     # SELECT queries
     print "SELECT * FROM usertable WHERE YCSB_KEY = '${key}';\n";
     print "{\n";
+    print "\t\"rows\" :\n";
+    print "\t[\n";
+    print "\t\t{\n";
+    print "\t\t\t\"YCSB_KEY : \"${key}\"";
+    for my $field_no (0 .. $field_cnt - 1) {
+      print ",\n\t\t\t\"FIELD${field_no}\": ";
+      print "\"$field_values[${field_no}]\"";
+    }
+    print "\t\t}\n";
+    print "\t]\n";
     print "}\n";
   }
 }
+# DELETE queries
+for my $key_no (0 .. $key_cnt - 1) {
+  my $key = "user00${key_no}";
+  print "DELETE FROM usertable WHERE YCSB_KEY = '${key}';\n";
+  print "{\n";
+  print "}\n";
+}
+print<<FOOTER;
+SELECT * FROM usertable;
+{  
+}
+DROP TABLE usertable;
+{
+}
+FOOTER
