@@ -1,0 +1,319 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_int (
+	cint INT PRIMARY KEY
+);
+{
+}
+INSERT INTO test_int (cint) VALUES (-1.1);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 1.1
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : -2
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : -1
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (2.3);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 2.3
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 2
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 3
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (3.6);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 3.6
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 3
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 4
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (-4.1);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 4.1
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : -5
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : -4
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (5.8);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 5.8
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 5
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 6
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (-6.2);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 6.2
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : -7
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : -6
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (7);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 7
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 7
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 7
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (8.1);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 8.1
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 8
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 9
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (-9.8);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 9.8
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : -10
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : -9
+		}
+	]
+}
+INSERT INTO test_int (cint) VALUES (10.1);
+{
+}
+SELECT ABS(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"ABS(cint)" : 10.1
+		}
+	]
+}
+SELECT FLOOR(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"FLOOR(cint)" : 10
+		}
+	]
+}
+SELECT CEIL(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"CEIL(cint)" : 11
+		}
+	]
+}
