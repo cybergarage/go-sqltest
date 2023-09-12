@@ -5,9 +5,12 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.0.2 (2023-xx-xx)
+## v1.0.2 (2023-09-12)
 - Added new scenario tests
   - Added aggregation function tests
+    - COUNT, SUM, AVG, MIN and MAX
+- Updated scenario tests
+  - Updated YCSB-like workload test
 
 ## v1.0.1 (2023-09-05)
 - Updated ScenarioTest to compare rows more accurately
