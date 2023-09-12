@@ -23,10 +23,13 @@ var EmbedTests = map[string][]byte {
 	"SmplCrudDouble": smplCrudDouble,
 	"FuncAggrInt": funcAggrInt,
 	"FuncAggrFloat": funcAggrFloat,
+	"FuncMathInt": funcMathInt,
 	"SmplAlterAdd": smplAlterAdd,
 	"SmplCrudFloat": smplCrudFloat,
 	"YcsbWorkload": ycsbWorkload,
 	"SmplCrudInt": smplCrudInt,
+	"FuncMathDouble": funcMathDouble,
+	"FuncMathFloat": funcMathFloat,
 	"SmplCrudText": smplCrudText,
 	"Pgbench": pgbench,
 	"FuncAggrDouble": funcAggrDouble,
@@ -41,6 +44,9 @@ var funcAggrInt []byte
 //go:embed func_aggr_float.qst
 var funcAggrFloat []byte
 
+//go:embed func_math_int.qst
+var funcMathInt []byte
+
 //go:embed smpl_alter_add.qst
 var smplAlterAdd []byte
 
@@ -52,6 +58,12 @@ var ycsbWorkload []byte
 
 //go:embed smpl_crud_int.qst
 var smplCrudInt []byte
+
+//go:embed func_math_double.qst
+var funcMathDouble []byte
+
+//go:embed func_math_float.qst
+var funcMathFloat []byte
 
 //go:embed smpl_crud_text.qst
 var smplCrudText []byte
