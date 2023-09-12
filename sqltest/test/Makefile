@@ -19,7 +19,7 @@ all: embed.go
 embed.go : embed.pl tests $(wildcard *.qst)
 	perl $< > $@
 
-tests: ${PICT_TESTS} ${AGGR_TESTS} ${YCSB_TESTS}
+tests: ${PICT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
 
 PICT_TESTS = \
 	smpl_crud_text.qst \
@@ -29,24 +29,12 @@ PICT_TESTS = \
 
 smpl_crud_text.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl text > smpl_crud_text.qst
-	git add smpl_crud_text.qst
-	git commit -m "Update smpl_crud_text.qst" smpl_crud_text.qst
-
 smpl_crud_int.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl int > smpl_crud_int.qst
-	git add smpl_crud_int.qst
-	git commit -m "Update smpl_crud_int.qst" smpl_crud_int.qst
-
 smpl_crud_float.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl float > smpl_crud_float.qst
-	git add smpl_crud_float.qst
-	git commit -m "Update smpl_crud_float.qst" smpl_crud_float.qst
-
 smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
-	git add smpl_crud_double.qst
-	git commit -m "Update smpl_crud_double.qst" smpl_crud_double.qst
-
 AGGR_TESTS = \
 	func_aggr_int.qst \
 	func_aggr_float.qst \
@@ -54,19 +42,21 @@ AGGR_TESTS = \
 
 func_aggr_int.qst: func_aggr.pl
 	perl func_aggr.pl INT > func_aggr_int.qst
-	git add func_aggr_int.qst
-	git commit -m "Update func_aggr_int.qst" func_aggr_int.qst
-
 func_aggr_float.qst: func_aggr.pl
 	perl func_aggr.pl FLOAT > func_aggr_float.qst
-	git add func_aggr_float.qst
-	git commit -m "Update func_aggr_float.qst" func_aggr_float.qst
-
 func_aggr_double.qst: func_aggr.pl
 	perl func_aggr.pl DOUBLE > func_aggr_double.qst
-	git add func_aggr_double.qst
-	git commit -m "Update func_aggr_double.qst" func_aggr_double.qst
+MATH_TESTS = \
+	func_math_int.qst \
+	func_math_float.qst \
+	func_math_double.qst
 
+func_math_int.qst: func_math.pl
+	perl func_math.pl INT > func_math_int.qst
+func_math_float.qst: func_math.pl
+	perl func_math.pl FLOAT > func_math_float.qst
+func_math_double.qst: func_math.pl
+	perl func_math.pl DOUBLE > func_math_double.qst
 
 YCSB_TESTS = \
 	ycsb_workload.qst
