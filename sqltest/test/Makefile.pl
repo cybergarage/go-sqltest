@@ -31,7 +31,7 @@ all: embed.go
 embed.go : embed.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
-tests: \${PICT_TESTS} \${AGGR_TESTS}
+tests: \${PICT_TESTS} \${AGGR_TESTS} \${YCSB_TESTS}
 
 HEADER
 
@@ -105,3 +105,12 @@ for (my $n = 0; $n < @aggr_data_types; $n++) {
     print "\tgit commit -m \"Update ${scenario_name}\" ${scenario_name}\n\n";
     system("touch ${script_dir}/${scenario_name}");
 }
+
+print<<FOOTER
+
+YCSB_TESTS = \\
+	ycsb_workload.qst
+
+ycsb_workload.qst: ycsb_workload.pl
+	perl ycsb_workload.pl > ycsb_workload.qst
+FOOTER
