@@ -17,6 +17,7 @@ package sqltest
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"reflect"
 	"strings"
 
@@ -126,6 +127,12 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 			return string(bytes)
 		}
 
+		almostEqual := func(a, b float64) bool {
+			diff := math.Abs(a - b)
+			avg := (math.Abs(a) + math.Abs(b)) / 2
+			return diff/avg <= 1e-6
+		}
+
 		switch v1 := iv1.(type) {
 		case string:
 			var v2 string
@@ -154,6 +161,9 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 				return false
 			}
 			if v1 == v2 {
+				return true
+			}
+			if almostEqual(v1, v2) {
 				return true
 			}
 		case []uint8:
