@@ -17,7 +17,7 @@ CREATE TABLE test_float (
 );
 {
 }
-INSERT INTO test_float (cfloat) VALUES (-1.1);
+INSERT INTO test_float (cfloat) VALUES (-1.2);
 {
 }
 SELECT ABS(cfloat) FROM test_float;
@@ -25,7 +25,7 @@ SELECT ABS(cfloat) FROM test_float;
 	"rows" :
 	[
 		{
-			"ABS(cfloat)" : 1.1
+			"ABS(cfloat)" : 1.2
 		}
 	]
 }
@@ -47,7 +47,10 @@ SELECT CEIL(cfloat) FROM test_float;
 		}
 	]
 }
-INSERT INTO test_float (cfloat) VALUES (2.3);
+DELETE FROM test_float WHERE cfloat = -1.2;
+{
+}
+INSERT INTO test_float (cfloat) VALUES (2.4);
 {
 }
 SELECT ABS(cfloat) FROM test_float;
@@ -55,7 +58,7 @@ SELECT ABS(cfloat) FROM test_float;
 	"rows" :
 	[
 		{
-			"ABS(cfloat)" : 2.3
+			"ABS(cfloat)" : 2.4
 		}
 	]
 }
@@ -76,6 +79,9 @@ SELECT CEIL(cfloat) FROM test_float;
 			"CEIL(cfloat)" : 3
 		}
 	]
+}
+DELETE FROM test_float WHERE cfloat = 2.4;
+{
 }
 INSERT INTO test_float (cfloat) VALUES (3.6);
 {
@@ -107,7 +113,10 @@ SELECT CEIL(cfloat) FROM test_float;
 		}
 	]
 }
-INSERT INTO test_float (cfloat) VALUES (-4.1);
+DELETE FROM test_float WHERE cfloat = 3.6;
+{
+}
+INSERT INTO test_float (cfloat) VALUES (-4.2);
 {
 }
 SELECT ABS(cfloat) FROM test_float;
@@ -115,7 +124,7 @@ SELECT ABS(cfloat) FROM test_float;
 	"rows" :
 	[
 		{
-			"ABS(cfloat)" : 4.1
+			"ABS(cfloat)" : 4.2
 		}
 	]
 }
@@ -136,6 +145,9 @@ SELECT CEIL(cfloat) FROM test_float;
 			"CEIL(cfloat)" : -4
 		}
 	]
+}
+DELETE FROM test_float WHERE cfloat = -4.2;
+{
 }
 INSERT INTO test_float (cfloat) VALUES (5.8);
 {
@@ -167,6 +179,9 @@ SELECT CEIL(cfloat) FROM test_float;
 		}
 	]
 }
+DELETE FROM test_float WHERE cfloat = 5.8;
+{
+}
 INSERT INTO test_float (cfloat) VALUES (-6.2);
 {
 }
@@ -196,6 +211,9 @@ SELECT CEIL(cfloat) FROM test_float;
 			"CEIL(cfloat)" : -6
 		}
 	]
+}
+DELETE FROM test_float WHERE cfloat = -6.2;
+{
 }
 INSERT INTO test_float (cfloat) VALUES (7);
 {
@@ -227,6 +245,9 @@ SELECT CEIL(cfloat) FROM test_float;
 		}
 	]
 }
+DELETE FROM test_float WHERE cfloat = 7;
+{
+}
 INSERT INTO test_float (cfloat) VALUES (8.1);
 {
 }
@@ -256,6 +277,9 @@ SELECT CEIL(cfloat) FROM test_float;
 			"CEIL(cfloat)" : 9
 		}
 	]
+}
+DELETE FROM test_float WHERE cfloat = 8.1;
+{
 }
 INSERT INTO test_float (cfloat) VALUES (-9.8);
 {
@@ -287,6 +311,9 @@ SELECT CEIL(cfloat) FROM test_float;
 		}
 	]
 }
+DELETE FROM test_float WHERE cfloat = -9.8;
+{
+}
 INSERT INTO test_float (cfloat) VALUES (10.1);
 {
 }
@@ -316,4 +343,7 @@ SELECT CEIL(cfloat) FROM test_float;
 			"CEIL(cfloat)" : 11
 		}
 	]
+}
+DELETE FROM test_float WHERE cfloat = 10.1;
+{
 }
