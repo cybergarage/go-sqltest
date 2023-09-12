@@ -1,11 +1,11 @@
 # Changelog
 
-## v1.0.3 (2023-xx-xx)
+## v1.2.0 (2023-xx-xx)
 - Added new scenario tests, such as pgbench
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.0.2 (2023-09-12)
+## v1.1.0 (2023-09-12)
 - Added new scenario tests
   - Added aggregation function tests
     - COUNT, SUM, AVG, MIN and MAX
