@@ -5,6 +5,12 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.1.1 (2023-09-12)
+- Improved Suite::Run() to allow floating point comparisons to account for precision errors
+- Added new scenario tests
+  - Added math function tests
+    - ABS, FLOOR and CEIL
+
 ## v1.1.0 (2023-09-12)
 - Added new scenario tests
   - Added aggregation function tests
