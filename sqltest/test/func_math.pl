@@ -31,7 +31,6 @@ print<<HEADER;
 HEADER
 
 my $tbl_name_prefix = "test";
-my @data_types = ("INT", "FLOAT", "DOUBLE");
 my @data_values = (-1.1, 2.3, 3.6, -4.1, 5.8, -6.2, 7.0, 8.1, -9.8, 10.1);
 
 my $cnt = @data_values;
