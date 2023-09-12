@@ -71,7 +71,9 @@ for (my $n = 0; $n < scalar(@data_types); $n++) {
     system("touch ${script_dir}/${scenario_name}");
 }
 
+system("touch ${script_dir}/${pict_prefix}.pl");
 system("touch ${script_dir}/${data_type_file}");
+print "\n";
 
 #
 # func_aggr_<type>.qst
@@ -99,8 +101,10 @@ for (my $n = 0; $n < @aggr_data_types; $n++) {
     my $scenario_name = "${aggr_prefix}_${data_type_suffix}.qst";
     print "${scenario_name}: ${aggr_prefix}.pl\n";
     print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${scenario_name}");
 }
+
+system("touch ${script_dir}/${aggr_prefix}.pl");
+print "\n";
 
 ##
 # func_math_<type>.qst
@@ -131,8 +135,10 @@ for (my $n = 0; $n < @math_data_types; $n++) {
     system("touch ${script_dir}/${scenario_name}");
 }
 
-print<<FOOTER
+system("touch ${script_dir}/${math_prefix}.pl");
+print "\n";
 
+print<<FOOTER
 YCSB_TESTS = \\
 	ycsb_workload.qst
 
