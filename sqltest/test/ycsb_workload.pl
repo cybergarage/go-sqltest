@@ -30,6 +30,9 @@ CREATE TABLE usertable (
 	FIELD8 TEXT, FIELD9 TEXT)
 {
 }
+SELECT * FROM usertable;
+{  
+}
 HEADER
 my $key_cnt = 10;
 my $field_cnt = 10;
@@ -75,7 +78,7 @@ for my $key_no (0 .. $key_cnt - 1) {
     print "\t\"rows\" :\n";
     print "\t[\n";
     print "\t\t{\n";
-    print "\t\t\t\"YCSB_KEY : \"${key}\"";
+    print "\t\t\t\"YCSB_KEY\" : \"${key}\"";
     for my $field_no (0 .. $field_cnt - 1) {
       print ",\n\t\t\t\"FIELD${field_no}\": ";
       print "\"$field_values[${field_no}]\"";

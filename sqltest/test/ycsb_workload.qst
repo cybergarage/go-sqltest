@@ -21,58 +21,2172 @@ CREATE TABLE usertable (
 	FIELD8 TEXT, FIELD9 TEXT)
 {
 }
-INSERT INTO usertable VALUES (
-    YCSB_KEY = 'key001', 
-    FIELD0 = 'field000',
-    FIELD1 = 'field001',
-    FIELD2 = 'field002',
-    FIELD3 = 'field003',
-    FIELD4 = 'field004',
-    FIELD5 = 'field005',
-    FIELD6 = 'field006',
-    FIELD7 = 'field007',
-    FIELD8 = 'field008',
-    FIELD9 = 'field009')
+SELECT * FROM usertable;
+{  
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user000', 'value0i0', 'value0i1', 'value0i2', 'value0i3', 'value0i4', 'value0i5', 'value0i6', 'value0i7', 'value0i8', 'value0i9');
 {
 }
-SELECT * FROM usertable WHERE YCSB_KEY = 'key001';
-{
-	"rows" : 
-    [
-            {
-                "YCSB_KEY" : "key001",
-                "FIELD0" : "field000",
-                "FIELD1" : "field001",
-                "FIELD2" : "field002",
-                "FIELD3" : "field003",
-                "FIELD4" : "field004",
-                "FIELD5" : "field005",
-                "FIELD6" : "field006",
-                "FIELD7" : "field007",
-                "FIELD8" : "field008",
-                "FIELD9" : "field009"
-            }
-    ]
-}
-UPDATE usertable SET FIELD0 = 'field100' WHERE YCSB_KEY = 'key001'
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user001', 'value1i0', 'value1i1', 'value1i2', 'value1i3', 'value1i4', 'value1i5', 'value1i6', 'value1i7', 'value1i8', 'value1i9');
 {
 }
-SELECT * FROM usertable WHERE YCSB_KEY = 'key001';
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user002', 'value2i0', 'value2i1', 'value2i2', 'value2i3', 'value2i4', 'value2i5', 'value2i6', 'value2i7', 'value2i8', 'value2i9');
 {
-	"rows" : 
-    [
-            {
-                "YCSB_KEY" : "key001",
-                "FIELD0" : "field100",
-                "FIELD1" : "field001",
-                "FIELD2" : "field002",
-                "FIELD3" : "field003",
-                "FIELD4" : "field004",
-                "FIELD5" : "field005",
-                "FIELD6" : "field006",
-                "FIELD7" : "field007",
-                "FIELD8" : "field008",
-                "FIELD9" : "field009"
-            }
-    ]
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user003', 'value3i0', 'value3i1', 'value3i2', 'value3i3', 'value3i4', 'value3i5', 'value3i6', 'value3i7', 'value3i8', 'value3i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user004', 'value4i0', 'value4i1', 'value4i2', 'value4i3', 'value4i4', 'value4i5', 'value4i6', 'value4i7', 'value4i8', 'value4i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user005', 'value5i0', 'value5i1', 'value5i2', 'value5i3', 'value5i4', 'value5i5', 'value5i6', 'value5i7', 'value5i8', 'value5i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user006', 'value6i0', 'value6i1', 'value6i2', 'value6i3', 'value6i4', 'value6i5', 'value6i6', 'value6i7', 'value6i8', 'value6i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user007', 'value7i0', 'value7i1', 'value7i2', 'value7i3', 'value7i4', 'value7i5', 'value7i6', 'value7i7', 'value7i8', 'value7i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user008', 'value8i0', 'value8i1', 'value8i2', 'value8i3', 'value8i4', 'value8i5', 'value8i6', 'value8i7', 'value8i8', 'value8i9');
+{
+}
+INSERT INTO usertable (YCSB_KEY, FIELD0, FIELD1, FIELD2, FIELD3, FIELD4, FIELD5, FIELD6, FIELD7, FIELD8, FIELD9) VALUES ('user009', 'value9i0', 'value9i1', 'value9i2', 'value9i3', 'value9i4', 'value9i5', 'value9i6', 'value9i7', 'value9i8', 'value9i9');
+{
+}
+UPDATE usertable SET FIELD0 = 'value0u0' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0i1",
+			"FIELD2": "value0i2",
+			"FIELD3": "value0i3",
+			"FIELD4": "value0i4",
+			"FIELD5": "value0i5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value0u1' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0i2",
+			"FIELD3": "value0i3",
+			"FIELD4": "value0i4",
+			"FIELD5": "value0i5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value0u2' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0i3",
+			"FIELD4": "value0i4",
+			"FIELD5": "value0i5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value0u3' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0i4",
+			"FIELD5": "value0i5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value0u4' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0i5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value0u5' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0u5",
+			"FIELD6": "value0i6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value0u6' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0u5",
+			"FIELD6": "value0u6",
+			"FIELD7": "value0i7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value0u7' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0u5",
+			"FIELD6": "value0u6",
+			"FIELD7": "value0u7",
+			"FIELD8": "value0i8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value0u8' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0u5",
+			"FIELD6": "value0u6",
+			"FIELD7": "value0u7",
+			"FIELD8": "value0u8",
+			"FIELD9": "value0i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value0u9' WHERE YCSB_KEY = 'user000';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user000';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user000",
+			"FIELD0": "value0u0",
+			"FIELD1": "value0u1",
+			"FIELD2": "value0u2",
+			"FIELD3": "value0u3",
+			"FIELD4": "value0u4",
+			"FIELD5": "value0u5",
+			"FIELD6": "value0u6",
+			"FIELD7": "value0u7",
+			"FIELD8": "value0u8",
+			"FIELD9": "value0u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value1u0' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1i1",
+			"FIELD2": "value1i2",
+			"FIELD3": "value1i3",
+			"FIELD4": "value1i4",
+			"FIELD5": "value1i5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value1u1' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1i2",
+			"FIELD3": "value1i3",
+			"FIELD4": "value1i4",
+			"FIELD5": "value1i5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value1u2' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1i3",
+			"FIELD4": "value1i4",
+			"FIELD5": "value1i5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value1u3' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1i4",
+			"FIELD5": "value1i5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value1u4' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1i5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value1u5' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1u5",
+			"FIELD6": "value1i6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value1u6' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1u5",
+			"FIELD6": "value1u6",
+			"FIELD7": "value1i7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value1u7' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1u5",
+			"FIELD6": "value1u6",
+			"FIELD7": "value1u7",
+			"FIELD8": "value1i8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value1u8' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1u5",
+			"FIELD6": "value1u6",
+			"FIELD7": "value1u7",
+			"FIELD8": "value1u8",
+			"FIELD9": "value1i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value1u9' WHERE YCSB_KEY = 'user001';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user001';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user001",
+			"FIELD0": "value1u0",
+			"FIELD1": "value1u1",
+			"FIELD2": "value1u2",
+			"FIELD3": "value1u3",
+			"FIELD4": "value1u4",
+			"FIELD5": "value1u5",
+			"FIELD6": "value1u6",
+			"FIELD7": "value1u7",
+			"FIELD8": "value1u8",
+			"FIELD9": "value1u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value2u0' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2i1",
+			"FIELD2": "value2i2",
+			"FIELD3": "value2i3",
+			"FIELD4": "value2i4",
+			"FIELD5": "value2i5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value2u1' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2i2",
+			"FIELD3": "value2i3",
+			"FIELD4": "value2i4",
+			"FIELD5": "value2i5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value2u2' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2i3",
+			"FIELD4": "value2i4",
+			"FIELD5": "value2i5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value2u3' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2i4",
+			"FIELD5": "value2i5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value2u4' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2i5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value2u5' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2u5",
+			"FIELD6": "value2i6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value2u6' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2u5",
+			"FIELD6": "value2u6",
+			"FIELD7": "value2i7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value2u7' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2u5",
+			"FIELD6": "value2u6",
+			"FIELD7": "value2u7",
+			"FIELD8": "value2i8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value2u8' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2u5",
+			"FIELD6": "value2u6",
+			"FIELD7": "value2u7",
+			"FIELD8": "value2u8",
+			"FIELD9": "value2i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value2u9' WHERE YCSB_KEY = 'user002';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user002';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user002",
+			"FIELD0": "value2u0",
+			"FIELD1": "value2u1",
+			"FIELD2": "value2u2",
+			"FIELD3": "value2u3",
+			"FIELD4": "value2u4",
+			"FIELD5": "value2u5",
+			"FIELD6": "value2u6",
+			"FIELD7": "value2u7",
+			"FIELD8": "value2u8",
+			"FIELD9": "value2u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value3u0' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3i1",
+			"FIELD2": "value3i2",
+			"FIELD3": "value3i3",
+			"FIELD4": "value3i4",
+			"FIELD5": "value3i5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value3u1' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3i2",
+			"FIELD3": "value3i3",
+			"FIELD4": "value3i4",
+			"FIELD5": "value3i5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value3u2' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3i3",
+			"FIELD4": "value3i4",
+			"FIELD5": "value3i5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value3u3' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3i4",
+			"FIELD5": "value3i5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value3u4' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3i5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value3u5' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3u5",
+			"FIELD6": "value3i6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value3u6' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3u5",
+			"FIELD6": "value3u6",
+			"FIELD7": "value3i7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value3u7' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3u5",
+			"FIELD6": "value3u6",
+			"FIELD7": "value3u7",
+			"FIELD8": "value3i8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value3u8' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3u5",
+			"FIELD6": "value3u6",
+			"FIELD7": "value3u7",
+			"FIELD8": "value3u8",
+			"FIELD9": "value3i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value3u9' WHERE YCSB_KEY = 'user003';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user003';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user003",
+			"FIELD0": "value3u0",
+			"FIELD1": "value3u1",
+			"FIELD2": "value3u2",
+			"FIELD3": "value3u3",
+			"FIELD4": "value3u4",
+			"FIELD5": "value3u5",
+			"FIELD6": "value3u6",
+			"FIELD7": "value3u7",
+			"FIELD8": "value3u8",
+			"FIELD9": "value3u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value4u0' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4i1",
+			"FIELD2": "value4i2",
+			"FIELD3": "value4i3",
+			"FIELD4": "value4i4",
+			"FIELD5": "value4i5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value4u1' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4i2",
+			"FIELD3": "value4i3",
+			"FIELD4": "value4i4",
+			"FIELD5": "value4i5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value4u2' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4i3",
+			"FIELD4": "value4i4",
+			"FIELD5": "value4i5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value4u3' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4i4",
+			"FIELD5": "value4i5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value4u4' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4i5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value4u5' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4u5",
+			"FIELD6": "value4i6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value4u6' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4u5",
+			"FIELD6": "value4u6",
+			"FIELD7": "value4i7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value4u7' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4u5",
+			"FIELD6": "value4u6",
+			"FIELD7": "value4u7",
+			"FIELD8": "value4i8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value4u8' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4u5",
+			"FIELD6": "value4u6",
+			"FIELD7": "value4u7",
+			"FIELD8": "value4u8",
+			"FIELD9": "value4i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value4u9' WHERE YCSB_KEY = 'user004';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user004';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user004",
+			"FIELD0": "value4u0",
+			"FIELD1": "value4u1",
+			"FIELD2": "value4u2",
+			"FIELD3": "value4u3",
+			"FIELD4": "value4u4",
+			"FIELD5": "value4u5",
+			"FIELD6": "value4u6",
+			"FIELD7": "value4u7",
+			"FIELD8": "value4u8",
+			"FIELD9": "value4u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value5u0' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5i1",
+			"FIELD2": "value5i2",
+			"FIELD3": "value5i3",
+			"FIELD4": "value5i4",
+			"FIELD5": "value5i5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value5u1' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5i2",
+			"FIELD3": "value5i3",
+			"FIELD4": "value5i4",
+			"FIELD5": "value5i5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value5u2' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5i3",
+			"FIELD4": "value5i4",
+			"FIELD5": "value5i5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value5u3' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5i4",
+			"FIELD5": "value5i5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value5u4' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5i5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value5u5' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5u5",
+			"FIELD6": "value5i6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value5u6' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5u5",
+			"FIELD6": "value5u6",
+			"FIELD7": "value5i7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value5u7' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5u5",
+			"FIELD6": "value5u6",
+			"FIELD7": "value5u7",
+			"FIELD8": "value5i8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value5u8' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5u5",
+			"FIELD6": "value5u6",
+			"FIELD7": "value5u7",
+			"FIELD8": "value5u8",
+			"FIELD9": "value5i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value5u9' WHERE YCSB_KEY = 'user005';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user005';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user005",
+			"FIELD0": "value5u0",
+			"FIELD1": "value5u1",
+			"FIELD2": "value5u2",
+			"FIELD3": "value5u3",
+			"FIELD4": "value5u4",
+			"FIELD5": "value5u5",
+			"FIELD6": "value5u6",
+			"FIELD7": "value5u7",
+			"FIELD8": "value5u8",
+			"FIELD9": "value5u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value6u0' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6i1",
+			"FIELD2": "value6i2",
+			"FIELD3": "value6i3",
+			"FIELD4": "value6i4",
+			"FIELD5": "value6i5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value6u1' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6i2",
+			"FIELD3": "value6i3",
+			"FIELD4": "value6i4",
+			"FIELD5": "value6i5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value6u2' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6i3",
+			"FIELD4": "value6i4",
+			"FIELD5": "value6i5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value6u3' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6i4",
+			"FIELD5": "value6i5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value6u4' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6i5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value6u5' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6u5",
+			"FIELD6": "value6i6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value6u6' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6u5",
+			"FIELD6": "value6u6",
+			"FIELD7": "value6i7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value6u7' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6u5",
+			"FIELD6": "value6u6",
+			"FIELD7": "value6u7",
+			"FIELD8": "value6i8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value6u8' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6u5",
+			"FIELD6": "value6u6",
+			"FIELD7": "value6u7",
+			"FIELD8": "value6u8",
+			"FIELD9": "value6i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value6u9' WHERE YCSB_KEY = 'user006';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user006';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user006",
+			"FIELD0": "value6u0",
+			"FIELD1": "value6u1",
+			"FIELD2": "value6u2",
+			"FIELD3": "value6u3",
+			"FIELD4": "value6u4",
+			"FIELD5": "value6u5",
+			"FIELD6": "value6u6",
+			"FIELD7": "value6u7",
+			"FIELD8": "value6u8",
+			"FIELD9": "value6u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value7u0' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7i1",
+			"FIELD2": "value7i2",
+			"FIELD3": "value7i3",
+			"FIELD4": "value7i4",
+			"FIELD5": "value7i5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value7u1' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7i2",
+			"FIELD3": "value7i3",
+			"FIELD4": "value7i4",
+			"FIELD5": "value7i5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value7u2' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7i3",
+			"FIELD4": "value7i4",
+			"FIELD5": "value7i5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value7u3' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7i4",
+			"FIELD5": "value7i5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value7u4' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7i5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value7u5' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7u5",
+			"FIELD6": "value7i6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value7u6' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7u5",
+			"FIELD6": "value7u6",
+			"FIELD7": "value7i7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value7u7' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7u5",
+			"FIELD6": "value7u6",
+			"FIELD7": "value7u7",
+			"FIELD8": "value7i8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value7u8' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7u5",
+			"FIELD6": "value7u6",
+			"FIELD7": "value7u7",
+			"FIELD8": "value7u8",
+			"FIELD9": "value7i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value7u9' WHERE YCSB_KEY = 'user007';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user007';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user007",
+			"FIELD0": "value7u0",
+			"FIELD1": "value7u1",
+			"FIELD2": "value7u2",
+			"FIELD3": "value7u3",
+			"FIELD4": "value7u4",
+			"FIELD5": "value7u5",
+			"FIELD6": "value7u6",
+			"FIELD7": "value7u7",
+			"FIELD8": "value7u8",
+			"FIELD9": "value7u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value8u0' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8i1",
+			"FIELD2": "value8i2",
+			"FIELD3": "value8i3",
+			"FIELD4": "value8i4",
+			"FIELD5": "value8i5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value8u1' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8i2",
+			"FIELD3": "value8i3",
+			"FIELD4": "value8i4",
+			"FIELD5": "value8i5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value8u2' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8i3",
+			"FIELD4": "value8i4",
+			"FIELD5": "value8i5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value8u3' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8i4",
+			"FIELD5": "value8i5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value8u4' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8i5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value8u5' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8u5",
+			"FIELD6": "value8i6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value8u6' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8u5",
+			"FIELD6": "value8u6",
+			"FIELD7": "value8i7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value8u7' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8u5",
+			"FIELD6": "value8u6",
+			"FIELD7": "value8u7",
+			"FIELD8": "value8i8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value8u8' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8u5",
+			"FIELD6": "value8u6",
+			"FIELD7": "value8u7",
+			"FIELD8": "value8u8",
+			"FIELD9": "value8i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value8u9' WHERE YCSB_KEY = 'user008';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user008';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user008",
+			"FIELD0": "value8u0",
+			"FIELD1": "value8u1",
+			"FIELD2": "value8u2",
+			"FIELD3": "value8u3",
+			"FIELD4": "value8u4",
+			"FIELD5": "value8u5",
+			"FIELD6": "value8u6",
+			"FIELD7": "value8u7",
+			"FIELD8": "value8u8",
+			"FIELD9": "value8u9"		}
+	]
+}
+UPDATE usertable SET FIELD0 = 'value9u0' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9i1",
+			"FIELD2": "value9i2",
+			"FIELD3": "value9i3",
+			"FIELD4": "value9i4",
+			"FIELD5": "value9i5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD1 = 'value9u1' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9i2",
+			"FIELD3": "value9i3",
+			"FIELD4": "value9i4",
+			"FIELD5": "value9i5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD2 = 'value9u2' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9i3",
+			"FIELD4": "value9i4",
+			"FIELD5": "value9i5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD3 = 'value9u3' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9i4",
+			"FIELD5": "value9i5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD4 = 'value9u4' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9i5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD5 = 'value9u5' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9u5",
+			"FIELD6": "value9i6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD6 = 'value9u6' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9u5",
+			"FIELD6": "value9u6",
+			"FIELD7": "value9i7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD7 = 'value9u7' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9u5",
+			"FIELD6": "value9u6",
+			"FIELD7": "value9u7",
+			"FIELD8": "value9i8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD8 = 'value9u8' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9u5",
+			"FIELD6": "value9u6",
+			"FIELD7": "value9u7",
+			"FIELD8": "value9u8",
+			"FIELD9": "value9i9"		}
+	]
+}
+UPDATE usertable SET FIELD9 = 'value9u9' WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable WHERE YCSB_KEY = 'user009';
+{
+	"rows" :
+	[
+		{
+			"YCSB_KEY" : "user009",
+			"FIELD0": "value9u0",
+			"FIELD1": "value9u1",
+			"FIELD2": "value9u2",
+			"FIELD3": "value9u3",
+			"FIELD4": "value9u4",
+			"FIELD5": "value9u5",
+			"FIELD6": "value9u6",
+			"FIELD7": "value9u7",
+			"FIELD8": "value9u8",
+			"FIELD9": "value9u9"		}
+	]
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user000';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user001';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user002';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user003';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user004';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user005';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user006';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user007';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user008';
+{
+}
+DELETE FROM usertable WHERE YCSB_KEY = 'user009';
+{
+}
+SELECT * FROM usertable;
+{  
+}
+DROP TABLE usertable;
+{
 }
