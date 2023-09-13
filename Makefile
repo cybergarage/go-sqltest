@@ -22,9 +22,18 @@ PKG_ROOT=${PKG_NAME}
 PKG=\
 	${MODULE_ROOT}/${PKG_ROOT}/...
 
-TEST_DIR=${PKG_ROOT}/test
-TEST_HELPER=${TEST_DIR}/embed
-TEST_MAKEFILE=${TEST_DIR}/Makefile
+BIN_ROOT=cmd
+BIN_ID=${MODULE_ROOT}/${BIN_ROOT}
+BIN_CMD=${PKG_NAME}
+BIN_CMD_ID=${BIN_ID}/${BIN_CMD}
+BIN_SRCS=\
+        ${BIN_ROOT}/${BIN_CMD}
+BINS=\
+        ${BIN_CMD_ID}
+
+TEST_ROOT=${PKG_ROOT}/test
+TEST_HELPER=${TEST_ROOT}/embed
+TEST_MAKEFILE=${TEST_ROOT}/Makefile
 
 .PHONY: test format vet lint clean
 
@@ -32,23 +41,30 @@ all: test
 
 scenarios: ${TEST_MAKEFILE} ${TEST_HELPER}.go
 
-${TEST_MAKEFILE} : ${TEST_MAKEFILE}.pl $(wildcard ${TEST_DIR}/data/*.pict)
+${TEST_MAKEFILE} : ${TEST_MAKEFILE}.pl $(wildcard ${TEST_ROOT}/data/*.pict)
 	perl $< > $@
 
-${TEST_HELPER}.go : ${TEST_HELPER}.pl ${TEST_MAKEFILE} $(wildcard ${TEST_DIR}/*.qst)
+${TEST_HELPER}.go : ${TEST_HELPER}.pl ${TEST_MAKEFILE} $(wildcard ${TEST_ROOT}/*.qst)
 	perl $< > $@
 
 format:
-	gofmt -s -w ${PKG_ROOT}
+	gofmt -s -w ${PKG_ROOT} ${BIN_ROOT} ${TEST_ROOT}
 
 vet: format
 	go vet ${PKG}
 
 lint: format
-	golangci-lint run ${PKG_ROOT}/...
+	golangci-lint run ${PKG_ROOT}/... ${BIN_ROOT}/...
 
 test: scenarios lint
 	go test -v -cover -timeout 60s ${PKG}/...
 
+build:
+	go build -v -gcflags=${GCFLAGS} ${BINS}
+
+install:
+	go install -v -gcflags=${GCFLAGS} ${BINS}
+
 clean:
 	go clean -i ${PKG}
+
