@@ -17,7 +17,9 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"os"
+	"time"
 
 	"github.com/cybergarage/go-logger/log"
 	"github.com/cybergarage/go-sqltest/sqltest"
@@ -31,13 +33,17 @@ func printUsage() {
 	println("  -protocol <protocol>")
 }
 
+func printError(err error) {
+	log.Error(err)
+}
+
 func main() {
 	log.SetStdoutDebugEnbled(true)
 
 	var (
 		host     = flag.String("host", "localhost", "Host")
 		port     = flag.Int("port", 0, "Port")
-		protocol = flag.String("protocol", "tcp", "<mysql|pg>")
+		protocol = flag.String("protocol", "", "<mysql|pg>")
 	)
 	flag.Parse()
 
@@ -67,5 +73,46 @@ func main() {
 	client.SetHost(*host)
 	client.SetPort(*port)
 
-	// scenarioPath := args[1]
+	scenarioPath := args[1]
+
+	scenarioTest, err := sqltest.NewScenarioTestWithFile(scenarioPath)
+	if err != nil {
+		printError(err)
+		return
+	}
+
+	err = client.Open()
+	if err != nil {
+		printError(err)
+		return
+	}
+
+	defer func() {
+		err := client.Close()
+		if err != nil {
+			printError(err)
+		}
+	}()
+
+	testDBName := fmt.Sprintf("%s%d", scenarioTest.Name, time.Now().UnixNano())
+	client.SetDatabase(testDBName)
+
+	err = client.CreateDatabase(testDBName)
+	if err != nil {
+		printError(err)
+		return
+	}
+
+	defer func() {
+		err := client.DropDatabase(testDBName)
+		if err != nil {
+			printError(err)
+		}
+	}()
+
+	scenarioTest.SetClient(client)
+	err = scenarioTest.Run()
+	if err != nil {
+		printError(fmt.Errorf("%s : %s", scenarioTest.Name(), err.Error()))
+	}
 }
