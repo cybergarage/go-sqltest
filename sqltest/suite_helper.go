@@ -24,6 +24,48 @@ import (
 
 const TestDBNamePrefix = "sqltest"
 
+// RunScenarioTest runs the specified test.
+func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
+	t.Helper()
+
+	var err error
+	testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+
+	client.SetDatabase(testDBName)
+
+	err = client.Open()
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	defer func() {
+		err := client.Close()
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+
+	err = client.CreateDatabase(testDBName)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	defer func() {
+		err := client.DropDatabase(testDBName)
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+
+	test.SetClient(client)
+	err = test.Run()
+	if err != nil {
+		t.Errorf("%s : %s", test.Name(), err.Error())
+	}
+}
+
 // RunEmbedSuites runs the embedded test suites.
 func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 	t.Helper()
@@ -44,52 +86,15 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 	}
 
 	for _, test := range tests {
-		var err error
 		t.Run(test.Name(), func(t *testing.T) {
-			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
-
-			client.SetDatabase(testDBName)
-
-			err = client.Open()
-			if err != nil {
-				t.Error(err)
-				return
-			}
-
-			defer func() {
-				err := client.Close()
-				if err != nil {
-					t.Error(err)
-				}
-			}()
-
-			err = client.CreateDatabase(testDBName)
-			if err != nil {
-				t.Error(err)
-				return
-			}
-
-			defer func() {
-				err := client.DropDatabase(testDBName)
-				if err != nil {
-					t.Error(err)
-				}
-			}()
-
-			test.SetClient(client)
-			err = test.Run()
-			if err != nil {
-				t.Errorf("%s : %s", test.Name(), err.Error())
-			}
+			RunScenarioTest(t, client, test)
 		})
-		if err != nil {
-			return err
-		}
 	}
 
 	return nil
 }
 
+// RunLocalSuite runs the local test suite.
 func RunLocalSuite(t *testing.T, client Client) error {
 	t.Helper()
 
@@ -101,40 +106,7 @@ func RunLocalSuite(t *testing.T, client Client) error {
 
 	for _, test := range cs.tests {
 		t.Run(test.Name(), func(t *testing.T) {
-			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
-
-			client.SetDatabase(testDBName)
-
-			err = client.Open()
-			if err != nil {
-				t.Error(err)
-				return
-			}
-
-			defer func() {
-				err := client.Close()
-				if err != nil {
-					t.Error(err)
-				}
-			}()
-
-			err = client.CreateDatabase(testDBName)
-			if err != nil {
-				t.Error(err)
-			}
-
-			defer func() {
-				err := client.DropDatabase(testDBName)
-				if err != nil {
-					t.Error(err)
-				}
-			}()
-
-			test.SetClient(client)
-			err := test.Run()
-			if err != nil {
-				t.Errorf("%s : %s", test.Name(), err.Error())
-			}
+			RunScenarioTest(t, client, test)
 		})
 	}
 	return nil
