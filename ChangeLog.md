@@ -5,6 +5,13 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.2.0 (2023-xx-xx)
+- Added command line utility
+  - Added `sqltest` command
+- Improved
+  - Aggregation function tests
+    - Removed insertred rows after each test
+
 ## v1.1.1 (2023-09-12)
 - Improved Suite::Run() to allow floating point comparisons to account for precision errors
 - Added new scenario tests
