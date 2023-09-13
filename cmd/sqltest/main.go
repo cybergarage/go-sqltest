@@ -38,7 +38,7 @@ func printError(err error) {
 }
 
 func main() {
-	log.SetStdoutDebugEnbled(true)
+	log.SetSharedLogger(log.NewStdoutLogger(log.LevelInfo))
 
 	var (
 		host     = flag.String("host", "localhost", "Database host")
