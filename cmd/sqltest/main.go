@@ -41,9 +41,9 @@ func main() {
 	log.SetStdoutDebugEnbled(true)
 
 	var (
-		host     = flag.String("host", "localhost", "Host")
-		port     = flag.Int("port", 0, "Port")
-		protocol = flag.String("protocol", "", "<mysql|pg>")
+		host     = flag.String("host", "localhost", "Database host")
+		protocol = flag.String("protocol", "pg", "Database protocol (mysql|pg)")
+		port     = flag.Int("port", 0, "Database port")
 	)
 	flag.Parse()
 
@@ -80,6 +80,7 @@ func main() {
 		printError(err)
 		return
 	}
+	log.Infof("scenario loaded : %s", scenarioTest.Name())
 
 	err = client.Open()
 	if err != nil {
@@ -94,7 +95,7 @@ func main() {
 		}
 	}()
 
-	testDBName := fmt.Sprintf("%s%d", scenarioTest.Name, time.Now().UnixNano())
+	testDBName := fmt.Sprintf("%s%d", scenarioTest.Name(), time.Now().UnixNano())
 	client.SetDatabase(testDBName)
 
 	err = client.CreateDatabase(testDBName)
