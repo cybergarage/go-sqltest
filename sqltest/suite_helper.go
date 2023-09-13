@@ -77,7 +77,6 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 			}()
 
 			test.SetClient(client)
-
 			err = test.Run()
 			if err != nil {
 				t.Errorf("%s : %s", test.Name(), err.Error())
@@ -91,20 +90,19 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 	return nil
 }
 
-func RunLocalSuite(t *testing.T) {
+func RunLocalSuite(t *testing.T, client Client) error {
 	t.Helper()
 
 	cs, err := NewSuiteWithDirectory(SuiteDefaultTestDirectory)
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
 
 	for _, test := range cs.tests {
 		t.Run(test.Name(), func(t *testing.T) {
 			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
 
-			client := NewMySQLClient()
 			client.SetDatabase(testDBName)
 
 			err = client.Open()
@@ -131,6 +129,7 @@ func RunLocalSuite(t *testing.T) {
 					t.Error(err)
 				}
 			}()
+
 			test.SetClient(client)
 			err := test.Run()
 			if err != nil {
@@ -138,4 +137,5 @@ func RunLocalSuite(t *testing.T) {
 			}
 		})
 	}
+	return nil
 }
