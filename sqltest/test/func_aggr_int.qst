@@ -92,3 +92,33 @@ SELECT MAX(cint) FROM test_int;
 		}
 	]
 }
+DELETE FROM test_int WHERE cint = 1;
+{
+}
+DELETE FROM test_int WHERE cint = 2;
+{
+}
+DELETE FROM test_int WHERE cint = 3;
+{
+}
+DELETE FROM test_int WHERE cint = 4;
+{
+}
+DELETE FROM test_int WHERE cint = 5;
+{
+}
+DELETE FROM test_int WHERE cint = 6;
+{
+}
+DELETE FROM test_int WHERE cint = 7;
+{
+}
+DELETE FROM test_int WHERE cint = 8;
+{
+}
+DELETE FROM test_int WHERE cint = 9;
+{
+}
+DELETE FROM test_int WHERE cint = 10;
+{
+}
