@@ -92,3 +92,33 @@ SELECT MAX(cdouble) FROM test_double;
 		}
 	]
 }
+DELETE FROM test_double WHERE cdouble = 1;
+{
+}
+DELETE FROM test_double WHERE cdouble = 2;
+{
+}
+DELETE FROM test_double WHERE cdouble = 3;
+{
+}
+DELETE FROM test_double WHERE cdouble = 4;
+{
+}
+DELETE FROM test_double WHERE cdouble = 5;
+{
+}
+DELETE FROM test_double WHERE cdouble = 6;
+{
+}
+DELETE FROM test_double WHERE cdouble = 7;
+{
+}
+DELETE FROM test_double WHERE cdouble = 8;
+{
+}
+DELETE FROM test_double WHERE cdouble = 9;
+{
+}
+DELETE FROM test_double WHERE cdouble = 10;
+{
+}

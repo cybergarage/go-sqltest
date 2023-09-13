@@ -74,3 +74,10 @@ for (my $n = 0; $n < @sels; $n++){
   print "\t]\n";
   print "}\n";
 }
+
+for (my $n = 0; $n < @data_values; $n++){
+  my $data_value = $data_values[$n];
+  print "DELETE FROM ${tbl_name} WHERE $column_name = $data_value;\n";
+  print "{\n";  
+  print "}\n";
+}

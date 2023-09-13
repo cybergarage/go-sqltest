@@ -92,3 +92,33 @@ SELECT MAX(cfloat) FROM test_float;
 		}
 	]
 }
+DELETE FROM test_float WHERE cfloat = 1;
+{
+}
+DELETE FROM test_float WHERE cfloat = 2;
+{
+}
+DELETE FROM test_float WHERE cfloat = 3;
+{
+}
+DELETE FROM test_float WHERE cfloat = 4;
+{
+}
+DELETE FROM test_float WHERE cfloat = 5;
+{
+}
+DELETE FROM test_float WHERE cfloat = 6;
+{
+}
+DELETE FROM test_float WHERE cfloat = 7;
+{
+}
+DELETE FROM test_float WHERE cfloat = 8;
+{
+}
+DELETE FROM test_float WHERE cfloat = 9;
+{
+}
+DELETE FROM test_float WHERE cfloat = 10;
+{
+}
