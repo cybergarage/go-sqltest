@@ -51,6 +51,23 @@ print "\n);\n";
 print "{\n";
 print "}\n";
 
+my @sels = ("COUNT(*)", "AVG($column_name)", "SUM($column_name)", "MIN($column_name)", "MAX($column_name)");
+my @expecteds = (0, "null", "null", "null", "null");
+
+for (my $n = 0; $n < @sels; $n++){
+  my $sel = $sels[$n];
+  my $exp = $expecteds[$n];
+  print "SELECT $sel FROM ${tbl_name};\n";  
+  print "{\n"; 
+  print "\t\"rows\" :\n";  
+  print "\t[\n";
+  print "\t\t{\n";
+  print "\t\t\t\"$sel\" : $exp\n";
+  print "\t\t}\n";
+  print "\t]\n";
+  print "}\n";
+}
+
 for (my $n = 0; $n < @data_values; $n++){
   my $data_value = $data_values[$n];
   print "INSERT INTO ${tbl_name} ($column_name) VALUES ($data_value);\n";  
@@ -58,8 +75,8 @@ for (my $n = 0; $n < @data_values; $n++){
   print "}\n";
 }
 
-my @sels = ("COUNT(*)", "AVG($column_name)", "SUM($column_name)", "MIN($column_name)", "MAX($column_name)");
-my @expecteds = ($cnt, $avg, $sum, $min, $max);
+@sels = ("COUNT(*)", "AVG($column_name)", "SUM($column_name)", "MIN($column_name)", "MAX($column_name)");
+@expecteds = ($cnt, $avg, $sum, $min, $max);
 
 for (my $n = 0; $n < @sels; $n++){
   my $sel = $sels[$n];

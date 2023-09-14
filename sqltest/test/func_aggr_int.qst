@@ -17,6 +17,51 @@ CREATE TABLE test_int (
 );
 {
 }
+SELECT COUNT(*) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"COUNT(*)" : 0
+		}
+	]
+}
+SELECT AVG(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"AVG(cint)" : null
+		}
+	]
+}
+SELECT SUM(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"SUM(cint)" : null
+		}
+	]
+}
+SELECT MIN(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"MIN(cint)" : null
+		}
+	]
+}
+SELECT MAX(cint) FROM test_int;
+{
+	"rows" :
+	[
+		{
+			"MAX(cint)" : null
+		}
+	]
+}
 INSERT INTO test_int (cint) VALUES (1);
 {
 }

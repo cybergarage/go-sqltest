@@ -17,6 +17,51 @@ CREATE TABLE test_double (
 );
 {
 }
+SELECT COUNT(*) FROM test_double;
+{
+	"rows" :
+	[
+		{
+			"COUNT(*)" : 0
+		}
+	]
+}
+SELECT AVG(cdouble) FROM test_double;
+{
+	"rows" :
+	[
+		{
+			"AVG(cdouble)" : null
+		}
+	]
+}
+SELECT SUM(cdouble) FROM test_double;
+{
+	"rows" :
+	[
+		{
+			"SUM(cdouble)" : null
+		}
+	]
+}
+SELECT MIN(cdouble) FROM test_double;
+{
+	"rows" :
+	[
+		{
+			"MIN(cdouble)" : null
+		}
+	]
+}
+SELECT MAX(cdouble) FROM test_double;
+{
+	"rows" :
+	[
+		{
+			"MAX(cdouble)" : null
+		}
+	]
+}
 INSERT INTO test_double (cdouble) VALUES (1);
 {
 }
