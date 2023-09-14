@@ -12,6 +12,10 @@
   - Aggregation function tests
     - Removed insertred rows after each test
 
+## v1.1.2 (2023-09-xx)
+- Updated aggregation function tests
+  - COUNT, SUM, AVG, MIN and MAX
+
 ## v1.1.1 (2023-09-12)
 - Improved Suite::Run() to allow floating point comparisons to account for precision errors
 - Added new scenario tests
