@@ -13,7 +13,7 @@
     - Removed insertred rows after each test
 
 ## v1.1.2 (2023-09-xx)
-- Updated aggregation function tests
+- Updated aggregation function tests for empty tables
   - COUNT, SUM, AVG, MIN and MAX
 
 ## v1.1.1 (2023-09-12)
