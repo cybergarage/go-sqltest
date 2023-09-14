@@ -17,6 +17,51 @@ CREATE TABLE test_float (
 );
 {
 }
+SELECT COUNT(*) FROM test_float;
+{
+	"rows" :
+	[
+		{
+			"COUNT(*)" : 0
+		}
+	]
+}
+SELECT AVG(cfloat) FROM test_float;
+{
+	"rows" :
+	[
+		{
+			"AVG(cfloat)" : null
+		}
+	]
+}
+SELECT SUM(cfloat) FROM test_float;
+{
+	"rows" :
+	[
+		{
+			"SUM(cfloat)" : null
+		}
+	]
+}
+SELECT MIN(cfloat) FROM test_float;
+{
+	"rows" :
+	[
+		{
+			"MIN(cfloat)" : null
+		}
+	]
+}
+SELECT MAX(cfloat) FROM test_float;
+{
+	"rows" :
+	[
+		{
+			"MAX(cfloat)" : null
+		}
+	]
+}
 INSERT INTO test_float (cfloat) VALUES (1);
 {
 }
