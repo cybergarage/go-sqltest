@@ -35,7 +35,7 @@ select count(*) from pgbench_branches
 	"rows" :
 	[
 		{
-			"count(*)" : 0
+			"COUNT(*)" : 0
 		}
 	]
 }
