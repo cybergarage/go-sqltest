@@ -24,14 +24,6 @@ import (
 	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
-func printUsage() {
-	println("Usage: sqltest [options] <scenario path>")
-	println("Options:")
-	println("  -host <host> : Database host")
-	println("  -protocol <protocol> : Database type (mysql|pg)")
-	println("  -port <port> : Database port")
-}
-
 func printError(err error) {
 	log.Error(err)
 }
@@ -44,11 +36,15 @@ func main() {
 		protocol = flag.String("protocol", "pg", "Database type (mysql|pg)")
 		port     = flag.Int("port", 0, "Database port")
 	)
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(), "Usage: sqltest [options] <scenario file>\n")
+		flag.PrintDefaults()
+	}
 	flag.Parse()
 
 	args := flag.Args()
 	if len(args) < 1 {
-		printUsage()
+		flag.Usage()
 		return
 	}
 
@@ -65,7 +61,7 @@ func main() {
 			*port = 5432
 		}
 	default:
-		printUsage()
+		flag.Usage()
 		return
 	}
 
