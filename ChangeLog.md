@@ -5,19 +5,19 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.2.0 (2023-xx-xx)
+## v1.2.0 (2023-09-16)
 - Added command line utility
   - Added `sqltest` command
 - Improved
   - Aggregation function tests
-    - Removed insertred rows after each test
-
-## v1.1.2 (2023-09-xx)
-- Updated aggregation function tests for empty tables
-  - COUNT, SUM, AVG, MIN and MAX
+    - COUNT, SUM, AVG, MIN and MAX
+      - Added tests for empty tables
+      - Removed insertred rows after each test
 
 ## v1.1.1 (2023-09-12)
-- Improved Suite::Run() to allow floating point comparisons to account for precision errors
+- Improved 
+  - Suite::Run() 
+    - Allowed floating point comparisons to account for precision errors
 - Added new scenario tests
   - Added math function tests
     - ABS, FLOOR and CEIL
