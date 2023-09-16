@@ -1,9 +1,15 @@
 # Changelog
 
-## v1.2.0 (2023-xx-xx)
+## v1.3.0 (2023-xx-xx)
 - Added new scenario tests, such as pgbench
 - Added new scenario tests
   - Added ALTER queries
+
+## v1.2.x (2023-09-xx)
+- Add new scenario tests
+  - SELECT
+    - Added tests for ORDER BY
+    - Added tests for LIMIT
 
 ## v1.2.0 (2023-09-16)
 - Added command line utility
