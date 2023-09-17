@@ -19,26 +19,26 @@ import (
 )
 
 // EmbedTests is a map of test names and test queries.
-var EmbedTests = map[string][]byte {
-	"SmplCrudDouble": smplCrudDouble,
-	"FuncAggrInt": funcAggrInt,
-	"FuncAggrFloat": funcAggrFloat,
-	"FuncMathInt": funcMathInt,
-	"SmplAlterAdd": smplAlterAdd,
-	"SmplCrudFloat": smplCrudFloat,
-	"YcsbWorkload": ycsbWorkload,
+var EmbedTests = map[string][]byte{
+	"SmplCrudDouble":  smplCrudDouble,
+	"FuncAggrInt":     funcAggrInt,
+	"FuncAggrFloat":   funcAggrFloat,
+	"FuncMathInt":     funcMathInt,
+	"SmplAlterAdd":    smplAlterAdd,
+	"SmplCrudFloat":   smplCrudFloat,
+	"YcsbWorkload":    ycsbWorkload,
 	"SmplLimitDouble": smplLimitDouble,
-	"SmplOrderFloat": smplOrderFloat,
-	"SmplCrudInt": smplCrudInt,
-	"FuncMathDouble": funcMathDouble,
-	"SmplLimitInt": smplLimitInt,
-	"SmplLimitFloat": smplLimitFloat,
-	"FuncMathFloat": funcMathFloat,
+	"SmplOrderFloat":  smplOrderFloat,
+	"SmplCrudInt":     smplCrudInt,
+	"FuncMathDouble":  funcMathDouble,
+	"SmplLimitInt":    smplLimitInt,
+	"SmplLimitFloat":  smplLimitFloat,
+	"FuncMathFloat":   funcMathFloat,
 	"SmplOrderDouble": smplOrderDouble,
-	"SmplCrudText": smplCrudText,
-	"Pgbench": pgbench,
-	"FuncAggrDouble": funcAggrDouble,
-	"SmplOrderInt": smplOrderInt,
+	"SmplCrudText":    smplCrudText,
+	"Pgbench":         pgbench,
+	"FuncAggrDouble":  funcAggrDouble,
+	"SmplOrderInt":    smplOrderInt,
 }
 
 //go:embed smpl_crud_double.qst
@@ -97,4 +97,3 @@ var funcAggrDouble []byte
 
 //go:embed smpl_order_int.qst
 var smplOrderInt []byte
-
