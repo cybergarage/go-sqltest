@@ -28,10 +28,10 @@ SHELL := bash
 
 all: embed.go
 
-embed.go : embed.pl tests \$(wildcard *.qst)
+embed.go : embed.pl \$(wildcard *.qst)
 	perl \$< > \$@
 
-tests: \${CRUD_TESTS} \${ORDER_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
+tests: \${CRUD_TESTS} \${ORDER_TESTS} \${LIMIT_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
 
 HEADER
 
@@ -76,92 +76,42 @@ system("touch ${script_dir}/${data_type_file}");
 print "\n";
 
 #
-# func_order_<type>.qst
-#
-
-my $order_prefix = "smpl_order";
-my @order_data_types = ("INT", "FLOAT", "DOUBLE");
-
-print "ORDER_TESTS = \\\n";
-for (my $n = 0; $n < @order_data_types; $n++) {
-    my $data_type = lc($order_data_types[$n]);
-    my $scenario_name = "${order_prefix}_${data_type}.qst";
-    print "\t${scenario_name}";
-    if ($n < ((@order_data_types) - 1)) {
-        print " \\";
-    }
-    print "\n";
-}
-print "\n";
-
-for (my $n = 0; $n < @order_data_types; $n++) {
-    my $data_type = lc($order_data_types[$n]);
-    my $scenario_name = "${order_prefix}_${data_type}.qst";
-    print "${scenario_name}: ${order_prefix}.pl\n";
-    print "\tperl ${order_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${order_prefix}.pl");
-}
-print "\n";
-
-#
+# smpl_order_<type>.qst
+# smpl_limit_<type>.qst
 # func_aggr_<type>.qst
-#
-
-my $aggr_prefix = "func_aggr";
-my @aggr_data_types = ("INT", "FLOAT", "DOUBLE");
-
-print "AGGR_TESTS = \\\n";
-for (my $n = 0; $n < @aggr_data_types; $n++) {
-    my $data_type = lc($aggr_data_types[$n]);
-    my $scenario_name = "${aggr_prefix}_${data_type}.qst";
-    print "\t${scenario_name}";
-    if ($n < ((@aggr_data_types) - 1)) {
-        print " \\";
-    }
-    print "\n";
-}
-print "\n";
-
-for (my $n = 0; $n < @aggr_data_types; $n++) {
-    my $data_type = lc($aggr_data_types[$n]);
-    my $scenario_name = "${aggr_prefix}_${data_type}.qst";
-    print "${scenario_name}: ${aggr_prefix}.pl\n";
-    print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${aggr_prefix}.pl");
-}
-
-system("touch ${script_dir}/${aggr_prefix}.pl");
-print "\n";
-
-##
 # func_math_<type>.qst
 #
 
-my $math_prefix = "func_math";
-my @math_data_types = ("INT", "FLOAT", "DOUBLE");
+my @test_targets = ("ORDER_TESTS", "LIMIT_TESTS", "AGGR_TESTS", "MATH_TESTS");
+my @test_prefixes = ("smpl_order", "smpl_limit", "func_aggr", "func_math");
+my @test_data_types = ("INT", "FLOAT", "DOUBLE");
 
-print "MATH_TESTS = \\\n";
-for (my $n = 0; $n < @math_data_types; $n++) {
-    my $data_type = lc($math_data_types[$n]);
-    my $scenario_name = "${math_prefix}_${data_type}.qst";
-    print "\t${scenario_name}";
-    if ($n < ((@math_data_types) - 1)) {
-        print " \\";
+for (my $n = 0; $n < @test_targets; $n++) {
+    my $test_target = $test_targets[$n];
+    print "${test_target} = \\\n";
+    my $test_prefix = $test_prefixes[$n];
+    for (my $t = 0; $t < @test_data_types; $t++) {
+        my $data_type = lc($test_data_types[$t]);
+        my $test_scenario = "${test_prefix}_${data_type}.qst";
+        print "\t${test_scenario}";
+        if ($t < ((@test_data_types) - 1)) {
+            print " \\";
+        }
+        print "\n";
+    }
+    print "\n";
+    for (my $t = 0; $t < @test_data_types; $t++) {
+        my $data_type = lc($test_data_types[$t]);
+        my $test_scenario = "${test_prefix}_${data_type}.qst";
+        print "${test_scenario}: ${test_prefix}.pl\n";
+        print "\tperl ${test_prefix}.pl ${data_type} > ${test_scenario}\n";
+        system("touch ${script_dir}/${test_scenario}");
+        system("git add ${script_dir}/${test_scenario}");
+        system("touch ${script_dir}/${test_prefix}.pl");
+        system("touch ${script_dir}/${test_prefix}.pl");
     }
     print "\n";
 }
-print "\n";
-
-for (my $n = 0; $n < @math_data_types; $n++) {
-    my $data_type = lc($math_data_types[$n]);
-    my $scenario_name = "${math_prefix}_${data_type}.qst";
-    print "${scenario_name}: ${math_prefix}.pl\n";
-    print "\tperl ${math_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${math_prefix}.pl");
-}
-
-system("touch ${script_dir}/${math_prefix}.pl");
-print "\n";
 
 print<<FOOTER
 YCSB_TESTS = \\

@@ -19,7 +19,7 @@ all: embed.go
 embed.go : embed.pl tests $(wildcard *.qst)
 	perl $< > $@
 
-tests: ${CRUD_TESTS} ${ORDER_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
+tests: ${CRUD_TESTS} ${ORDER_TESTS} ${LIMIT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
 
 CRUD_TESTS = \
 	smpl_crud_text.qst \
@@ -47,6 +47,18 @@ smpl_order_float.qst: smpl_order.pl
 	perl smpl_order.pl float > smpl_order_float.qst
 smpl_order_double.qst: smpl_order.pl
 	perl smpl_order.pl double > smpl_order_double.qst
+
+LIMIT_TESTS = \
+	smpl_limit_int.qst \
+	smpl_limit_float.qst \
+	smpl_limit_double.qst
+
+smpl_limit_int.qst: smpl_limit.pl
+	perl smpl_limit.pl int > smpl_limit_int.qst
+smpl_limit_float.qst: smpl_limit.pl
+	perl smpl_limit.pl float > smpl_limit_float.qst
+smpl_limit_double.qst: smpl_limit.pl
+	perl smpl_limit.pl double > smpl_limit_double.qst
 
 AGGR_TESTS = \
 	func_aggr_int.qst \
