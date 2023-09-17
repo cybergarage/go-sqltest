@@ -5,8 +5,8 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.2.x (2023-09-xx)
-- Add new scenario tests
+## v1.2.1 (2023-09-18)
+- Added new scenario tests
   - SELECT
     - Added tests for ORDER BY
     - Added tests for LIMIT
