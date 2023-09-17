@@ -105,6 +105,23 @@ func (suite *Suite) ExtractScenarioTests(names ...string) ([]*ScenarioTest, erro
 	return tests, nil
 }
 
+func (suite *Suite) ExtractScenarioMatchingTests(regexes ...string) ([]*ScenarioTest, error) {
+	tests := make([]*ScenarioTest, 0)
+	for _, test := range suite.tests {
+		for _, regex := range regexes {
+			re, err := regexp.Compile(regex)
+			if err != nil {
+				return tests, err
+			}
+			if re.MatchString(test.Name()) {
+				tests = append(tests, test)
+				continue
+			}
+		}
+	}
+	return tests, nil
+}
+
 // Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
 func (suite *Suite) Run() error {
 	for _, test := range suite.tests {
