@@ -94,6 +94,31 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 	return nil
 }
 
+// RunEmbedSuitesWithRegex runs the embedded test suites with the specified regular expressions.
+func RunEmbedSuitesWithRegex(t *testing.T, client Client, regexes ...string) error {
+	t.Helper()
+
+	es, err := NeweEmbedSuite(test.EmbedTests)
+	if err != nil {
+		t.Error(err)
+		return err
+	}
+
+	tests, err := es.ExtractScenarioMatchingTests(regexes...)
+	if err != nil {
+		t.Error(err)
+		return err
+	}
+
+	for _, test := range tests {
+		t.Run(test.Name(), func(t *testing.T) {
+			RunScenarioTest(t, client, test)
+		})
+	}
+
+	return nil
+}
+
 // RunLocalSuite runs the local test suite.
 func RunLocalSuite(t *testing.T, client Client) error {
 	t.Helper()
