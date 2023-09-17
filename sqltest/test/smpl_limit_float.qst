@@ -47,7 +47,124 @@ INSERT INTO test_float (cfloat) VALUES (-9.8);
 INSERT INTO test_float (cfloat) VALUES (10.1);
 {
 }
-SELECT * FROM test_float ORDER BY cfloat ASC;
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 1;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 2;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 3;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 4;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 5;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+			"cfloat" : 2.4,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 6;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+			"cfloat" : 2.4,
+			"cfloat" : 3.6,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 7;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+			"cfloat" : 2.4,
+			"cfloat" : 3.6,
+			"cfloat" : 5.8,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 8;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+			"cfloat" : 2.4,
+			"cfloat" : 3.6,
+			"cfloat" : 5.8,
+			"cfloat" : 7,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 9;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : -9.8,
+			"cfloat" : -6.2,
+			"cfloat" : -4.2,
+			"cfloat" : -1.2,
+			"cfloat" : 2.4,
+			"cfloat" : 3.6,
+			"cfloat" : 5.8,
+			"cfloat" : 7,
+			"cfloat" : 8.1,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 10;
 {
 	"rows" :
 	[
@@ -65,7 +182,124 @@ SELECT * FROM test_float ORDER BY cfloat ASC;
 		}
 	]
 }
-SELECT * FROM test_float ORDER BY cfloat DESC;
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 1;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 2;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 3;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 4;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 5;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+			"cfloat" : 3.6,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 6;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+			"cfloat" : 3.6,
+			"cfloat" : 2.4,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 7;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+			"cfloat" : 3.6,
+			"cfloat" : 2.4,
+			"cfloat" : -1.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 8;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+			"cfloat" : 3.6,
+			"cfloat" : 2.4,
+			"cfloat" : -1.2,
+			"cfloat" : -4.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 9;
+{
+	"rows" :
+	[
+		{
+			"cfloat" : 10.1,
+			"cfloat" : 8.1,
+			"cfloat" : 7,
+			"cfloat" : 5.8,
+			"cfloat" : 3.6,
+			"cfloat" : 2.4,
+			"cfloat" : -1.2,
+			"cfloat" : -4.2,
+			"cfloat" : -6.2,
+		}
+	]
+}
+SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 10;
 {
 	"rows" :
 	[
