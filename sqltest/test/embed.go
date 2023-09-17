@@ -19,20 +19,23 @@ import (
 )
 
 // EmbedTests is a map of test names and test queries.
-var EmbedTests = map[string][]byte{
+var EmbedTests = map[string][]byte {
 	"SmplCrudDouble": smplCrudDouble,
-	"FuncAggrInt":    funcAggrInt,
-	"FuncAggrFloat":  funcAggrFloat,
-	"FuncMathInt":    funcMathInt,
-	"SmplAlterAdd":   smplAlterAdd,
-	"SmplCrudFloat":  smplCrudFloat,
-	"YcsbWorkload":   ycsbWorkload,
-	"SmplCrudInt":    smplCrudInt,
+	"FuncAggrInt": funcAggrInt,
+	"FuncAggrFloat": funcAggrFloat,
+	"FuncMathInt": funcMathInt,
+	"SmplAlterAdd": smplAlterAdd,
+	"SmplCrudFloat": smplCrudFloat,
+	"YcsbWorkload": ycsbWorkload,
+	"SmplOrderFloat": smplOrderFloat,
+	"SmplCrudInt": smplCrudInt,
 	"FuncMathDouble": funcMathDouble,
-	"FuncMathFloat":  funcMathFloat,
-	"SmplCrudText":   smplCrudText,
-	"Pgbench":        pgbench,
+	"FuncMathFloat": funcMathFloat,
+	"SmplOrderDouble": smplOrderDouble,
+	"SmplCrudText": smplCrudText,
+	"Pgbench": pgbench,
 	"FuncAggrDouble": funcAggrDouble,
+	"SmplOrderInt": smplOrderInt,
 }
 
 //go:embed smpl_crud_double.qst
@@ -56,6 +59,9 @@ var smplCrudFloat []byte
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
 
+//go:embed smpl_order_float.qst
+var smplOrderFloat []byte
+
 //go:embed smpl_crud_int.qst
 var smplCrudInt []byte
 
@@ -65,6 +71,9 @@ var funcMathDouble []byte
 //go:embed func_math_float.qst
 var funcMathFloat []byte
 
+//go:embed smpl_order_double.qst
+var smplOrderDouble []byte
+
 //go:embed smpl_crud_text.qst
 var smplCrudText []byte
 
@@ -73,3 +82,7 @@ var pgbench []byte
 
 //go:embed func_aggr_double.qst
 var funcAggrDouble []byte
+
+//go:embed smpl_order_int.qst
+var smplOrderInt []byte
+
