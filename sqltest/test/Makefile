@@ -19,9 +19,9 @@ all: embed.go
 embed.go : embed.pl tests $(wildcard *.qst)
 	perl $< > $@
 
-tests: ${PICT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
+tests: ${CRUD_TESTS} ${ORDER_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
 
-PICT_TESTS = \
+CRUD_TESTS = \
 	smpl_crud_text.qst \
 	smpl_crud_int.qst \
 	smpl_crud_float.qst \
@@ -36,17 +36,29 @@ smpl_crud_float.qst: smpl_crud.pl data/data_type.pict
 smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
 
+ORDER_TESTS = \
+	smpl_order_int.qst \
+	smpl_order_float.qst \
+	smpl_order_double.qst
+
+smpl_order_int.qst: smpl_order.pl
+	perl smpl_order.pl int > smpl_order_int.qst
+smpl_order_float.qst: smpl_order.pl
+	perl smpl_order.pl float > smpl_order_float.qst
+smpl_order_double.qst: smpl_order.pl
+	perl smpl_order.pl double > smpl_order_double.qst
+
 AGGR_TESTS = \
 	func_aggr_int.qst \
 	func_aggr_float.qst \
 	func_aggr_double.qst
 
 func_aggr_int.qst: func_aggr.pl
-	perl func_aggr.pl INT > func_aggr_int.qst
+	perl func_aggr.pl int > func_aggr_int.qst
 func_aggr_float.qst: func_aggr.pl
-	perl func_aggr.pl FLOAT > func_aggr_float.qst
+	perl func_aggr.pl float > func_aggr_float.qst
 func_aggr_double.qst: func_aggr.pl
-	perl func_aggr.pl DOUBLE > func_aggr_double.qst
+	perl func_aggr.pl double > func_aggr_double.qst
 
 MATH_TESTS = \
 	func_math_int.qst \
@@ -54,11 +66,11 @@ MATH_TESTS = \
 	func_math_double.qst
 
 func_math_int.qst: func_math.pl
-	perl func_math.pl INT > func_math_int.qst
+	perl func_math.pl int > func_math_int.qst
 func_math_float.qst: func_math.pl
-	perl func_math.pl FLOAT > func_math_float.qst
+	perl func_math.pl float > func_math_float.qst
 func_math_double.qst: func_math.pl
-	perl func_math.pl DOUBLE > func_math_double.qst
+	perl func_math.pl double > func_math_double.qst
 
 YCSB_TESTS = \
 	ycsb_workload.qst

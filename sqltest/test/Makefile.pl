@@ -31,7 +31,7 @@ all: embed.go
 embed.go : embed.pl tests \$(wildcard *.qst)
 	perl \$< > \$@
 
-tests: \${PICT_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
+tests: \${CRUD_TESTS} \${ORDER_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
 
 HEADER
 
@@ -51,7 +51,7 @@ while(<IN>){
 close(IN);
 
 my $pict_prefix = "smpl_crud";
-print "PICT_TESTS = \\\n";
+print "CRUD_TESTS = \\\n";
 for (my $n = 0; $n < scalar(@data_types); $n++) {
     my $data_type = lc($data_types[$n]);
     my $scenario_name = "${pict_prefix}_${data_type}.qst";
@@ -76,6 +76,34 @@ system("touch ${script_dir}/${data_type_file}");
 print "\n";
 
 #
+# func_order_<type>.qst
+#
+
+my $order_prefix = "smpl_order";
+my @order_data_types = ("INT", "FLOAT", "DOUBLE");
+
+print "ORDER_TESTS = \\\n";
+for (my $n = 0; $n < @order_data_types; $n++) {
+    my $data_type = lc($order_data_types[$n]);
+    my $scenario_name = "${order_prefix}_${data_type}.qst";
+    print "\t${scenario_name}";
+    if ($n < ((@order_data_types) - 1)) {
+        print " \\";
+    }
+    print "\n";
+}
+print "\n";
+
+for (my $n = 0; $n < @order_data_types; $n++) {
+    my $data_type = lc($order_data_types[$n]);
+    my $scenario_name = "${order_prefix}_${data_type}.qst";
+    print "${scenario_name}: ${order_prefix}.pl\n";
+    print "\tperl ${order_prefix}.pl ${data_type} > ${scenario_name}\n";
+    system("touch ${script_dir}/${order_prefix}.pl");
+}
+print "\n";
+
+#
 # func_aggr_<type>.qst
 #
 
@@ -84,9 +112,8 @@ my @aggr_data_types = ("INT", "FLOAT", "DOUBLE");
 
 print "AGGR_TESTS = \\\n";
 for (my $n = 0; $n < @aggr_data_types; $n++) {
-    my $data_type = $aggr_data_types[$n];
-    my $aggr_data_types = lc($data_type);
-    my $scenario_name = "${aggr_prefix}_${aggr_data_types}.qst";
+    my $data_type = lc($aggr_data_types[$n]);
+    my $scenario_name = "${aggr_prefix}_${data_type}.qst";
     print "\t${scenario_name}";
     if ($n < ((@aggr_data_types) - 1)) {
         print " \\";
@@ -96,11 +123,11 @@ for (my $n = 0; $n < @aggr_data_types; $n++) {
 print "\n";
 
 for (my $n = 0; $n < @aggr_data_types; $n++) {
-    my $data_type = $aggr_data_types[$n];
-    my $data_type_suffix = lc($data_type);
-    my $scenario_name = "${aggr_prefix}_${data_type_suffix}.qst";
+    my $data_type = lc($aggr_data_types[$n]);
+    my $scenario_name = "${aggr_prefix}_${data_type}.qst";
     print "${scenario_name}: ${aggr_prefix}.pl\n";
     print "\tperl ${aggr_prefix}.pl ${data_type} > ${scenario_name}\n";
+    system("touch ${script_dir}/${aggr_prefix}.pl");
 }
 
 system("touch ${script_dir}/${aggr_prefix}.pl");
@@ -115,9 +142,8 @@ my @math_data_types = ("INT", "FLOAT", "DOUBLE");
 
 print "MATH_TESTS = \\\n";
 for (my $n = 0; $n < @math_data_types; $n++) {
-    my $data_type = $math_data_types[$n];
-    my $math_data_types = lc($data_type);
-    my $scenario_name = "${math_prefix}_${math_data_types}.qst";
+    my $data_type = lc($math_data_types[$n]);
+    my $scenario_name = "${math_prefix}_${data_type}.qst";
     print "\t${scenario_name}";
     if ($n < ((@math_data_types) - 1)) {
         print " \\";
@@ -127,12 +153,11 @@ for (my $n = 0; $n < @math_data_types; $n++) {
 print "\n";
 
 for (my $n = 0; $n < @math_data_types; $n++) {
-    my $data_type = $math_data_types[$n];
-    my $data_type_suffix = lc($data_type);
-    my $scenario_name = "${math_prefix}_${data_type_suffix}.qst";
+    my $data_type = lc($math_data_types[$n]);
+    my $scenario_name = "${math_prefix}_${data_type}.qst";
     print "${scenario_name}: ${math_prefix}.pl\n";
     print "\tperl ${math_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${scenario_name}");
+    system("touch ${script_dir}/${math_prefix}.pl");
 }
 
 system("touch ${script_dir}/${math_prefix}.pl");
