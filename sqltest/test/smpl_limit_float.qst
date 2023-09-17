@@ -52,7 +52,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 1;
 	"rows" :
 	[
 		{
-			"cfloat" : -9.8,
+			"cfloat" : -9.8
 		}
 	]
 }
@@ -62,7 +62,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 2;
 	[
 		{
 			"cfloat" : -9.8,
-			"cfloat" : -6.2,
+			"cfloat" : -6.2
 		}
 	]
 }
@@ -73,7 +73,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 3;
 		{
 			"cfloat" : -9.8,
 			"cfloat" : -6.2,
-			"cfloat" : -4.2,
+			"cfloat" : -4.2
 		}
 	]
 }
@@ -85,7 +85,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 4;
 			"cfloat" : -9.8,
 			"cfloat" : -6.2,
 			"cfloat" : -4.2,
-			"cfloat" : -1.2,
+			"cfloat" : -1.2
 		}
 	]
 }
@@ -98,7 +98,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 5;
 			"cfloat" : -6.2,
 			"cfloat" : -4.2,
 			"cfloat" : -1.2,
-			"cfloat" : 2.4,
+			"cfloat" : 2.4
 		}
 	]
 }
@@ -112,7 +112,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 6;
 			"cfloat" : -4.2,
 			"cfloat" : -1.2,
 			"cfloat" : 2.4,
-			"cfloat" : 3.6,
+			"cfloat" : 3.6
 		}
 	]
 }
@@ -127,7 +127,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 7;
 			"cfloat" : -1.2,
 			"cfloat" : 2.4,
 			"cfloat" : 3.6,
-			"cfloat" : 5.8,
+			"cfloat" : 5.8
 		}
 	]
 }
@@ -143,7 +143,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 8;
 			"cfloat" : 2.4,
 			"cfloat" : 3.6,
 			"cfloat" : 5.8,
-			"cfloat" : 7,
+			"cfloat" : 7
 		}
 	]
 }
@@ -160,7 +160,7 @@ SELECT * FROM test_float ORDER BY cfloat ASC LIMIT 9;
 			"cfloat" : 3.6,
 			"cfloat" : 5.8,
 			"cfloat" : 7,
-			"cfloat" : 8.1,
+			"cfloat" : 8.1
 		}
 	]
 }
@@ -187,7 +187,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 1;
 	"rows" :
 	[
 		{
-			"cfloat" : 10.1,
+			"cfloat" : 10.1
 		}
 	]
 }
@@ -197,7 +197,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 2;
 	[
 		{
 			"cfloat" : 10.1,
-			"cfloat" : 8.1,
+			"cfloat" : 8.1
 		}
 	]
 }
@@ -208,7 +208,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 3;
 		{
 			"cfloat" : 10.1,
 			"cfloat" : 8.1,
-			"cfloat" : 7,
+			"cfloat" : 7
 		}
 	]
 }
@@ -220,7 +220,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 4;
 			"cfloat" : 10.1,
 			"cfloat" : 8.1,
 			"cfloat" : 7,
-			"cfloat" : 5.8,
+			"cfloat" : 5.8
 		}
 	]
 }
@@ -233,7 +233,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 5;
 			"cfloat" : 8.1,
 			"cfloat" : 7,
 			"cfloat" : 5.8,
-			"cfloat" : 3.6,
+			"cfloat" : 3.6
 		}
 	]
 }
@@ -247,7 +247,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 6;
 			"cfloat" : 7,
 			"cfloat" : 5.8,
 			"cfloat" : 3.6,
-			"cfloat" : 2.4,
+			"cfloat" : 2.4
 		}
 	]
 }
@@ -262,7 +262,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 7;
 			"cfloat" : 5.8,
 			"cfloat" : 3.6,
 			"cfloat" : 2.4,
-			"cfloat" : -1.2,
+			"cfloat" : -1.2
 		}
 	]
 }
@@ -278,7 +278,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 8;
 			"cfloat" : 3.6,
 			"cfloat" : 2.4,
 			"cfloat" : -1.2,
-			"cfloat" : -4.2,
+			"cfloat" : -4.2
 		}
 	]
 }
@@ -295,7 +295,7 @@ SELECT * FROM test_float ORDER BY cfloat DESC LIMIT 9;
 			"cfloat" : 2.4,
 			"cfloat" : -1.2,
 			"cfloat" : -4.2,
-			"cfloat" : -6.2,
+			"cfloat" : -6.2
 		}
 	]
 }

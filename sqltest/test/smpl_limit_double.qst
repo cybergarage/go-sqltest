@@ -52,7 +52,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 1;
 	"rows" :
 	[
 		{
-			"cdouble" : -9.8,
+			"cdouble" : -9.8
 		}
 	]
 }
@@ -62,7 +62,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 2;
 	[
 		{
 			"cdouble" : -9.8,
-			"cdouble" : -6.2,
+			"cdouble" : -6.2
 		}
 	]
 }
@@ -73,7 +73,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 3;
 		{
 			"cdouble" : -9.8,
 			"cdouble" : -6.2,
-			"cdouble" : -4.2,
+			"cdouble" : -4.2
 		}
 	]
 }
@@ -85,7 +85,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 4;
 			"cdouble" : -9.8,
 			"cdouble" : -6.2,
 			"cdouble" : -4.2,
-			"cdouble" : -1.2,
+			"cdouble" : -1.2
 		}
 	]
 }
@@ -98,7 +98,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 5;
 			"cdouble" : -6.2,
 			"cdouble" : -4.2,
 			"cdouble" : -1.2,
-			"cdouble" : 2.4,
+			"cdouble" : 2.4
 		}
 	]
 }
@@ -112,7 +112,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 6;
 			"cdouble" : -4.2,
 			"cdouble" : -1.2,
 			"cdouble" : 2.4,
-			"cdouble" : 3.6,
+			"cdouble" : 3.6
 		}
 	]
 }
@@ -127,7 +127,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 7;
 			"cdouble" : -1.2,
 			"cdouble" : 2.4,
 			"cdouble" : 3.6,
-			"cdouble" : 5.8,
+			"cdouble" : 5.8
 		}
 	]
 }
@@ -143,7 +143,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 8;
 			"cdouble" : 2.4,
 			"cdouble" : 3.6,
 			"cdouble" : 5.8,
-			"cdouble" : 7,
+			"cdouble" : 7
 		}
 	]
 }
@@ -160,7 +160,7 @@ SELECT * FROM test_double ORDER BY cdouble ASC LIMIT 9;
 			"cdouble" : 3.6,
 			"cdouble" : 5.8,
 			"cdouble" : 7,
-			"cdouble" : 8.1,
+			"cdouble" : 8.1
 		}
 	]
 }
@@ -187,7 +187,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 1;
 	"rows" :
 	[
 		{
-			"cdouble" : 10.1,
+			"cdouble" : 10.1
 		}
 	]
 }
@@ -197,7 +197,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 2;
 	[
 		{
 			"cdouble" : 10.1,
-			"cdouble" : 8.1,
+			"cdouble" : 8.1
 		}
 	]
 }
@@ -208,7 +208,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 3;
 		{
 			"cdouble" : 10.1,
 			"cdouble" : 8.1,
-			"cdouble" : 7,
+			"cdouble" : 7
 		}
 	]
 }
@@ -220,7 +220,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 4;
 			"cdouble" : 10.1,
 			"cdouble" : 8.1,
 			"cdouble" : 7,
-			"cdouble" : 5.8,
+			"cdouble" : 5.8
 		}
 	]
 }
@@ -233,7 +233,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 5;
 			"cdouble" : 8.1,
 			"cdouble" : 7,
 			"cdouble" : 5.8,
-			"cdouble" : 3.6,
+			"cdouble" : 3.6
 		}
 	]
 }
@@ -247,7 +247,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 6;
 			"cdouble" : 7,
 			"cdouble" : 5.8,
 			"cdouble" : 3.6,
-			"cdouble" : 2.4,
+			"cdouble" : 2.4
 		}
 	]
 }
@@ -262,7 +262,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 7;
 			"cdouble" : 5.8,
 			"cdouble" : 3.6,
 			"cdouble" : 2.4,
-			"cdouble" : -1.2,
+			"cdouble" : -1.2
 		}
 	]
 }
@@ -278,7 +278,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 8;
 			"cdouble" : 3.6,
 			"cdouble" : 2.4,
 			"cdouble" : -1.2,
-			"cdouble" : -4.2,
+			"cdouble" : -4.2
 		}
 	]
 }
@@ -295,7 +295,7 @@ SELECT * FROM test_double ORDER BY cdouble DESC LIMIT 9;
 			"cdouble" : 2.4,
 			"cdouble" : -1.2,
 			"cdouble" : -4.2,
-			"cdouble" : -6.2,
+			"cdouble" : -6.2
 		}
 	]
 }
