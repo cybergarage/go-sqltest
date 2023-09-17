@@ -77,22 +77,24 @@ for (my $n = 0; $n < @orders; $n++){
   } else {
     @expected_values = sort { $b <=> $a } @expected_values;
   }
-  print "SELECT * FROM ${tbl_name} ORDER BY $column_name $order;\n";  
-  print "{\n"; 
-  print "\t\"rows\" :\n";  
-  print "\t[\n";
-  print "\t\t{\n";
-  for (my $n = 0; $n < @expected_values; $n++){
-    my $expected_value = $expected_values[$n];
-    print "\t\t\t\"$column_name\" : $expected_value";
-    if ($n < @expected_values - 1){
-      print ",";
+  for (my $l = 1; $l <= @expected_values; $l++){
+    print "SELECT * FROM ${tbl_name} ORDER BY $column_name $order LIMIT $l;\n";  
+    print "{\n"; 
+    print "\t\"rows\" :\n";  
+    print "\t[\n";
+    print "\t\t{\n";
+    for (my $n = 0; $n < $l; $n++){
+      my $expected_value = $expected_values[$n];
+      print "\t\t\t\"$column_name\" : $expected_value";
+      if ($n < @expected_values - 1){
+        print ",";
+      }
+      print "\n";
     }
-    print "\n";
+    print "\t\t}\n";
+    print "\t]\n";
+    print "}\n";
   }
-  print "\t\t}\n";
-  print "\t]\n";
-  print "}\n";
 }
 
 for (my $n = 0; $n < @data_values; $n++){

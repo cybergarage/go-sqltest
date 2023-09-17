@@ -47,7 +47,124 @@ INSERT INTO test_int (cint) VALUES (-9);
 INSERT INTO test_int (cint) VALUES (10);
 {
 }
-SELECT * FROM test_int ORDER BY cint ASC;
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 1;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 2;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 3;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 4;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 5;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+			"cint" : 2,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 6;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+			"cint" : 2,
+			"cint" : 3,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 7;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+			"cint" : 2,
+			"cint" : 3,
+			"cint" : 5,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 8;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+			"cint" : 2,
+			"cint" : 3,
+			"cint" : 5,
+			"cint" : 7,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 9;
+{
+	"rows" :
+	[
+		{
+			"cint" : -9,
+			"cint" : -6,
+			"cint" : -4,
+			"cint" : -1,
+			"cint" : 2,
+			"cint" : 3,
+			"cint" : 5,
+			"cint" : 7,
+			"cint" : 8,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint ASC LIMIT 10;
 {
 	"rows" :
 	[
@@ -65,7 +182,124 @@ SELECT * FROM test_int ORDER BY cint ASC;
 		}
 	]
 }
-SELECT * FROM test_int ORDER BY cint DESC;
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 1;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 2;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 3;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 4;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 5;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+			"cint" : 3,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 6;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+			"cint" : 3,
+			"cint" : 2,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 7;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+			"cint" : 3,
+			"cint" : 2,
+			"cint" : -1,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 8;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+			"cint" : 3,
+			"cint" : 2,
+			"cint" : -1,
+			"cint" : -4,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 9;
+{
+	"rows" :
+	[
+		{
+			"cint" : 10,
+			"cint" : 8,
+			"cint" : 7,
+			"cint" : 5,
+			"cint" : 3,
+			"cint" : 2,
+			"cint" : -1,
+			"cint" : -4,
+			"cint" : -6,
+		}
+	]
+}
+SELECT * FROM test_int ORDER BY cint DESC LIMIT 10;
 {
 	"rows" :
 	[
