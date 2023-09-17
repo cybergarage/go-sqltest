@@ -86,7 +86,7 @@ for (my $n = 0; $n < @orders; $n++){
     for (my $n = 0; $n < $l; $n++){
       my $expected_value = $expected_values[$n];
       print "\t\t\t\"$column_name\" : $expected_value";
-      if ($n < @expected_values - 1){
+      if ($n < $l - 1){
         print ",";
       }
       print "\n";
