@@ -16,7 +16,7 @@ SHELL := bash
 
 all: embed.go
 
-embed.go : embed.pl tests $(wildcard *.qst)
+embed.go : embed.pl $(wildcard *.qst)
 	perl $< > $@
 
 tests: ${CRUD_TESTS} ${ORDER_TESTS} ${LIMIT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
