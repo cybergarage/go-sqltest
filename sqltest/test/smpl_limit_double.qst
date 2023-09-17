@@ -1,0 +1,115 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_double (
+	cdouble DOUBLE PRIMARY KEY
+);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (-1.2);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (2.4);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (3.6);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (-4.2);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (5.8);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (-6.2);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (7);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (8.1);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (-9.8);
+{
+}
+INSERT INTO test_double (cdouble) VALUES (10.1);
+{
+}
+SELECT * FROM test_double ORDER BY cdouble ASC;
+{
+	"rows" :
+	[
+		{
+			"cdouble" : -9.8,
+			"cdouble" : -6.2,
+			"cdouble" : -4.2,
+			"cdouble" : -1.2,
+			"cdouble" : 2.4,
+			"cdouble" : 3.6,
+			"cdouble" : 5.8,
+			"cdouble" : 7,
+			"cdouble" : 8.1,
+			"cdouble" : 10.1
+		}
+	]
+}
+SELECT * FROM test_double ORDER BY cdouble DESC;
+{
+	"rows" :
+	[
+		{
+			"cdouble" : 10.1,
+			"cdouble" : 8.1,
+			"cdouble" : 7,
+			"cdouble" : 5.8,
+			"cdouble" : 3.6,
+			"cdouble" : 2.4,
+			"cdouble" : -1.2,
+			"cdouble" : -4.2,
+			"cdouble" : -6.2,
+			"cdouble" : -9.8
+		}
+	]
+}
+DELETE FROM test_double WHERE cdouble = -1.2;
+{
+}
+DELETE FROM test_double WHERE cdouble = 2.4;
+{
+}
+DELETE FROM test_double WHERE cdouble = 3.6;
+{
+}
+DELETE FROM test_double WHERE cdouble = -4.2;
+{
+}
+DELETE FROM test_double WHERE cdouble = 5.8;
+{
+}
+DELETE FROM test_double WHERE cdouble = -6.2;
+{
+}
+DELETE FROM test_double WHERE cdouble = 7;
+{
+}
+DELETE FROM test_double WHERE cdouble = 8.1;
+{
+}
+DELETE FROM test_double WHERE cdouble = -9.8;
+{
+}
+DELETE FROM test_double WHERE cdouble = 10.1;
+{
+}
