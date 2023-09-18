@@ -31,7 +31,7 @@ all: embed.go
 embed.go : embed.pl \$(wildcard *.qst)
 	perl \$< > \$@
 
-tests: \${CRUD_TESTS} \${ORDER_TESTS} \${LIMIT_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS}
+tests: \${CRUD_TESTS} \${ORDER_TESTS} \${LIMIT_TESTS} \${AGGR_TESTS} \${MATH_TESTS} \${YCSB_TESTS} \${ARITH_TESTS}
 
 HEADER
 
@@ -80,10 +80,11 @@ print "\n";
 # select_limit_<type>.qst
 # func_aggr_<type>.qst
 # func_math_<type>.qst
+# update_arith_<type>.qst
 #
 
-my @test_targets = ("ORDER_TESTS", "LIMIT_TESTS", "AGGR_TESTS", "MATH_TESTS");
-my @test_prefixes = ("select_order", "select_limit", "func_aggr", "func_math");
+my @test_targets = ("ORDER_TESTS", "LIMIT_TESTS", "AGGR_TESTS", "MATH_TESTS", "ARITH_TESTS");
+my @test_prefixes = ("select_order", "select_limit", "func_aggr", "func_math", "update_arith");
 my @test_data_types = ("INT", "FLOAT", "DOUBLE");
 
 for (my $n = 0; $n < @test_targets; $n++) {
