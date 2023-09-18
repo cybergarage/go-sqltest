@@ -71,7 +71,7 @@ select count(*) from pgbench_branches
 	"rows" :
 	[
 		{
-			"COUNT(*)" : 0
+			"COUNT(*)" : 1
 		}
 	]
 }
