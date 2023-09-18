@@ -1,0 +1,1280 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_double (
+	pdouble DOUBLE PRIMARY KEY, 
+	vdouble DOUBLE
+);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (100, 100);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (200, 200);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (300, 300);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (400, 400);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (500, 500);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (600, 600);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (700, 700);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (800, 800);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (900, 900);
+{
+}
+INSERT INTO test_double (pdouble, vdouble) VALUES (1000, 1000);
+{
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 1 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 101
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 2 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 102
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 3 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 103
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 4 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 104
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 5 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 105
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 6 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 106
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 7 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 107
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 8 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 108
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 9 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 109
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble + 10 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 110
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 1 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 99
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 2 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 98
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 3 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 97
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 4 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 96
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 5 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 95
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 6 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 94
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 7 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 93
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 8 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 92
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 9 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 91
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble - 10 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 90
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 1 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 2 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 200
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 3 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 300
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 4 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 400
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 5 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 500
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 6 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 600
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 7 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 700
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 8 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 800
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 9 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 900
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble * 10 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 1000
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 1 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 2 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 50
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 3 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 33.3333333333333
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 4 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 25
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 5 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 20
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 6 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 16.6666666666667
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 7 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 14.2857142857143
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 8 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 12.5
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 9 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 11.1111111111111
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble / 10 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 10
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 1 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 0
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 2 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 0
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 3 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 1
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 4 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 0
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 5 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 0
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 6 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 4
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 7 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 2
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 8 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 4
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 9 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 1
+		}
+	]
+}
+UPDATE test_double SET vdouble = 100 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 100
+		}
+	]
+}
+UPDATE test_double SET vdouble = vdouble % 10 WHERE pdouble = 100;
+{
+}
+SELECT vdouble FROM test_double WHERE pdouble = 100;
+{
+	"rows" :
+	[
+		{
+			"vdouble" : 0
+		}
+	]
+}
+DELETE FROM test_double WHERE pdouble = 100;
+{
+}
+DELETE FROM test_double WHERE pdouble = 200;
+{
+}
+DELETE FROM test_double WHERE pdouble = 300;
+{
+}
+DELETE FROM test_double WHERE pdouble = 400;
+{
+}
+DELETE FROM test_double WHERE pdouble = 500;
+{
+}
+DELETE FROM test_double WHERE pdouble = 600;
+{
+}
+DELETE FROM test_double WHERE pdouble = 700;
+{
+}
+DELETE FROM test_double WHERE pdouble = 800;
+{
+}
+DELETE FROM test_double WHERE pdouble = 900;
+{
+}
+DELETE FROM test_double WHERE pdouble = 1000;
+{
+}

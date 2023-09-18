@@ -1,0 +1,1280 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_int (
+	pint INT PRIMARY KEY, 
+	vint INT
+);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (100, 100);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (200, 200);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (300, 300);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (400, 400);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (500, 500);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (600, 600);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (700, 700);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (800, 800);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (900, 900);
+{
+}
+INSERT INTO test_int (pint, vint) VALUES (1000, 1000);
+{
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 1 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 101
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 2 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 102
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 3 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 103
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 4 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 104
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 5 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 105
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 6 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 106
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 7 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 107
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 8 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 108
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 9 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 109
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint + 10 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 110
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 1 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 99
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 2 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 98
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 3 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 97
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 4 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 96
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 5 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 95
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 6 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 94
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 7 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 93
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 8 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 92
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 9 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 91
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint - 10 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 90
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 1 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 2 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 200
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 3 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 300
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 4 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 400
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 5 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 500
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 6 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 600
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 7 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 700
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 8 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 800
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 9 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 900
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint * 10 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 1000
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 1 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 2 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 50
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 3 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 33.3333333333333
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 4 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 25
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 5 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 20
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 6 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 16.6666666666667
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 7 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 14.2857142857143
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 8 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 12.5
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 9 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 11.1111111111111
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint / 10 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 10
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 1 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 0
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 2 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 0
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 3 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 1
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 4 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 0
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 5 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 0
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 6 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 4
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 7 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 2
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 8 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 4
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 9 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 1
+		}
+	]
+}
+UPDATE test_int SET vint = 100 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 100
+		}
+	]
+}
+UPDATE test_int SET vint = vint % 10 WHERE pint = 100;
+{
+}
+SELECT vint FROM test_int WHERE pint = 100;
+{
+	"rows" :
+	[
+		{
+			"vint" : 0
+		}
+	]
+}
+DELETE FROM test_int WHERE pint = 100;
+{
+}
+DELETE FROM test_int WHERE pint = 200;
+{
+}
+DELETE FROM test_int WHERE pint = 300;
+{
+}
+DELETE FROM test_int WHERE pint = 400;
+{
+}
+DELETE FROM test_int WHERE pint = 500;
+{
+}
+DELETE FROM test_int WHERE pint = 600;
+{
+}
+DELETE FROM test_int WHERE pint = 700;
+{
+}
+DELETE FROM test_int WHERE pint = 800;
+{
+}
+DELETE FROM test_int WHERE pint = 900;
+{
+}
+DELETE FROM test_int WHERE pint = 1000;
+{
+}

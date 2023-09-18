@@ -1,0 +1,1280 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test_float (
+	pfloat FLOAT PRIMARY KEY, 
+	vfloat FLOAT
+);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (100, 100);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (200, 200);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (300, 300);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (400, 400);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (500, 500);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (600, 600);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (700, 700);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (800, 800);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (900, 900);
+{
+}
+INSERT INTO test_float (pfloat, vfloat) VALUES (1000, 1000);
+{
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 1 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 101
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 2 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 102
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 3 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 103
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 4 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 104
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 5 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 105
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 6 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 106
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 7 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 107
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 8 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 108
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 9 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 109
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat + 10 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 110
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 1 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 99
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 2 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 98
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 3 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 97
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 4 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 96
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 5 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 95
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 6 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 94
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 7 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 93
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 8 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 92
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 9 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 91
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat - 10 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 90
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 1 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 2 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 200
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 3 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 300
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 4 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 400
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 5 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 500
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 6 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 600
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 7 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 700
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 8 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 800
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 9 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 900
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat * 10 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 1000
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 1 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 2 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 50
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 3 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 33.3333333333333
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 4 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 25
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 5 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 20
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 6 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 16.6666666666667
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 7 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 14.2857142857143
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 8 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 12.5
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 9 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 11.1111111111111
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat / 10 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 10
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 1 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 0
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 2 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 0
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 3 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 1
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 4 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 0
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 5 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 0
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 6 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 4
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 7 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 2
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 8 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 4
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 9 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 1
+		}
+	]
+}
+UPDATE test_float SET vfloat = 100 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 100
+		}
+	]
+}
+UPDATE test_float SET vfloat = vfloat % 10 WHERE pfloat = 100;
+{
+}
+SELECT vfloat FROM test_float WHERE pfloat = 100;
+{
+	"rows" :
+	[
+		{
+			"vfloat" : 0
+		}
+	]
+}
+DELETE FROM test_float WHERE pfloat = 100;
+{
+}
+DELETE FROM test_float WHERE pfloat = 200;
+{
+}
+DELETE FROM test_float WHERE pfloat = 300;
+{
+}
+DELETE FROM test_float WHERE pfloat = 400;
+{
+}
+DELETE FROM test_float WHERE pfloat = 500;
+{
+}
+DELETE FROM test_float WHERE pfloat = 600;
+{
+}
+DELETE FROM test_float WHERE pfloat = 700;
+{
+}
+DELETE FROM test_float WHERE pfloat = 800;
+{
+}
+DELETE FROM test_float WHERE pfloat = 900;
+{
+}
+DELETE FROM test_float WHERE pfloat = 1000;
+{
+}
