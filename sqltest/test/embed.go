@@ -20,26 +20,32 @@ import (
 
 // EmbedTests is a map of test names and test queries.
 var EmbedTests = map[string][]byte{
-	"SmplCrudDouble":  smplCrudDouble,
-	"FuncAggrInt":     funcAggrInt,
-	"FuncAggrFloat":   funcAggrFloat,
-	"FuncMathInt":     funcMathInt,
-	"SmplAlterAdd":    smplAlterAdd,
-	"SmplCrudFloat":   smplCrudFloat,
-	"YcsbWorkload":    ycsbWorkload,
-	"SmplLimitDouble": smplLimitDouble,
-	"SmplOrderFloat":  smplOrderFloat,
-	"SmplCrudInt":     smplCrudInt,
-	"FuncMathDouble":  funcMathDouble,
-	"SmplLimitInt":    smplLimitInt,
-	"SmplLimitFloat":  smplLimitFloat,
-	"FuncMathFloat":   funcMathFloat,
-	"SmplOrderDouble": smplOrderDouble,
-	"SmplCrudText":    smplCrudText,
-	"Pgbench":         pgbench,
-	"FuncAggrDouble":  funcAggrDouble,
-	"SmplOrderInt":    smplOrderInt,
+	"UpdateArithInt":    updateArithInt,
+	"SmplCrudDouble":    smplCrudDouble,
+	"FuncAggrInt":       funcAggrInt,
+	"SelectOrderFloat":  selectOrderFloat,
+	"FuncAggrFloat":     funcAggrFloat,
+	"SelectLimitFloat":  selectLimitFloat,
+	"FuncMathInt":       funcMathInt,
+	"SmplAlterAdd":      smplAlterAdd,
+	"SmplCrudFloat":     smplCrudFloat,
+	"UpdateArithDouble": updateArithDouble,
+	"SelectOrderInt":    selectOrderInt,
+	"YcsbWorkload":      ycsbWorkload,
+	"SelectLimitInt":    selectLimitInt,
+	"SelectLimitDouble": selectLimitDouble,
+	"SmplCrudInt":       smplCrudInt,
+	"FuncMathDouble":    funcMathDouble,
+	"FuncMathFloat":     funcMathFloat,
+	"SelectOrderDouble": selectOrderDouble,
+	"UpdateArithFloat":  updateArithFloat,
+	"SmplCrudText":      smplCrudText,
+	"Pgbench":           pgbench,
+	"FuncAggrDouble":    funcAggrDouble,
 }
+
+//go:embed update_arith_int.qst
+var updateArithInt []byte
 
 //go:embed smpl_crud_double.qst
 var smplCrudDouble []byte
@@ -47,8 +53,14 @@ var smplCrudDouble []byte
 //go:embed func_aggr_int.qst
 var funcAggrInt []byte
 
+//go:embed select_order_float.qst
+var selectOrderFloat []byte
+
 //go:embed func_aggr_float.qst
 var funcAggrFloat []byte
+
+//go:embed select_limit_float.qst
+var selectLimitFloat []byte
 
 //go:embed func_math_int.qst
 var funcMathInt []byte
@@ -59,14 +71,20 @@ var smplAlterAdd []byte
 //go:embed smpl_crud_float.qst
 var smplCrudFloat []byte
 
+//go:embed update_arith_double.qst
+var updateArithDouble []byte
+
+//go:embed select_order_int.qst
+var selectOrderInt []byte
+
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
 
-//go:embed select_limit_double.qst
-var smplLimitDouble []byte
+//go:embed select_limit_int.qst
+var selectLimitInt []byte
 
-//go:embed select_order_float.qst
-var smplOrderFloat []byte
+//go:embed select_limit_double.qst
+var selectLimitDouble []byte
 
 //go:embed smpl_crud_int.qst
 var smplCrudInt []byte
@@ -74,17 +92,14 @@ var smplCrudInt []byte
 //go:embed func_math_double.qst
 var funcMathDouble []byte
 
-//go:embed select_limit_int.qst
-var smplLimitInt []byte
-
-//go:embed select_limit_float.qst
-var smplLimitFloat []byte
-
 //go:embed func_math_float.qst
 var funcMathFloat []byte
 
 //go:embed select_order_double.qst
-var smplOrderDouble []byte
+var selectOrderDouble []byte
+
+//go:embed update_arith_float.qst
+var updateArithFloat []byte
 
 //go:embed smpl_crud_text.qst
 var smplCrudText []byte
@@ -94,6 +109,3 @@ var pgbench []byte
 
 //go:embed func_aggr_double.qst
 var funcAggrDouble []byte
-
-//go:embed select_order_int.qst
-var smplOrderInt []byte
