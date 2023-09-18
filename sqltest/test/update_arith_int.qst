@@ -836,7 +836,7 @@ SELECT vint FROM test_int WHERE pint = 100;
 	"rows" :
 	[
 		{
-			"vint" : 33.3333333333333
+			"vint" : 33
 		}
 	]
 }
@@ -908,7 +908,7 @@ SELECT vint FROM test_int WHERE pint = 100;
 	"rows" :
 	[
 		{
-			"vint" : 16.6666666666667
+			"vint" : 16
 		}
 	]
 }
@@ -932,7 +932,7 @@ SELECT vint FROM test_int WHERE pint = 100;
 	"rows" :
 	[
 		{
-			"vint" : 14.2857142857143
+			"vint" : 14
 		}
 	]
 }
@@ -956,7 +956,7 @@ SELECT vint FROM test_int WHERE pint = 100;
 	"rows" :
 	[
 		{
-			"vint" : 12.5
+			"vint" : 12
 		}
 	]
 }
@@ -980,7 +980,7 @@ SELECT vint FROM test_int WHERE pint = 100;
 	"rows" :
 	[
 		{
-			"vint" : 11.1111111111111
+			"vint" : 11
 		}
 	]
 }

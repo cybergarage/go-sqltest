@@ -94,6 +94,9 @@ for (my $n = 0; $n < @operators; $n++){
     if ($operator eq "%") {
       $update_value = $init_value % $param_value;
     }
+    if ($data_type eq "int") {
+      $update_value = int($update_value);
+    }
     my @set_values = ($init_value, "$v_column_name $operator $param_value");
     my @expected_values = ($init_value, $update_value);
     for (my $v = 0; $v < @set_values; $v++){
