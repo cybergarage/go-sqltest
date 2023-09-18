@@ -19,7 +19,7 @@ all: embed.go
 embed.go : embed.pl $(wildcard *.qst)
 	perl $< > $@
 
-tests: ${CRUD_TESTS} ${ORDER_TESTS} ${LIMIT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS}
+tests: ${CRUD_TESTS} ${ORDER_TESTS} ${LIMIT_TESTS} ${AGGR_TESTS} ${MATH_TESTS} ${YCSB_TESTS} ${ARITH_TESTS}
 
 CRUD_TESTS = \
 	smpl_crud_text.qst \
@@ -83,6 +83,18 @@ func_math_float.qst: func_math.pl
 	perl func_math.pl float > func_math_float.qst
 func_math_double.qst: func_math.pl
 	perl func_math.pl double > func_math_double.qst
+
+ARITH_TESTS = \
+	update_arith_int.qst \
+	update_arith_float.qst \
+	update_arith_double.qst
+
+update_arith_int.qst: update_arith.pl
+	perl update_arith.pl int > update_arith_int.qst
+update_arith_float.qst: update_arith.pl
+	perl update_arith.pl float > update_arith_float.qst
+update_arith_double.qst: update_arith.pl
+	perl update_arith.pl double > update_arith_double.qst
 
 YCSB_TESTS = \
 	ycsb_workload.qst
