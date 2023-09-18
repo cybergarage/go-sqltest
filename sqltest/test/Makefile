@@ -37,28 +37,28 @@ smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
 
 ORDER_TESTS = \
-	smpl_order_int.qst \
-	smpl_order_float.qst \
-	smpl_order_double.qst
+	select_order_int.qst \
+	select_order_float.qst \
+	select_order_double.qst
 
-smpl_order_int.qst: smpl_order.pl
-	perl smpl_order.pl int > smpl_order_int.qst
-smpl_order_float.qst: smpl_order.pl
-	perl smpl_order.pl float > smpl_order_float.qst
-smpl_order_double.qst: smpl_order.pl
-	perl smpl_order.pl double > smpl_order_double.qst
+select_order_int.qst: select_order.pl
+	perl select_order.pl int > select_order_int.qst
+select_order_float.qst: select_order.pl
+	perl select_order.pl float > select_order_float.qst
+select_order_double.qst: select_order.pl
+	perl select_order.pl double > select_order_double.qst
 
 LIMIT_TESTS = \
 	select_limit_int.qst \
 	select_limit_float.qst \
 	select_limit_double.qst
 
-select_limit_int.qst: smpl_limit.pl
-	perl smpl_limit.pl int > select_limit_int.qst
-select_limit_float.qst: smpl_limit.pl
-	perl smpl_limit.pl float > select_limit_float.qst
-select_limit_double.qst: smpl_limit.pl
-	perl smpl_limit.pl double > select_limit_double.qst
+select_limit_int.qst: select_limit.pl
+	perl select_limit.pl int > select_limit_int.qst
+select_limit_float.qst: select_limit.pl
+	perl select_limit.pl float > select_limit_float.qst
+select_limit_double.qst: select_limit.pl
+	perl select_limit.pl double > select_limit_double.qst
 
 AGGR_TESTS = \
 	func_aggr_int.qst \

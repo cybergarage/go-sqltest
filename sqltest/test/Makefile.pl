@@ -76,14 +76,14 @@ system("touch ${script_dir}/${data_type_file}");
 print "\n";
 
 #
-# smpl_order_<type>.qst
+# select_order_<type>.qst
 # select_limit_<type>.qst
 # func_aggr_<type>.qst
 # func_math_<type>.qst
 #
 
 my @test_targets = ("ORDER_TESTS", "LIMIT_TESTS", "AGGR_TESTS", "MATH_TESTS");
-my @test_prefixes = ("smpl_order", "smpl_limit", "func_aggr", "func_math");
+my @test_prefixes = ("select_order", "select_limit", "func_aggr", "func_math");
 my @test_data_types = ("INT", "FLOAT", "DOUBLE");
 
 for (my $n = 0; $n < @test_targets; $n++) {
