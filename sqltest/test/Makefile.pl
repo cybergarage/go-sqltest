@@ -77,7 +77,7 @@ print "\n";
 
 #
 # smpl_order_<type>.qst
-# smpl_limit_<type>.qst
+# select_limit_<type>.qst
 # func_aggr_<type>.qst
 # func_math_<type>.qst
 #
