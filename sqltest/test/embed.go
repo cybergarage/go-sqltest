@@ -62,7 +62,7 @@ var smplCrudFloat []byte
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
 
-//go:embed smpl_limit_double.qst
+//go:embed select_limit_double.qst
 var smplLimitDouble []byte
 
 //go:embed smpl_order_float.qst
@@ -74,10 +74,10 @@ var smplCrudInt []byte
 //go:embed func_math_double.qst
 var funcMathDouble []byte
 
-//go:embed smpl_limit_int.qst
+//go:embed select_limit_int.qst
 var smplLimitInt []byte
 
-//go:embed smpl_limit_float.qst
+//go:embed select_limit_float.qst
 var smplLimitFloat []byte
 
 //go:embed func_math_float.qst

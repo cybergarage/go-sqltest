@@ -49,16 +49,16 @@ smpl_order_double.qst: smpl_order.pl
 	perl smpl_order.pl double > smpl_order_double.qst
 
 LIMIT_TESTS = \
-	smpl_limit_int.qst \
-	smpl_limit_float.qst \
-	smpl_limit_double.qst
+	select_limit_int.qst \
+	select_limit_float.qst \
+	select_limit_double.qst
 
-smpl_limit_int.qst: smpl_limit.pl
-	perl smpl_limit.pl int > smpl_limit_int.qst
-smpl_limit_float.qst: smpl_limit.pl
-	perl smpl_limit.pl float > smpl_limit_float.qst
-smpl_limit_double.qst: smpl_limit.pl
-	perl smpl_limit.pl double > smpl_limit_double.qst
+select_limit_int.qst: smpl_limit.pl
+	perl smpl_limit.pl int > select_limit_int.qst
+select_limit_float.qst: smpl_limit.pl
+	perl smpl_limit.pl float > select_limit_float.qst
+select_limit_double.qst: smpl_limit.pl
+	perl smpl_limit.pl double > select_limit_double.qst
 
 AGGR_TESTS = \
 	func_aggr_int.qst \
