@@ -5,6 +5,11 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.2.2 (2023-09-19)
+- Added new scenario tests
+  - UPDATE
+    - Added tests for arithmetic operations
+
 ## v1.2.1 (2023-09-18)
 - Added new scenario tests
   - SELECT
