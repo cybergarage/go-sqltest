@@ -21,19 +21,15 @@ import (
 	_ "github.com/lib/pq"
 )
 
-const (
-	defaultPostgresPort = 5432
-)
-
-// PostgresClient represents a client for PostgreSQL server.
-type PostgresClient struct {
+// PqClient represents a client for PostgreSQL server.
+type PqClient struct {
 	*Config
 	db *sql.DB
 }
 
-// NewClient returns a client instance.
-func NewPostgresClient() Client {
-	client := &PostgresClient{
+// NewPqClient returns a new lib/pq client.
+func NewPqClient() Client {
+	client := &PqClient{
 		Config: NewDefaultConfig(),
 		db:     nil,
 	}
@@ -42,7 +38,7 @@ func NewPostgresClient() Client {
 }
 
 // Open opens a database specified by the internal configuration.
-func (client *PostgresClient) Open() error {
+func (client *PqClient) Open() error {
 	dsName := fmt.Sprintf("host=%s port=%d dbname=%s sslmode=disable", client.Host, client.Port, client.Database)
 	//  user=%s password=%s
 	db, err := sql.Open("postgres", dsName)
@@ -54,7 +50,7 @@ func (client *PostgresClient) Open() error {
 }
 
 // Close closes opens a database specified by the internal configuration.
-func (client *PostgresClient) Close() error {
+func (client *PqClient) Close() error {
 	if client.db == nil {
 		return nil
 	}
@@ -66,7 +62,7 @@ func (client *PostgresClient) Close() error {
 }
 
 // Query executes a query that returns rows.
-func (client *PostgresClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
+func (client *PqClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
 	if client.db == nil {
 		err := client.Open()
 		if err != nil {
@@ -77,7 +73,7 @@ func (client *PostgresClient) Query(query string, args ...interface{}) (*sql.Row
 }
 
 // CreateDatabase creates a specified database.
-func (client *PostgresClient) CreateDatabase(name string) error {
+func (client *PqClient) CreateDatabase(name string) error {
 	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
 	rows, err := client.Query(query)
 	if err != nil {
@@ -92,7 +88,7 @@ func (client *PostgresClient) CreateDatabase(name string) error {
 }
 
 // DropDatabase dtops a specified database.
-func (client *PostgresClient) DropDatabase(name string) error {
+func (client *PqClient) DropDatabase(name string) error {
 	query := fmt.Sprintf("DROP DATABASE IF EXISTS %s", name)
 	rows, err := client.Query(query)
 	if err != nil {
@@ -107,7 +103,7 @@ func (client *PostgresClient) DropDatabase(name string) error {
 }
 
 // Use sets a target database.
-func (client *PostgresClient) Use(name string) error {
+func (client *PqClient) Use(name string) error {
 	client.SetDatabase(name)
 	return nil
 }
