@@ -31,7 +31,7 @@ type PgxClient struct {
 }
 
 // NewPgxClient returns a Pgx client instance.
-func NewPgxClient() Client {
+func NewPgxClient() *PgxClient {
 	client := &PgxClient{
 		Config: NewDefaultConfig(),
 		conn:   nil,
