@@ -49,6 +49,11 @@ func (client *PqClient) Open() error {
 	return nil
 }
 
+// DB returns a connected database instance.
+func (client *PqClient) DB() *sql.DB {
+	return client.db
+}
+
 // Close closes opens a database specified by the internal configuration.
 func (client *PqClient) Close() error {
 	if client.db == nil {
