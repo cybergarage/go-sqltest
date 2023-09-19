@@ -28,7 +28,7 @@ type PqClient struct {
 }
 
 // NewPqClient returns a new lib/pq client.
-func NewPqClient() Client {
+func NewPqClient() *PqClient {
 	client := &PqClient{
 		Config: NewDefaultConfig(),
 		db:     nil,
