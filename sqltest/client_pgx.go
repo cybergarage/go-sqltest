@@ -27,14 +27,14 @@ import (
 // PgxClient represents a client for PostgreSQL server.
 type PgxClient struct {
 	*Config
-	*pgx.Conn
+	conn *pgx.Conn
 }
 
 // NewPgxClient returns a Pgx client instance.
 func NewPgxClient() Client {
 	client := &PgxClient{
 		Config: NewDefaultConfig(),
-		Conn:   nil,
+		conn:   nil,
 	}
 	client.SetPort(defaultPostgresPort)
 	return client
@@ -51,21 +51,26 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 	if err != nil {
 		return err
 	}
-	client.Conn = conn
+	client.conn = conn
 	return nil
 }
 
 // Close closes the opened database.
 func (client *PgxClient) Close() error {
-	if client.Conn == nil {
+	if client.conn == nil {
 		return nil
 	}
-	err := client.Conn.Close(context.Background())
+	err := client.conn.Close(context.Background())
 	if err != nil {
 		return err
 	}
-	client.Conn = nil
+	client.conn = nil
 	return nil
+}
+
+// Conn returns a connected database connection.
+func (client *PgxClient) Conn() *pgx.Conn {
+	return client.conn
 }
 
 // Query executes a query that returns rows.
