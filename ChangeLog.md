@@ -5,7 +5,9 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.2.3 (2023-09-20)
+## v1.2.3 (2023-09-21)
+- Updated client interface
+  - Added user and password configurations
 - Updated PostgreSQL clients
   - Added Pgx client
 
