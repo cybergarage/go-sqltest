@@ -42,8 +42,8 @@ func NewPgxClient() *PgxClient {
 // Open opens a database specified by the client.
 func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 	url := fmt.Sprintf("postgres://%s:%s@%s/%s",
-		"user",
-		"password",
+		client.User,
+		client.Password,
 		net.JoinHostPort(client.Host, strconv.Itoa(client.Port)),
 		client.Database)
 	conn, err := pgx.Connect(context.Background(), url)
@@ -89,7 +89,7 @@ func (client *PgxClient) Query(query string, args ...interface{}) (pgx.Rows, err
 
 // CreateDatabase creates a specified database.
 func (client *PgxClient) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
+	query := fmt.Sprintf("CREATE DATABASE %s", name)
 	rows, err := client.Query(query)
 	if err != nil {
 		return err
