@@ -7,6 +7,7 @@
 
 ## v1.2.3 (2023-09-20)
 - Updated PostgreSQL clients
+  - Added Pgx client
 
 ## v1.2.2 (2023-09-19)
 - Added new scenario tests
