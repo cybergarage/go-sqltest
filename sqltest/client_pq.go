@@ -39,8 +39,12 @@ func NewPqClient() *PqClient {
 
 // Open opens a database specified by the internal configuration.
 func (client *PqClient) Open() error {
-	dsName := fmt.Sprintf("host=%s port=%d dbname=%s sslmode=disable", client.Host, client.Port, client.Database)
-	//  user=%s password=%s
+	dsName := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
+		client.Host,
+		client.Port,
+		client.User,
+		client.Password,
+		client.Database)
 	db, err := sql.Open("postgres", dsName)
 	if err != nil {
 		return err
