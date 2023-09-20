@@ -75,20 +75,94 @@ func (client *PgxClient) Conn() *pgx.Conn {
 
 // Query executes a query that returns rows.
 func (client *PgxClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
-	return nil, nil
+	if client.conn == nil {
+		err := client.Open()
+		if err != nil {
+			return nil, err
+		}
+	}
+	rows, err := client.conn.Query(context.Background(), query, args...)
+	if err != nil {
+		return nil, err
+	}
+
+	newSQLRowsFromPgxRows := func(pgxRows pgx.Rows) (*sql.Rows, error) {
+		// Get the field descriptions from pgx.Rows
+		fieldDescriptions := pgxRows.FieldDescriptions()
+
+		// Create a slice to store the column names
+		columns := make([]string, len(fieldDescriptions))
+		for i, desc := range fieldDescriptions {
+			columns[i] = desc.Name
+		}
+
+		// Create a slice of interface{} to store the row values
+		values := make([]interface{}, len(columns))
+
+		// Create a slice of []byte to store the row data
+		rowData := make([][]byte, len(columns))
+		for i := range rowData {
+			values[i] = &rowData[i]
+		}
+
+		// Create a new sql.Rows object
+		sqlRows := &sql.Rows{}
+
+		// Scan each row from pgx.Rows and copy the data to sql.Rows
+		for pgxRows.Next() {
+			err := pgxRows.Scan(values...)
+			if err != nil {
+				return nil, err
+			}
+
+			// Convert []byte to string for each column value
+			rowValues := make([]string, len(columns))
+			for i, data := range rowData {
+				rowValues[i] = string(data)
+			}
+
+			// Append the row values to sql.Rows
+			// sqlRows.Rows = append(sqlRows.Rows, rowValues)
+		}
+
+		return sqlRows, nil
+	}
+
+	return newSQLRowsFromPgxRows(rows)
 }
 
 // CreateDatabase creates a specified database.
 func (client *PgxClient) CreateDatabase(name string) error {
+	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
+	rows, err := client.Query(query)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
 // DropDatabase dtops a specified database.
 func (client *PgxClient) DropDatabase(name string) error {
+	query := fmt.Sprintf("DROP DATABASE IF EXISTS %s", name)
+	rows, err := client.Query(query)
+	if err != nil {
+		return err
+	}
+	defer rows.Close()
+	err = rows.Err()
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
 // Use sets a target database.
 func (client *PgxClient) Use(name string) error {
+	client.SetDatabase(name)
 	return nil
 }
