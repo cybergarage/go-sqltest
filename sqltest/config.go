@@ -14,6 +14,10 @@
 
 package sqltest
 
+import (
+	"os/user"
+)
+
 const (
 	defaultHost = "127.0.0.1"
 	defaultPort = 3306
@@ -24,14 +28,24 @@ type Config struct {
 	Host     string
 	Port     int
 	Database string
+	User     string
+	Password string
 }
 
 // NewDefaultConfig returns a default configuration instance.
 func NewDefaultConfig() *Config {
 	config := &Config{
-		Host: defaultHost,
-		Port: 0,
+		Host:     defaultHost,
+		Port:     0,
+		User:     "",
+		Password: "",
 	}
+
+	user, err := user.Current()
+	if err == nil {
+		config.User = user.Username
+	}
+
 	return config
 }
 
@@ -48,4 +62,14 @@ func (config *Config) SetPort(port int) {
 // SetDatabase sets a host database.
 func (config *Config) SetDatabase(db string) {
 	config.Database = db
+}
+
+// SetUser sets a user name.
+func (config *Config) SetUser(user string) {
+	config.User = user
+}
+
+// SetPassword sets a password.
+func (config *Config) SetPassword(password string) {
+	config.Password = password
 }
