@@ -16,7 +16,6 @@ package sqltest
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"net"
 	"strconv"
@@ -74,7 +73,7 @@ func (client *PgxClient) Conn() *pgx.Conn {
 }
 
 // Query executes a query that returns rows.
-func (client *PgxClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
+func (client *PgxClient) Query(query string, args ...interface{}) (pgx.Rows, error) {
 	if client.conn == nil {
 		err := client.Open()
 		if err != nil {
@@ -85,50 +84,7 @@ func (client *PgxClient) Query(query string, args ...interface{}) (*sql.Rows, er
 	if err != nil {
 		return nil, err
 	}
-
-	newSQLRowsFromPgxRows := func(pgxRows pgx.Rows) (*sql.Rows, error) {
-		// Get the field descriptions from pgx.Rows
-		fieldDescriptions := pgxRows.FieldDescriptions()
-
-		// Create a slice to store the column names
-		columns := make([]string, len(fieldDescriptions))
-		for i, desc := range fieldDescriptions {
-			columns[i] = desc.Name
-		}
-
-		// Create a slice of interface{} to store the row values
-		values := make([]interface{}, len(columns))
-
-		// Create a slice of []byte to store the row data
-		rowData := make([][]byte, len(columns))
-		for i := range rowData {
-			values[i] = &rowData[i]
-		}
-
-		// Create a new sql.Rows object
-		sqlRows := &sql.Rows{}
-
-		// Scan each row from pgx.Rows and copy the data to sql.Rows
-		for pgxRows.Next() {
-			err := pgxRows.Scan(values...)
-			if err != nil {
-				return nil, err
-			}
-
-			// Convert []byte to string for each column value
-			rowValues := make([]string, len(columns))
-			for i, data := range rowData {
-				rowValues[i] = string(data)
-			}
-
-			// Append the row values to sql.Rows
-			// sqlRows.Rows = append(sqlRows.Rows, rowValues)
-		}
-
-		return sqlRows, nil
-	}
-
-	return newSQLRowsFromPgxRows(rows)
+	return rows, nil
 }
 
 // CreateDatabase creates a specified database.
