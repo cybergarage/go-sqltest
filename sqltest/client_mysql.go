@@ -44,7 +44,12 @@ func NewMySQLClient() Client {
 
 // Open opens a database specified by the internal configuration.
 func (client *MySQLClient) Open() error {
-	dsName := fmt.Sprintf("tcp(%s:%d)/%s", client.Host, client.Port, client.Database)
+	dsName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+		client.User,
+		client.Password,
+		client.Host,
+		client.Port,
+		client.Database)
 	db, err := sql.Open("mysql", dsName)
 	if err != nil {
 		return err
