@@ -17,6 +17,8 @@ package sqltest
 import (
 	"database/sql"
 	"fmt"
+	"strconv"
+	"strings"
 
 	_ "github.com/lib/pq"
 )
@@ -39,12 +41,21 @@ func NewPqClient() *PqClient {
 
 // Open opens a database specified by the internal configuration.
 func (client *PqClient) Open() error {
-	dsName := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable",
-		client.Host,
-		client.Port,
-		client.User,
-		client.Password,
-		client.Database)
+	dsParams := []string{
+		"host=" + client.Host,
+		"port=" + strconv.Itoa(client.Port),
+		"sslmode=disable",
+	}
+	if 0 < len(client.User) {
+		dsParams = append(dsParams, "user="+client.User)
+	}
+	if 0 < len(client.Password) {
+		dsParams = append(dsParams, "password="+client.Password)
+	}
+	if 0 < len(client.Database) {
+		dsParams = append(dsParams, "dbname="+client.Database)
+	}
+	dsName := strings.Join(dsParams, " ")
 	db, err := sql.Open("postgres", dsName)
 	if err != nil {
 		return err
