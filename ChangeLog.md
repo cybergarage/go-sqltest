@@ -5,6 +5,13 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.2.4 (2023-09-28)
+- Updated
+  - ScenarioTest
+    - Supported timestamp data comparison
+  - Scenario tests
+    - Added timestamp data type for PICT tests
+
 ## v1.2.3 (2023-09-24)
 - Updated client interface
   - Added user and password configurations
