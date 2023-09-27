@@ -1,0 +1,3713 @@
+- Copyright (C) 2020 The go-sqltest Authors. All rights reserved.
+-
+- Licensed under the Apache License, Version 2.0 (the "License");
+- you may not use this file except in compliance with the License.
+- You may obtain a copy of the License at
+-
+-  http:-www.apache.org/licenses/LICENSE-2.0
+-
+- Unless required by applicable law or agreed to in writing, software
+- distributed under the License is distributed on an "AS IS" BASIS,
+- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+- See the License for the specific language governing permissions and
+- limitations under the License.
+
+CREATE TABLE test (
+	ctext TEXT,
+	cint INT,
+	cfloat FLOAT,
+	cdouble DOUBLE,
+	ctimestamp TIMESTAMP PRIMARY KEY
+);
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('abc', 0, 1.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('ab', 2147483647, 0.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('a', 1, 0.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('abc', 1, 1.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('ab', 0, 1.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('a', -2147483648, 1.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('ab', -1, 1.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('ab', -2147483648, 0.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('abc', 2147483647, 0.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('abc', -2147483648, 0.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('abc', -1, 0.1, 0.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('ab', 1, 0.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('a', 0, 0.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('a', 2147483647, 1.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, ctimestamp) VALUES ('a', -1, 0.1, 2.2, '2006/1/2 15:04:05');
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 2147483647, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 0, cfloat = 1.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = -2147483648, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -1, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = -2147483648, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = 2147483647, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -2147483648, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'abc', cint = -1, cfloat = 0.1, cdouble = 0.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'ab', cint = 1, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 0, cfloat = 0.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+UPDATE test SET ctext = 'a', cint = 2147483647, cfloat = 1.1, cdouble = 2.2 WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006/1/2 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
+SELECT * FROM test WHERE ctimestamp = '2006/1/2 15:04:05';
+{
+}
