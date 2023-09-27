@@ -20,6 +20,7 @@ import (
 	"math"
 	"reflect"
 	"strings"
+	"time"
 
 	"github.com/cybergarage/go-safecast/safecast"
 )
@@ -169,6 +170,10 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 		case []uint8:
 			sv1 := uint8sToString(v1)
 			return deepEqual(sv1, iv2)
+		case time.Time:
+			tv1 := v1.Format(time.DateTime)
+			tv2 := fmt.Sprintf("%v", iv2)
+			return deepEqual(tv1, tv2)
 		}
 
 		sv1 := fmt.Sprintf("%v", iv1)
@@ -194,7 +199,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 				break
 			}
 
-			if !deepEqual(resData, rowData) {
+			if !deepEqual(resData, rowData) && !deepEqual(rowData, resData) {
 				hasAllColumn = false
 				break
 			}
