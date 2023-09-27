@@ -25,7 +25,8 @@ CRUD_TESTS = \
 	smpl_crud_text.qst \
 	smpl_crud_int.qst \
 	smpl_crud_float.qst \
-	smpl_crud_double.qst
+	smpl_crud_double.qst \
+	smpl_crud_timestamp.qst
 
 smpl_crud_text.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl text > smpl_crud_text.qst
@@ -35,6 +36,8 @@ smpl_crud_float.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl float > smpl_crud_float.qst
 smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
+smpl_crud_timestamp.qst: smpl_crud.pl data/data_type.pict
+	perl smpl_crud.pl timestamp > smpl_crud_timestamp.qst
 
 ORDER_TESTS = \
 	select_order_int.qst \

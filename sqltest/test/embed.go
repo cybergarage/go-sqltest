@@ -19,29 +19,30 @@ import (
 )
 
 // EmbedTests is a map of test names and test queries.
-var EmbedTests = map[string][]byte{
-	"UpdateArithInt":    updateArithInt,
-	"SmplCrudDouble":    smplCrudDouble,
-	"FuncAggrInt":       funcAggrInt,
-	"SelectOrderFloat":  selectOrderFloat,
-	"FuncAggrFloat":     funcAggrFloat,
-	"SelectLimitFloat":  selectLimitFloat,
-	"FuncMathInt":       funcMathInt,
-	"SmplAlterAdd":      smplAlterAdd,
-	"SmplCrudFloat":     smplCrudFloat,
+var EmbedTests = map[string][]byte {
+	"UpdateArithInt": updateArithInt,
+	"SmplCrudDouble": smplCrudDouble,
+	"FuncAggrInt": funcAggrInt,
+	"SelectOrderFloat": selectOrderFloat,
+	"FuncAggrFloat": funcAggrFloat,
+	"SelectLimitFloat": selectLimitFloat,
+	"FuncMathInt": funcMathInt,
+	"SmplCrudTimestamp": smplCrudTimestamp,
+	"SmplAlterAdd": smplAlterAdd,
+	"SmplCrudFloat": smplCrudFloat,
 	"UpdateArithDouble": updateArithDouble,
-	"SelectOrderInt":    selectOrderInt,
-	"YcsbWorkload":      ycsbWorkload,
-	"SelectLimitInt":    selectLimitInt,
+	"SelectOrderInt": selectOrderInt,
+	"YcsbWorkload": ycsbWorkload,
+	"SelectLimitInt": selectLimitInt,
 	"SelectLimitDouble": selectLimitDouble,
-	"SmplCrudInt":       smplCrudInt,
-	"FuncMathDouble":    funcMathDouble,
-	"FuncMathFloat":     funcMathFloat,
+	"SmplCrudInt": smplCrudInt,
+	"FuncMathDouble": funcMathDouble,
+	"FuncMathFloat": funcMathFloat,
 	"SelectOrderDouble": selectOrderDouble,
-	"UpdateArithFloat":  updateArithFloat,
-	"SmplCrudText":      smplCrudText,
-	"Pgbench":           pgbench,
-	"FuncAggrDouble":    funcAggrDouble,
+	"UpdateArithFloat": updateArithFloat,
+	"SmplCrudText": smplCrudText,
+	"Pgbench": pgbench,
+	"FuncAggrDouble": funcAggrDouble,
 }
 
 //go:embed update_arith_int.qst
@@ -64,6 +65,9 @@ var selectLimitFloat []byte
 
 //go:embed func_math_int.qst
 var funcMathInt []byte
+
+//go:embed smpl_crud_timestamp.qst
+var smplCrudTimestamp []byte
 
 //go:embed smpl_alter_add.qst
 var smplAlterAdd []byte
@@ -109,3 +113,4 @@ var pgbench []byte
 
 //go:embed func_aggr_double.qst
 var funcAggrDouble []byte
+
