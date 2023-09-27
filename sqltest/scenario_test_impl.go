@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/cybergarage/go-logger/log"
 )
@@ -139,6 +140,9 @@ func (tst *ScenarioTest) Run() error {
 			case "TEXT", "NVARCHAR", "VARBINARY", "BINARY":
 				var v string
 				values[n] = &v
+			case "TIMESTAMP":
+				var v time.Time
+				values[n] = &v
 			default:
 				var v interface{}
 				values[n] = &v
@@ -160,6 +164,8 @@ func (tst *ScenarioTest) Run() error {
 				case *float64:
 					row[columns[i]] = *v
 				case *string:
+					row[columns[i]] = *v
+				case *time.Time:
 					row[columns[i]] = *v
 				case *interface{}:
 					row[columns[i]] = *v
