@@ -39,6 +39,24 @@ smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 smpl_crud_timestamp.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl timestamp > smpl_crud_timestamp.qst
 
+TXN_TESTS = \
+	smpl_txn_text.qst \
+	smpl_txn_int.qst \
+	smpl_txn_float.qst \
+	smpl_txn_double.qst \
+	smpl_txn_timestamp.qst
+
+smpl_txn_text.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl text > smpl_txn_text.qst
+smpl_txn_int.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl int > smpl_txn_int.qst
+smpl_txn_float.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl float > smpl_txn_float.qst
+smpl_txn_double.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl double > smpl_txn_double.qst
+smpl_txn_timestamp.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl timestamp > smpl_txn_timestamp.qst
+
 ORDER_TESTS = \
 	select_order_int.qst \
 	select_order_float.qst \
