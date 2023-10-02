@@ -36,7 +36,7 @@ tests: \${CRUD_TESTS} \${ORDER_TESTS} \${LIMIT_TESTS} \${AGGR_TESTS} \${MATH_TES
 HEADER
 
 #
-# smpl_crud_<type>.qst
+# PICT data
 #
 
 my $data_type_file = "data/data_type.pict";
@@ -50,30 +50,40 @@ while(<IN>){
 }
 close(IN);
 
-my $pict_prefix = "smpl_crud";
-print "CRUD_TESTS = \\\n";
-for (my $n = 0; $n < scalar(@data_types); $n++) {
-    my $data_type = lc($data_types[$n]);
-    my $scenario_name = "${pict_prefix}_${data_type}.qst";
-    print "\t${scenario_name}";
-    if ($n < ((@data_types) - 1)) {
-        print " \\";
+my @pict_targets = ("CRUD_TESTS", "TXN_TESTS");
+my @pict_prefixes = ("smpl_crud", "smpl_txn");
+
+for (my $n = 0; $n < @pict_targets; $n++) {
+    my $pict_target = $pict_targets[$n];
+    print "${pict_target} = \\\n";
+    my $pict_prefix = $pict_prefixes[$n];
+    for (my $n = 0; $n < scalar(@data_types); $n++) {
+        my $data_type = lc($data_types[$n]);
+        my $scenario_name = "${pict_prefix}_${data_type}.qst";
+        print "\t${scenario_name}";
+        if ($n < ((@data_types) - 1)) {
+            print " \\";
+        }
+        print "\n";
     }
     print "\n";
-}
-print "\n";
 
-for (my $n = 0; $n < scalar(@data_types); $n++) {
-    my $data_type = lc($data_types[$n]);
-    my $scenario_name = "${pict_prefix}_${data_type}.qst";
-    print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
-    print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
-    system("touch ${script_dir}/${scenario_name}");
+    for (my $n = 0; $n < scalar(@data_types); $n++) {
+        my $data_type = lc($data_types[$n]);
+        my $scenario_name = "${pict_prefix}_${data_type}.qst";
+        print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
+        print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
+        system("touch ${script_dir}/${scenario_name}");
+    }
+
+    system("touch ${script_dir}/${pict_prefix}.pl");
+    system("touch ${script_dir}/${data_type_file}");
+    print "\n";
 }
 
-system("touch ${script_dir}/${pict_prefix}.pl");
-system("touch ${script_dir}/${data_type_file}");
-print "\n";
+#
+# smpl_txn_<type>.qst
+#
 
 #
 # select_order_<type>.qst
