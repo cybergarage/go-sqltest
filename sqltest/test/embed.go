@@ -21,17 +21,22 @@ import (
 // EmbedTests is a map of test names and test queries.
 var EmbedTests = map[string][]byte {
 	"UpdateArithInt": updateArithInt,
+	"SmplTxnText": smplTxnText,
 	"SmplCrudDouble": smplCrudDouble,
 	"FuncAggrInt": funcAggrInt,
 	"SelectOrderFloat": selectOrderFloat,
+	"SmplTxnDouble": smplTxnDouble,
 	"FuncAggrFloat": funcAggrFloat,
 	"SelectLimitFloat": selectLimitFloat,
 	"FuncMathInt": funcMathInt,
 	"SmplCrudTimestamp": smplCrudTimestamp,
 	"SmplAlterAdd": smplAlterAdd,
 	"SmplCrudFloat": smplCrudFloat,
+	"SmplTxnTimestamp": smplTxnTimestamp,
 	"UpdateArithDouble": updateArithDouble,
+	"SmplTxnFloat": smplTxnFloat,
 	"SelectOrderInt": selectOrderInt,
+	"SmplTxnInt": smplTxnInt,
 	"YcsbWorkload": ycsbWorkload,
 	"SelectLimitInt": selectLimitInt,
 	"SelectLimitDouble": selectLimitDouble,
@@ -48,6 +53,9 @@ var EmbedTests = map[string][]byte {
 //go:embed update_arith_int.qst
 var updateArithInt []byte
 
+//go:embed smpl_txn_text.qst
+var smplTxnText []byte
+
 //go:embed smpl_crud_double.qst
 var smplCrudDouble []byte
 
@@ -56,6 +64,9 @@ var funcAggrInt []byte
 
 //go:embed select_order_float.qst
 var selectOrderFloat []byte
+
+//go:embed smpl_txn_double.qst
+var smplTxnDouble []byte
 
 //go:embed func_aggr_float.qst
 var funcAggrFloat []byte
@@ -75,11 +86,20 @@ var smplAlterAdd []byte
 //go:embed smpl_crud_float.qst
 var smplCrudFloat []byte
 
+//go:embed smpl_txn_timestamp.qst
+var smplTxnTimestamp []byte
+
 //go:embed update_arith_double.qst
 var updateArithDouble []byte
 
+//go:embed smpl_txn_float.qst
+var smplTxnFloat []byte
+
 //go:embed select_order_int.qst
 var selectOrderInt []byte
+
+//go:embed smpl_txn_int.qst
+var smplTxnInt []byte
 
 //go:embed ycsb_workload.qst
 var ycsbWorkload []byte
