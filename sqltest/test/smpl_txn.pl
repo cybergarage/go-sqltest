@@ -125,6 +125,9 @@ for my $row_no (0 .. $#data_rows) {
     }
     my @update_row = @{$data_rows[$update_row_no]};
 
+    # Rollback
+
+    print "BEGIN;\n";  
     print "UPDATE ${tbl_name} SET ";  
     my $n_colums = 0;
     for (my $n = 0; $n < scalar(@update_row); $n++) {
@@ -144,6 +147,51 @@ for my $row_no (0 .. $#data_rows) {
     print " WHERE $column_name = $row[$pr_key_idx];\n";    
     print "{\n";  
     print "}\n";  
+    print "ROLLBACK;\n";
+
+    print "SELECT * FROM ${tbl_name} WHERE $column_name = $row[$pr_key_idx];\n";  
+    print "{\n";  
+    print "\t\"rows\" :\n";  
+    print "\t[\n";  
+    print "\t\t{\n";  
+    for (my $n = 0; $n < scalar(@row); $n++) {
+        my $type_name = lc($data_type_row[$n]);
+        my $column_name = "c" . $type_name;
+        my $column_val = $row[$n];
+        $column_val =~ s/'/"/g;
+        print "\t\t\t\"$column_name\" : $column_val";
+        if ($n < ((@row) - 1)) {
+        print ",";  
+        }
+        print "\n";
+    }
+    print "\t\t}\n";  
+    print "\t]\n";  
+    print "}\n";  
+
+    # Commit
+
+    print "BEGIN;\n";  
+    print "UPDATE ${tbl_name} SET ";  
+    my $n_colums = 0;
+    for (my $n = 0; $n < scalar(@update_row); $n++) {
+      my $type_name = lc($data_type_row[$n]);
+      my $column_name = "c" . $type_name;
+      if ($n == $pr_key_idx) {
+        next;
+      }
+      if (0 < $n_colums) {
+        print ", ";  
+      }
+      print "$column_name = $update_row[$n]";
+      $n_colums++;
+    }
+    my $type_name = lc($data_type_row[$pr_key_idx]);
+    my $column_name = "c" . $type_name;
+    print " WHERE $column_name = $row[$pr_key_idx];\n";    
+    print "{\n";  
+    print "}\n";  
+    print "COMMIT;\n";
 
     $type_name = lc($data_type_row[$pr_key_idx]);
     $column_name = "c" . $type_name;
