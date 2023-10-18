@@ -176,6 +176,9 @@ for my $row_no (0 .. $#data_rows) {
     # Commit
 
     print "BEGIN;\n";  
+    print "{\n";  
+    print "}\n";  
+
     print "UPDATE ${tbl_name} SET ";  
     my $n_colums = 0;
     for (my $n = 0; $n < scalar(@update_row); $n++) {
@@ -195,7 +198,10 @@ for my $row_no (0 .. $#data_rows) {
     print " WHERE $column_name = $row[$pr_key_idx];\n";    
     print "{\n";  
     print "}\n";  
+
     print "COMMIT;\n";
+    print "{\n";  
+    print "}\n";  
 
     $type_name = lc($data_type_row[$pr_key_idx]);
     $column_name = "c" . $type_name;
