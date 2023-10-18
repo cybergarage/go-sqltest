@@ -124,6 +124,10 @@ for my $row_no (0 .. $#data_rows) {
       next;
     }
     my @update_row = @{$data_rows[$update_row_no]};
+    my @last_update_row = @row;
+    if (0 < $update_row_no) {
+      @last_update_row = @{$data_rows[$update_row_no - 1]};
+    }
 
     # Rollback
 
@@ -158,13 +162,13 @@ for my $row_no (0 .. $#data_rows) {
     print "\t\"rows\" :\n";  
     print "\t[\n";  
     print "\t\t{\n";  
-    for (my $n = 0; $n < scalar(@row); $n++) {
+    for (my $n = 0; $n < scalar(@last_update_row); $n++) {
         my $type_name = lc($data_type_row[$n]);
         my $column_name = "c" . $type_name;
-        my $column_val = $row[$n];
+        my $column_val = $last_update_row[$n];
         $column_val =~ s/'/"/g;
         print "\t\t\t\"$column_name\" : $column_val";
-        if ($n < ((@row) - 1)) {
+        if ($n < ((@last_update_row) - 1)) {
         print ",";  
         }
         print "\n";
