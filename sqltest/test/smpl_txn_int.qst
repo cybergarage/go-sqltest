@@ -38,10 +38,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -74,10 +78,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -104,6 +112,28 @@ SELECT * FROM test WHERE cint = 0;
 			"ctext" : "a",
 			"cint" : 0,
 			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
 			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -113,24 +143,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 0;
 {
@@ -146,10 +158,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -182,10 +198,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -218,10 +238,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -254,10 +278,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -290,10 +318,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -320,6 +352,28 @@ SELECT * FROM test WHERE cint = 0;
 			"ctext" : "abc",
 			"cint" : 0,
 			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
 			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -329,24 +383,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 0;
 {
@@ -362,10 +398,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -398,10 +438,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -434,10 +478,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -470,10 +518,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -506,10 +558,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -564,10 +620,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -600,10 +660,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -636,10 +700,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -666,6 +734,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 			"ctext" : "abc",
 			"cint" : 2147483647,
 			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -675,24 +765,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 2147483647;
 {
@@ -708,10 +780,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -744,10 +820,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -780,10 +860,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -816,10 +900,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -847,6 +935,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 			"cint" : 2147483647,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -855,24 +965,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 2147483647;
 {
@@ -888,10 +980,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -924,10 +1020,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -960,10 +1060,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -996,10 +1100,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -1032,10 +1140,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -1090,10 +1202,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1126,10 +1242,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1162,10 +1282,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1198,10 +1322,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1234,10 +1362,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1270,10 +1402,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1306,10 +1442,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1334,6 +1474,28 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
 			"cint" : 1,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -1345,13 +1507,13 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-ROLLBACK;
+COMMIT;
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "a",
+			"ctext" : "abc",
 			"cint" : 1,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -1360,16 +1522,20 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-COMMIT;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
+{
+}
+ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
+			"ctext" : "a",
 			"cint" : 1,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -1381,24 +1547,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 1,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 1;
 {
@@ -1414,10 +1562,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1450,10 +1602,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1486,10 +1642,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1522,10 +1682,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1558,10 +1722,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1616,10 +1784,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1652,10 +1824,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1688,10 +1864,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1724,10 +1904,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1760,10 +1944,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1788,6 +1976,28 @@ SELECT * FROM test WHERE cint = 1;
 	[
 		{
 			"ctext" : "a",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
 			"cint" : 1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
@@ -1799,24 +2009,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 1;
 {
@@ -1832,10 +2024,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1868,10 +2064,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1904,10 +2104,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1940,10 +2144,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -1976,10 +2184,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -2012,10 +2224,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -2048,10 +2264,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -2084,10 +2304,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -2142,10 +2366,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2178,10 +2406,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2214,10 +2446,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2244,6 +2480,28 @@ SELECT * FROM test WHERE cint = 0;
 			"ctext" : "a",
 			"cint" : 0,
 			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 1.1,
 			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -2253,24 +2511,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 0;
 {
@@ -2286,10 +2526,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2322,10 +2566,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2358,10 +2606,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2394,10 +2646,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2430,10 +2686,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2466,10 +2726,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2502,10 +2766,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2538,10 +2806,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2574,10 +2846,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2610,10 +2886,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -2668,10 +2948,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2704,10 +2988,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2740,10 +3028,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2776,10 +3068,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2804,6 +3100,28 @@ SELECT * FROM test WHERE cint = -2147483648;
 	[
 		{
 			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
 			"cint" : -2147483648,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
@@ -2815,24 +3133,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -2147483648,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -2147483648;
 {
@@ -2848,10 +3148,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2884,10 +3188,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2920,10 +3228,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2956,10 +3268,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -2992,10 +3308,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3028,10 +3348,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3064,10 +3388,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3100,10 +3428,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3136,10 +3468,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3194,10 +3530,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3230,10 +3570,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3266,10 +3610,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3302,10 +3650,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3330,6 +3682,28 @@ SELECT * FROM test WHERE cint = -1;
 	[
 		{
 			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
 			"cint" : -1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
@@ -3341,24 +3715,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -1;
 {
@@ -3374,10 +3730,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3410,10 +3770,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3446,82 +3810,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-COMMIT;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
-COMMIT;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
-ROLLBACK;
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3554,10 +3850,94 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+COMMIT;
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+COMMIT;
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3590,10 +3970,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3626,10 +4010,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3662,10 +4050,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -3720,10 +4112,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3756,10 +4152,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3792,10 +4192,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3820,6 +4224,28 @@ SELECT * FROM test WHERE cint = -2147483648;
 	[
 		{
 			"ctext" : "a",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
 			"cint" : -2147483648,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -3831,24 +4257,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -2147483648;
 {
@@ -3864,10 +4272,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3900,10 +4312,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3936,10 +4352,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -3972,10 +4392,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4000,6 +4424,28 @@ SELECT * FROM test WHERE cint = -2147483648;
 	[
 		{
 			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
 			"cint" : -2147483648,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -4011,24 +4457,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -2147483648;
 {
@@ -4044,10 +4472,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4080,10 +4512,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4116,10 +4552,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4152,10 +4592,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4188,10 +4632,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4246,10 +4694,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4282,10 +4734,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4318,10 +4774,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4346,6 +4806,28 @@ SELECT * FROM test WHERE cint = 2147483647;
 	[
 		{
 			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
 			"cint" : 2147483647,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -4357,24 +4839,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 2147483647;
 {
@@ -4390,10 +4854,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4426,10 +4894,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4462,10 +4934,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4498,10 +4974,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4534,10 +5014,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4570,10 +5054,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4592,6 +5080,28 @@ UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-0
 {
 }
 COMMIT;
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
+{
+}
+ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4609,24 +5119,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 2147483647;
 {
@@ -4642,10 +5134,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4678,10 +5174,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4714,10 +5214,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -4772,10 +5276,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4808,10 +5316,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4836,6 +5348,28 @@ SELECT * FROM test WHERE cint = -2147483648;
 	[
 		{
 			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
 			"cint" : -2147483648,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
@@ -4847,24 +5381,6 @@ BEGIN;
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -2147483648;
 {
@@ -4880,10 +5396,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4916,10 +5436,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4952,10 +5476,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -4982,6 +5510,28 @@ SELECT * FROM test WHERE cint = -2147483648;
 			"ctext" : "a",
 			"cint" : -2147483648,
 			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -2147483648;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -2147483648,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -4991,24 +5541,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -2147483648;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -2147483648;
 {
@@ -5024,10 +5556,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5060,10 +5596,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5096,10 +5636,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5132,10 +5676,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5168,10 +5716,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5204,10 +5756,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5240,10 +5796,14 @@ SELECT * FROM test WHERE cint = -2147483648;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -2147483648;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -2147483648;
 {
 	"rows" :
@@ -5298,10 +5858,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5334,10 +5898,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5370,10 +5938,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5406,10 +5978,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5442,10 +6018,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5478,10 +6058,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5514,10 +6098,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5550,10 +6138,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5586,10 +6178,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5608,6 +6204,28 @@ UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-0
 {
 }
 COMMIT;
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5625,24 +6243,6 @@ BEGIN;
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -1;
 {
@@ -5658,10 +6258,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5694,10 +6298,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5730,10 +6338,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5766,10 +6378,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -5824,10 +6440,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -5860,10 +6480,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -5882,6 +6506,28 @@ UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01
 {
 }
 COMMIT;
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
+{
+}
+ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -5899,24 +6545,6 @@ BEGIN;
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 1;
 {
@@ -5932,10 +6560,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -5968,10 +6600,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6004,10 +6640,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6034,6 +6674,28 @@ SELECT * FROM test WHERE cint = 1;
 			"ctext" : "a",
 			"cint" : 1,
 			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -6043,24 +6705,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "ab",
-			"cint" : 1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 1;
 {
@@ -6076,10 +6720,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6112,10 +6760,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6148,10 +6800,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6184,10 +6840,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6220,10 +6880,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6256,10 +6920,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6292,10 +6960,14 @@ SELECT * FROM test WHERE cint = 1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 1;
 {
 	"rows" :
@@ -6350,10 +7022,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6386,10 +7062,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6414,6 +7094,28 @@ SELECT * FROM test WHERE cint = 0;
 	[
 		{
 			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
 			"cint" : 0,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
@@ -6425,24 +7127,6 @@ BEGIN;
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 0;
 {
@@ -6458,10 +7142,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6494,10 +7182,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6530,10 +7222,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6560,6 +7256,28 @@ SELECT * FROM test WHERE cint = 0;
 			"ctext" : "a",
 			"cint" : 0,
 			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -6569,24 +7287,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 0;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 0,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 0;
 {
@@ -6602,10 +7302,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6638,10 +7342,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6674,10 +7382,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6710,10 +7422,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6746,10 +7462,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6782,10 +7502,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6818,10 +7542,14 @@ SELECT * FROM test WHERE cint = 0;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 0;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 0;
 {
 	"rows" :
@@ -6876,10 +7604,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -6912,10 +7644,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -6948,10 +7684,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -6984,10 +7724,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7020,10 +7764,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7056,10 +7804,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7078,6 +7830,28 @@ UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-
 {
 }
 COMMIT;
+SELECT * FROM test WHERE cint = 2147483647;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
+{
+}
+ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7095,24 +7869,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = 2147483647;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : 2147483647,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = 2147483647;
 {
@@ -7128,10 +7884,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7164,10 +7924,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7200,10 +7964,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7236,10 +8004,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7272,10 +8044,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7308,10 +8084,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7344,10 +8124,14 @@ SELECT * FROM test WHERE cint = 2147483647;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = 2147483647;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = 2147483647;
 {
 	"rows" :
@@ -7402,10 +8186,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7438,10 +8226,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7466,6 +8258,28 @@ SELECT * FROM test WHERE cint = -1;
 	[
 		{
 			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
 			"cint" : -1,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
@@ -7477,24 +8291,6 @@ BEGIN;
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -1;
 {
@@ -7510,10 +8306,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7546,10 +8346,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7582,10 +8386,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7612,6 +8420,28 @@ SELECT * FROM test WHERE cint = -1;
 			"ctext" : "a",
 			"cint" : -1,
 			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
@@ -7621,24 +8451,6 @@ BEGIN;
 UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'ab', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -1;
 {
@@ -7654,10 +8466,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7690,10 +8506,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7726,10 +8546,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7762,10 +8586,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'abc', cfloat = 0.1, cdouble = 0.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7798,10 +8626,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'ab', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
@@ -7826,6 +8658,28 @@ SELECT * FROM test WHERE cint = -1;
 	[
 		{
 			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"ctimestamp" : "2006-01-02 15:04:05"
+		}
+	]
+}
+BEGIN;
+{
+}
+UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
+{
+}
+ROLLBACK;
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "a",
 			"cint" : -1,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
@@ -7837,24 +8691,6 @@ BEGIN;
 UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
-ROLLBACK;
-SELECT * FROM test WHERE cint = -1;
-{
-	"rows" :
-	[
-		{
-			"ctext" : "a",
-			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"ctimestamp" : "2006-01-02 15:04:05"
-		}
-	]
-}
-BEGIN;
-UPDATE test SET ctext = 'a', cfloat = 0.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
-{
-}
 COMMIT;
 SELECT * FROM test WHERE cint = -1;
 {
@@ -7870,10 +8706,14 @@ SELECT * FROM test WHERE cint = -1;
 	]
 }
 BEGIN;
+{
+}
 UPDATE test SET ctext = 'a', cfloat = 1.1, cdouble = 2.2, ctimestamp = '2006-01-02 15:04:05' WHERE cint = -1;
 {
 }
 ROLLBACK;
+{
+}
 SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
