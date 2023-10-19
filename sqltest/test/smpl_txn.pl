@@ -119,14 +119,19 @@ for my $row_no (0 .. $#data_rows) {
   print "\t]\n";  
   print "}\n";  
 
-  for my $update_row_no (0 .. $#data_rows) {
-    if ($update_row_no == $row_no) {
+  my @update_rows = ();
+  for my $n (0 .. $#data_rows) {
+    if ($n == $row_no) {
       next;
     }
-    my @update_row = @{$data_rows[$update_row_no]};
+    push(@update_rows, $data_rows[$n]);
+  }
+
+  for my $update_row_no (0 .. $#update_rows) {
+    my @update_row = @{$update_rows[$update_row_no]};
     my @last_update_row = @row;
     if (0 < $update_row_no) {
-      @last_update_row = @{$data_rows[$update_row_no - 1]};
+      @last_update_row = @{$update_rows[$update_row_no - 1]};
     }
 
     # Rollback

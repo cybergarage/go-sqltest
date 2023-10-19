@@ -19,35 +19,35 @@ import (
 )
 
 // EmbedTests is a map of test names and test queries.
-var EmbedTests = map[string][]byte{
-	"UpdateArithInt":    updateArithInt,
-	"SmplTxnText":       smplTxnText,
-	"SmplCrudDouble":    smplCrudDouble,
-	"FuncAggrInt":       funcAggrInt,
-	"SelectOrderFloat":  selectOrderFloat,
-	"SmplTxnDouble":     smplTxnDouble,
-	"FuncAggrFloat":     funcAggrFloat,
-	"SelectLimitFloat":  selectLimitFloat,
-	"FuncMathInt":       funcMathInt,
+var EmbedTests = map[string][]byte {
+	"UpdateArithInt": updateArithInt,
+	"SmplTxnText": smplTxnText,
+	"SmplCrudDouble": smplCrudDouble,
+	"FuncAggrInt": funcAggrInt,
+	"SelectOrderFloat": selectOrderFloat,
+	"SmplTxnDouble": smplTxnDouble,
+	"FuncAggrFloat": funcAggrFloat,
+	"SelectLimitFloat": selectLimitFloat,
+	"FuncMathInt": funcMathInt,
 	"SmplCrudTimestamp": smplCrudTimestamp,
-	"SmplAlterAdd":      smplAlterAdd,
-	"SmplCrudFloat":     smplCrudFloat,
-	"SmplTxnTimestamp":  smplTxnTimestamp,
+	"SmplAlterAdd": smplAlterAdd,
+	"SmplCrudFloat": smplCrudFloat,
+	"SmplTxnTimestamp": smplTxnTimestamp,
 	"UpdateArithDouble": updateArithDouble,
-	"SmplTxnFloat":      smplTxnFloat,
-	"SelectOrderInt":    selectOrderInt,
-	"SmplTxnInt":        smplTxnInt,
-	"YcsbWorkload":      ycsbWorkload,
-	"SelectLimitInt":    selectLimitInt,
+	"SmplTxnFloat": smplTxnFloat,
+	"SelectOrderInt": selectOrderInt,
+	"SmplTxnInt": smplTxnInt,
+	"YcsbWorkload": ycsbWorkload,
+	"SelectLimitInt": selectLimitInt,
 	"SelectLimitDouble": selectLimitDouble,
-	"SmplCrudInt":       smplCrudInt,
-	"FuncMathDouble":    funcMathDouble,
-	"FuncMathFloat":     funcMathFloat,
+	"SmplCrudInt": smplCrudInt,
+	"FuncMathDouble": funcMathDouble,
+	"FuncMathFloat": funcMathFloat,
 	"SelectOrderDouble": selectOrderDouble,
-	"UpdateArithFloat":  updateArithFloat,
-	"SmplCrudText":      smplCrudText,
-	"Pgbench":           pgbench,
-	"FuncAggrDouble":    funcAggrDouble,
+	"UpdateArithFloat": updateArithFloat,
+	"SmplCrudText": smplCrudText,
+	"Pgbench": pgbench,
+	"FuncAggrDouble": funcAggrDouble,
 }
 
 //go:embed update_arith_int.qst
@@ -133,3 +133,4 @@ var pgbench []byte
 
 //go:embed func_aggr_double.qst
 var funcAggrDouble []byte
+
