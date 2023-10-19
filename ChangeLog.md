@@ -1,9 +1,15 @@
 # Changelog
 
-## v1.3.0 (2023-xx-xx)
+## v1.4.0 (2023-xx-xx)
 - Added new scenario tests, such as pgbench
 - Added new scenario tests
   - Added ALTER queries
+
+## v1.3.0 (2023-10-xx)
+- Added new scenario tests
+  - BEGIN, COMMIT and ROLLBACK
+- Updated
+  - Extented RunEmbedSuites to support regular expressions
 
 ## v1.2.4 (2023-09-28)
 - Updated
