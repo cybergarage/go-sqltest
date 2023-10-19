@@ -166,6 +166,9 @@ for my $row_no (0 .. $#data_rows) {
         my $type_name = lc($data_type_row[$n]);
         my $column_name = "c" . $type_name;
         my $column_val = $last_update_row[$n];
+        if ($n == $pr_key_idx) {
+          $column_val = $row[$n];
+        }
         $column_val =~ s/'/"/g;
         print "\t\t\t\"$column_name\" : $column_val";
         if ($n < ((@last_update_row) - 1)) {
@@ -217,11 +220,9 @@ for my $row_no (0 .. $#data_rows) {
     for (my $n = 0; $n < scalar(@row); $n++) {
       my $type_name = lc($data_type_row[$n]);
       my $column_name = "c" . $type_name;
-      my $column_val;
+      my $column_val = $update_row[$n];
       if ($n == $pr_key_idx) {
         $column_val = $row[$n];
-      } else {
-        $column_val = $update_row[$n];
       }
       $column_val =~ s/'/"/g;
       print "\t\t\t\"$column_name\" : $column_val";
