@@ -96,7 +96,6 @@ func (suite *Suite) ExtractScenarioTests(names ...string) ([]*ScenarioTest, erro
 			if strings.EqualFold(test.Name(), name) || nameRegexp.MatchString(test.Name()) {
 				tests = append(tests, test)
 				isFound = true
-				break
 			}
 		}
 		if !isFound {
