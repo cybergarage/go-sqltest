@@ -5,11 +5,11 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.3.0 (2023-10-xx)
-- Added new scenario tests
-  - BEGIN, COMMIT and ROLLBACK
+## v1.3.0 (2023-10-20)
 - Updated
   - Extented RunEmbedSuites to support regular expressions
+- Added new scenario tests
+  - BEGIN, COMMIT and ROLLBACK
 
 ## v1.2.4 (2023-09-28)
 - Updated
