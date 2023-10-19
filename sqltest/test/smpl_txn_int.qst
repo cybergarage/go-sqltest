@@ -733,10 +733,10 @@ SELECT * FROM test WHERE cint = 2147483647;
 	"rows" :
 	[
 		{
-			"ctext" : "ab",
+			"ctext" : "abc",
 			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -1415,10 +1415,10 @@ SELECT * FROM test WHERE cint = 1;
 	"rows" :
 	[
 		{
-			"ctext" : "a",
+			"ctext" : "ab",
 			"cint" : 1,
 			"cfloat" : 0.1,
-			"cdouble" : 0.2,
+			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -2097,10 +2097,10 @@ SELECT * FROM test WHERE cint = 1;
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
+			"ctext" : "a",
 			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -2779,10 +2779,10 @@ SELECT * FROM test WHERE cint = 0;
 	"rows" :
 	[
 		{
-			"ctext" : "ab",
+			"ctext" : "abc",
 			"cint" : 0,
 			"cfloat" : 1.1,
-			"cdouble" : 0.2,
+			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -3461,10 +3461,10 @@ SELECT * FROM test WHERE cint = -2147483648;
 	"rows" :
 	[
 		{
-			"ctext" : "a",
+			"ctext" : "ab",
 			"cint" : -2147483648,
 			"cfloat" : 1.1,
-			"cdouble" : 2.2,
+			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -4143,7 +4143,7 @@ SELECT * FROM test WHERE cint = -1;
 	"rows" :
 	[
 		{
-			"ctext" : "ab",
+			"ctext" : "a",
 			"cint" : -1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
@@ -4827,8 +4827,8 @@ SELECT * FROM test WHERE cint = -2147483648;
 		{
 			"ctext" : "ab",
 			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -5507,7 +5507,7 @@ SELECT * FROM test WHERE cint = 2147483647;
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
+			"ctext" : "ab",
 			"cint" : 2147483647,
 			"cfloat" : 0.1,
 			"cdouble" : 0.2,
@@ -6192,7 +6192,7 @@ SELECT * FROM test WHERE cint = -2147483648;
 			"ctext" : "abc",
 			"cint" : -2147483648,
 			"cfloat" : 0.1,
-			"cdouble" : 2.2,
+			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -6874,7 +6874,7 @@ SELECT * FROM test WHERE cint = -1;
 			"ctext" : "abc",
 			"cint" : -1,
 			"cfloat" : 0.1,
-			"cdouble" : 0.2,
+			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -7553,10 +7553,10 @@ SELECT * FROM test WHERE cint = 1;
 	"rows" :
 	[
 		{
-			"ctext" : "ab",
+			"ctext" : "abc",
 			"cint" : 1,
 			"cfloat" : 0.1,
-			"cdouble" : 2.2,
+			"cdouble" : 0.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
 	]
@@ -8235,7 +8235,7 @@ SELECT * FROM test WHERE cint = 0;
 	"rows" :
 	[
 		{
-			"ctext" : "a",
+			"ctext" : "ab",
 			"cint" : 0,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
@@ -8919,7 +8919,7 @@ SELECT * FROM test WHERE cint = 2147483647;
 		{
 			"ctext" : "a",
 			"cint" : 2147483647,
-			"cfloat" : 1.1,
+			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"ctimestamp" : "2006-01-02 15:04:05"
 		}
