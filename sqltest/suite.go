@@ -90,9 +90,10 @@ func (suite *Suite) ScenarioTests() []*ScenarioTest {
 func (suite *Suite) ExtractScenarioTests(names ...string) ([]*ScenarioTest, error) {
 	tests := make([]*ScenarioTest, 0)
 	for _, name := range names {
+		nameRegexp := regexp.MustCompile(name)
 		isFound := false
 		for _, test := range suite.tests {
-			if strings.EqualFold(test.Name(), name) {
+			if strings.EqualFold(test.Name(), name) || nameRegexp.MatchString(test.Name()) {
 				tests = append(tests, test)
 				isFound = true
 				break
