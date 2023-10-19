@@ -128,6 +128,34 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 			return string(bytes)
 		}
 
+		integerStringEqual := func(s1, s2 string) bool {
+			var i1 int
+			err := safecast.ToInt(s1, &i1)
+			if err != nil {
+				return false
+			}
+			var i2 int
+			err = safecast.ToInt(s2, &i2)
+			if err != nil {
+				return false
+			}
+			return i1 == i2
+		}
+
+		realStringEqual := func(s1, s2 string) bool {
+			var f1 float64
+			err := safecast.ToFloat64(s1, &f1)
+			if err != nil {
+				return false
+			}
+			var f2 float64
+			err = safecast.ToFloat64(s2, &f2)
+			if err != nil {
+				return false
+			}
+			return f1 == f2
+		}
+
 		almostEqual := func(a, b float64) bool {
 			diff := math.Abs(a - b)
 			avg := (math.Abs(a) + math.Abs(b)) / 2
@@ -144,6 +172,12 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 			sv1 := trimString(v1)
 			sv2 := trimString(v2)
 			if sv1 == sv2 {
+				return true
+			}
+			if integerStringEqual(sv1, sv2) {
+				return true
+			}
+			if realStringEqual(sv1, sv2) {
 				return true
 			}
 		case int:
