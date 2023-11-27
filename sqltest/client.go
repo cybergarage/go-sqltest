@@ -22,6 +22,8 @@ import (
 type Client interface {
 	SetHost(host string)
 	SetPort(port int)
+	SetUser(user string)
+	SetPassword(passwd string)
 	SetDatabase(db string)
 	Open() error
 	Close() error
