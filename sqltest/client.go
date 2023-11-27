@@ -19,7 +19,7 @@ import (
 )
 
 // Client represents a client interface for SQL databases.
-type Client interface {
+type Client interface { //nolint: interfacebloat
 	SetHost(host string)
 	SetPort(port int)
 	SetUser(user string)
