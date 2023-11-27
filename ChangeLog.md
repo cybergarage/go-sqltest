@@ -5,6 +5,11 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.3.1 (2023-11-XX)
+- Updated
+  - Client interface
+    - Add SetUser() and SetPassword() for authentication testing
+
 ## v1.3.0 (2023-10-20)
 - Updated
   - Extented RunEmbedSuites to support regular expressions
