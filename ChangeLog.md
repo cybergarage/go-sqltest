@@ -5,7 +5,7 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.3.1 (2023-11-XX)
+## v1.3.1 (2023-11-27)
 - Updated
   - Client interface
     - Add SetUser() and SetPassword() for authentication testing
