@@ -58,7 +58,7 @@ lint: format
 	golangci-lint run ${PKG_ROOT}/... ${BIN_ROOT}/...
 
 test: scenarios lint
-	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG} -coverprofile=${PKG_COVER}.out ${PKG}/.. ${TEST_PKG}/..
+	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG}/... -coverprofile=${PKG_COVER}.out ${PKG}/... ${TEST_PKG}/...
 
 build:
 	go build -v -gcflags=${GCFLAGS} ${BINS}
