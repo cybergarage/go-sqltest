@@ -60,6 +60,9 @@ lint: format
 test: scenarios lint
 	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG}/... -coverprofile=${PKG_COVER}.out ${PKG}/... ${TEST_PKG}/...
 
+test_only: lint
+	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG}/... -coverprofile=${PKG_COVER}.out ${PKG}/... ${TEST_PKG}/...
+
 build:
 	go build -v -gcflags=${GCFLAGS} ${BINS}
 
