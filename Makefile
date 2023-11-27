@@ -19,8 +19,8 @@ PKG_NAME=sqltest
 MODULE_ROOT=github.com/cybergarage/go-sqltest
 
 PKG_ROOT=${PKG_NAME}
-PKG=\
-	${MODULE_ROOT}/${PKG_ROOT}/...
+PKG_COVER=${PKG_NAME}-cover
+PKG=${MODULE_ROOT}/${PKG_ROOT}
 
 BIN_ROOT=cmd
 BIN_ID=${MODULE_ROOT}/${BIN_ROOT}
@@ -32,6 +32,7 @@ BINS=\
         ${BIN_CMD_ID}
 
 TEST_ROOT=${PKG_ROOT}/test
+TEST_PKG=${MODULE_ROOT}/${TEST_ROOT}
 TEST_HELPER=${TEST_ROOT}/embed
 TEST_MAKEFILE=${TEST_ROOT}/Makefile
 
@@ -57,7 +58,7 @@ lint: format
 	golangci-lint run ${PKG_ROOT}/... ${BIN_ROOT}/...
 
 test: scenarios lint
-	go test -v -cover -timeout 60s ${PKG}/...
+	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG} -coverprofile=${PKG_COVER}.out ${PKG}/.. ${TEST_PKG}/..
 
 build:
 	go build -v -gcflags=${GCFLAGS} ${BINS}
