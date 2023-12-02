@@ -5,6 +5,11 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.3.2 (2023-12-02)
+- Updated
+  - Client interface
+    - Add Ping() for testing
+
 ## v1.3.1 (2023-11-28)
 - Updated
   - Client interface
