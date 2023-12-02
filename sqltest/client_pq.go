@@ -81,6 +81,11 @@ func (client *PqClient) Close() error {
 	return nil
 }
 
+// Ping pings the opened database.
+func (client *PqClient) Ping() error {
+	return client.db.Ping()
+}
+
 // Query executes a query that returns rows.
 func (client *PqClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
 	if client.db == nil {

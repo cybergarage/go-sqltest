@@ -20,15 +20,28 @@ import (
 
 // Client represents a client interface for SQL databases.
 type Client interface { //nolint: interfacebloat
+	// SetHost sets a host name.
 	SetHost(host string)
+	// SetPort sets a port number.
 	SetPort(port int)
+	// SetUser sets a user name.
 	SetUser(user string)
+	// SetPassword sets a password.
 	SetPassword(passwd string)
+	// SetDatabase sets a database name.
 	SetDatabase(db string)
+	// Open opens a database specified by the internal configuration.
 	Open() error
+	// Close closes the opened database.
 	Close() error
-	CreateDatabase(name string) error
-	DropDatabase(name string) error
+	// Use uses a database.
 	Use(name string) error
+	// Ping pings the opened database.
+	Ping() error
+	// CreateDatabase creates a database.
+	CreateDatabase(name string) error
+	// DropDatabase drops a database.
+	DropDatabase(name string) error
+	// Query executes a query.
 	Query(query string, args ...interface{}) (*sql.Rows, error)
 }
