@@ -76,6 +76,17 @@ func (client *MySQLClient) Close() error {
 	return nil
 }
 
+// Ping pings the opened database.
+func (client *MySQLClient) Ping() error {
+	if client.db == nil {
+		err := client.Open()
+		if err != nil {
+			return err
+		}
+	}
+	return client.db.Ping()
+}
+
 // Query executes a query that returns rows.
 func (client *MySQLClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
 	if client.db == nil {

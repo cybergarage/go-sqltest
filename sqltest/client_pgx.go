@@ -72,6 +72,11 @@ func (client *PgxClient) Conn() *pgx.Conn {
 	return client.conn
 }
 
+// Ping pings the opened database.
+func (client *PgxClient) Ping() error {
+	return client.conn.Ping(context.Background())
+}
+
 // Query executes a query that returns rows.
 func (client *PgxClient) Query(query string, args ...interface{}) (pgx.Rows, error) {
 	if client.conn == nil {
