@@ -33,7 +33,10 @@ type ScenarioTest struct {
 
 // NewScenarioTest returns a scenario test instance.
 func NewScenarioTest() *ScenarioTest {
-	tst := &ScenarioTest{}
+	tst := &ScenarioTest{
+		Scenario: nil,
+		client:   nil,
+	}
 	return tst
 }
 

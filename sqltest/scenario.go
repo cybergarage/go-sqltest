@@ -32,7 +32,11 @@ type Scenario struct {
 
 // NewScenario return a scenario instance.
 func NewScenario() *Scenario {
-	file := &Scenario{}
+	file := &Scenario{
+		Filename:  "",
+		Queries:   []string{},
+		Expecteds: []*QueryResponse{},
+	}
 	return file
 }
 
