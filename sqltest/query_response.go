@@ -117,7 +117,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 
 		// NOTE: DeepEqual checks the types and values strictly.
 		// Therefore, support other types if needed.
-		//log.Debugf("deepEqual: %v (%T) != %v (%T)", iv1, iv1, iv2, iv2)
+		// log.Debugf("deepEqual: %v (%T) != %v (%T)", iv1, iv1, iv2, iv2)
 
 		uint8sToString := func(ui8s []uint8) string {
 			bytesLen := len(ui8s)
