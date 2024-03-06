@@ -45,7 +45,9 @@ type QueryResponse struct {
 
 // NewQueryResponse returns a response instance.
 func NewQueryResponse() *QueryResponse {
-	res := &QueryResponse{}
+	res := &QueryResponse{
+		Data: QueryResponseData{},
+	}
 	return res
 }
 

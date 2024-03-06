@@ -35,7 +35,8 @@ type Suite struct {
 // NewSuite returns a scenario test suite instance.
 func NewSuite() *Suite {
 	suite := &Suite{
-		tests: make([]*ScenarioTest, 0),
+		tests:  make([]*ScenarioTest, 0),
+		client: nil,
 	}
 	return suite
 }

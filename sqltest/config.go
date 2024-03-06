@@ -37,6 +37,7 @@ func NewDefaultConfig() *Config {
 	config := &Config{
 		Host:     defaultHost,
 		Port:     0,
+		Database: "",
 		User:     "",
 		Password: "",
 	}
