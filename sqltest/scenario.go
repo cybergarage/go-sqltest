@@ -123,14 +123,14 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 	scn.Expecteds = make([]*QueryResponse, 0)
 
 	appendQuery := func() {
-		if len(queryStr) <= 0 {
+		if len(queryStr) == 0 {
 			return
 		}
 		scn.Queries = append(scn.Queries, strings.TrimSpace(queryStr))
 		queryStr = ""
 	}
 	appendResult := func() error {
-		if len(resultStr) <= 0 {
+		if len(resultStr) == 0 {
 			return nil
 		}
 		result, err := NewQueryResponseWithString(strings.TrimSpace(resultStr))
