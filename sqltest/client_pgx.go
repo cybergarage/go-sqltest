@@ -47,26 +47,26 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 		net.JoinHostPort(client.Host, strconv.Itoa(client.Port)),
 		client.Database)
 
-	dsParams := []string{}
+	urlParams := []string{}
 	if client.TLSConfig != nil {
-		dsParams = append(dsParams, "sslmode=require")
+		urlParams = append(urlParams, "sslmode=require")
 		if 0 < len(client.TLSConfig.CertFile) {
-			dsParams = append(dsParams, "sslcert="+client.TLSConfig.CertFile)
+			urlParams = append(urlParams, "sslcert="+client.TLSConfig.CertFile)
 		}
 		if 0 < len(client.TLSConfig.KeyFile) {
-			dsParams = append(dsParams, "sslkey="+client.TLSConfig.KeyFile)
+			urlParams = append(urlParams, "sslkey="+client.TLSConfig.KeyFile)
 		}
 		if 0 < len(client.TLSConfig.RootCert) {
-			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCert)
+			urlParams = append(urlParams, "sslrootcert="+client.TLSConfig.RootCert)
 		}
 	} else {
-		dsParams = append(dsParams, "sslmode=disable")
+		urlParams = append(urlParams, "sslmode=disable")
 	}
 
-	if dsParamsCnt := len(dsParams); 0 < dsParamsCnt {
-		url += "?" + dsParams[0]
-		for n := 1; n < dsParamsCnt; n++ {
-			url += "&" + dsParams[n]
+	if urlParamCnt := len(urlParams); 0 < urlParamCnt {
+		url += "?" + urlParams[0]
+		for n := 1; n < urlParamCnt; n++ {
+			url += "&" + urlParams[n]
 		}
 	}
 
