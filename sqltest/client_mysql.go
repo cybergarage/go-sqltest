@@ -45,7 +45,7 @@ func NewMySQLClient() Client {
 // Open opens a database specified by the internal configuration.
 func (client *MySQLClient) Open() error {
 	if client.TLSConfig != nil {
-		mysql.RegisterTLSConfig("custom", client.TLSConfig)
+		mysql.RegisterTLSConfig("custom", client.TLSConfig.Config)
 	}
 
 	dsName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
