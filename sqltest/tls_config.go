@@ -14,13 +14,8 @@
 
 package sqltest
 
-import (
-	"crypto/tls"
-)
-
 // TLSConfig represents a TLS configuration.
 type TLSConfig struct {
-	*tls.Config
 	CertFile string
 	KeyFile  string
 	RootCert string
@@ -33,9 +28,6 @@ func NewTLSConfig() *TLSConfig {
 		CertFile: "",
 		KeyFile:  "",
 		RootCert: "",
-		Config: &tls.Config{
-			InsecureSkipVerify: true,
-		},
 	}
 }
 
