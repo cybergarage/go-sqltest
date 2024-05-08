@@ -15,8 +15,11 @@
 package sqltest
 
 import (
+	"crypto/tls"
+	"crypto/x509"
 	"database/sql"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/go-sql-driver/mysql"
@@ -43,18 +46,50 @@ func NewMySQLClient() Client {
 }
 
 // Open opens a database specified by the internal configuration.
+// nolint: gosec, exhaustruct
 func (client *MySQLClient) Open() error {
 	if client.TLSConfig != nil {
-		mysql.RegisterTLSConfig("custom", client.TLSConfig.Config)
+		rootCertPool := x509.NewCertPool()
+		pem, err := os.ReadFile(client.TLSConfig.RootCert)
+		if err != nil {
+			return err
+		}
+		if ok := rootCertPool.AppendCertsFromPEM(pem); !ok {
+			return err
+		}
+		clientCert := make([]tls.Certificate, 0, 1)
+		certs, err := tls.LoadX509KeyPair(client.TLSConfig.CertFile, client.TLSConfig.KeyFile)
+		if err != nil {
+			return err
+		}
+		clientCert = append(clientCert, certs)
+		mysql.RegisterTLSConfig("custom", &tls.Config{
+			RootCAs:            rootCertPool,
+			Certificates:       clientCert,
+			InsecureSkipVerify: true,
+		})
 	}
 
-	dsName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
 		client.User,
 		client.Password,
 		client.Host,
 		client.Port,
 		client.Database)
-	db, err := sql.Open("mysql", dsName)
+
+	dbURLParams := []string{}
+	if client.TLSConfig != nil {
+		dbURLParams = append(dbURLParams, "tls=custom")
+	}
+
+	if dbURLParamCnt := len(dbURLParams); 0 < dbURLParamCnt {
+		dbURL += "?" + dbURLParams[0]
+		for n := 1; n < dbURLParamCnt; n++ {
+			dbURL += "&" + dbURLParams[n]
+		}
+	}
+
+	db, err := sql.Open("mysql", dbURL)
 	if err != nil {
 		return err
 	}
