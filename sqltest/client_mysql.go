@@ -19,7 +19,7 @@ import (
 	"fmt"
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
+	"github.com/go-sql-driver/mysql"
 )
 
 const (
@@ -44,6 +44,10 @@ func NewMySQLClient() Client {
 
 // Open opens a database specified by the internal configuration.
 func (client *MySQLClient) Open() error {
+	if client.TLSConfig != nil {
+		mysql.RegisterTLSConfig("custom", client.TLSConfig)
+	}
+
 	dsName := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
 		client.User,
 		client.Password,
@@ -61,6 +65,7 @@ func (client *MySQLClient) Open() error {
 	db.SetMaxOpenConns(10)
 	db.SetMaxIdleConns(10)
 	client.db = db
+
 	return nil
 }
 
