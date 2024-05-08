@@ -18,10 +18,17 @@ import (
 	"crypto/tls"
 )
 
+// TLSConfig represents a TLS configuration.
+type TLSConfig struct {
+	*tls.Config
+}
+
 // NewTLSConfig returns a new TLS configuration.
 // nolint: gosec, exhaustruct
-func NewTLSConfig() *tls.Config {
-	return &tls.Config{
-		InsecureSkipVerify: true,
+func NewTLSConfig() *TLSConfig {
+	return &TLSConfig{
+		Config: &tls.Config{
+			InsecureSkipVerify: true,
+		},
 	}
 }

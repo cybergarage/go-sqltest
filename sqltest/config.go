@@ -15,7 +15,6 @@
 package sqltest
 
 import (
-	"crypto/tls"
 	"os/user"
 )
 
@@ -31,7 +30,7 @@ type Config struct {
 	Database  string
 	User      string
 	Password  string
-	TLSConfig *tls.Config
+	TLSConfig *TLSConfig
 }
 
 // NewDefaultConfig returns a default configuration instance.
@@ -79,6 +78,6 @@ func (config *Config) SetPassword(password string) {
 }
 
 // SetTLSConfig set a TLS configuration.
-func (config *Config) SetTLSConfig(tlsConfig *tls.Config) {
+func (config *Config) SetTLSConfig(tlsConfig *TLSConfig) {
 	config.TLSConfig = tlsConfig
 }
