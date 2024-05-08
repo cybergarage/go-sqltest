@@ -44,7 +44,6 @@ func (client *PqClient) Open() error {
 	dsParams := []string{
 		"host=" + client.Host,
 		"port=" + strconv.Itoa(client.Port),
-		"sslmode=disable",
 	}
 	if 0 < len(client.User) {
 		dsParams = append(dsParams, "user="+client.User)
@@ -66,6 +65,8 @@ func (client *PqClient) Open() error {
 		if 0 < len(client.TLSConfig.RootCert) {
 			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCert)
 		}
+	} else {
+		dsParams = append(dsParams, "sslmode=disable")
 	}
 
 	dsName := strings.Join(dsParams, " ")
