@@ -21,14 +21,35 @@ import (
 // TLSConfig represents a TLS configuration.
 type TLSConfig struct {
 	*tls.Config
+	CertFile string
+	KeyFile  string
+	RootCert string
 }
 
 // NewTLSConfig returns a new TLS configuration.
 // nolint: gosec, exhaustruct
 func NewTLSConfig() *TLSConfig {
 	return &TLSConfig{
+		CertFile: "",
+		KeyFile:  "",
+		RootCert: "",
 		Config: &tls.Config{
 			InsecureSkipVerify: true,
 		},
 	}
+}
+
+// SetSSLKeyFile sets a SSL key file.
+func (config *TLSConfig) SetSSLKeyFile(file string) {
+	config.KeyFile = file
+}
+
+// SetSSLCertFile sets a SSL certificate file.
+func (config *TLSConfig) SetSSLCertFile(file string) {
+	config.CertFile = file
+}
+
+// SetSSLRootCert sets a SSL root certificate.
+func (config *TLSConfig) SetSSLRootCert(file string) {
+	config.RootCert = file
 }
