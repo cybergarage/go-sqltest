@@ -55,6 +55,19 @@ func (client *PqClient) Open() error {
 	if 0 < len(client.Database) {
 		dsParams = append(dsParams, "dbname="+client.Database)
 	}
+	if client.TLSConfig != nil {
+		dsParams = append(dsParams, "sslmode=require")
+		if 0 < len(client.TLSConfig.CertFile) {
+			dsParams = append(dsParams, "sslcert="+client.TLSConfig.CertFile)
+		}
+		if 0 < len(client.TLSConfig.KeyFile) {
+			dsParams = append(dsParams, "sslkey="+client.TLSConfig.KeyFile)
+		}
+		if 0 < len(client.TLSConfig.RootCert) {
+			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCert)
+		}
+	}
+
 	dsName := strings.Join(dsParams, " ")
 	db, err := sql.Open("postgres", dsName)
 	if err != nil {

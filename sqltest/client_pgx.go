@@ -46,6 +46,30 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 		client.Password,
 		net.JoinHostPort(client.Host, strconv.Itoa(client.Port)),
 		client.Database)
+
+	dsParams := []string{}
+	if client.TLSConfig != nil {
+		dsParams = append(dsParams, "sslmode=require")
+		if 0 < len(client.TLSConfig.CertFile) {
+			dsParams = append(dsParams, "sslcert="+client.TLSConfig.CertFile)
+		}
+		if 0 < len(client.TLSConfig.KeyFile) {
+			dsParams = append(dsParams, "sslkey="+client.TLSConfig.KeyFile)
+		}
+		if 0 < len(client.TLSConfig.RootCert) {
+			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCert)
+		}
+	} else {
+		dsParams = append(dsParams, "sslmode=disable")
+	}
+
+	if dsParamsCnt := len(dsParams); 0 < dsParamsCnt {
+		url += "?" + dsParams[0]
+		for n := 1; n < dsParamsCnt; n++ {
+			url += "&" + dsParams[n]
+		}
+	}
+
 	conn, err := pgx.Connect(context.Background(), url)
 	if err != nil {
 		return err
