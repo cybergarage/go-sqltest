@@ -15,6 +15,7 @@
 package sqltest
 
 import (
+	"crypto/tls"
 	"os/user"
 )
 
@@ -25,21 +26,23 @@ const (
 
 // Config stores server configuration parammeters.
 type Config struct {
-	Host     string
-	Port     int
-	Database string
-	User     string
-	Password string
+	Host      string
+	Port      int
+	Database  string
+	User      string
+	Password  string
+	TLSConfig *tls.Config
 }
 
 // NewDefaultConfig returns a default configuration instance.
 func NewDefaultConfig() *Config {
 	config := &Config{
-		Host:     defaultHost,
-		Port:     0,
-		Database: "",
-		User:     "",
-		Password: "",
+		Host:      defaultHost,
+		Port:      0,
+		Database:  "",
+		User:      "",
+		Password:  "",
+		TLSConfig: nil,
 	}
 
 	user, err := user.Current()
@@ -73,4 +76,9 @@ func (config *Config) SetUser(user string) {
 // SetPassword sets a password.
 func (config *Config) SetPassword(password string) {
 	config.Password = password
+}
+
+// SetTLSConfig set a TLS configuration.
+func (config *Config) SetTLSConfig(tlsConfig *tls.Config) {
+	config.TLSConfig = tlsConfig
 }

@@ -15,6 +15,7 @@
 package sqltest
 
 import (
+	"crypto/tls"
 	"database/sql"
 )
 
@@ -30,6 +31,8 @@ type Client interface { //nolint: interfacebloat
 	SetPassword(passwd string)
 	// SetDatabase sets a database name.
 	SetDatabase(db string)
+	// SetTLSConfig sets a TLS configuration.
+	SetTLSConfig(tlsConfig *tls.Config)
 	// Open opens a database specified by the internal configuration.
 	Open() error
 	// Close closes the opened database.
