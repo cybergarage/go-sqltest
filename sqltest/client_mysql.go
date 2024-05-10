@@ -50,7 +50,7 @@ func NewMySQLClient() Client {
 func (client *MySQLClient) Open() error {
 	if client.TLSConfig != nil {
 		rootCertPool := x509.NewCertPool()
-		pem, err := os.ReadFile(client.TLSConfig.RootCert)
+		pem, err := os.ReadFile(client.TLSConfig.RootCertFile)
 		if err != nil {
 			return err
 		}
@@ -58,7 +58,7 @@ func (client *MySQLClient) Open() error {
 			return err
 		}
 		clientCert := make([]tls.Certificate, 0, 1)
-		certs, err := tls.LoadX509KeyPair(client.TLSConfig.CertFile, client.TLSConfig.KeyFile)
+		certs, err := tls.LoadX509KeyPair(client.TLSConfig.ClientCertFile, client.TLSConfig.ClientKeyFile)
 		if err != nil {
 			return err
 		}

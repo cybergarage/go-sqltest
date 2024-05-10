@@ -56,14 +56,14 @@ func (client *PqClient) Open() error {
 	}
 	if client.TLSConfig != nil {
 		dsParams = append(dsParams, "sslmode=require")
-		if 0 < len(client.TLSConfig.CertFile) {
-			dsParams = append(dsParams, "sslcert="+client.TLSConfig.CertFile)
+		if 0 < len(client.TLSConfig.ClientCertFile) {
+			dsParams = append(dsParams, "sslcert="+client.TLSConfig.ClientCertFile)
 		}
-		if 0 < len(client.TLSConfig.KeyFile) {
-			dsParams = append(dsParams, "sslkey="+client.TLSConfig.KeyFile)
+		if 0 < len(client.TLSConfig.ClientKeyFile) {
+			dsParams = append(dsParams, "sslkey="+client.TLSConfig.ClientKeyFile)
 		}
-		if 0 < len(client.TLSConfig.RootCert) {
-			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCert)
+		if 0 < len(client.TLSConfig.RootCertFile) {
+			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCertFile)
 		}
 	} else {
 		dsParams = append(dsParams, "sslmode=disable")

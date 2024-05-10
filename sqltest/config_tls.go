@@ -16,32 +16,32 @@ package sqltest
 
 // TLSConfig represents a TLS configuration.
 type TLSConfig struct {
-	CertFile string
-	KeyFile  string
-	RootCert string
+	ClientCertFile string
+	ClientKeyFile  string
+	RootCertFile   string
 }
 
 // NewTLSConfig returns a new TLS configuration.
 // nolint: gosec, exhaustruct
 func NewTLSConfig() *TLSConfig {
 	return &TLSConfig{
-		CertFile: "",
-		KeyFile:  "",
-		RootCert: "",
+		ClientCertFile: "",
+		ClientKeyFile:  "",
+		RootCertFile:   "",
 	}
 }
 
-// SetSSLKeyFile sets a SSL key file.
-func (config *TLSConfig) SetSSLKeyFile(file string) {
-	config.KeyFile = file
+// SetClientKeyFile sets a SSL client key file.
+func (config *TLSConfig) SetClientKeyFile(file string) {
+	config.ClientKeyFile = file
 }
 
-// SetSSLCertFile sets a SSL certificate file.
-func (config *TLSConfig) SetSSLCertFile(file string) {
-	config.CertFile = file
+// SetClientCertFile sets a SSL client certificate file.
+func (config *TLSConfig) SetClientCertFile(file string) {
+	config.ClientCertFile = file
 }
 
-// SetSSLRootCert sets a SSL root certificate.
-func (config *TLSConfig) SetSSLRootCert(file string) {
-	config.RootCert = file
+// SetRootCertFile sets a SSL root certificate file.
+func (config *TLSConfig) SetRootCertFile(file string) {
+	config.RootCertFile = file
 }
