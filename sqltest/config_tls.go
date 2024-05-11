@@ -31,6 +31,11 @@ func NewTLSConfig() *TLSConfig {
 	}
 }
 
+// TLSEnabled returns true if TLS is enabled.
+func (config *TLSConfig) TLSEnabled() bool {
+	return 0 < len(config.ClientCertFile) || 0 < len(config.ClientKeyFile) || 0 < len(config.RootCertFile)
+}
+
 // SetClientKeyFile sets a SSL client key file.
 func (config *TLSConfig) SetClientKeyFile(file string) {
 	config.ClientKeyFile = file

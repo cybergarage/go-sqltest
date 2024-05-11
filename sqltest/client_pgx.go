@@ -48,16 +48,16 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 		client.Database)
 
 	urlParams := []string{}
-	if client.TLSConfig != nil {
+	if client.TLSEnabled() {
 		urlParams = append(urlParams, "sslmode=require")
-		if 0 < len(client.TLSConfig.ClientCertFile) {
-			urlParams = append(urlParams, "sslcert="+client.TLSConfig.ClientCertFile)
+		if 0 < len(client.ClientCertFile) {
+			urlParams = append(urlParams, "sslcert="+client.ClientCertFile)
 		}
-		if 0 < len(client.TLSConfig.ClientKeyFile) {
-			urlParams = append(urlParams, "sslkey="+client.TLSConfig.ClientKeyFile)
+		if 0 < len(client.ClientKeyFile) {
+			urlParams = append(urlParams, "sslkey="+client.ClientKeyFile)
 		}
-		if 0 < len(client.TLSConfig.RootCertFile) {
-			urlParams = append(urlParams, "sslrootcert="+client.TLSConfig.RootCertFile)
+		if 0 < len(client.RootCertFile) {
+			urlParams = append(urlParams, "sslrootcert="+client.RootCertFile)
 		}
 	} else {
 		urlParams = append(urlParams, "sslmode=disable")
