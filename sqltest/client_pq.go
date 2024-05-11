@@ -54,16 +54,16 @@ func (client *PqClient) Open() error {
 	if 0 < len(client.Database) {
 		dsParams = append(dsParams, "dbname="+client.Database)
 	}
-	if client.TLSConfig != nil {
+	if client.TLSEnabled() {
 		dsParams = append(dsParams, "sslmode=require")
-		if 0 < len(client.TLSConfig.ClientCertFile) {
-			dsParams = append(dsParams, "sslcert="+client.TLSConfig.ClientCertFile)
+		if 0 < len(client.ClientCertFile) {
+			dsParams = append(dsParams, "sslcert="+client.ClientCertFile)
 		}
-		if 0 < len(client.TLSConfig.ClientKeyFile) {
-			dsParams = append(dsParams, "sslkey="+client.TLSConfig.ClientKeyFile)
+		if 0 < len(client.ClientKeyFile) {
+			dsParams = append(dsParams, "sslkey="+client.ClientKeyFile)
 		}
-		if 0 < len(client.TLSConfig.RootCertFile) {
-			dsParams = append(dsParams, "sslrootcert="+client.TLSConfig.RootCertFile)
+		if 0 < len(client.RootCertFile) {
+			dsParams = append(dsParams, "sslrootcert="+client.RootCertFile)
 		}
 	} else {
 		dsParams = append(dsParams, "sslmode=disable")

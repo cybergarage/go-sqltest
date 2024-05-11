@@ -46,11 +46,11 @@ func NewMySQLClient() Client {
 }
 
 // Open opens a database specified by the internal configuration.
-// nolint: gosec, exhaustruct
+// nolint: gosec, exhaustruct, staticcheck
 func (client *MySQLClient) Open() error {
-	if client.TLSConfig != nil {
+	if client.TLSEnabled() {
 		rootCertPool := x509.NewCertPool()
-		pem, err := os.ReadFile(client.TLSConfig.RootCertFile)
+		pem, err := os.ReadFile(client.RootCertFile)
 		if err != nil {
 			return err
 		}
@@ -58,7 +58,7 @@ func (client *MySQLClient) Open() error {
 			return err
 		}
 		clientCert := make([]tls.Certificate, 0, 1)
-		certs, err := tls.LoadX509KeyPair(client.TLSConfig.ClientCertFile, client.TLSConfig.ClientKeyFile)
+		certs, err := tls.LoadX509KeyPair(client.ClientCertFile, client.ClientKeyFile)
 		if err != nil {
 			return err
 		}
@@ -78,7 +78,7 @@ func (client *MySQLClient) Open() error {
 		client.Database)
 
 	dbURLParams := []string{}
-	if client.TLSConfig != nil {
+	if client != nil {
 		dbURLParams = append(dbURLParams, "tls=custom")
 	}
 

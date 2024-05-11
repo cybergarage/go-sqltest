@@ -18,8 +18,8 @@ import (
 	"database/sql"
 )
 
-// Client represents a client interface for SQL databases.
-type Client interface { //nolint: interfacebloat
+// ClientConfig represents a client configuration interface.
+type ClientConfig interface {
 	// SetHost sets a host name.
 	SetHost(host string)
 	// SetPort sets a port number.
@@ -30,8 +30,17 @@ type Client interface { //nolint: interfacebloat
 	SetPassword(passwd string)
 	// SetDatabase sets a database name.
 	SetDatabase(db string)
-	// SetTLSConfig sets a TLS configuration.
-	SetTLSConfig(tlsConfig *TLSConfig)
+	// SetClientKeyFile sets a SSL client key file.
+	SetClientKeyFile(file string)
+	// SetClientCertFile sets a SSL client certificate file.
+	SetClientCertFile(file string)
+	// SetRootCertFile sets a SSL root certificate file.
+	SetRootCertFile(file string)
+}
+
+// Client represents a client interface for SQL databases.
+type Client interface {
+	ClientConfig
 	// Open opens a database specified by the internal configuration.
 	Open() error
 	// Close closes the opened database.

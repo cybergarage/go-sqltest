@@ -25,12 +25,12 @@ const (
 
 // Config stores server configuration parammeters.
 type Config struct {
-	Host      string
-	Port      int
-	Database  string
-	User      string
-	Password  string
-	TLSConfig *TLSConfig
+	Host     string
+	Port     int
+	Database string
+	User     string
+	Password string
+	*TLSConfig
 }
 
 // NewDefaultConfig returns a default configuration instance.
@@ -41,7 +41,7 @@ func NewDefaultConfig() *Config {
 		Database:  "",
 		User:      "",
 		Password:  "",
-		TLSConfig: nil,
+		TLSConfig: NewTLSConfig(),
 	}
 
 	user, err := user.Current()
@@ -75,9 +75,4 @@ func (config *Config) SetUser(user string) {
 // SetPassword sets a password.
 func (config *Config) SetPassword(password string) {
 	config.Password = password
-}
-
-// SetTLSConfig set a TLS configuration.
-func (config *Config) SetTLSConfig(tlsConfig *TLSConfig) {
-	config.TLSConfig = tlsConfig
 }
