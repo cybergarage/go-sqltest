@@ -1,9 +1,14 @@
 # Changelog
 
-## v1.4.0 (2023-xx-xx)
+## v1.4.x (2023-xx-xx)
 - Added new scenario tests, such as pgbench
 - Added new scenario tests
   - Added ALTER queries
+
+## v1.4.0 (2024-95-12)
+- Updated 
+  - Client interface
+    - Add TLS settings
 
 ## v1.3.2 (2023-12-02)
 - Updated
