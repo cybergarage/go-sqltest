@@ -30,6 +30,12 @@ type ClientConfig interface {
 	SetPassword(passwd string)
 	// SetDatabase sets a database name.
 	SetDatabase(db string)
+}
+
+// ClientTLSConfig represents a client TLS configuration interface.
+type ClientTLSConfig interface {
+	// TLSEnabled returns true if TLS is enabled.
+	TLSEnabled() bool
 	// SetClientKeyFile sets a SSL client key file.
 	SetClientKeyFile(file string)
 	// SetClientCertFile sets a SSL client certificate file.
@@ -40,7 +46,10 @@ type ClientConfig interface {
 
 // Client represents a client interface for SQL databases.
 type Client interface {
+	// ClientConfig represents a client configuration interface.
 	ClientConfig
+	// ClientTLSConfig represents a client TLS configuration interface.
+	ClientTLSConfig
 	// Open opens a database specified by the internal configuration.
 	Open() error
 	// Close closes the opened database.
