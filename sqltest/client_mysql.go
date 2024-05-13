@@ -78,7 +78,7 @@ func (client *MySQLClient) Open() error {
 		client.Database)
 
 	dbURLParams := []string{}
-	if client != nil {
+	if client.TLSEnabled() {
 		dbURLParams = append(dbURLParams, "tls=custom")
 	}
 
