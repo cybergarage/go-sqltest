@@ -5,20 +5,25 @@
 - Added new scenario tests
   - Added ALTER queries
 
+## v1.4.1 (2024-95-13)
+- Fixed 
+  - MySQL client
+    - Disabled inappropriate TLS parameters
+    - 
 ## v1.4.0 (2024-95-12)
 - Updated 
   - Client interface
-    - Add TLS settings
+    - Added TLS settings
 
 ## v1.3.2 (2023-12-02)
 - Updated
   - Client interface
-    - Add Ping() for testing
+    - Added Ping() for testing
 
 ## v1.3.1 (2023-11-28)
 - Updated
   - Client interface
-    - Add SetUser() and SetPassword() for authentication testing
+    - Added SetUser() and SetPassword() for authentication testing
 
 ## v1.3.0 (2023-10-20)
 - Updated
