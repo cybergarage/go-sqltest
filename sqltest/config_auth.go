@@ -14,23 +14,29 @@
 
 package sqltest
 
+// AuthMethod represents an authentication method.
+type AuthMethod int
+
 const (
-	Plain       = "plain"
-	MD5         = "md5"
-	SCRAMSHA256 = "scram-sha-256"
+	AuthdNone AuthMethod = iota
+	AuthPlain
+	AuthMD5
+	AuthSCRAMSHA256
 )
 
+// AuthConfig stores authentication configuration parameters.
 type AuthConfig struct {
 	User     string
 	Password string
-	Auth     string
+	Auth     AuthMethod
 }
 
+// NewAuthConfig returns a default authentication configuration instance.
 func NewAuthConfig() *AuthConfig {
 	config := &AuthConfig{
 		User:     "",
 		Password: "",
-		Auth:     "",
+		Auth:     AuthdNone,
 	}
 
 	return config
@@ -47,6 +53,6 @@ func (config *AuthConfig) SetPassword(password string) {
 }
 
 // SetAuth sets an authentication method.
-func (config *AuthConfig) SetAuth(auth string) {
+func (config *AuthConfig) SetAuth(auth AuthMethod) {
 	config.Auth = auth
 }
