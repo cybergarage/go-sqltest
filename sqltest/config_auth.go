@@ -14,6 +14,12 @@
 
 package sqltest
 
+const (
+	Plain       = "plain"
+	MD5         = "md5"
+	SCRAMSHA256 = "scram-sha-256"
+)
+
 type AuthConfig struct {
 	User     string
 	Password string
@@ -38,4 +44,9 @@ func (config *AuthConfig) SetUser(user string) {
 // SetPassword sets a password.
 func (config *AuthConfig) SetPassword(password string) {
 	config.Password = password
+}
+
+// SetAuth sets an authentication method.
+func (config *AuthConfig) SetAuth(auth string) {
+	config.Auth = auth
 }
