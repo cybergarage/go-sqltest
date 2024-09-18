@@ -7,7 +7,7 @@
 
 ## v1.4.2 (2024-09-XX)
 - Added auth method configurations
-- Update PqClient::Open() to support auth method parameters
+- Update PqClient and PgxClient to support auth method parameters
 
 ## v1.4.1 (2024-05-13)
 - Fixed 
