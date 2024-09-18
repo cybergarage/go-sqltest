@@ -28,20 +28,18 @@ type Config struct {
 	Host     string
 	Port     int
 	Database string
-	User     string
-	Password string
+	*AuthConfig
 	*TLSConfig
 }
 
 // NewDefaultConfig returns a default configuration instance.
 func NewDefaultConfig() *Config {
 	config := &Config{
-		Host:      defaultHost,
-		Port:      0,
-		Database:  "",
-		User:      "",
-		Password:  "",
-		TLSConfig: NewTLSConfig(),
+		Host:       defaultHost,
+		Port:       0,
+		Database:   "",
+		AuthConfig: NewAuthConfig(),
+		TLSConfig:  NewTLSConfig(),
 	}
 
 	user, err := user.Current()
@@ -65,14 +63,4 @@ func (config *Config) SetPort(port int) {
 // SetDatabase sets a host database.
 func (config *Config) SetDatabase(db string) {
 	config.Database = db
-}
-
-// SetUser sets a user name.
-func (config *Config) SetUser(user string) {
-	config.User = user
-}
-
-// SetPassword sets a password.
-func (config *Config) SetPassword(password string) {
-	config.Password = password
 }
