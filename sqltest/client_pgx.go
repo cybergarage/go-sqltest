@@ -48,6 +48,14 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 		client.Database)
 
 	urlParams := []string{}
+	switch client.Auth {
+	case AuthPlain:
+		urlParams = append(urlParams, "require_auth=password")
+	case AuthMD5:
+		urlParams = append(urlParams, "require_auth=md5")
+	case AuthSCRAMSHA256:
+		urlParams = append(urlParams, "require_auth=scram-sha-256")
+	}
 	if client.TLSEnabled() {
 		urlParams = append(urlParams, "sslmode=require")
 		if 0 < len(client.ClientCertFile) {
