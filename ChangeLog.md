@@ -5,12 +5,15 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.4.1 (2024-95-13)
+## v1.4.2 (2024-09-XX)
+- Added auth method configurations
+
+## v1.4.1 (2024-05-13)
 - Fixed 
   - MySQL client
     - Disabled inappropriate TLS parameters
-    - 
-## v1.4.0 (2024-95-12)
+
+## v1.4.0 (2024-05-12)
 - Updated 
   - Client interface
     - Added TLS settings
