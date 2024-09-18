@@ -54,6 +54,14 @@ func (client *PqClient) Open() error {
 	if 0 < len(client.Database) {
 		dsParams = append(dsParams, "dbname="+client.Database)
 	}
+	switch client.Auth {
+	case AuthPlain:
+		dsParams = append(dsParams, "require_auth=password")
+	case AuthMD5:
+		dsParams = append(dsParams, "require_auth=md5")
+	case AuthSCRAMSHA256:
+		dsParams = append(dsParams, "require_auth=scram-sha-256")
+	}
 	if client.TLSEnabled() {
 		dsParams = append(dsParams, "sslmode=require")
 		if 0 < len(client.ClientCertFile) {
