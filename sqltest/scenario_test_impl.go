@@ -143,7 +143,7 @@ func (tst *ScenarioTest) Run() error {
 			case "TEXT", "NVARCHAR", "VARBINARY", "BINARY":
 				var v string
 				values[n] = &v
-			case "TIMESTAMP":
+			case "DATETIME", "TIMESTAMP":
 				var v time.Time
 				values[n] = &v
 			default:
