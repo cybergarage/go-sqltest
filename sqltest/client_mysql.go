@@ -77,7 +77,9 @@ func (client *MySQLClient) Open() error {
 		client.Port,
 		client.Database)
 
-	dbURLParams := []string{}
+	dbURLParams := []string{
+		"parseTime=true",
+	}
 	if client.TLSEnabled() {
 		dbURLParams = append(dbURLParams, "tls=custom")
 	}
