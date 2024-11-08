@@ -48,7 +48,11 @@ ${TEST_MAKEFILE} : ${TEST_MAKEFILE}.pl $(wildcard ${TEST_ROOT}/data/*.pict)
 ${TEST_HELPER}.go : ${TEST_HELPER}.pl ${TEST_MAKEFILE} $(wildcard ${TEST_ROOT}/*.qst)
 	perl $< > $@
 
-format:
+version:
+	@pushd ${PKG_ROOT} && ./version.gen > version.go && popd
+	-git commit ${PKG_ROOT}/version.go -m "Update version"
+
+format: version
 	gofmt -s -w ${PKG_ROOT} ${BIN_ROOT} ${TEST_ROOT}
 
 vet: format
