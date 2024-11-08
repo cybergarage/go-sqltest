@@ -15,5 +15,6 @@
 package sqltest
 
 const (
-	ProgramName = "go-sqltest"
+	ProgramName        = "go-sqltest"
+	TestRunDescription = ProgramName + "(" + Version + ")"
 )
