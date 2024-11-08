@@ -3,7 +3,7 @@
 ## v1.4.x (2023-xx-xx)
 - Added new scenario tests, such as pgbench
 - Added new scenario tests
-  - Added ALTER queries
+  - Added ALTER query tests
 
 ## v1.4.2 (2024-11-08)
 - Added
