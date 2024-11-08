@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sqltest
+package mysql
 
 const (
-	Version = "v1.0.8"
+	Version = "v1.4.2"
 )
