@@ -85,11 +85,13 @@ func RunEmbedSuites(t *testing.T, client Client, testNames ...string) error {
 		}
 	}
 
-	for _, test := range tests {
-		t.Run(test.Name(), func(t *testing.T) {
-			RunScenarioTest(t, client, test)
-		})
-	}
+	t.Run(TestRunDescription, func(t *testing.T) {
+		for _, test := range tests {
+			t.Run(test.Name(), func(t *testing.T) {
+				RunScenarioTest(t, client, test)
+			})
+		}
+	})
 
 	return nil
 }
