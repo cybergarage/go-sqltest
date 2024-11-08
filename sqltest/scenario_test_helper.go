@@ -25,7 +25,6 @@ func RunScenarioTestFiles(t *testing.T, testFilenames []string) {
 	t.Helper()
 
 	t.Run(TestRunDescription, func(t *testing.T) {
-
 		for _, testFilename := range testFilenames {
 			t.Run(testFilename, func(t *testing.T) {
 				ct := NewScenarioTest()
