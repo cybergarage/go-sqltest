@@ -5,9 +5,12 @@
 - Added new scenario tests
   - Added ALTER queries
 
-## v1.4.2 (2024-09-XX)
-- Added auth method configurations
-- Update PqClient and PgxClient to support auth method parameters
+## v1.4.2 (2024-11-08)
+- Added
+  -  auth method configurations
+- Updated
+  -  PqClient and PgxClient to support auth method parameters
+  - MySQLClient::Open() to set parseTime=true
 
 ## v1.4.1 (2024-05-13)
 - Fixed 
