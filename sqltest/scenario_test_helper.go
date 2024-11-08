@@ -24,52 +24,55 @@ import (
 func RunScenarioTestFiles(t *testing.T, testFilenames []string) {
 	t.Helper()
 
-	for _, testFilename := range testFilenames {
-		t.Run(testFilename, func(t *testing.T) {
-			ct := NewScenarioTest()
-			err := ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
-			if err != nil {
-				t.Error(err)
-				return
-			}
+	t.Run(TestRunDescription, func(t *testing.T) {
 
-			testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+		for _, testFilename := range testFilenames {
+			t.Run(testFilename, func(t *testing.T) {
+				ct := NewScenarioTest()
+				err := ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
+				if err != nil {
+					t.Error(err)
+					return
+				}
 
-			client := NewMySQLClient()
-			client.SetDatabase(testDBName)
+				testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
 
-			err = client.Open()
-			if err != nil {
-				t.Error(err)
-				return
-			}
+				client := NewMySQLClient()
+				client.SetDatabase(testDBName)
 
-			defer func() {
-				err := client.Close()
+				err = client.Open()
+				if err != nil {
+					t.Error(err)
+					return
+				}
+
+				defer func() {
+					err := client.Close()
+					if err != nil {
+						t.Error(err)
+					}
+				}()
+
+				err = client.CreateDatabase(testDBName)
+				if err != nil {
+					t.Error(err)
+					return
+				}
+
+				defer func() {
+					err := client.DropDatabase(testDBName)
+					if err != nil {
+						t.Error(err)
+					}
+				}()
+
+				ct.SetClient(client)
+
+				err = ct.Run()
 				if err != nil {
 					t.Error(err)
 				}
-			}()
-
-			err = client.CreateDatabase(testDBName)
-			if err != nil {
-				t.Error(err)
-				return
-			}
-
-			defer func() {
-				err := client.DropDatabase(testDBName)
-				if err != nil {
-					t.Error(err)
-				}
-			}()
-
-			ct.SetClient(client)
-
-			err = ct.Run()
-			if err != nil {
-				t.Error(err)
-			}
-		})
-	}
+			})
+		}
+	})
 }
