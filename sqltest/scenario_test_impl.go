@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/cybergarage/go-logger/log"
@@ -133,21 +134,25 @@ func (tst *ScenarioTest) Run() error {
 		// NOTE: Run() supports only the following standard column types yet.
 		values := make([]interface{}, columnCnt)
 		for n, columnType := range columnTypes {
-			switch columnType.DatabaseTypeName() {
-			case "INTEGER", "INT", "SMALLINT", "TINYINT", "MEDIUMINT", "BIGINT":
+			s := strings.ToUpper(columnType.DatabaseTypeName())
+			switch {
+			case (0 <= strings.Index(s, "INT")):
 				var v int
 				values[n] = &v
-			case "FLOAT", "DOUBLE":
+			case strings.HasPrefix(s, "FLOAT") || strings.HasPrefix(s, "DOUBLE"):
 				var v float64
 				values[n] = &v
-			case "TEXT", "NVARCHAR", "VARBINARY", "BINARY":
+			case strings.HasPrefix(s, "TEXT") || (0 <= strings.Index(s, "VARCHAR")):
 				var v string
 				values[n] = &v
-			case "DATETIME", "TIMESTAMP":
+			case strings.HasPrefix(s, "BLOB") || strings.HasPrefix(s, "BINARY"):
+				var v []byte
+				values[n] = &v
+			case strings.HasPrefix(s, "TIMESTAMP") || strings.HasPrefix(s, "DATETIME"):
 				var v time.Time
 				values[n] = &v
 			default:
-				var v interface{}
+				var v any
 				values[n] = &v
 			}
 		}
