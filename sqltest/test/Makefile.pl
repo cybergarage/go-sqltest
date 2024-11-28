@@ -113,8 +113,8 @@ for (my $n = 0; $n < @test_targets; $n++) {
     print "\n";
     for (my $t = 0; $t < @test_data_types; $t++) {
         my $data_type = lc($test_data_types[$t]);
-        my $test_scenario = "${test_prefix}_${data_type}.qst";
-        print "${test_scenario}: ${test_prefix}.pl\n";
+        my $test_scenario = "${test_prefix}_${data_type}.qst ";
+        print "${test_scenario}: ${test_prefix}.pl ${data_type_file}\n";
         print "\tperl ${test_prefix}.pl ${data_type} > ${test_scenario}\n";
         system("touch ${script_dir}/${test_scenario}");
         system("git add ${script_dir}/${test_scenario}");
