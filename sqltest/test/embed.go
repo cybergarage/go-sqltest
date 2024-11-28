@@ -19,35 +19,35 @@ import (
 )
 
 // EmbedTests is a map of test names and test queries.
-var EmbedTests = map[string][]byte {
-	"UpdateArithInt": updateArithInt,
-	"SmplTxnText": smplTxnText,
-	"SmplCrudDouble": smplCrudDouble,
-	"FuncAggrInt": funcAggrInt,
-	"SelectOrderFloat": selectOrderFloat,
-	"SmplTxnDouble": smplTxnDouble,
-	"FuncAggrFloat": funcAggrFloat,
-	"SelectLimitFloat": selectLimitFloat,
-	"FuncMathInt": funcMathInt,
-	"SmplAlterAdd": smplAlterAdd,
-	"SmplCrudFloat": smplCrudFloat,
+var EmbedTests = map[string][]byte{
+	"UpdateArithInt":    updateArithInt,
+	"SmplTxnText":       smplTxnText,
+	"SmplCrudDouble":    smplCrudDouble,
+	"FuncAggrInt":       funcAggrInt,
+	"SelectOrderFloat":  selectOrderFloat,
+	"SmplTxnDouble":     smplTxnDouble,
+	"FuncAggrFloat":     funcAggrFloat,
+	"SelectLimitFloat":  selectLimitFloat,
+	"FuncMathInt":       funcMathInt,
+	"SmplAlterAdd":      smplAlterAdd,
+	"SmplCrudFloat":     smplCrudFloat,
 	"UpdateArithDouble": updateArithDouble,
-	"SmplTxnFloat": smplTxnFloat,
-	"SelectOrderInt": selectOrderInt,
-	"SmplTxnInt": smplTxnInt,
-	"YcsbWorkload": ycsbWorkload,
-	"SmplCrudDatetime": smplCrudDatetime,
-	"SelectLimitInt": selectLimitInt,
+	"SmplTxnFloat":      smplTxnFloat,
+	"SelectOrderInt":    selectOrderInt,
+	"SmplTxnInt":        smplTxnInt,
+	"YcsbWorkload":      ycsbWorkload,
+	"SmplCrudDatetime":  smplCrudDatetime,
+	"SelectLimitInt":    selectLimitInt,
 	"SelectLimitDouble": selectLimitDouble,
-	"SmplCrudInt": smplCrudInt,
-	"FuncMathDouble": funcMathDouble,
-	"FuncMathFloat": funcMathFloat,
+	"SmplCrudInt":       smplCrudInt,
+	"FuncMathDouble":    funcMathDouble,
+	"FuncMathFloat":     funcMathFloat,
 	"SelectOrderDouble": selectOrderDouble,
-	"UpdateArithFloat": updateArithFloat,
-	"SmplCrudText": smplCrudText,
-	"Pgbench": pgbench,
-	"FuncAggrDouble": funcAggrDouble,
-	"SmplTxnDatetime": smplTxnDatetime,
+	"UpdateArithFloat":  updateArithFloat,
+	"SmplCrudText":      smplCrudText,
+	"Pgbench":           pgbench,
+	"FuncAggrDouble":    funcAggrDouble,
+	"SmplTxnDatetime":   smplTxnDatetime,
 }
 
 //go:embed update_arith_int.qst
@@ -133,4 +133,3 @@ var funcAggrDouble []byte
 
 //go:embed smpl_txn_datetime.qst
 var smplTxnDatetime []byte
-
