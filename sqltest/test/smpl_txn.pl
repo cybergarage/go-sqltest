@@ -192,7 +192,7 @@ for my $row_no (0 .. $#data_rows) {
     print "}\n";  
 
     print "UPDATE ${tbl_name} SET ";  
-    my $n_colums = 0;
+    $n_colums = 0;
     for (my $n = 0; $n < scalar(@update_row); $n++) {
       my $type_name = lc($data_type_row[$n]);
       my $column_name = "c" . $type_name;
@@ -205,8 +205,8 @@ for my $row_no (0 .. $#data_rows) {
       print "$column_name = $update_row[$n]";
       $n_colums++;
     }
-    my $type_name = lc($data_type_row[$pr_key_idx]);
-    my $column_name = "c" . $type_name;
+    $type_name = lc($data_type_row[$pr_key_idx]);
+    $column_name = "c" . $type_name;
     print " WHERE $column_name = $row[$pr_key_idx];\n";    
     print "{\n";  
     print "}\n";  
