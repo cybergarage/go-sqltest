@@ -26,7 +26,7 @@ CRUD_TESTS = \
 	smpl_crud_int.qst \
 	smpl_crud_float.qst \
 	smpl_crud_double.qst \
-	smpl_crud_timestamp.qst
+	smpl_crud_datetime.qst
 
 smpl_crud_text.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl text > smpl_crud_text.qst
@@ -36,15 +36,15 @@ smpl_crud_float.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl float > smpl_crud_float.qst
 smpl_crud_double.qst: smpl_crud.pl data/data_type.pict
 	perl smpl_crud.pl double > smpl_crud_double.qst
-smpl_crud_timestamp.qst: smpl_crud.pl data/data_type.pict
-	perl smpl_crud.pl timestamp > smpl_crud_timestamp.qst
+smpl_crud_datetime.qst: smpl_crud.pl data/data_type.pict
+	perl smpl_crud.pl datetime > smpl_crud_datetime.qst
 
 TXN_TESTS = \
 	smpl_txn_text.qst \
 	smpl_txn_int.qst \
 	smpl_txn_float.qst \
 	smpl_txn_double.qst \
-	smpl_txn_timestamp.qst
+	smpl_txn_datetime.qst
 
 smpl_txn_text.qst: smpl_txn.pl data/data_type.pict
 	perl smpl_txn.pl text > smpl_txn_text.qst
@@ -54,68 +54,68 @@ smpl_txn_float.qst: smpl_txn.pl data/data_type.pict
 	perl smpl_txn.pl float > smpl_txn_float.qst
 smpl_txn_double.qst: smpl_txn.pl data/data_type.pict
 	perl smpl_txn.pl double > smpl_txn_double.qst
-smpl_txn_timestamp.qst: smpl_txn.pl data/data_type.pict
-	perl smpl_txn.pl timestamp > smpl_txn_timestamp.qst
+smpl_txn_datetime.qst: smpl_txn.pl data/data_type.pict
+	perl smpl_txn.pl datetime > smpl_txn_datetime.qst
 
 ORDER_TESTS = \
 	select_order_int.qst \
 	select_order_float.qst \
 	select_order_double.qst
 
-select_order_int.qst: select_order.pl
-	perl select_order.pl int > select_order_int.qst
-select_order_float.qst: select_order.pl
-	perl select_order.pl float > select_order_float.qst
-select_order_double.qst: select_order.pl
-	perl select_order.pl double > select_order_double.qst
+select_order_int.qst : select_order.pl data/data_type.pict
+	perl select_order.pl int > select_order_int.qst 
+select_order_float.qst : select_order.pl data/data_type.pict
+	perl select_order.pl float > select_order_float.qst 
+select_order_double.qst : select_order.pl data/data_type.pict
+	perl select_order.pl double > select_order_double.qst 
 
 LIMIT_TESTS = \
 	select_limit_int.qst \
 	select_limit_float.qst \
 	select_limit_double.qst
 
-select_limit_int.qst: select_limit.pl
-	perl select_limit.pl int > select_limit_int.qst
-select_limit_float.qst: select_limit.pl
-	perl select_limit.pl float > select_limit_float.qst
-select_limit_double.qst: select_limit.pl
-	perl select_limit.pl double > select_limit_double.qst
+select_limit_int.qst : select_limit.pl data/data_type.pict
+	perl select_limit.pl int > select_limit_int.qst 
+select_limit_float.qst : select_limit.pl data/data_type.pict
+	perl select_limit.pl float > select_limit_float.qst 
+select_limit_double.qst : select_limit.pl data/data_type.pict
+	perl select_limit.pl double > select_limit_double.qst 
 
 AGGR_TESTS = \
 	func_aggr_int.qst \
 	func_aggr_float.qst \
 	func_aggr_double.qst
 
-func_aggr_int.qst: func_aggr.pl
-	perl func_aggr.pl int > func_aggr_int.qst
-func_aggr_float.qst: func_aggr.pl
-	perl func_aggr.pl float > func_aggr_float.qst
-func_aggr_double.qst: func_aggr.pl
-	perl func_aggr.pl double > func_aggr_double.qst
+func_aggr_int.qst : func_aggr.pl data/data_type.pict
+	perl func_aggr.pl int > func_aggr_int.qst 
+func_aggr_float.qst : func_aggr.pl data/data_type.pict
+	perl func_aggr.pl float > func_aggr_float.qst 
+func_aggr_double.qst : func_aggr.pl data/data_type.pict
+	perl func_aggr.pl double > func_aggr_double.qst 
 
 MATH_TESTS = \
 	func_math_int.qst \
 	func_math_float.qst \
 	func_math_double.qst
 
-func_math_int.qst: func_math.pl
-	perl func_math.pl int > func_math_int.qst
-func_math_float.qst: func_math.pl
-	perl func_math.pl float > func_math_float.qst
-func_math_double.qst: func_math.pl
-	perl func_math.pl double > func_math_double.qst
+func_math_int.qst : func_math.pl data/data_type.pict
+	perl func_math.pl int > func_math_int.qst 
+func_math_float.qst : func_math.pl data/data_type.pict
+	perl func_math.pl float > func_math_float.qst 
+func_math_double.qst : func_math.pl data/data_type.pict
+	perl func_math.pl double > func_math_double.qst 
 
 ARITH_TESTS = \
 	update_arith_int.qst \
 	update_arith_float.qst \
 	update_arith_double.qst
 
-update_arith_int.qst: update_arith.pl
-	perl update_arith.pl int > update_arith_int.qst
-update_arith_float.qst: update_arith.pl
-	perl update_arith.pl float > update_arith_float.qst
-update_arith_double.qst: update_arith.pl
-	perl update_arith.pl double > update_arith_double.qst
+update_arith_int.qst : update_arith.pl data/data_type.pict
+	perl update_arith.pl int > update_arith_int.qst 
+update_arith_float.qst : update_arith.pl data/data_type.pict
+	perl update_arith.pl float > update_arith_float.qst 
+update_arith_double.qst : update_arith.pl data/data_type.pict
+	perl update_arith.pl double > update_arith_double.qst 
 
 YCSB_TESTS = \
 	ycsb_workload.qst
