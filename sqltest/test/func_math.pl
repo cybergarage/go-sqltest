@@ -66,7 +66,7 @@ for (my $n = 0; $n < @data_values; $n++){
   for (my $n = 0; $n < @sels; $n++){
     my $sel = $sels[$n];
     my $exp = $expecteds[$n];
-    print "SELECT $sel FROM ${tbl_name};\n";  
+    print "SELECT $sel FROM ${tbl_name} WHERE $column_name = $data_value;\n";  
     print "{\n"; 
     print "\t\"rows\" :\n";  
     print "\t[\n";
