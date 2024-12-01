@@ -57,6 +57,24 @@ smpl_txn_double.qst: smpl_txn.pl data/data_type.pict
 smpl_txn_datetime.qst: smpl_txn.pl data/data_type.pict
 	perl smpl_txn.pl datetime > smpl_txn_datetime.qst
 
+INDEX_TESTS = \
+	smpl_index_text.qst \
+	smpl_index_int.qst \
+	smpl_index_float.qst \
+	smpl_index_double.qst \
+	smpl_index_datetime.qst
+
+smpl_index_text.qst: smpl_index.pl data/data_type.pict
+	perl smpl_index.pl text > smpl_index_text.qst
+smpl_index_int.qst: smpl_index.pl data/data_type.pict
+	perl smpl_index.pl int > smpl_index_int.qst
+smpl_index_float.qst: smpl_index.pl data/data_type.pict
+	perl smpl_index.pl float > smpl_index_float.qst
+smpl_index_double.qst: smpl_index.pl data/data_type.pict
+	perl smpl_index.pl double > smpl_index_double.qst
+smpl_index_datetime.qst: smpl_index.pl data/data_type.pict
+	perl smpl_index.pl datetime > smpl_index_datetime.qst
+
 ORDER_TESTS = \
 	select_order_int.qst \
 	select_order_float.qst \

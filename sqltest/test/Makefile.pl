@@ -50,7 +50,7 @@ while(<IN>){
 }
 close(IN);
 
-my @pict_targets = ("CRUD_TESTS", "TXN_TESTS");
+my @pict_targets = ("CRUD_TESTS", "TXN_TESTS", "INDEX_TESTS");
 my @pict_prefixes = ("smpl_crud", "smpl_txn", "smpl_index");
 
 for (my $n = 0; $n < @pict_targets; $n++) {

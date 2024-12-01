@@ -32,6 +32,7 @@ var EmbedTests = map[string][]byte{
 	"SmplAlterAdd":      smplAlterAdd,
 	"SmplCrudFloat":     smplCrudFloat,
 	"UpdateArithDouble": updateArithDouble,
+	"SmplIndexText":     smplIndexText,
 	"SmplTxnFloat":      smplTxnFloat,
 	"SelectOrderInt":    selectOrderInt,
 	"SmplTxnInt":        smplTxnInt,
@@ -39,8 +40,12 @@ var EmbedTests = map[string][]byte{
 	"SmplCrudDatetime":  smplCrudDatetime,
 	"SelectLimitInt":    selectLimitInt,
 	"SelectLimitDouble": selectLimitDouble,
+	"SmplIndexInt":      smplIndexInt,
 	"SmplCrudInt":       smplCrudInt,
+	"SmplIndexFloat":    smplIndexFloat,
 	"FuncMathDouble":    funcMathDouble,
+	"SmplIndexDouble":   smplIndexDouble,
+	"SmplIndexDatetime": smplIndexDatetime,
 	"FuncMathFloat":     funcMathFloat,
 	"SelectOrderDouble": selectOrderDouble,
 	"UpdateArithFloat":  updateArithFloat,
@@ -86,6 +91,9 @@ var smplCrudFloat []byte
 //go:embed update_arith_double.qst
 var updateArithDouble []byte
 
+//go:embed smpl_index_text.qst
+var smplIndexText []byte
+
 //go:embed smpl_txn_float.qst
 var smplTxnFloat []byte
 
@@ -107,11 +115,23 @@ var selectLimitInt []byte
 //go:embed select_limit_double.qst
 var selectLimitDouble []byte
 
+//go:embed smpl_index_int.qst
+var smplIndexInt []byte
+
 //go:embed smpl_crud_int.qst
 var smplCrudInt []byte
 
+//go:embed smpl_index_float.qst
+var smplIndexFloat []byte
+
 //go:embed func_math_double.qst
 var funcMathDouble []byte
+
+//go:embed smpl_index_double.qst
+var smplIndexDouble []byte
+
+//go:embed smpl_index_datetime.qst
+var smplIndexDatetime []byte
 
 //go:embed func_math_float.qst
 var funcMathFloat []byte
