@@ -45,7 +45,7 @@ open(IN, "${script_dir}/${data_type_file}") or die "Failed to open $data_type_fi
 my @data_types;
 while(<IN>){
   chomp($_);
-  @data_types = split(/\t/, $_, -1);
+  @data_types = map { lc } split(/\t/, $_, -1);
   last;
 }
 close(IN);
@@ -58,7 +58,7 @@ for (my $n = 0; $n < @pict_targets; $n++) {
     print "${pict_target} = \\\n";
     my $pict_prefix = $pict_prefixes[$n];
     for (my $n = 0; $n < scalar(@data_types); $n++) {
-        my $data_type = lc($data_types[$n]);
+        my $data_type = $data_types[$n];
         my $scenario_name = "${pict_prefix}_${data_type}.qst";
         print "\t${scenario_name}";
         if ($n < ((@data_types) - 1)) {
@@ -69,10 +69,18 @@ for (my $n = 0; $n < @pict_targets; $n++) {
     print "\n";
 
     for (my $n = 0; $n < scalar(@data_types); $n++) {
-        my $data_type = lc($data_types[$n]);
+        my $data_type =  $data_types[$n];
         my $scenario_name = "${pict_prefix}_${data_type}.qst";
+        my @data_type_args;
+        for (my $i = $n; $i < scalar(@data_types); $i++) {
+            push(@data_type_args, $data_types[$i]);
+        }
+        for (my $i = 0; $i < $n; $i++) {
+            push(@data_type_args, $data_types[$i]);
+        }
+        my $pict_args = join(' ', @data_type_args);
         print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
-        print "\tperl ${pict_prefix}.pl ${data_type} > ${scenario_name}\n";
+        print "\tperl ${pict_prefix}.pl ${pict_args} > ${scenario_name}\n";
         system("touch ${script_dir}/${scenario_name}");
     }
 
@@ -102,7 +110,7 @@ for (my $n = 0; $n < @test_targets; $n++) {
     print "${test_target} = \\\n";
     my $test_prefix = $test_prefixes[$n];
     for (my $t = 0; $t < @test_data_types; $t++) {
-        my $data_type = lc($test_data_types[$t]);
+        my $data_type = $test_data_types[$t];
         my $test_scenario = "${test_prefix}_${data_type}.qst";
         print "\t${test_scenario}";
         if ($t < ((@test_data_types) - 1)) {
@@ -112,7 +120,7 @@ for (my $n = 0; $n < @test_targets; $n++) {
     }
     print "\n";
     for (my $t = 0; $t < @test_data_types; $t++) {
-        my $data_type = lc($test_data_types[$t]);
+        my $data_type = $test_data_types[$t];
         my $test_scenario = "${test_prefix}_${data_type}.qst ";
         print "${test_scenario}: ${test_prefix}.pl ${data_type_file}\n";
         print "\tperl ${test_prefix}.pl ${data_type} > ${test_scenario}\n";
