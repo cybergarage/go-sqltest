@@ -24,3 +24,21 @@ CREATE TABLE test (
 CREATE INDEX doubleidx ON test(cdouble);
 {
 }
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cdouble = 0.2;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE cdouble = 0.2;
+DELETE FROM test WHERE cdouble = 2.2;

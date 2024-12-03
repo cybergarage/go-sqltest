@@ -89,3 +89,102 @@ my $idx_name = $idx_key_type . "idx";
 print "CREATE INDEX ${idx_name} ON ${tbl_name}(${idx_column_name});\n";  
 print "{\n";  
 print "}\n";
+
+my @pr_data_array = ();
+for my $data_row_no (0 .. $#data_rows) {
+  my @data_row = @{$data_rows[$data_row_no]};
+  my $pr_data = $data_row[$pr_key_idx];
+  if (!grep { $_ eq $pr_data } @pr_data_array) {
+    push(@pr_data_array, $pr_data);
+  }
+}
+
+my @idx_data_array = ();
+for my $data_row_no (0 .. $#data_rows) {
+  my @data_row = @{$data_rows[$data_row_no]};
+  my $idx_data = $data_row[$idx_key_idx];
+  if (!grep { $_ eq $idx_data } @idx_data_array) {
+    push(@idx_data_array, $idx_data);
+  }
+}
+
+my @target_data_rows = (); 
+for my $idx_data_no (0 .. $#idx_data_array) {
+  my $idx_data = $idx_data_array[$idx_data_no];
+  for my $data_row_no (0 .. $#data_rows) {
+    my @data_row = @{$data_rows[$data_row_no]};
+    if ($idx_data eq $data_row[$idx_key_idx]) {
+      my $pr_data = $data_row[$pr_key_idx];
+      if (grep { $_ eq $pr_data } @pr_data_array) {
+        @pr_data_array = grep { $_ ne $pr_data } @pr_data_array;
+        push(@target_data_rows, \@data_row);
+      }
+    }
+  }
+}
+
+for my $idx_data_no (0 .. $#idx_data_array) {
+  my $idx_data = $idx_data_array[$idx_data_no];
+  my @inserted_data_rows = (); 
+  for my $data_row_no (0 .. $#target_data_rows) {
+    my @data_row = @{$target_data_rows[$data_row_no]};
+    if ($idx_data_array[$idx_data_no] ne $data_row[$idx_key_idx]) {
+      next;
+    }
+
+    print "INSERT INTO ${tbl_name} (";  
+    for (my $n = 0; $n < scalar(@data_row); $n++) {
+      my $type_name = lc($data_type_row[$n]);
+      my $column_name = "c" . $type_name;
+      if (0 < $n) {
+        print ", ";
+      }
+      print $column_name;
+    }
+    print ") VALUES (";  
+    for (my $n = 0; $n < scalar(@data_row); $n++) {
+      if (0 < $n) {
+        print ", ";  
+      }
+      print $data_row[$n];
+    }
+    print ");\n";  
+    print "{\n";
+    print "}\n";
+
+    push(@inserted_data_rows, \@data_row);
+
+    my $type_name = lc($data_type_row[$idx_key_idx]);
+    my $column_name = "c" . $type_name;
+
+    print "SELECT * FROM ${tbl_name} WHERE $column_name = ${idx_data};\n";  
+    print "{\n";  
+    print "\t\"rows\" :\n";  
+    print "\t[\n";  
+    for my $inserted_data_no (0 .. $#inserted_data_rows) {
+      my @row = @{$inserted_data_rows[$inserted_data_no]};
+      print "\t\t{\n";  
+      for (my $n = 0; $n < scalar(@row); $n++) {
+        my $type_name = lc($data_type_row[$n]);
+        my $column_name = "c" . $type_name;
+        my $column_val = $row[$n];
+        $column_val =~ s/'/"/g;
+        print "\t\t\t\"$column_name\" : $column_val";
+        if ($n < ((@row) - 1)) {
+          print ",";  
+        }
+        print "\n";
+      }
+      print "\t\t}";  
+      if ($inserted_data_no < ((@inserted_data_rows) - 1)) {
+        print ",";  
+      }
+      print "\n";  
+    }
+    print "\t]\n";  
+    print "}\n";  
+
+  }
+
+  print "DELETE FROM ${tbl_name} WHERE ${idx_column_name} = $idx_data_array[$idx_data_no];\n";  
+}

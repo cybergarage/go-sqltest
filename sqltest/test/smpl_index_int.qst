@@ -24,3 +24,47 @@ CREATE TABLE test (
 CREATE INDEX intidx ON test(cint);
 {
 }
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		}
+	]
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 0, 0.1, 2.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cint = 0;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		},
+		{
+			"ctext" : "a",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE cint = 0;
+DELETE FROM test WHERE cint = 2147483647;
+DELETE FROM test WHERE cint = 1;
+DELETE FROM test WHERE cint = -2147483648;
+DELETE FROM test WHERE cint = -1;
