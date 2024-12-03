@@ -83,3 +83,9 @@ for (my $n = 0; $n < scalar(@data_type_row); $n++) {
 print ");\n";  
 print "{\n";  
 print "}\n";
+
+my $idx_column_name = "c" . $idx_key_type;
+my $idx_name = $idx_key_type . "idx";
+print "CREATE INDEX ${idx_name} ON ${tbl_name}(${idx_column_name});\n";  
+print "{\n";  
+print "}\n";
