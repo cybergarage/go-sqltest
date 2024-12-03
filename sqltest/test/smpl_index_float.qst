@@ -24,3 +24,44 @@ CREATE TABLE test (
 CREATE INDEX floatidx ON test(cfloat);
 {
 }
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cfloat = 1.1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		}
+	]
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 1, 1.1, 2.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cfloat = 1.1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "abc",
+			"cint" : 0,
+			"cfloat" : 1.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		},
+		{
+			"ctext" : "abc",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "2006-01-02 15:04:05"
+		}
+	]
+}
+DELETE FROM test WHERE cfloat = 1.1;
+DELETE FROM test WHERE cfloat = 0.1;
