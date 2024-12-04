@@ -68,6 +68,7 @@ for (my $n = 0; $n < @pict_targets; $n++) {
     }
     print "\n";
 
+    print "${pict_prefix}.pl: ${data_type_file}\n";
     for (my $n = 0; $n < scalar(@data_types); $n++) {
         my $data_type =  $data_types[$n];
         my $scenario_name = "${pict_prefix}_${data_type}.qst";
@@ -79,7 +80,7 @@ for (my $n = 0; $n < @pict_targets; $n++) {
             push(@data_type_args, $data_types[$i]);
         }
         my $pict_args = join(' ', @data_type_args);
-        print "${scenario_name}: ${pict_prefix}.pl ${data_type_file}\n";
+        print "${scenario_name}: ${pict_prefix}.pl\n";
         print "\tperl ${pict_prefix}.pl ${pict_args} > ${scenario_name}\n";
         system("touch ${script_dir}/${scenario_name}");
     }
@@ -119,10 +120,11 @@ for (my $n = 0; $n < @test_targets; $n++) {
         print "\n";
     }
     print "\n";
+    print "${test_prefix}.pl: ${data_type_file}\n";
     for (my $t = 0; $t < @test_data_types; $t++) {
         my $data_type = $test_data_types[$t];
         my $test_scenario = "${test_prefix}_${data_type}.qst ";
-        print "${test_scenario}: ${test_prefix}.pl ${data_type_file}\n";
+        print "${test_scenario}: ${test_prefix}.pl\n";
         print "\tperl ${test_prefix}.pl ${data_type} > ${test_scenario}\n";
         system("touch ${script_dir}/${test_scenario}");
         system("git add ${script_dir}/${test_scenario}");
@@ -138,7 +140,4 @@ YCSB_TESTS = \\
 
 ycsb_workload.qst: ycsb_workload.pl
 	perl ycsb_workload.pl > ycsb_workload.qst
-
-clean:
-	rm *.qst
 FOOTER
