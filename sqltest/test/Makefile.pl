@@ -138,4 +138,7 @@ YCSB_TESTS = \\
 
 ycsb_workload.qst: ycsb_workload.pl
 	perl ycsb_workload.pl > ycsb_workload.qst
+
+clean:
+	rm *.qst
 FOOTER
