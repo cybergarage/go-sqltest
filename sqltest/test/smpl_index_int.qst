@@ -24,6 +24,9 @@ CREATE TABLE test (
 CREATE INDEX intidx ON test(cint);
 {
 }
+SELECT * FROM test WHERE cint = 0;
+{
+}
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
 {
 }
@@ -39,6 +42,9 @@ SELECT * FROM test WHERE cint = 0;
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
+}
+SELECT * FROM test WHERE cint = 0;
+{
 }
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 0, 0.1, 2.2, '2006-01-02 15:04:05');
 {

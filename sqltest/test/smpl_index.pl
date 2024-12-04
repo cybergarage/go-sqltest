@@ -132,10 +132,15 @@ for my $idx_data_no (0 .. $#idx_data_array) {
       next;
     }
 
+    my $where_column_name = "c" . lc($data_type_row[$idx_key_idx]);
+
+    print "SELECT * FROM ${tbl_name} WHERE $where_column_name = ${idx_data};\n";  
+    print "{\n";  
+    print "}\n";  
+
     print "INSERT INTO ${tbl_name} (";  
     for (my $n = 0; $n < scalar(@data_row); $n++) {
-      my $type_name = lc($data_type_row[$n]);
-      my $column_name = "c" . $type_name;
+      my $column_name = "c" . lc($data_type_row[$n]);
       if (0 < $n) {
         print ", ";
       }
@@ -154,10 +159,8 @@ for my $idx_data_no (0 .. $#idx_data_array) {
 
     push(@inserted_data_rows, \@data_row);
 
-    my $type_name = lc($data_type_row[$idx_key_idx]);
-    my $column_name = "c" . $type_name;
 
-    print "SELECT * FROM ${tbl_name} WHERE $column_name = ${idx_data};\n";  
+    print "SELECT * FROM ${tbl_name} WHERE $where_column_name = ${idx_data};\n";  
     print "{\n";  
     print "\t\"rows\" :\n";  
     print "\t[\n";  
@@ -165,8 +168,7 @@ for my $idx_data_no (0 .. $#idx_data_array) {
       my @row = @{$inserted_data_rows[$inserted_data_no]};
       print "\t\t{\n";  
       for (my $n = 0; $n < scalar(@row); $n++) {
-        my $type_name = lc($data_type_row[$n]);
-        my $column_name = "c" . $type_name;
+        my $column_name = "c" . lc($data_type_row[$n]);
         my $column_val = $row[$n];
         $column_val =~ s/'/"/g;
         print "\t\t\t\"$column_name\" : $column_val";
