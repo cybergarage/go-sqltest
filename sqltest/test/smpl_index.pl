@@ -126,17 +126,18 @@ for my $idx_data_no (0 .. $#idx_data_array) {
 for my $idx_data_no (0 .. $#idx_data_array) {
   my $idx_data = $idx_data_array[$idx_data_no];
   my @inserted_data_rows = (); 
+
+  my $where_column_name = "c" . lc($data_type_row[$idx_key_idx]);
+
+  print "SELECT * FROM ${tbl_name} WHERE $where_column_name = ${idx_data};\n";  
+  print "{\n";  
+  print "}\n";  
+
   for my $data_row_no (0 .. $#target_data_rows) {
     my @data_row = @{$target_data_rows[$data_row_no]};
     if ($idx_data_array[$idx_data_no] ne $data_row[$idx_key_idx]) {
       next;
     }
-
-    my $where_column_name = "c" . lc($data_type_row[$idx_key_idx]);
-
-    print "SELECT * FROM ${tbl_name} WHERE $where_column_name = ${idx_data};\n";  
-    print "{\n";  
-    print "}\n";  
 
     print "INSERT INTO ${tbl_name} (";  
     for (my $n = 0; $n < scalar(@data_row); $n++) {
