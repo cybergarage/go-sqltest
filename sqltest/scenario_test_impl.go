@@ -112,7 +112,10 @@ func (tst *ScenarioTest) Run() error {
 		log.Infof("[%d] %s", n, query)
 		rows, err := client.Query(query)
 		if err != nil {
-			return fmt.Errorf("%s%w", errTraceMsg(n), err)
+			errTraceMsg := errTraceMsg(n)
+			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, scenario.Queries[n])
+			errTraceMsg += "\n"
+			return fmt.Errorf("%s%w", errTraceMsg, err)
 		}
 		err = rows.Err()
 		if err != nil {
