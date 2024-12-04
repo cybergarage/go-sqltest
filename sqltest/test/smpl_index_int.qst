@@ -24,53 +24,86 @@ CREATE TABLE test (
 CREATE INDEX intidx ON test(cint);
 {
 }
-SELECT * FROM test WHERE cint = 0;
+SELECT * FROM test WHERE cint = -1;
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -1, 1.1, 2.2, '1970-0101 00:00:00');
 {
 }
-SELECT * FROM test WHERE cint = 0;
+SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
-			"cint" : 0,
+			"ctext" : "ab",
+			"cint" : -1,
 			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
 		}
 	]
 }
-SELECT * FROM test WHERE cint = 0;
+SELECT * FROM test WHERE cint = -1;
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 0, 0.1, 2.2, '2006-01-02 15:04:05');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', -1, 100.0, 0.2, '2038-01-19 03:14:07');
 {
 }
-SELECT * FROM test WHERE cint = 0;
+SELECT * FROM test WHERE cint = -1;
 {
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
-			"cint" : 0,
+			"ctext" : "ab",
+			"cint" : -1,
 			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
 		},
 		{
 			"ctext" : "a",
-			"cint" : 0,
+			"cint" : -1,
+			"cfloat" : 100.0,
+			"cdouble" : 0.2,
+			"cdatetime" : "2038-01-19 03:14:07"
+		}
+	]
+}
+SELECT * FROM test WHERE cint = -1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', -1, 0.1, 2.2, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cint = -1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "a",
+			"cint" : -1,
+			"cfloat" : 100.0,
+			"cdouble" : 0.2,
+			"cdatetime" : "2038-01-19 03:14:07"
+		},
+		{
+			"ctext" : "abc",
+			"cint" : -1,
 			"cfloat" : 0.1,
 			"cdouble" : 2.2,
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
 }
-DELETE FROM test WHERE cint = 0;
-DELETE FROM test WHERE cint = 2147483647;
-DELETE FROM test WHERE cint = 1;
-DELETE FROM test WHERE cint = -2147483648;
 DELETE FROM test WHERE cint = -1;
+DELETE FROM test WHERE cint = -2147483648;
+DELETE FROM test WHERE cint = 1;
+DELETE FROM test WHERE cint = 2147483647;
+DELETE FROM test WHERE cint = 0;
