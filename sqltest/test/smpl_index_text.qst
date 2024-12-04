@@ -24,171 +24,171 @@ CREATE TABLE test (
 CREATE INDEX textidx ON test(ctext);
 {
 }
-SELECT * FROM test WHERE ctext = 'abc';
+SELECT * FROM test WHERE ctext = 'ab';
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -1, 1.1, 2.2, '1970-0101 00:00:00');
 {
 }
-SELECT * FROM test WHERE ctext = 'abc';
+SELECT * FROM test WHERE ctext = 'ab';
 {
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		}
-	]
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-}
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 1, 1.1, 2.2, '2006-01-02 15:04:05');
-{
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		}
-	]
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-}
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 2147483647, 0.1, 0.2, '2006-01-02 15:04:05');
-{
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		}
-	]
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-}
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', -2147483648, 0.1, 2.2, '2006-01-02 15:04:05');
-{
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		}
-	]
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-}
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', -1, 0.1, 0.2, '2006-01-02 15:04:05');
-{
-}
-SELECT * FROM test WHERE ctext = 'abc';
-{
-	"rows" :
-	[
-		{
-			"ctext" : "abc",
-			"cint" : 0,
-			"cfloat" : 1.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 1,
-			"cfloat" : 1.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : 2147483647,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
-			"cint" : -2147483648,
-			"cfloat" : 0.1,
-			"cdouble" : 2.2,
-			"cdatetime" : "2006-01-02 15:04:05"
-		},
-		{
-			"ctext" : "abc",
+			"ctext" : "ab",
 			"cint" : -1,
-			"cfloat" : 0.1,
-			"cdouble" : 0.2,
-			"cdatetime" : "2006-01-02 15:04:05"
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
 		}
 	]
 }
-DELETE FROM test WHERE ctext = 'abc';
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', 2147483647, 0.1, 0.2, '1970-0101 00:00:00');
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		}
+	]
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', 0, 0.1, 200.0, '2038-01-19 03:14:07');
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 200.0,
+			"cdatetime" : "2038-01-19 03:14:07"
+		}
+	]
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -2147483648, 100.0, 2.2, '2038-01-19 03:14:07');
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 200.0,
+			"cdatetime" : "2038-01-19 03:14:07"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 100.0,
+			"cdouble" : 2.2,
+			"cdatetime" : "2038-01-19 03:14:07"
+		}
+	]
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', 1, 1.1, 200.0, '2038-01-19 03:14:07');
+{
+}
+SELECT * FROM test WHERE ctext = 'ab';
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 2147483647,
+			"cfloat" : 0.1,
+			"cdouble" : 0.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 0,
+			"cfloat" : 0.1,
+			"cdouble" : 200.0,
+			"cdatetime" : "2038-01-19 03:14:07"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : -2147483648,
+			"cfloat" : 100.0,
+			"cdouble" : 2.2,
+			"cdatetime" : "2038-01-19 03:14:07"
+		},
+		{
+			"ctext" : "ab",
+			"cint" : 1,
+			"cfloat" : 1.1,
+			"cdouble" : 200.0,
+			"cdatetime" : "2038-01-19 03:14:07"
+		}
+	]
+}
 DELETE FROM test WHERE ctext = 'ab';
+DELETE FROM test WHERE ctext = 'abc';
 DELETE FROM test WHERE ctext = 'a';

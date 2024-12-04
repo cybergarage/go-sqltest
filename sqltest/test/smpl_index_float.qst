@@ -27,7 +27,7 @@ CREATE INDEX floatidx ON test(cfloat);
 SELECT * FROM test WHERE cfloat = 1.1;
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -1, 1.1, 2.2, '1970-0101 00:00:00');
 {
 }
 SELECT * FROM test WHERE cfloat = 1.1;
@@ -35,10 +35,36 @@ SELECT * FROM test WHERE cfloat = 1.1;
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
-			"cint" : 0,
+			"ctext" : "ab",
+			"cint" : -1,
 			"cfloat" : 1.1,
-			"cdouble" : 0.2,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		}
+	]
+}
+SELECT * FROM test WHERE cfloat = 1.1;
+{
+}
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 2147483647, 1.1, 200.0, '2006-01-02 15:04:05');
+{
+}
+SELECT * FROM test WHERE cfloat = 1.1;
+{
+	"rows" :
+	[
+		{
+			"ctext" : "ab",
+			"cint" : -1,
+			"cfloat" : 1.1,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 200.0,
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
@@ -46,7 +72,7 @@ SELECT * FROM test WHERE cfloat = 1.1;
 SELECT * FROM test WHERE cfloat = 1.1;
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 1, 1.1, 2.2, '2006-01-02 15:04:05');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 1, 1.1, 0.2, '2006-01-02 15:04:05');
 {
 }
 SELECT * FROM test WHERE cfloat = 1.1;
@@ -54,20 +80,28 @@ SELECT * FROM test WHERE cfloat = 1.1;
 	"rows" :
 	[
 		{
-			"ctext" : "abc",
-			"cint" : 0,
+			"ctext" : "ab",
+			"cint" : -1,
 			"cfloat" : 1.1,
-			"cdouble" : 0.2,
+			"cdouble" : 2.2,
+			"cdatetime" : "1970-0101 00:00:00"
+		},
+		{
+			"ctext" : "a",
+			"cint" : 2147483647,
+			"cfloat" : 1.1,
+			"cdouble" : 200.0,
 			"cdatetime" : "2006-01-02 15:04:05"
 		},
 		{
-			"ctext" : "abc",
+			"ctext" : "a",
 			"cint" : 1,
 			"cfloat" : 1.1,
-			"cdouble" : 2.2,
+			"cdouble" : 0.2,
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
 }
 DELETE FROM test WHERE cfloat = 1.1;
 DELETE FROM test WHERE cfloat = 0.1;
+DELETE FROM test WHERE cfloat = 100.0;
