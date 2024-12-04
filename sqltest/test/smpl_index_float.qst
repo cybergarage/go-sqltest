@@ -27,7 +27,7 @@ CREATE INDEX floatidx ON test(cfloat);
 SELECT * FROM test WHERE cfloat = 1.1;
 {
 }
-INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -1, 1.1, 2.2, '1970-0101 00:00:00');
+INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', -1, 1.1, 2.2, '1970-01-01 00:00:00');
 {
 }
 SELECT * FROM test WHERE cfloat = 1.1;
@@ -39,12 +39,9 @@ SELECT * FROM test WHERE cfloat = 1.1;
 			"cint" : -1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
-			"cdatetime" : "1970-0101 00:00:00"
+			"cdatetime" : "1970-01-01 00:00:00"
 		}
 	]
-}
-SELECT * FROM test WHERE cfloat = 1.1;
-{
 }
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 2147483647, 1.1, 200.0, '2006-01-02 15:04:05');
 {
@@ -58,7 +55,7 @@ SELECT * FROM test WHERE cfloat = 1.1;
 			"cint" : -1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
-			"cdatetime" : "1970-0101 00:00:00"
+			"cdatetime" : "1970-01-01 00:00:00"
 		},
 		{
 			"ctext" : "a",
@@ -68,9 +65,6 @@ SELECT * FROM test WHERE cfloat = 1.1;
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
-}
-SELECT * FROM test WHERE cfloat = 1.1;
-{
 }
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 1, 1.1, 0.2, '2006-01-02 15:04:05');
 {
@@ -84,7 +78,7 @@ SELECT * FROM test WHERE cfloat = 1.1;
 			"cint" : -1,
 			"cfloat" : 1.1,
 			"cdouble" : 2.2,
-			"cdatetime" : "1970-0101 00:00:00"
+			"cdatetime" : "1970-01-01 00:00:00"
 		},
 		{
 			"ctext" : "a",
@@ -103,5 +97,11 @@ SELECT * FROM test WHERE cfloat = 1.1;
 	]
 }
 DELETE FROM test WHERE cfloat = 1.1;
+SELECT * FROM test WHERE cfloat = 0.1;
+{
+}
 DELETE FROM test WHERE cfloat = 0.1;
+SELECT * FROM test WHERE cfloat = 100.0;
+{
+}
 DELETE FROM test WHERE cfloat = 100.0;
