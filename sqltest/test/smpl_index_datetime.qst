@@ -24,6 +24,9 @@ CREATE TABLE test (
 CREATE INDEX datetimeidx ON test(cdatetime);
 {
 }
+SELECT * FROM test WHERE cdatetime = '2006-01-02 15:04:05';
+{
+}
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
 {
 }
@@ -39,6 +42,9 @@ SELECT * FROM test WHERE cdatetime = '2006-01-02 15:04:05';
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
+}
+SELECT * FROM test WHERE cdatetime = '2006-01-02 15:04:05';
+{
 }
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('ab', 2147483647, 0.1, 2.2, '2006-01-02 15:04:05');
 {
@@ -62,6 +68,9 @@ SELECT * FROM test WHERE cdatetime = '2006-01-02 15:04:05';
 			"cdatetime" : "2006-01-02 15:04:05"
 		}
 	]
+}
+SELECT * FROM test WHERE cdatetime = '2006-01-02 15:04:05';
+{
 }
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('a', 1, 0.1, 0.2, '2006-01-02 15:04:05');
 {

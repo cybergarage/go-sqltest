@@ -24,6 +24,9 @@ CREATE TABLE test (
 CREATE INDEX doubleidx ON test(cdouble);
 {
 }
+SELECT * FROM test WHERE cdouble = 0.2;
+{
+}
 INSERT INTO test (ctext, cint, cfloat, cdouble, cdatetime) VALUES ('abc', 0, 1.1, 0.2, '2006-01-02 15:04:05');
 {
 }
