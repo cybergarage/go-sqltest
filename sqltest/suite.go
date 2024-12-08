@@ -27,12 +27,20 @@ const (
 )
 
 // SuiteOption is a function type used to configure a Suite.
-type SuiteOption func(*Suite)
+type SuiteOption func(*Suite) error
 
 // WithSuiteClient returns a SuiteOption that sets a client for testing.
 func WithSuiteClient(client *Client) SuiteOption {
-	return func(suite *Suite) {
+	return func(suite *Suite) error {
 		suite.SetClient(*client)
+		return nil
+	}
+}
+
+// WithSuiteDirectory returns a SuiteOption that loads scenario tests from the specified directory.
+func WithSuiteDirectory(dir string) SuiteOption {
+	return func(suite *Suite) error {
+		return suite.SetDirectory(dir)
 	}
 }
 
@@ -43,43 +51,29 @@ type Suite struct {
 }
 
 // NewSuite returns a scenario test suite instance.
-func NewSuite(opts ...SuiteOption) *Suite {
+func NewSuite() *Suite {
 	suite := &Suite{
 		tests:  make([]*ScenarioTest, 0),
 		client: nil,
 	}
-	for _, opt := range opts {
-		opt(suite)
-	}
 	return suite
 }
 
-// SetClient sets a client for testing.
-func (suite *Suite) SetClient(c Client) {
-	suite.client = c
+// NewSuite returns a scenario test suite instance with the specified options.
+func NewSuiteWith(opts ...SuiteOption) (*Suite, error) {
+	suite := NewSuite()
+	for _, opt := range opts {
+		if err := opt(suite); err != nil {
+			return nil, err
+		}
+	}
+	return suite, nil
 }
 
 // NewSuiteWithDirectory returns a scenario test suite instance which loads under the specified directory.
 func NewSuiteWithDirectory(dir string) (*Suite, error) {
 	suite := NewSuite()
-
-	re := regexp.MustCompile(".*\\." + ScenarioTestFileExt)
-	findPath := util.NewFileWithPath(dir)
-	files, err := findPath.ListFilesWithRegexp(re)
-	if err != nil {
-		return nil, err
-	}
-
-	suite.tests = make([]*ScenarioTest, 0)
-	for _, file := range files {
-		s, err := NewScenarioTestWithFile(file.Path)
-		if err != nil {
-			return nil, err
-		}
-		suite.tests = append(suite.tests, s)
-	}
-
-	return suite, nil
+	return suite, suite.SetDirectory(dir)
 }
 
 // NeweEmbedSuite returns a scenario test suite instance which loads under the specified directory.
@@ -93,6 +87,31 @@ func NeweEmbedSuite(tests map[string][]byte) (*Suite, error) {
 		suite.tests = append(suite.tests, s)
 	}
 	return suite, nil
+}
+
+// SetClient sets a client for testing.
+func (suite *Suite) SetClient(c Client) {
+	suite.client = c
+}
+
+// SetDirectory loads scenario tests from the specified directory.
+func (suite *Suite) SetDirectory(dir string) error {
+	re := regexp.MustCompile(".*\\." + ScenarioTestFileExt)
+	findPath := util.NewFileWithPath(dir)
+	files, err := findPath.ListFilesWithRegexp(re)
+	if err != nil {
+		return err
+	}
+
+	suite.tests = make([]*ScenarioTest, 0)
+	for _, file := range files {
+		s, err := NewScenarioTestWithFile(file.Path)
+		if err != nil {
+			return err
+		}
+		suite.tests = append(suite.tests, s)
+	}
+	return nil
 }
 
 // ScenarioTests returns all loaded scenario tests.
