@@ -18,8 +18,6 @@ import (
 	"fmt"
 	"testing"
 	"time"
-
-	"github.com/cybergarage/go-sqltest/sqltest/test"
 )
 
 const TestDBNamePrefix = "sqltest"
@@ -70,28 +68,12 @@ func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
 func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
 	t.Helper()
 
-	es, err := NeweEmbedSuite(test.EmbedTests)
+	suite, err := NewSuiteWith(
+		WithSuiteEmbeds(),
+	)
 	if err != nil {
 		t.Error(err)
-		return err
 	}
 
-	tests := es.ScenarioTests()
-	if 0 < len(regexes) {
-		tests, err = es.ExtractScenarioTests(regexes...)
-		if err != nil {
-			t.Error(err)
-			return err
-		}
-	}
-
-	t.Run(TestRunDescription, func(t *testing.T) {
-		for _, test := range tests {
-			t.Run(test.Name(), func(t *testing.T) {
-				RunScenarioTest(t, client, test)
-			})
-		}
-	})
-
-	return nil
+	return suite.Test(t, client, regexes...)
 }
