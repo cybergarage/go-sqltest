@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"regexp"
 	"strings"
+	"testing"
 
 	"github.com/cybergarage/go-sqltest/sqltest/test"
 	"github.com/cybergarage/go-sqltest/sqltest/util"
@@ -195,5 +196,28 @@ func (suite *Suite) Run() error {
 			return fmt.Errorf("%s : %w", test.Name(), err)
 		}
 	}
+	return nil
+}
+
+// Test runs all loaded scenario tests with regular expressions for scenarios. The method stops the testing when a scenario test is aborted, and the following tests are not run.
+func (suite *Suite) Test(t *testing.T, client Client, regexes ...string) error {
+	var err error
+	tests := suite.ScenarioTests()
+	if 0 < len(regexes) {
+		tests, err = suite.ExtractScenarioTests(regexes...)
+		if err != nil {
+			t.Error(err)
+			return err
+		}
+	}
+
+	t.Run(TestRunDescription, func(t *testing.T) {
+		for _, test := range tests {
+			t.Run(test.Name(), func(t *testing.T) {
+				RunScenarioTest(t, client, test)
+			})
+		}
+	})
+
 	return nil
 }
