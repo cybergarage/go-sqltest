@@ -23,7 +23,7 @@ import (
 const TestDBNamePrefix = "sqltest"
 
 // RunScenarioTest runs the specified test.
-func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
+func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) error {
 	t.Helper()
 
 	var err error
@@ -34,7 +34,7 @@ func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
 	err = client.Open()
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
 
 	defer func() {
@@ -47,7 +47,7 @@ func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
 	err = client.CreateDatabase(testDBName)
 	if err != nil {
 		t.Error(err)
-		return
+		return err
 	}
 
 	defer func() {
@@ -62,6 +62,7 @@ func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) {
 	if err != nil {
 		t.Errorf("%s : %s", test.Name(), err.Error())
 	}
+	return err
 }
 
 // RunEmbedSuites runs the embedded test suites with the specified regular expressions.
