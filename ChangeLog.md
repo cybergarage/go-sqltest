@@ -5,9 +5,10 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.4.3 (2024-11-xx)
+## v1.4.3 (2024-12-xx)
 - Updated:
   - `ScenarioTest::Run()` to support more data types
+  - `Suite::Test() to call error handler for failed tests`
 
 ## v1.4.2 (2024-11-08)
 - Added:
