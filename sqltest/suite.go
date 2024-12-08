@@ -33,6 +33,9 @@ const (
 // SuiteOption is a function type used to configure a Suite.
 type SuiteOption func(*Suite) error
 
+// SuiteErrorHandler is a function type used to handle errors in a Suite.
+type SuiteErrorHandler func(*Suite, *ScenarioTest, error)
+
 // WithSuiteClient returns a SuiteOption that sets a client for testing.
 func WithSuiteClient(client *Client) SuiteOption {
 	return func(suite *Suite) error {
@@ -70,17 +73,27 @@ func WithSuiteRegexes(regexes ...string) SuiteOption {
 	}
 }
 
+// WithSuiteErrorHandler returns a SuiteOption that sets a handler for errors in a Suite.
+func WithSuiteErrorHandler(handler SuiteErrorHandler) SuiteOption {
+	return func(suite *Suite) error {
+		suite.errorHandler = handler
+		return nil
+	}
+}
+
 // Suite represents a scenario test suite.
 type Suite struct {
-	tests  []*ScenarioTest
-	client Client
+	tests        []*ScenarioTest
+	client       Client
+	errorHandler SuiteErrorHandler
 }
 
 // NewSuite returns a scenario test suite instance.
 func NewSuite() *Suite {
 	suite := &Suite{
-		tests:  make([]*ScenarioTest, 0),
-		client: nil,
+		tests:        make([]*ScenarioTest, 0),
+		client:       nil,
+		errorHandler: nil,
 	}
 	return suite
 }
@@ -105,12 +118,20 @@ func NewSuiteWithDirectory(dirs ...string) (*Suite, error) {
 // NeweEmbedSuite returns a scenario test suite instance which loads under the specified directory.
 func NeweEmbedSuite(tests ...map[string][]byte) (*Suite, error) {
 	suite := NewSuite()
+	if len(tests) == 0 {
+		tests = []map[string][]byte{test.EmbedTests}
+	}
 	return suite, suite.LoadEmbedSenarios(tests...)
 }
 
 // SetClient sets a client for testing.
 func (suite *Suite) SetClient(c Client) {
 	suite.client = c
+}
+
+// SetErrorHandler sets a handler for errors in a Suite.
+func (suite *Suite) SetErrorHandler(handler SuiteErrorHandler) {
+	suite.errorHandler = handler
 }
 
 // LoadDirectorySenarios loads scenario tests from the specified directories.
@@ -216,7 +237,7 @@ func (suite *Suite) Test(t *testing.T, client Client, regexes ...string) error {
 	t.Run(TestRunDescription, func(t *testing.T) {
 		for _, test := range tests {
 			t.Run(test.Name(), func(t *testing.T) {
-				err = suite.testScenario(t, client, test)
+				err = suite.testScenarioTest(t, client, test)
 			})
 		}
 	})
@@ -225,7 +246,7 @@ func (suite *Suite) Test(t *testing.T, client Client, regexes ...string) error {
 }
 
 // RunScenarioTest runs the specified test.
-func (suite *Suite) testScenario(t *testing.T, client Client, test *ScenarioTest) error {
+func (suite *Suite) testScenarioTest(t *testing.T, client Client, test *ScenarioTest) error {
 	t.Helper()
 
 	var err error
@@ -264,7 +285,10 @@ func (suite *Suite) testScenario(t *testing.T, client Client, test *ScenarioTest
 	err = test.Run()
 	if err != nil {
 		t.Errorf("%s : %s", test.Name(), err.Error())
+		if suite.errorHandler != nil {
+			suite.errorHandler(suite, test, err)
+		}
 	}
 
-	return err
+	return nil
 }
