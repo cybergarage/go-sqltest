@@ -19,12 +19,14 @@ import (
 	"regexp"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/cybergarage/go-sqltest/sqltest/test"
 	"github.com/cybergarage/go-sqltest/sqltest/util"
 )
 
 const (
+	TestDBNamePrefix          = "sqltest"
 	SuiteDefaultTestDirectory = "./test"
 )
 
@@ -214,10 +216,55 @@ func (suite *Suite) Test(t *testing.T, client Client, regexes ...string) error {
 	t.Run(TestRunDescription, func(t *testing.T) {
 		for _, test := range tests {
 			t.Run(test.Name(), func(t *testing.T) {
-				RunScenarioTest(t, client, test)
+				err = suite.testScenario(t, client, test)
 			})
 		}
 	})
 
-	return nil
+	return err
+}
+
+// RunScenarioTest runs the specified test.
+func (suite *Suite) testScenario(t *testing.T, client Client, test *ScenarioTest) error {
+	t.Helper()
+
+	var err error
+
+	testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+
+	client.SetDatabase(testDBName)
+
+	err = client.Open()
+	if err != nil {
+		t.Error(err)
+		return err
+	}
+
+	defer func() {
+		err := client.Close()
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+
+	err = client.CreateDatabase(testDBName)
+	if err != nil {
+		t.Error(err)
+		return err
+	}
+
+	defer func() {
+		err := client.DropDatabase(testDBName)
+		if err != nil {
+			t.Error(err)
+		}
+	}()
+
+	test.SetClient(client)
+	err = test.Run()
+	if err != nil {
+		t.Errorf("%s : %s", test.Name(), err.Error())
+	}
+
+	return err
 }

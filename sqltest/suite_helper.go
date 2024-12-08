@@ -15,55 +15,8 @@
 package sqltest
 
 import (
-	"fmt"
 	"testing"
-	"time"
 )
-
-const TestDBNamePrefix = "sqltest"
-
-// RunScenarioTest runs the specified test.
-func RunScenarioTest(t *testing.T, client Client, test *ScenarioTest) error {
-	t.Helper()
-
-	var err error
-	testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
-
-	client.SetDatabase(testDBName)
-
-	err = client.Open()
-	if err != nil {
-		t.Error(err)
-		return err
-	}
-
-	defer func() {
-		err := client.Close()
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	err = client.CreateDatabase(testDBName)
-	if err != nil {
-		t.Error(err)
-		return err
-	}
-
-	defer func() {
-		err := client.DropDatabase(testDBName)
-		if err != nil {
-			t.Error(err)
-		}
-	}()
-
-	test.SetClient(client)
-	err = test.Run()
-	if err != nil {
-		t.Errorf("%s : %s", test.Name(), err.Error())
-	}
-	return err
-}
 
 // RunEmbedSuites runs the embedded test suites with the specified regular expressions.
 func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
