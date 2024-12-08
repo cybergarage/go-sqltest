@@ -19,6 +19,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/cybergarage/go-sqltest/sqltest/test"
 	"github.com/cybergarage/go-sqltest/sqltest/util"
 )
 
@@ -37,10 +38,32 @@ func WithSuiteClient(client *Client) SuiteOption {
 	}
 }
 
-// WithSuiteDirectory returns a SuiteOption that loads scenario tests from the specified directory.
-func WithSuiteDirectory(dir string) SuiteOption {
+// WithSuiteDirectories returns a SuiteOption that loads scenario tests from the specified directory.
+func WithSuiteDirectories(dirs ...string) SuiteOption {
 	return func(suite *Suite) error {
-		return suite.SetDirectory(dir)
+		return suite.LoadDirectorySenarios(dirs...)
+	}
+}
+
+// WithSuiteEmbeds returns a SuiteOption that loads scenario tests from the specified bytes.
+func WithSuiteEmbeds(tests ...map[string][]byte) SuiteOption {
+	return func(suite *Suite) error {
+		if len(tests) == 0 {
+			tests = []map[string][]byte{test.EmbedTests}
+		}
+		return suite.LoadEmbedSenarios(tests...)
+	}
+}
+
+// WithSuiteRegexes returns a SuiteOption that extracts scenario tests with the specified regexes.
+func WithSuiteRegexes(regexes ...string) SuiteOption {
+	return func(suite *Suite) error {
+		tests, err := suite.ExtractScenarioMatchingTests(regexes...)
+		if err != nil {
+			return err
+		}
+		suite.tests = tests
+		return nil
 	}
 }
 
@@ -71,22 +94,15 @@ func NewSuiteWith(opts ...SuiteOption) (*Suite, error) {
 }
 
 // NewSuiteWithDirectory returns a scenario test suite instance which loads under the specified directory.
-func NewSuiteWithDirectory(dir string) (*Suite, error) {
+func NewSuiteWithDirectory(dirs ...string) (*Suite, error) {
 	suite := NewSuite()
-	return suite, suite.SetDirectory(dir)
+	return suite, suite.LoadDirectorySenarios(dirs...)
 }
 
 // NeweEmbedSuite returns a scenario test suite instance which loads under the specified directory.
-func NeweEmbedSuite(tests map[string][]byte) (*Suite, error) {
+func NeweEmbedSuite(tests ...map[string][]byte) (*Suite, error) {
 	suite := NewSuite()
-	for name, b := range tests {
-		s, err := NewScenarioTestWithBytes(name, b)
-		if err != nil {
-			return nil, err
-		}
-		suite.tests = append(suite.tests, s)
-	}
-	return suite, nil
+	return suite, suite.LoadEmbedSenarios(tests...)
 }
 
 // SetClient sets a client for testing.
@@ -94,22 +110,37 @@ func (suite *Suite) SetClient(c Client) {
 	suite.client = c
 }
 
-// SetDirectory loads scenario tests from the specified directory.
-func (suite *Suite) SetDirectory(dir string) error {
-	re := regexp.MustCompile(".*\\." + ScenarioTestFileExt)
-	findPath := util.NewFileWithPath(dir)
-	files, err := findPath.ListFilesWithRegexp(re)
-	if err != nil {
-		return err
-	}
-
-	suite.tests = make([]*ScenarioTest, 0)
-	for _, file := range files {
-		s, err := NewScenarioTestWithFile(file.Path)
+// LoadDirectorySenarios loads scenario tests from the specified directories.
+func (suite *Suite) LoadDirectorySenarios(dirs ...string) error {
+	for _, dir := range dirs {
+		re := regexp.MustCompile(".*\\." + ScenarioTestFileExt)
+		findPath := util.NewFileWithPath(dir)
+		files, err := findPath.ListFilesWithRegexp(re)
 		if err != nil {
 			return err
 		}
-		suite.tests = append(suite.tests, s)
+
+		for _, file := range files {
+			s, err := NewScenarioTestWithFile(file.Path)
+			if err != nil {
+				return err
+			}
+			suite.tests = append(suite.tests, s)
+		}
+	}
+	return nil
+}
+
+// LoadEmbedSenarios loads scenario tests from the specified bytes.
+func (suite *Suite) LoadEmbedSenarios(testMaps ...map[string][]byte) error {
+	for _, testMap := range testMaps {
+		for name, b := range testMap {
+			s, err := NewScenarioTestWithBytes(name, b)
+			if err != nil {
+				return err
+			}
+			suite.tests = append(suite.tests, s)
+		}
 	}
 	return nil
 }
@@ -120,9 +151,9 @@ func (suite *Suite) ScenarioTests() []*ScenarioTest {
 }
 
 // ExtractScenarioTests returns scenario tests with the specified names.
-func (suite *Suite) ExtractScenarioTests(names ...string) ([]*ScenarioTest, error) {
+func (suite *Suite) ExtractScenarioTests(regexpNames ...string) ([]*ScenarioTest, error) {
 	tests := make([]*ScenarioTest, 0)
-	for _, name := range names {
+	for _, name := range regexpNames {
 		nameRegexp := regexp.MustCompile(name)
 		isFound := false
 		for _, test := range suite.tests {
