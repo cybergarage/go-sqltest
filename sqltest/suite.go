@@ -26,6 +26,16 @@ const (
 	SuiteDefaultTestDirectory = "./test"
 )
 
+// SuiteOption is a function type used to configure a Suite.
+type SuiteOption func(*Suite)
+
+// WithSuiteClient returns a SuiteOption that sets a client for testing.
+func WithSuiteClient(client *Client) SuiteOption {
+	return func(suite *Suite) {
+		suite.SetClient(*client)
+	}
+}
+
 // Suite represents a scenario test suite.
 type Suite struct {
 	tests  []*ScenarioTest
@@ -33,10 +43,13 @@ type Suite struct {
 }
 
 // NewSuite returns a scenario test suite instance.
-func NewSuite() *Suite {
+func NewSuite(opts ...SuiteOption) *Suite {
 	suite := &Suite{
 		tests:  make([]*ScenarioTest, 0),
 		client: nil,
+	}
+	for _, opt := range opts {
+		opt(suite)
 	}
 	return suite
 }
