@@ -37,9 +37,9 @@ type SuiteOption func(*Suite) error
 type SuiteErrorHandler func(*Suite, *ScenarioTest, error)
 
 // WithSuiteClient returns a SuiteOption that sets a client for testing.
-func WithSuiteClient(client *Client) SuiteOption {
+func WithSuiteClient(client Client) SuiteOption {
 	return func(suite *Suite) error {
-		suite.SetClient(*client)
+		suite.SetClient(client)
 		return nil
 	}
 }
@@ -223,33 +223,24 @@ func (suite *Suite) Run() error {
 }
 
 // Test runs all loaded scenario tests with regular expressions for scenarios. The method stops the testing when a scenario test is aborted, and the following tests are not run.
-func (suite *Suite) Test(t *testing.T, client Client, regexes ...string) error {
+func (suite *Suite) Test(t *testing.T) error {
 	var err error
-	tests := suite.ScenarioTests()
-	if 0 < len(regexes) {
-		tests, err = suite.ExtractScenarioTests(regexes...)
-		if err != nil {
-			t.Error(err)
-			return err
-		}
-	}
-
 	t.Run(TestRunDescription, func(t *testing.T) {
-		for _, test := range tests {
+		for _, test := range suite.tests {
 			t.Run(test.Name(), func(t *testing.T) {
-				err = suite.testScenarioTest(t, client, test)
+				err = suite.TestScenario(t, test)
 			})
 		}
 	})
-
 	return err
 }
 
 // RunScenarioTest runs the specified test.
-func (suite *Suite) testScenarioTest(t *testing.T, client Client, test *ScenarioTest) error {
+func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTest) error {
 	t.Helper()
 
 	var err error
+	client := suite.client
 
 	testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
 
@@ -290,5 +281,5 @@ func (suite *Suite) testScenarioTest(t *testing.T, client Client, test *Scenario
 		}
 	}
 
-	return nil
+	return err
 }
