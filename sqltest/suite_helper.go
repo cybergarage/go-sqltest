@@ -24,10 +24,12 @@ func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
 
 	suite, err := NewSuiteWith(
 		WithSuiteEmbeds(),
+		WithSuiteClient(client),
+		WithSuiteRegexes(regexes...),
 	)
 	if err != nil {
 		t.Error(err)
 	}
 
-	return suite.Test(t, client, regexes...)
+	return suite.Test(t)
 }
