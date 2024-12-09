@@ -23,68 +23,68 @@ import (
 )
 
 const (
-	ScenarioTestFileExt = "qst"
+	ScenarioFileExt = "qst"
 )
 
-// ScenarioTest represents a scenario test.
-type ScenarioTest struct {
+// ScenarioRunner represents a scenario runner.
+type ScenarioRunner struct {
 	Scenario *Scenario
 	client   Client
 }
 
-// NewScenarioTest returns a scenario test instance.
-func NewScenarioTest() *ScenarioTest {
-	tst := &ScenarioTest{
+// NewScenarioRunner returns a scenario runner instance.
+func NewScenarioRunner() *ScenarioRunner {
+	runner := &ScenarioRunner{
 		Scenario: nil,
 		client:   nil,
 	}
-	return tst
+	return runner
 }
 
-// NewScenarioTestWithFile return a scenario test instance for the specified test scenario file.
-func NewScenarioTestWithFile(filename string) (*ScenarioTest, error) {
-	tst := NewScenarioTest()
-	err := tst.LoadFile(filename)
-	return tst, err
+// NewScenarioRunnerWithFile return a scenario test instance for the specified test scenario file.
+func NewScenarioRunnerWithFile(filename string) (*ScenarioRunner, error) {
+	runner := NewScenarioRunner()
+	err := runner.LoadFile(filename)
+	return runner, err
 }
 
-// NewScenarioTestWithBytes return a scenario test instance for the specified test scenario bytes.
-func NewScenarioTestWithBytes(name string, b []byte) (*ScenarioTest, error) {
-	tst := NewScenarioTest()
-	err := tst.ParseBytes(name, b)
-	return tst, err
+// NewScenarioRunnerWithBytes return a scenario test instance for the specified test scenario bytes.
+func NewScenarioRunnerWithBytes(name string, b []byte) (*ScenarioRunner, error) {
+	runner := NewScenarioRunner()
+	err := runner.ParseBytes(name, b)
+	return runner, err
 }
 
 // SetClient sets a client for testing.
-func (tst *ScenarioTest) SetClient(c Client) {
-	tst.client = c
+func (runner *ScenarioRunner) SetClient(c Client) {
+	runner.client = c
 }
 
 // Name returns the loaded senario name.
-func (tst *ScenarioTest) Name() string {
-	return tst.Scenario.Name()
+func (runner *ScenarioRunner) Name() string {
+	return runner.Scenario.Name()
 }
 
 // LoadFile loads a specified scenario test file.
-func (tst *ScenarioTest) LoadFile(filename string) error {
-	tst.Scenario = NewScenario()
-	return tst.Scenario.LoadFile(filename)
+func (runner *ScenarioRunner) LoadFile(filename string) error {
+	runner.Scenario = NewScenario()
+	return runner.Scenario.LoadFile(filename)
 }
 
 // ParseBytes loads a specified scenario test bytes.
-func (tst *ScenarioTest) ParseBytes(name string, b []byte) error {
-	tst.Scenario = NewScenario()
-	return tst.Scenario.ParseBytes(name, b)
+func (runner *ScenarioRunner) ParseBytes(name string, b []byte) error {
+	runner.Scenario = NewScenario()
+	return runner.Scenario.ParseBytes(name, b)
 }
 
 // LoadFileWithBasename loads a scenario test file which has specified basename.
-func (tst *ScenarioTest) LoadFileWithBasename(basename string) error {
-	return tst.LoadFile(basename + "." + ScenarioTestFileExt)
+func (runner *ScenarioRunner) LoadFileWithBasename(basename string) error {
+	return runner.LoadFile(basename + "." + ScenarioFileExt)
 }
 
 // Run runs a loaded scenario test.
-func (tst *ScenarioTest) Run() error {
-	scenario := tst.Scenario
+func (runner *ScenarioRunner) Run() error {
+	scenario := runner.Scenario
 	if scenario == nil {
 		return nil
 	}
@@ -94,13 +94,13 @@ func (tst *ScenarioTest) Run() error {
 		return err
 	}
 
-	client := tst.client
+	client := runner.client
 	if client == nil {
 		return fmt.Errorf(errorClientNotFound)
 	}
 
 	errTraceMsg := func(n int) string {
-		errTraceMsg := tst.Name() + "\n"
+		errTraceMsg := runner.Name() + "\n"
 		for i := 0; i < n; i++ {
 			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, scenario.Queries[i])
 			errTraceMsg += "\n"
