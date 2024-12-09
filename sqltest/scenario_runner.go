@@ -148,6 +148,13 @@ func (runner *ScenarioRunner) Run() error {
 		return errors.New(errorClientNotFound)
 	}
 
+	stepHandler := func(n int, query string, err error) error {
+		if runner.stepHandler != nil {
+			runner.stepHandler(scenario, n, query, err)
+		}
+		return err
+	}
+
 	errTraceMsg := func(n int) string {
 		errTraceMsg := runner.Name() + "\n"
 		for i := 0; i < n; i++ {
@@ -164,23 +171,23 @@ func (runner *ScenarioRunner) Run() error {
 			errTraceMsg := errTraceMsg(n)
 			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, scenario.Queries[n])
 			errTraceMsg += "\n"
-			return fmt.Errorf("%s%w", errTraceMsg, err)
+			return stepHandler(n, query, fmt.Errorf("%s%w", errTraceMsg, err))
 		}
 		err = rows.Err()
 		if err != nil {
-			return err
+			return stepHandler(n, query, err)
 		}
 		defer rows.Close()
 
 		columns, err := rows.Columns()
 		if err != nil {
-			return err
+			return stepHandler(n, query, err)
 		}
 		columnCnt := len(columns)
 
 		columnTypes, err := rows.ColumnTypes()
 		if err != nil {
-			return err
+			return stepHandler(n, query, err)
 		}
 
 		// NOTE: Run() supports only the following standard column types yet.
@@ -213,7 +220,7 @@ func (runner *ScenarioRunner) Run() error {
 		for rows.Next() {
 			err = rows.Scan(values...)
 			if err != nil {
-				return err
+				return stepHandler(n, query, err)
 			}
 
 			row := map[string]interface{}{}
@@ -241,20 +248,22 @@ func (runner *ScenarioRunner) Run() error {
 		expectedRows, err := expectedRes.Rows()
 		if err != nil {
 			if len(rsRows) != 0 {
-				return fmt.Errorf("%s"+errorJSONResponseHasUnexpectedRows, errTraceMsg(n), n, query, rsRows)
+				return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseHasUnexpectedRows, errTraceMsg(n), n, query, rsRows))
 			}
 		} else {
 			if len(rsRows) != len(expectedRows) {
-				return fmt.Errorf("%s"+errorJSONResponseUnmatchedRowCount, errTraceMsg(n), n, query, rsRows, expectedRows)
+				return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseUnmatchedRowCount, errTraceMsg(n), n, query, rsRows, expectedRows))
 			}
 		}
 
 		for _, row := range rsRows {
 			err = expectedRes.HasRow(row)
 			if err != nil {
-				return fmt.Errorf("%s"+errorQueryPrefix+"%w", errTraceMsg(n), n, query, err)
+				return stepHandler(n, query, fmt.Errorf("%s"+errorQueryPrefix+"%w", errTraceMsg(n), n, query, err))
 			}
 		}
+
+		stepHandler(n, query, nil)
 	}
 
 	return nil
