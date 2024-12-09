@@ -15,6 +15,7 @@
 package sqltest
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 	"time"
@@ -55,6 +56,14 @@ func WithScenarioRunnerFile(filename string) ScenarioRunnerOption {
 func WithScenarioRunnerBytes(name string, b []byte) ScenarioRunnerOption {
 	return func(runner *ScenarioRunner) error {
 		return runner.ParseBytes(name, b)
+	}
+}
+
+// WithScenarioRunnerStepHandler returns a scenario runner option to set a step handler.
+func WithScenarioRunnerStepHandler(handler ScenarioStepHandler) ScenarioRunnerOption {
+	return func(runner *ScenarioRunner) error {
+		runner.SetStepHandler(handler)
+		return nil
 	}
 }
 
@@ -136,7 +145,7 @@ func (runner *ScenarioRunner) Run() error {
 
 	client := runner.client
 	if client == nil {
-		return fmt.Errorf(errorClientNotFound)
+		return errors.New(errorClientNotFound)
 	}
 
 	errTraceMsg := func(n int) string {
