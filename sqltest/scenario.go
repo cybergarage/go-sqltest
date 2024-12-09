@@ -27,7 +27,7 @@ type Line = string
 type ScenarioOption func(*Scenario) error
 
 // ScenarioStepHandler represents a scenario step handler.
-type ScenarioStepHandler func(*Scenario, int, string, *QueryResponse)
+type ScenarioStepHandler func(*Scenario, int, string, error)
 
 // WithScenarioFile returns a scenario option to load the specified scenario file.
 func WithScenarioFile(filename string) ScenarioOption {
