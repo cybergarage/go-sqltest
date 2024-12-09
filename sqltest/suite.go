@@ -81,6 +81,16 @@ func WithSuiteErrorHandler(handler SuiteErrorHandler) SuiteOption {
 	}
 }
 
+// WithSuiteStepHandler returns a SuiteOption that sets a handler for errors in a Suite.
+func WithSuiteStepHandler(handler ScenarioStepHandler) SuiteOption {
+	return func(suite *Suite) error {
+		for _, test := range suite.tests {
+			test.SetStepHandler(handler)
+		}
+		return nil
+	}
+}
+
 // Suite represents a scenario test suite.
 type Suite struct {
 	tests        []*ScenarioRunner
