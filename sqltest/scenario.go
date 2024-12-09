@@ -23,6 +23,26 @@ import (
 // Line represents a line of a scenario test file.
 type Line = string
 
+// ScenarioOption represents an option function for a scenario.
+type ScenarioOption func(*Scenario) error
+
+// ScenarioStepHandler represents a scenario step handler.
+type ScenarioStepHandler func(*Scenario, int, string, *QueryResponse)
+
+// WithScenarioFile returns a scenario option to load the specified scenario file.
+func WithScenarioFile(filename string) ScenarioOption {
+	return func(scn *Scenario) error {
+		return scn.LoadFile(filename)
+	}
+}
+
+// WithScenarioBytes returns a scenario option to load the specified scenario bytes.
+func WithScenarioBytes(name string, b []byte) ScenarioOption {
+	return func(scn *Scenario) error {
+		return scn.ParseBytes(name, b)
+	}
+}
+
 // Scenario represents a scenario.
 type Scenario struct {
 	Filename  string
@@ -40,18 +60,26 @@ func NewScenario() *Scenario {
 	return file
 }
 
+// NewScenarioWith returns a scenario instance with the specified options.
+func NewScenarioWith(opts ...ScenarioOption) (*Scenario, error) {
+	scn := NewScenario()
+	for _, opt := range opts {
+		err := opt(scn)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return scn, nil
+}
+
 // NewScenarioWithFile return a scenario instance for the specified test scenario file.
 func NewScenarioWithFile(filename string) (*Scenario, error) {
-	scn := NewScenario()
-	err := scn.LoadFile(filename)
-	return scn, err
+	return NewScenarioWith(WithScenarioFile(filename))
 }
 
 // NewScenarioWithBytes return a scenario instance for the specified test scenario bytes.
 func NewScenarioWithBytes(name string, b []byte) (*Scenario, error) {
-	scn := NewScenario()
-	err := scn.ParseBytes(name, b)
-	return scn, err
+	return NewScenarioWith(WithScenarioBytes(name, b))
 }
 
 // Name returns the loaded scenario file name.
