@@ -6,7 +6,7 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.4.3 (2024-12-xx)
+## v1.4.3 (2024-12-11)
 ### Added
 - Secondary index tests.
 ### Updated
