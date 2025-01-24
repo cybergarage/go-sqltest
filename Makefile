@@ -31,21 +31,21 @@ BIN_SRCS=\
 BINS=\
         ${BIN_CMD_ID}
 
-TEST_ROOT=${PKG_ROOT}/test
-TEST_PKG=${MODULE_ROOT}/${TEST_ROOT}
-TEST_HELPER=${TEST_ROOT}/embed
-TEST_MAKEFILE=${TEST_ROOT}/Makefile
+TEST_PKG=${MODULE_ROOT}/${PKG_NAME}
+SCENARIO_ROOT=${PKG_ROOT}/scenarios
+SCENARIO_HELPER=${SCENARIO_ROOT}/embed
+SCENARIO_MAKEFILE=${SCENARIO_ROOT}/Makefile
 
 .PHONY: test format vet lint clean
 
 all: test
 
-scenarios: ${TEST_MAKEFILE} ${TEST_HELPER}.go
+scenarios: ${SCENARIO_MAKEFILE} ${SCENARIO_HELPER}.go
 
-${TEST_MAKEFILE} : ${TEST_MAKEFILE}.pl $(wildcard ${TEST_ROOT}/data/*.pict)
+${SCENARIO_MAKEFILE} : ${SCENARIO_MAKEFILE}.pl $(wildcard ${SCENARIO_ROOT}/data/*.pict)
 	perl $< > $@
 
-${TEST_HELPER}.go : ${TEST_HELPER}.pl ${TEST_MAKEFILE} $(wildcard ${TEST_ROOT}/*.qst)
+${SCENARIO_HELPER}.go : ${SCENARIO_HELPER}.pl ${SCENARIO_MAKEFILE} $(wildcard ${SCENARIO_ROOT}/*.qst)
 	perl $< > $@
 
 version:
@@ -53,7 +53,7 @@ version:
 	-git commit ${PKG_ROOT}/version.go -m "Update version"
 
 format: version
-	gofmt -s -w ${PKG_ROOT} ${BIN_ROOT} ${TEST_ROOT}
+	gofmt -s -w ${PKG_ROOT} ${BIN_ROOT} ${SCENARIO_ROOT}
 
 vet: format
 	go vet ${PKG}
