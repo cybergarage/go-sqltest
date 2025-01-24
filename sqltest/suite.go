@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cybergarage/go-sqltest/sqltest/test"
+	test "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 	"github.com/cybergarage/go-sqltest/sqltest/util"
 )
 
