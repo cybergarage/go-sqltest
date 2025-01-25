@@ -26,40 +26,40 @@ import (
 )
 
 const (
-	QueryResponseRowsKey = "rows"
+	QueryContextRowsKey = "rows"
 )
 
-// QueryResponseData defines a JSON response data type.
-type QueryResponseData = map[string]interface{}
+// QueryContextData defines a JSON response data type.
+type QueryContextData = map[string]interface{}
 
-// QueryResponseRows defines a JSON response rows type.
-type QueryResponseRows = []interface{}
+// QueryContextRows defines a JSON response rows type.
+type QueryContextRows = []interface{}
 
-// QueryResponseRow defines a JSON response row type.
-type QueryResponseRow = map[string]interface{}
+// QueryContextRow defines a JSON response row type.
+type QueryContextRow = map[string]interface{}
 
-// QueryResponse represents a response of a query.
-type QueryResponse struct {
-	Data QueryResponseData
+// QueryContext represents a response of a query.
+type QueryContext struct {
+	Data QueryContextData
 }
 
-// NewQueryResponse returns a response instance.
-func NewQueryResponse() *QueryResponse {
-	res := &QueryResponse{
-		Data: QueryResponseData{},
+// NewQueryContext returns a response instance.
+func NewQueryContext() *QueryContext {
+	res := &QueryContext{
+		Data: QueryContextData{},
 	}
 	return res
 }
 
-// NewQueryResponseWithString returns a response instance of the specified JSON response.
-func NewQueryResponseWithString(json string) (*QueryResponse, error) {
-	res := NewQueryResponse()
+// NewQueryContextWithString returns a response instance of the specified JSON response.
+func NewQueryContextWithString(json string) (*QueryContext, error) {
+	res := NewQueryContext()
 	err := res.ParseString(json)
 	return res, err
 }
 
 // ParseString parses a specified string response as a JSON data.
-func (res *QueryResponse) ParseString(jsonStr string) error {
+func (res *QueryContext) ParseString(jsonStr string) error {
 	var rootObj interface{}
 	err := json.Unmarshal([]byte(jsonStr), &rootObj)
 	if err != nil {
@@ -67,7 +67,7 @@ func (res *QueryResponse) ParseString(jsonStr string) error {
 	}
 
 	var ok bool
-	res.Data, ok = rootObj.(QueryResponseData)
+	res.Data, ok = rootObj.(QueryContextData)
 	if !ok {
 		return fmt.Errorf(errorInvalidJSONResponse, rootObj)
 	}
@@ -76,19 +76,19 @@ func (res *QueryResponse) ParseString(jsonStr string) error {
 }
 
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.
-func (res *QueryResponse) Rows() (QueryResponseRows, error) {
+func (res *QueryContext) Rows() (QueryContextRows, error) {
 	if res.Data == nil {
 		return nil, fmt.Errorf(errorJSONResponseNotFound)
 	}
 
-	rowsData, ok := res.Data[QueryResponseRowsKey]
+	rowsData, ok := res.Data[QueryContextRowsKey]
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryResponseRowsKey)
+		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
 	}
 
-	rows, ok := rowsData.(QueryResponseRows)
+	rows, ok := rowsData.(QueryContextRows)
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryResponseRowsKey)
+		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
 	}
 
 	return rows, nil
@@ -96,8 +96,8 @@ func (res *QueryResponse) Rows() (QueryResponseRows, error) {
 
 // HasRow returns true when the response has a specified row, otherwise false.
 // nolint: gocyclo
-func (res *QueryResponse) HasRow(row interface{}) error {
-	rowMap, ok := row.(QueryResponseRow)
+func (res *QueryContext) HasRow(row interface{}) error {
+	rowMap, ok := row.(QueryContextRow)
 	if !ok {
 		return fmt.Errorf(errorJSONResponseHasNoRow, row, rowMap)
 	}
@@ -218,7 +218,7 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 	}
 
 	for _, resRow := range resRows {
-		resMap, ok := resRow.(QueryResponseRow)
+		resMap, ok := resRow.(QueryContextRow)
 		if !ok {
 			continue
 		}
@@ -250,6 +250,6 @@ func (res *QueryResponse) HasRow(row interface{}) error {
 }
 
 // String returns the string representation.
-func (res *QueryResponse) String() string {
+func (res *QueryContext) String() string {
 	return fmt.Sprintf("%v", res.Data)
 }

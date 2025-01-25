@@ -19,14 +19,14 @@ import (
 	"testing"
 )
 
-func TestQueryResponse(t *testing.T) {
+func TestQueryContext(t *testing.T) {
 	testJSONStrs := []string{
 		"{}",
 		"{ \"rows\" : [ { \"k\" : \"0\", \"v1\" : \"0\", \"v2\" : \"0\" } ]}",
 		"{ \"rows\" : [ { \"k\" : \"0\", \"v1\" : \"0\", \"v2\" : \"0\" }, { \"k\" : \"1\", \"v1\" : \"1\", \"v2\" : \"1\" } ]}",
 	}
 
-	res := NewQueryResponse()
+	res := NewQueryContext()
 	for _, jsonStr := range testJSONStrs {
 		err := res.ParseString(jsonStr)
 		if err != nil {
@@ -35,21 +35,21 @@ func TestQueryResponse(t *testing.T) {
 	}
 }
 
-func TestQueryResponseRows(t *testing.T) {
-	testRows := QueryResponseRows{
-		QueryResponseRow{
+func TestQueryContextRows(t *testing.T) {
+	testRows := QueryContextRows{
+		QueryContextRow{
 			"k":  0,
 			"v1": 0,
 			"v2": 0,
 		},
-		QueryResponseRow{
+		QueryContextRow{
 			"k":  1,
 			"v1": 1,
 			"v2": 1,
 		},
 	}
-	testResData := QueryResponseData{
-		QueryResponseRowsKey: testRows,
+	testResData := QueryContextData{
+		QueryContextRowsKey: testRows,
 	}
 
 	jsonStr, err := json.Marshal(testResData)
@@ -58,7 +58,7 @@ func TestQueryResponseRows(t *testing.T) {
 		return
 	}
 
-	res := NewQueryResponse()
+	res := NewQueryContext()
 	err = res.ParseString(string(jsonStr))
 	if err != nil {
 		t.Error(err)

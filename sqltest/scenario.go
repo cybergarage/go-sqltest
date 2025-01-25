@@ -47,7 +47,7 @@ func WithScenarioBytes(name string, b []byte) ScenarioOption {
 type Scenario struct {
 	Filename  string
 	Queries   []string
-	Expecteds []*QueryResponse
+	Expecteds []*QueryContext
 }
 
 // NewScenario return a scenario instance.
@@ -55,7 +55,7 @@ func NewScenario() *Scenario {
 	file := &Scenario{
 		Filename:  "",
 		Queries:   []string{},
-		Expecteds: []*QueryResponse{},
+		Expecteds: []*QueryContext{},
 	}
 	return file
 }
@@ -152,7 +152,7 @@ func (scn *Scenario) parseByteLines(fileBytes []byte) ([]Line, error) {
 func (scn *Scenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
 	scn.Queries = make([]string, 0)
-	scn.Expecteds = make([]*QueryResponse, 0)
+	scn.Expecteds = make([]*QueryContext, 0)
 
 	appendQuery := func() {
 		if len(queryStr) == 0 {
@@ -165,7 +165,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if len(resultStr) == 0 {
 			return nil
 		}
-		result, err := NewQueryResponseWithString(strings.TrimSpace(resultStr))
+		result, err := NewQueryContextWithString(strings.TrimSpace(resultStr))
 		if err != nil {
 			return err
 		}
