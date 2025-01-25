@@ -32,16 +32,16 @@ const (
 )
 
 // QueryContextData defines a JSON response data type.
-type QueryContextData = map[string]interface{}
+type QueryContextData = map[string]any
 
-// QueryContextRows defines a JSON response rows type.
-type QueryContextRows = []interface{}
+// QueryRows defines a JSON response rows type.
+type QueryRows = []any
 
-// QueryContextBindings defines a JSON response bindings type.
-type QueryContextBindings = []any
+// QueryBindings defines a JSON response bindings type.
+type QueryBindings = []any
 
 // QueryContextRow defines a JSON response row type.
-type QueryContextRow = map[string]interface{}
+type QueryContextRow = map[string]any
 
 // QueryContext represents a response of a query.
 type QueryContext struct {
@@ -91,7 +91,7 @@ func (res *QueryContext) Bindings() ([]any, bool) {
 		return nil, false
 	}
 
-	bindings, ok := bindingsData.(QueryContextBindings)
+	bindings, ok := bindingsData.(QueryBindings)
 	if !ok {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (res *QueryContext) Bindings() ([]any, bool) {
 }
 
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.
-func (res *QueryContext) Rows() (QueryContextRows, error) {
+func (res *QueryContext) Rows() (QueryRows, error) {
 	if res.Data == nil {
 		return nil, errors.New(errorJSONResponseNotFound)
 	}
@@ -110,7 +110,7 @@ func (res *QueryContext) Rows() (QueryContextRows, error) {
 		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
 	}
 
-	rows, ok := rowsData.(QueryContextRows)
+	rows, ok := rowsData.(QueryRows)
 	if !ok {
 		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
 	}

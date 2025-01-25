@@ -37,7 +37,7 @@ func TestQueryContext(t *testing.T) {
 }
 
 func TestQueryContextBindings(t *testing.T) {
-	testBindings := QueryContextBindings{
+	testBindings := QueryBindings{
 		"0",
 		"1",
 		"2",
@@ -72,7 +72,7 @@ func TestQueryContextBindings(t *testing.T) {
 }
 
 func TestQueryContextRows(t *testing.T) {
-	testRows := QueryContextRows{
+	testRows := QueryRows{
 		QueryContextRow{
 			"k":  0,
 			"v1": 0,

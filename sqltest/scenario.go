@@ -106,6 +106,19 @@ func (scn *Scenario) Bindings() [][]any {
 	return bindings
 }
 
+// ExpectedRows returns the loaded scenario expected rows.
+func (scn *Scenario) ExpectedRows() ([]QueryRows, error) {
+	rows := make([]QueryRows, 0)
+	for _, content := range scn.contents {
+		v, err := content.Rows()
+		if err != nil {
+			return nil, err
+		}
+		rows = append(rows, v)
+	}
+	return rows, nil
+}
+
 // IsValid checks whether the loaded scenario is available.
 func (scn *Scenario) IsValid() error {
 	if len(scn.queries) != len(scn.contents) {
