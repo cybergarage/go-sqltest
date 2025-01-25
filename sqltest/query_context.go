@@ -26,7 +26,8 @@ import (
 )
 
 const (
-	QueryContextRowsKey = "rows"
+	QueryContextRowsKey     = "rows"
+	QueryContextBindingsKey = "bindings"
 )
 
 // QueryContextData defines a JSON response data type.
@@ -34,6 +35,9 @@ type QueryContextData = map[string]interface{}
 
 // QueryContextRows defines a JSON response rows type.
 type QueryContextRows = []interface{}
+
+// QueryContextBindings defines a JSON response bindings type.
+type QueryContextBindings = []any
 
 // QueryContextRow defines a JSON response row type.
 type QueryContextRow = map[string]interface{}
@@ -73,6 +77,25 @@ func (res *QueryContext) ParseString(jsonStr string) error {
 	}
 
 	return nil
+}
+
+// Bindings returns response bindings.
+func (res *QueryContext) Bindings() ([]any, bool) {
+	if res.Data == nil {
+		return nil, false
+	}
+
+	bindingsData, ok := res.Data[QueryContextBindingsKey]
+	if !ok {
+		return nil, false
+	}
+
+	bindings, ok := bindingsData.(QueryContextBindings)
+	if !ok {
+		return nil, false
+	}
+
+	return bindings, true
 }
 
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.

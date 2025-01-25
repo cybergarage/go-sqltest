@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"encoding/json"
+	"reflect"
 	"testing"
 )
 
@@ -32,6 +33,41 @@ func TestQueryContext(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
+	}
+}
+
+func TestQueryContextBindings(t *testing.T) {
+	testBindings := QueryContextBindings{
+		"0",
+		"1",
+		"2",
+	}
+	testResData := QueryContextData{
+		QueryContextBindingsKey: testBindings,
+	}
+
+	jsonStr, err := json.Marshal(testResData)
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	res := NewQueryContext()
+	err = res.ParseString(string(jsonStr))
+	if err != nil {
+		t.Error(err)
+		return
+	}
+
+	bindings, ok := res.Bindings()
+	if !ok {
+		t.Error("Failed to get bindings")
+		return
+	}
+
+	if !reflect.DeepEqual(bindings, testBindings) {
+		t.Error("Failed to get bindings")
+		return
 	}
 }
 
