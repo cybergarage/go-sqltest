@@ -45,17 +45,17 @@ func WithScenarioBytes(name string, b []byte) ScenarioOption {
 
 // Scenario represents a scenario.
 type Scenario struct {
-	Filename  string
-	Queries   []string
-	Expecteds []*QueryContext
+	filename string
+	queries  []string
+	contents []*QueryContext
 }
 
 // NewScenario return a scenario instance.
 func NewScenario() *Scenario {
 	file := &Scenario{
-		Filename:  "",
-		Queries:   []string{},
-		Expecteds: []*QueryContext{},
+		filename: "",
+		queries:  []string{},
+		contents: []*QueryContext{},
 	}
 	return file
 }
@@ -84,13 +84,18 @@ func NewScenarioWithBytes(name string, b []byte) (*Scenario, error) {
 
 // Name returns the loaded scenario file name.
 func (scn *Scenario) Name() string {
-	return scn.Filename
+	return scn.filename
+}
+
+// Queries returns the loaded scenario queries.
+func (scn *Scenario) Queries() []string {
+	return scn.queries
 }
 
 // IsValid checks whether the loaded scenario is available.
 func (scn *Scenario) IsValid() error {
-	if len(scn.Queries) != len(scn.Expecteds) {
-		return fmt.Errorf(errorInvalidScenarioCases, len(scn.Queries), len(scn.Expecteds))
+	if len(scn.queries) != len(scn.contents) {
+		return fmt.Errorf(errorInvalidScenarioCases, len(scn.queries), len(scn.contents))
 	}
 	return nil
 }
@@ -107,7 +112,7 @@ func (scn *Scenario) LoadFile(filename string) error {
 		return fmt.Errorf("%s : %w", filename, err)
 	}
 
-	scn.Filename = filename
+	scn.filename = filename
 
 	return nil
 }
@@ -132,7 +137,7 @@ func (scn *Scenario) ParseBytes(name string, b []byte) error {
 		return fmt.Errorf("%s : %w", name, err)
 	}
 
-	scn.Filename = name
+	scn.filename = name
 	return nil
 }
 
@@ -151,14 +156,14 @@ func (scn *Scenario) parseByteLines(fileBytes []byte) ([]Line, error) {
 // ParseLineStrings parses the specified scenario line strings.
 func (scn *Scenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
-	scn.Queries = make([]string, 0)
-	scn.Expecteds = make([]*QueryContext, 0)
+	scn.queries = make([]string, 0)
+	scn.contents = make([]*QueryContext, 0)
 
 	appendQuery := func() {
 		if len(queryStr) == 0 {
 			return
 		}
-		scn.Queries = append(scn.Queries, strings.TrimSpace(queryStr))
+		scn.queries = append(scn.queries, strings.TrimSpace(queryStr))
 		queryStr = ""
 	}
 	appendResult := func() error {
@@ -169,7 +174,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if err != nil {
 			return err
 		}
-		scn.Expecteds = append(scn.Expecteds, result)
+		scn.contents = append(scn.contents, result)
 		resultStr = ""
 		return nil
 	}
@@ -204,11 +209,11 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 // String returns the string representation.
 func (scn *Scenario) String() string {
 	var str string
-	nResults := len(scn.Expecteds)
-	for n, query := range scn.Queries {
+	nResults := len(scn.contents)
+	for n, query := range scn.queries {
 		str += query + "\n"
 		if n < nResults {
-			str += scn.Expecteds[n].String() + "\n"
+			str += scn.contents[n].String() + "\n"
 		}
 	}
 	return str

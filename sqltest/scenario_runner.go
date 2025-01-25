@@ -143,6 +143,8 @@ func (runner *ScenarioRunner) Run() error {
 		return err
 	}
 
+	queries := scenario.Queries()
+
 	client := runner.client
 	if client == nil {
 		return errors.New(errorClientNotFound)
@@ -158,18 +160,18 @@ func (runner *ScenarioRunner) Run() error {
 	errTraceMsg := func(n int) string {
 		errTraceMsg := runner.Name() + "\n"
 		for i := 0; i < n; i++ {
-			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, scenario.Queries[i])
+			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, queries[i])
 			errTraceMsg += "\n"
 		}
 		return errTraceMsg
 	}
 
-	for n, query := range scenario.Queries {
+	for n, query := range queries {
 		log.Infof("[%d] %s", n, query)
 		rows, err := client.Query(query)
 		if err != nil {
 			errTraceMsg := errTraceMsg(n)
-			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, scenario.Queries[n])
+			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, queries[n])
 			errTraceMsg += "\n"
 			return stepHandler(n, query, fmt.Errorf("%s%w", errTraceMsg, err))
 		}
@@ -244,7 +246,7 @@ func (runner *ScenarioRunner) Run() error {
 			rsRows = append(rsRows, row)
 		}
 
-		expectedRes := scenario.Expecteds[n]
+		expectedRes := scenario.contents[n]
 		expectedRows, err := expectedRes.Rows()
 		if err != nil {
 			if len(rsRows) != 0 {

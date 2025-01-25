@@ -29,7 +29,7 @@ func TestEmbedSuite(t *testing.T) {
 	for _, tst := range suite.tests {
 		t.Run(tst.Name(), func(t *testing.T) {
 			scn := tst.Scenario
-			if scn == nil || (len(scn.Queries) == 0) {
+			if scn == nil || (len(scn.Queries()) == 0) {
 				t.Errorf("%s scenario is empty", tst.Name())
 			}
 		})
