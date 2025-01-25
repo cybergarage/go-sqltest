@@ -93,8 +93,8 @@ func (scn *Scenario) Queries() []string {
 }
 
 // Bindings returns the loaded scenario bindings.
-func (scn *Scenario) Bindings() [][]any {
-	bindings := make([][]any, 0)
+func (scn *Scenario) Bindings() []QueryBindings {
+	bindings := make([]QueryBindings, 0)
 	for _, content := range scn.contents {
 		v, ok := content.Bindings()
 		if !ok {

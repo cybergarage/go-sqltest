@@ -81,7 +81,7 @@ func (res *QueryContext) ParseString(jsonStr string) error {
 }
 
 // Bindings returns response bindings.
-func (res *QueryContext) Bindings() ([]any, bool) {
+func (res *QueryContext) Bindings() (QueryBindings, bool) {
 	if res.Data == nil {
 		return nil, false
 	}
