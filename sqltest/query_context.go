@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"math"
 	"reflect"
@@ -101,7 +102,7 @@ func (res *QueryContext) Bindings() ([]any, bool) {
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.
 func (res *QueryContext) Rows() (QueryContextRows, error) {
 	if res.Data == nil {
-		return nil, fmt.Errorf(errorJSONResponseNotFound)
+		return nil, errors.New(errorJSONResponseNotFound)
 	}
 
 	rowsData, ok := res.Data[QueryContextRowsKey]
