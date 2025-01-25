@@ -92,6 +92,20 @@ func (scn *Scenario) Queries() []string {
 	return scn.queries
 }
 
+// Bindings returns the loaded scenario bindings.
+func (scn *Scenario) Bindings() [][]any {
+	bindings := make([][]any, 0)
+	for _, content := range scn.contents {
+		v, ok := content.Bindings()
+		if !ok {
+			bindings = append(bindings, []any{}) // empty bindings
+			continue
+		}
+		bindings = append(bindings, v)
+	}
+	return bindings
+}
+
 // IsValid checks whether the loaded scenario is available.
 func (scn *Scenario) IsValid() error {
 	if len(scn.queries) != len(scn.contents) {
