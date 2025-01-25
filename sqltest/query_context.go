@@ -40,8 +40,8 @@ type QueryRows = []any
 // QueryBindings defines a JSON response bindings type.
 type QueryBindings = []any
 
-// QueryContextRow defines a JSON response row type.
-type QueryContextRow = map[string]any
+// QueryResponseRow defines a JSON response row type.
+type QueryResponseRow = map[string]any
 
 // QueryContext represents a response of a query.
 type QueryContext struct {
@@ -121,7 +121,7 @@ func (res *QueryContext) Rows() (QueryRows, error) {
 // HasRow returns true when the response has a specified row, otherwise false.
 // nolint: gocyclo
 func (res *QueryContext) HasRow(row interface{}) error {
-	rowMap, ok := row.(QueryContextRow)
+	rowMap, ok := row.(QueryResponseRow)
 	if !ok {
 		return fmt.Errorf(errorJSONResponseHasNoRow, row, rowMap)
 	}
@@ -242,7 +242,7 @@ func (res *QueryContext) HasRow(row interface{}) error {
 	}
 
 	for _, resRow := range resRows {
-		resMap, ok := resRow.(QueryContextRow)
+		resMap, ok := resRow.(QueryResponseRow)
 		if !ok {
 			continue
 		}

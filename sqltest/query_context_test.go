@@ -73,12 +73,12 @@ func TestQueryContextBindings(t *testing.T) {
 
 func TestQueryContextRows(t *testing.T) {
 	testRows := QueryRows{
-		QueryContextRow{
+		QueryResponseRow{
 			"k":  0,
 			"v1": 0,
 			"v2": 0,
 		},
-		QueryContextRow{
+		QueryResponseRow{
 			"k":  1,
 			"v1": 1,
 			"v2": 1,
