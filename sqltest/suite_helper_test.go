@@ -17,7 +17,7 @@ package sqltest
 import (
 	"testing"
 
-	"github.com/cybergarage/go-sqltest/sqltest/test"
+	test "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
 func TestEmbedSuite(t *testing.T) {
