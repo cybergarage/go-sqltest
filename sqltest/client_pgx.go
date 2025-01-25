@@ -110,7 +110,7 @@ func (client *PgxClient) Ping() error {
 }
 
 // Query executes a query that returns rows.
-func (client *PgxClient) Query(query string, args ...interface{}) (pgx.Rows, error) {
+func (client *PgxClient) Query(query string, args ...any) (pgx.Rows, error) {
 	if client.conn == nil {
 		err := client.Open()
 		if err != nil {

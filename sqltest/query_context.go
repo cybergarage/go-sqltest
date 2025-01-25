@@ -65,7 +65,7 @@ func NewQueryContextWithString(json string) (*QueryContext, error) {
 
 // ParseString parses a specified string response as a JSON data.
 func (res *QueryContext) ParseString(jsonStr string) error {
-	var rootObj interface{}
+	var rootObj any
 	err := json.Unmarshal([]byte(jsonStr), &rootObj)
 	if err != nil {
 		return err
@@ -120,7 +120,7 @@ func (res *QueryContext) Rows() (QueryRows, error) {
 
 // HasRow returns true when the response has a specified row, otherwise false.
 // nolint: gocyclo
-func (res *QueryContext) HasRow(row interface{}) error {
+func (res *QueryContext) HasRow(row any) error {
 	rowMap, ok := row.(QueryResponseRow)
 	if !ok {
 		return fmt.Errorf(errorJSONResponseHasNoRow, row, rowMap)
@@ -131,8 +131,8 @@ func (res *QueryContext) HasRow(row interface{}) error {
 		return err
 	}
 
-	var deepEqual func(iv1 interface{}, iv2 interface{}) bool
-	deepEqual = func(iv1 interface{}, iv2 interface{}) bool {
+	var deepEqual func(iv1 any, iv2 any) bool
+	deepEqual = func(iv1 any, iv2 any) bool {
 		if reflect.DeepEqual(iv1, iv2) {
 			return true
 		}

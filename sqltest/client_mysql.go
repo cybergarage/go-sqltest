@@ -130,7 +130,7 @@ func (client *MySQLClient) Ping() error {
 }
 
 // Query executes a query that returns rows.
-func (client *MySQLClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
+func (client *MySQLClient) Query(query string, args ...any) (*sql.Rows, error) {
 	if client.db == nil {
 		err := client.Open()
 		if err != nil {

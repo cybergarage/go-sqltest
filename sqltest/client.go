@@ -63,5 +63,5 @@ type Client interface {
 	// DropDatabase drops a database.
 	DropDatabase(name string) error
 	// Query executes a query.
-	Query(query string, args ...interface{}) (*sql.Rows, error)
+	Query(query string, args ...any) (*sql.Rows, error)
 }

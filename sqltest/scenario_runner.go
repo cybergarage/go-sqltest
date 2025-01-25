@@ -193,7 +193,7 @@ func (runner *ScenarioRunner) Run() error {
 		}
 
 		// NOTE: Run() supports only the following standard column types yet.
-		values := make([]interface{}, columnCnt)
+		values := make([]any, columnCnt)
 		for n, columnType := range columnTypes {
 			s := strings.ToUpper(columnType.DatabaseTypeName())
 			switch {
@@ -218,14 +218,14 @@ func (runner *ScenarioRunner) Run() error {
 			}
 		}
 
-		rsRows := make([]interface{}, 0)
+		rsRows := make([]any, 0)
 		for rows.Next() {
 			err = rows.Scan(values...)
 			if err != nil {
 				return stepHandler(n, query, err)
 			}
 
-			row := map[string]interface{}{}
+			row := map[string]any{}
 			for i := 0; i < columnCnt; i++ {
 				switch v := values[i].(type) {
 				case *int:
@@ -236,7 +236,7 @@ func (runner *ScenarioRunner) Run() error {
 					row[columns[i]] = *v
 				case *time.Time:
 					row[columns[i]] = *v
-				case *interface{}:
+				case *any:
 					row[columns[i]] = *v
 				default:
 					row[columns[i]] = values[i]

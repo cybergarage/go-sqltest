@@ -109,7 +109,7 @@ func (client *PqClient) Ping() error {
 }
 
 // Query executes a query that returns rows.
-func (client *PqClient) Query(query string, args ...interface{}) (*sql.Rows, error) {
+func (client *PqClient) Query(query string, args ...any) (*sql.Rows, error) {
 	if client.db == nil {
 		err := client.Open()
 		if err != nil {
