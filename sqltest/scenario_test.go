@@ -20,7 +20,7 @@ import (
 	scenarios "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
-func TestScenario(t *testing.T) {
+func TestEmbedScenario(t *testing.T) {
 	for name, scnBytes := range scenarios.EmbedScenarios {
 		t.Run(name, func(t *testing.T) {
 			scn := NewScenario()
