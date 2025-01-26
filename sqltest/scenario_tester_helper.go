@@ -27,7 +27,7 @@ func RunScenarioFiles(t *testing.T, testFilenames []string) {
 	t.Run(TestRunDescription, func(t *testing.T) {
 		for _, testFilename := range testFilenames {
 			t.Run(testFilename, func(t *testing.T) {
-				ct := NewScenarioRunner()
+				ct := NewScenarioTester()
 				err := ct.LoadFile(path.Join(SuiteDefaultTestDirectory, testFilename))
 				if err != nil {
 					t.Error(err)

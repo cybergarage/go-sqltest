@@ -27,49 +27,49 @@ const (
 	ScenarioFileExt = "qst"
 )
 
-// ScenarioRunnerOption represents an option function for a scenario runner.
-type ScenarioRunnerOption func(*ScenarioRunner) error
+// ScenarioTesterOption represents an option function for a scenario runner.
+type ScenarioTesterOption func(*ScenarioTester) error
 
-// ScenarioRunner represents a scenario runner.
-type ScenarioRunner struct {
+// ScenarioTester represents a scenario runner.
+type ScenarioTester struct {
 	Scenario    *Scenario
 	client      Client
 	stepHandler ScenarioStepHandler
 }
 
-// WithScenarioRunnerClient returns a scenario runner option to set a client.
-func WithScenarioRunnerClient(client Client) ScenarioRunnerOption {
-	return func(runner *ScenarioRunner) error {
+// WithScenarioTesterClient returns a scenario tester option to set a client.
+func WithScenarioTesterClient(client Client) ScenarioTesterOption {
+	return func(runner *ScenarioTester) error {
 		runner.SetClient(client)
 		return nil
 	}
 }
 
-// WithScenarioRunnerClient returns a scenario runner option to set a client.
-func WithScenarioRunnerFile(filename string) ScenarioRunnerOption {
-	return func(runner *ScenarioRunner) error {
+// WithScenarioTesterClient returns a scenario tester option to set a client.
+func WithScenarioTesterFile(filename string) ScenarioTesterOption {
+	return func(runner *ScenarioTester) error {
 		return runner.LoadFile(filename)
 	}
 }
 
-// WithScenarioRunnerBytes returns a scenario runner option to set a client.
-func WithScenarioRunnerBytes(name string, b []byte) ScenarioRunnerOption {
-	return func(runner *ScenarioRunner) error {
+// WithScenarioTesterBytes returns a scenario tester option to set a client.
+func WithScenarioTesterBytes(name string, b []byte) ScenarioTesterOption {
+	return func(runner *ScenarioTester) error {
 		return runner.ParseBytes(name, b)
 	}
 }
 
-// WithScenarioRunnerStepHandler returns a scenario runner option to set a step handler.
-func WithScenarioRunnerStepHandler(handler ScenarioStepHandler) ScenarioRunnerOption {
-	return func(runner *ScenarioRunner) error {
+// WithScenarioTesterStepHandler returns a scenario tester option to set a step handler.
+func WithScenarioTesterStepHandler(handler ScenarioStepHandler) ScenarioTesterOption {
+	return func(runner *ScenarioTester) error {
 		runner.SetStepHandler(handler)
 		return nil
 	}
 }
 
-// NewScenarioRunner returns a scenario runner instance.
-func NewScenarioRunner() *ScenarioRunner {
-	runner := &ScenarioRunner{
+// NewScenarioTester returns a scenario tester instance.
+func NewScenarioTester() *ScenarioTester {
+	runner := &ScenarioTester{
 		Scenario:    nil,
 		client:      nil,
 		stepHandler: nil,
@@ -77,9 +77,9 @@ func NewScenarioRunner() *ScenarioRunner {
 	return runner
 }
 
-// NewScenarioRunnerWith returns a scenario runner instance with the specified options.
-func NewScenarioRunnerWith(options ...ScenarioRunnerOption) (*ScenarioRunner, error) {
-	runner := NewScenarioRunner()
+// NewScenarioTesterWith returns a scenario tester instance with the specified options.
+func NewScenarioTesterWith(options ...ScenarioTesterOption) (*ScenarioTester, error) {
+	runner := NewScenarioTester()
 	for _, option := range options {
 		err := option(runner)
 		if err != nil {
@@ -89,50 +89,50 @@ func NewScenarioRunnerWith(options ...ScenarioRunnerOption) (*ScenarioRunner, er
 	return runner, nil
 }
 
-// NewScenarioRunnerWithFile return a scenario test instance for the specified test scenario file.
-func NewScenarioRunnerWithFile(filename string) (*ScenarioRunner, error) {
-	return NewScenarioRunnerWith(WithScenarioRunnerFile(filename))
+// NewScenarioTesterWithFile return a scenario test instance for the specified test scenario file.
+func NewScenarioTesterWithFile(filename string) (*ScenarioTester, error) {
+	return NewScenarioTesterWith(WithScenarioTesterFile(filename))
 }
 
-// NewScenarioRunnerWithBytes return a scenario test instance for the specified test scenario bytes.
-func NewScenarioRunnerWithBytes(name string, b []byte) (*ScenarioRunner, error) {
-	return NewScenarioRunnerWith(WithScenarioRunnerBytes(name, b))
+// NewScenarioTesterWithBytes return a scenario test instance for the specified test scenario bytes.
+func NewScenarioTesterWithBytes(name string, b []byte) (*ScenarioTester, error) {
+	return NewScenarioTesterWith(WithScenarioTesterBytes(name, b))
 }
 
 // SetClient sets a client for testing.
-func (runner *ScenarioRunner) SetClient(c Client) {
+func (runner *ScenarioTester) SetClient(c Client) {
 	runner.client = c
 }
 
 // SetStepHandler sets a step handler for testing.
-func (runner *ScenarioRunner) SetStepHandler(handler ScenarioStepHandler) {
+func (runner *ScenarioTester) SetStepHandler(handler ScenarioStepHandler) {
 	runner.stepHandler = handler
 }
 
 // Name returns the loaded senario name.
-func (runner *ScenarioRunner) Name() string {
+func (runner *ScenarioTester) Name() string {
 	return runner.Scenario.Name()
 }
 
 // LoadFile loads a specified scenario test file.
-func (runner *ScenarioRunner) LoadFile(filename string) error {
+func (runner *ScenarioTester) LoadFile(filename string) error {
 	runner.Scenario = NewScenario()
 	return runner.Scenario.LoadFile(filename)
 }
 
 // ParseBytes loads a specified scenario test bytes.
-func (runner *ScenarioRunner) ParseBytes(name string, b []byte) error {
+func (runner *ScenarioTester) ParseBytes(name string, b []byte) error {
 	runner.Scenario = NewScenario()
 	return runner.Scenario.ParseBytes(name, b)
 }
 
 // LoadFileWithBasename loads a scenario test file which has specified basename.
-func (runner *ScenarioRunner) LoadFileWithBasename(basename string) error {
+func (runner *ScenarioTester) LoadFileWithBasename(basename string) error {
 	return runner.LoadFile(basename + "." + ScenarioFileExt)
 }
 
 // Run runs a loaded scenario test.
-func (runner *ScenarioRunner) Run() error {
+func (runner *ScenarioTester) Run() error {
 	scenario := runner.Scenario
 	if scenario == nil {
 		return nil

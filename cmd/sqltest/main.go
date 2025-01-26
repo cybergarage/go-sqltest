@@ -70,7 +70,7 @@ func main() {
 
 	scenarioPath := args[0]
 
-	scenarioTest, err := sqltest.NewScenarioRunnerWithFile(scenarioPath)
+	scenarioTest, err := sqltest.NewScenarioTesterWithFile(scenarioPath)
 	if err != nil {
 		printError(err)
 		return

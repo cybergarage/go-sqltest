@@ -34,7 +34,7 @@ const (
 type SuiteOption func(*Suite) error
 
 // SuiteErrorHandler is a function type used to handle errors in a Suite.
-type SuiteErrorHandler func(*Suite, *ScenarioRunner, error)
+type SuiteErrorHandler func(*Suite, *ScenarioTester, error)
 
 // WithSuiteClient returns a SuiteOption that sets a client for testing.
 func WithSuiteClient(client Client) SuiteOption {
@@ -93,7 +93,7 @@ func WithSuiteStepHandler(handler ScenarioStepHandler) SuiteOption {
 
 // Suite represents a scenario test suite.
 type Suite struct {
-	testers      []*ScenarioRunner
+	testers      []*ScenarioTester
 	client       Client
 	errorHandler SuiteErrorHandler
 }
@@ -101,7 +101,7 @@ type Suite struct {
 // NewSuite returns a scenario test suite instance.
 func NewSuite() *Suite {
 	suite := &Suite{
-		testers:      make([]*ScenarioRunner, 0),
+		testers:      make([]*ScenarioTester, 0),
 		client:       nil,
 		errorHandler: nil,
 	}
@@ -145,7 +145,7 @@ func (suite *Suite) SetErrorHandler(handler SuiteErrorHandler) {
 }
 
 // ScenarioTesters returns all loaded scenario tests.
-func (suite *Suite) ScenarioTesters() []*ScenarioRunner {
+func (suite *Suite) ScenarioTesters() []*ScenarioTester {
 	return suite.testers
 }
 
@@ -160,7 +160,7 @@ func (suite *Suite) LoadDirectorySenarios(dirs ...string) error {
 		}
 
 		for _, file := range files {
-			s, err := NewScenarioRunnerWithFile(file.Path)
+			s, err := NewScenarioTesterWithFile(file.Path)
 			if err != nil {
 				return err
 			}
@@ -174,7 +174,7 @@ func (suite *Suite) LoadDirectorySenarios(dirs ...string) error {
 func (suite *Suite) LoadEmbedSenarios(testMaps ...map[string][]byte) error {
 	for _, testMap := range testMaps {
 		for name, b := range testMap {
-			s, err := NewScenarioRunnerWithBytes(name, b)
+			s, err := NewScenarioTesterWithBytes(name, b)
 			if err != nil {
 				return err
 			}
@@ -185,13 +185,13 @@ func (suite *Suite) LoadEmbedSenarios(testMaps ...map[string][]byte) error {
 }
 
 // ScenarioTests returns all loaded scenario tests.
-func (suite *Suite) ScenarioTests() []*ScenarioRunner {
+func (suite *Suite) ScenarioTests() []*ScenarioTester {
 	return suite.testers
 }
 
 // ExtractScenarioTests returns scenario tests with the specified names.
-func (suite *Suite) ExtractScenarioTests(regexpNames ...string) ([]*ScenarioRunner, error) {
-	tests := make([]*ScenarioRunner, 0)
+func (suite *Suite) ExtractScenarioTests(regexpNames ...string) ([]*ScenarioTester, error) {
+	tests := make([]*ScenarioTester, 0)
 	for _, name := range regexpNames {
 		nameRegexp := regexp.MustCompile(name)
 		isFound := false
@@ -208,8 +208,8 @@ func (suite *Suite) ExtractScenarioTests(regexpNames ...string) ([]*ScenarioRunn
 	return tests, nil
 }
 
-func (suite *Suite) ExtractScenarioMatchingTests(regexes ...string) ([]*ScenarioRunner, error) {
-	tests := make([]*ScenarioRunner, 0)
+func (suite *Suite) ExtractScenarioMatchingTests(regexes ...string) ([]*ScenarioTester, error) {
+	tests := make([]*ScenarioTester, 0)
 	for _, test := range suite.testers {
 		for _, regex := range regexes {
 			re, err := regexp.Compile(regex)
@@ -251,7 +251,7 @@ func (suite *Suite) Test(t *testing.T) error {
 }
 
 // RunScenarioTest runs the specified test.
-func (suite *Suite) TestScenario(t *testing.T, test *ScenarioRunner) error {
+func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTester) error {
 	t.Helper()
 
 	var err error
