@@ -17,20 +17,21 @@ package sqltest
 import (
 	"testing"
 
-	test "github.com/cybergarage/go-sqltest/sqltest/scenarios"
+	scenarios "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
 func TestEmbedSuite(t *testing.T) {
-	suite, err := NeweEmbedSuite(test.EmbedTests)
+	suite, err := NeweEmbedSuite(scenarios.EmbedTests)
 	if err != nil {
 		t.Error(err)
 		return
 	}
 	for _, runner := range suite.ScenarioTesters() {
 		t.Run(runner.Name(), func(t *testing.T) {
-			scn := runner.Scenario
-			if scn == nil || (len(scn.Queries()) == 0) {
-				t.Errorf("%s scenario is empty", runner.Name())
+			scn := runner.Scenario()
+			err = scn.IsValid()
+			if err != nil {
+				t.Error(err)
 			}
 		})
 	}

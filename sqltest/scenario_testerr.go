@@ -32,7 +32,7 @@ type ScenarioTesterOption func(*ScenarioTester) error
 
 // ScenarioTester represents a scenario runner.
 type ScenarioTester struct {
-	Scenario    *Scenario
+	scenario    *Scenario
 	client      Client
 	stepHandler ScenarioStepHandler
 }
@@ -70,7 +70,7 @@ func WithScenarioTesterStepHandler(handler ScenarioStepHandler) ScenarioTesterOp
 // NewScenarioTester returns a scenario tester instance.
 func NewScenarioTester() *ScenarioTester {
 	runner := &ScenarioTester{
-		Scenario:    nil,
+		scenario:    nil,
 		client:      nil,
 		stepHandler: nil,
 	}
@@ -111,19 +111,19 @@ func (runner *ScenarioTester) SetStepHandler(handler ScenarioStepHandler) {
 
 // Name returns the loaded senario name.
 func (runner *ScenarioTester) Name() string {
-	return runner.Scenario.Name()
+	return runner.scenario.Name()
 }
 
 // LoadFile loads a specified scenario test file.
 func (runner *ScenarioTester) LoadFile(filename string) error {
-	runner.Scenario = NewScenario()
-	return runner.Scenario.LoadFile(filename)
+	runner.scenario = NewScenario()
+	return runner.scenario.LoadFile(filename)
 }
 
 // ParseBytes loads a specified scenario test bytes.
 func (runner *ScenarioTester) ParseBytes(name string, b []byte) error {
-	runner.Scenario = NewScenario()
-	return runner.Scenario.ParseBytes(name, b)
+	runner.scenario = NewScenario()
+	return runner.scenario.ParseBytes(name, b)
 }
 
 // LoadFileWithBasename loads a scenario test file which has specified basename.
@@ -131,9 +131,14 @@ func (runner *ScenarioTester) LoadFileWithBasename(basename string) error {
 	return runner.LoadFile(basename + "." + ScenarioFileExt)
 }
 
+// Scenario returns the loaded scenario.
+func (runner *ScenarioTester) Scenario() *Scenario {
+	return runner.scenario
+}
+
 // Run runs a loaded scenario test.
 func (runner *ScenarioTester) Run() error {
-	scenario := runner.Scenario
+	scenario := runner.Scenario()
 	if scenario == nil {
 		return nil
 	}
