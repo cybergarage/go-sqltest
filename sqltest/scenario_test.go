@@ -16,27 +16,23 @@ package sqltest
 
 import (
 	"testing"
+
+	scenarios "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
 func TestScenario(t *testing.T) {
-	testLines := []string{
-		"USE system",
-		"{",
-		"}",
-		"SELECT * FROM system.local",
-		"{",
-		"}",
-	}
-
-	s := NewScenario()
-	err := s.ParseLineStrings(testLines)
-	if err != nil {
-		t.Error(err)
-		return
-	}
-
-	err = s.IsValid()
-	if err != nil {
-		t.Error(err)
+	for name, scnBytes := range scenarios.EmbedTests {
+		t.Run(name, func(t *testing.T) {
+			scn := NewScenario()
+			err := scn.ParseBytes(name, scnBytes)
+			if err != nil {
+				t.Error(err)
+				return
+			}
+			err = scn.IsValid()
+			if err != nil {
+				t.Error(err)
+			}
+		})
 	}
 }
