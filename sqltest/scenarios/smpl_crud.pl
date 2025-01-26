@@ -99,8 +99,11 @@ for my $row_no (0 .. $#data_rows) {
   my $type_name = lc($data_type_row[$pr_key_idx]);
   my $column_name = "c" . $type_name;
 
-  print "SELECT * FROM ${tbl_name} WHERE $column_name = $row[$pr_key_idx];\n";  
+  print "SELECT * FROM ${tbl_name} WHERE $column_name = ?;\n";  
   print "{\n";  
+  my $binding_val = $row[$pr_key_idx];
+  $binding_val =~ s/'/"/g;
+  print "\t\"bindings\" : [$binding_val],\n";  
   print "\t\"rows\" :\n";  
   print "\t[\n";  
   print "\t\t{\n";  
