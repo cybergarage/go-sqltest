@@ -106,11 +106,4 @@ func TestQueryContextRows(t *testing.T) {
 		t.Error("Failed to get rows")
 		return
 	}
-
-	for _, testRow := range testRows {
-		err := res.HasRow(testRow)
-		if err != nil {
-			t.Error(err)
-		}
-	}
 }

@@ -247,20 +247,13 @@ func (runner *ScenarioTester) Run() error {
 			rsRows = append(rsRows, row)
 		}
 
-		expectedRes := scenario.contents[n]
-		expectedRows, ok := expectedRes.Rows()
-		if !ok {
-			if len(rsRows) != 0 {
-				return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseHasUnexpectedRows, errTraceMsg(n), n, query, rsRows))
-			}
-		} else {
-			if len(rsRows) != len(expectedRows) {
-				return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseUnmatchedRowCount, errTraceMsg(n), n, query, rsRows, expectedRows))
-			}
+		expectedRows := testCase.Rows()
+		if len(rsRows) != len(expectedRows) {
+			return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseUnmatchedRowCount, errTraceMsg(n), n, query, rsRows, expectedRows))
 		}
 
 		for _, row := range rsRows {
-			err = expectedRes.HasRow(row)
+			err = testCase.HasRow(row)
 			if err != nil {
 				return stepHandler(n, query, fmt.Errorf("%s"+errorQueryPrefix+"%w", errTraceMsg(n), n, query, err))
 			}
