@@ -21,7 +21,7 @@ import (
 )
 
 func TestScenario(t *testing.T) {
-	for name, scnBytes := range scenarios.EmbedTests {
+	for name, scnBytes := range scenarios.EmbedScenarios {
 		t.Run(name, func(t *testing.T) {
 			scn := NewScenario()
 			err := scn.ParseBytes(name, scnBytes)

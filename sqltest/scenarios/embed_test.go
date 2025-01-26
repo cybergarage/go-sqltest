@@ -16,12 +16,12 @@ package test
 
 import "testing"
 
-func TestEmbedTests(t *testing.T) {
-	if len(EmbedTests) == 0 {
-		t.Errorf("EmbedTests: %v", len(EmbedTests))
+func TestEmbedScenarios(t *testing.T) {
+	if len(EmbedScenarios) == 0 {
+		t.Errorf("EmbedTests: %v", len(EmbedScenarios))
 		return
 	}
-	for name, bytes := range EmbedTests {
+	for name, bytes := range EmbedScenarios {
 		if len(bytes) == 0 {
 			t.Errorf("%s bytes: %d", name, len(bytes))
 		}

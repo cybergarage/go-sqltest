@@ -55,7 +55,7 @@ func WithSuiteDirectories(dirs ...string) SuiteOption {
 func WithSuiteEmbeds(tests ...map[string][]byte) SuiteOption {
 	return func(suite *Suite) error {
 		if len(tests) == 0 {
-			tests = []map[string][]byte{test.EmbedTests}
+			tests = []map[string][]byte{test.EmbedScenarios}
 		}
 		return suite.LoadEmbedSenarios(tests...)
 	}
@@ -129,7 +129,7 @@ func NewSuiteWithDirectory(dirs ...string) (*Suite, error) {
 func NeweEmbedSuite(tests ...map[string][]byte) (*Suite, error) {
 	suite := NewSuite()
 	if len(tests) == 0 {
-		tests = []map[string][]byte{test.EmbedTests}
+		tests = []map[string][]byte{test.EmbedScenarios}
 	}
 	return suite, suite.LoadEmbedSenarios(tests...)
 }

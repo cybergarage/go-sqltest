@@ -21,7 +21,7 @@ import (
 )
 
 func TestEmbedSuite(t *testing.T) {
-	suite, err := NeweEmbedSuite(scenarios.EmbedTests)
+	suite, err := NeweEmbedSuite(scenarios.EmbedScenarios)
 	if err != nil {
 		t.Error(err)
 		return
