@@ -48,6 +48,7 @@ type Scenario struct {
 	filename string
 	queries  []string
 	contents []*QueryContext
+	cases    []*ScenarioCase
 }
 
 // NewScenario return a scenario instance.
@@ -56,6 +57,7 @@ func NewScenario() *Scenario {
 		filename: "",
 		queries:  []string{},
 		contents: []*QueryContext{},
+		cases:    []*ScenarioCase{},
 	}
 	return file
 }
@@ -107,31 +109,8 @@ func (scn *Scenario) Bindings() []QueryBindings {
 }
 
 // Cases returns the loaded scenario cases.
-func (scn *Scenario) Cases() ([]*ScenarioCase, error) {
-	scnCases := make([]*ScenarioCase, 0)
-	queries := scn.queries
-	contents := scn.contents
-	if len(queries) != len(contents) {
-		return nil, fmt.Errorf(errorInvalidScenarioCases, len(queries), len(contents))
-	}
-	for n, query := range queries {
-		content := contents[n]
-		bindings, ok := content.Bindings()
-		if !ok {
-			bindings = []any{} // empty bindings
-		}
-		rows, ok := content.Rows()
-		if !ok {
-			rows = []any{} // empty rows
-		}
-		scnCase := NewScenarioCaseWith(
-			WithScenarioCaseQuery(query),
-			WithScenarioCaseBindings(bindings),
-			WithScenarioCaseRows(rows),
-		)
-		scnCases = append(scnCases, scnCase)
-	}
-	return scnCases, nil
+func (scn *Scenario) Cases() []*ScenarioCase {
+	return scn.cases
 }
 
 // ExpectedRows returns the loaded scenario expected rows.
@@ -145,14 +124,6 @@ func (scn *Scenario) ExpectedRows() ([]QueryRows, error) {
 		rows = append(rows, v)
 	}
 	return rows, nil
-}
-
-// IsValid checks whether the loaded scenario is available.
-func (scn *Scenario) IsValid() error {
-	if len(scn.queries) != len(scn.contents) {
-		return fmt.Errorf(errorInvalidScenarioCases, len(scn.queries), len(scn.contents))
-	}
-	return nil
 }
 
 // LoadFile loads the specified scenario.
@@ -211,8 +182,13 @@ func (scn *Scenario) parseByteLines(fileBytes []byte) ([]Line, error) {
 // ParseLineStrings parses the specified scenario line strings.
 func (scn *Scenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
+	var err error
+
 	scn.queries = make([]string, 0)
 	scn.contents = make([]*QueryContext, 0)
+	scn.cases = make([]*ScenarioCase, 0)
+
+	// Read all lines.
 
 	appendQuery := func() {
 		if len(queryStr) == 0 {
@@ -221,7 +197,8 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		scn.queries = append(scn.queries, strings.TrimSpace(queryStr))
 		queryStr = ""
 	}
-	appendResult := func() error {
+
+	appendContext := func() error {
 		if len(resultStr) == 0 {
 			return nil
 		}
@@ -239,7 +216,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if inJSON {
 			if strings.HasPrefix(line, "}") {
 				resultStr += line
-				err := appendResult()
+				err := appendContext()
 				if err != nil {
 					return fmt.Errorf("line [%d] : %w (%v)", n, err, line)
 				}
@@ -258,7 +235,41 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		}
 	}
 
-	return scn.IsValid()
+	// Separate to cases.
+
+	generateCases := func(scn *Scenario) ([]*ScenarioCase, error) {
+		scnCases := make([]*ScenarioCase, 0)
+		queries := scn.queries
+		contents := scn.contents
+		if len(queries) != len(contents) {
+			return nil, fmt.Errorf(errorInvalidScenarioCases, len(queries), len(contents))
+		}
+		for n, query := range queries {
+			content := contents[n]
+			bindings, ok := content.Bindings()
+			if !ok {
+				bindings = []any{} // empty bindings
+			}
+			rows, ok := content.Rows()
+			if !ok {
+				rows = []any{} // empty rows
+			}
+			scnCase := NewScenarioCaseWith(
+				WithScenarioCaseQuery(query),
+				WithScenarioCaseBindings(bindings),
+				WithScenarioCaseRows(rows),
+			)
+			scnCases = append(scnCases, scnCase)
+		}
+		return scnCases, nil
+	}
+
+	scn.cases, err = generateCases(scn)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 // String returns the string representation.

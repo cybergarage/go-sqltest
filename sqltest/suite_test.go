@@ -21,18 +21,9 @@ import (
 )
 
 func TestEmbedSuite(t *testing.T) {
-	suite, err := NeweEmbedSuite(scenarios.EmbedScenarios)
+	_, err := NeweEmbedSuite(scenarios.EmbedScenarios)
 	if err != nil {
 		t.Error(err)
 		return
-	}
-	for _, runner := range suite.ScenarioTesters() {
-		t.Run(runner.Name(), func(t *testing.T) {
-			scn := runner.Scenario()
-			err = scn.IsValid()
-			if err != nil {
-				t.Error(err)
-			}
-		})
 	}
 }

@@ -143,11 +143,6 @@ func (runner *ScenarioTester) Run() error {
 		return nil
 	}
 
-	err := scenario.IsValid()
-	if err != nil {
-		return err
-	}
-
 	queries := scenario.Queries()
 
 	client := runner.client

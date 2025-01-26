@@ -29,16 +29,6 @@ func TestScenario(t *testing.T) {
 				t.Error(err)
 				return
 			}
-			err = scn.IsValid()
-			if err != nil {
-				t.Error(err)
-				return
-			}
-			_, err = scn.Cases()
-			if err != nil {
-				t.Error(err)
-				return
-			}
 		})
 	}
 }
