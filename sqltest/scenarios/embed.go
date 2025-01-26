@@ -18,7 +18,7 @@ import (
 	_ "embed"
 )
 
-// EmbedScenarios is a map of test names and test queries.
+// EmbedTests is a map of test names and test queries.
 var EmbedScenarios = map[string][]byte{
 	"UpdateArithInt":    updateArithInt,
 	"SmplTxnText":       smplTxnText,
