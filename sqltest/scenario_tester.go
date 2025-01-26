@@ -252,8 +252,8 @@ func (runner *ScenarioTester) Run() error {
 		}
 
 		expectedRes := scenario.contents[n]
-		expectedRows, err := expectedRes.Rows()
-		if err != nil {
+		expectedRows, ok := expectedRes.Rows()
+		if !ok {
 			if len(rsRows) != 0 {
 				return stepHandler(n, query, fmt.Errorf("%s"+errorJSONResponseHasUnexpectedRows, errTraceMsg(n), n, query, rsRows))
 			}

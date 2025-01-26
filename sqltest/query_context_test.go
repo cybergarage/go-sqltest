@@ -101,9 +101,9 @@ func TestQueryContextRows(t *testing.T) {
 		return
 	}
 
-	_, err = res.Rows()
-	if err != nil {
-		t.Error(err)
+	_, ok := res.Rows()
+	if !ok {
+		t.Error("Failed to get rows")
 		return
 	}
 

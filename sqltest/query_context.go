@@ -16,7 +16,6 @@ package sqltest
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"math"
 	"reflect"
@@ -100,22 +99,22 @@ func (res *QueryContext) Bindings() (QueryBindings, bool) {
 }
 
 // Rows returns response rows with true when the response has any rows, otherwise nil and false.
-func (res *QueryContext) Rows() (QueryRows, error) {
+func (res *QueryContext) Rows() (QueryRows, bool) {
 	if res.Data == nil {
-		return nil, errors.New(errorJSONResponseNotFound)
+		return nil, false
 	}
 
 	rowsData, ok := res.Data[QueryContextRowsKey]
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
+		return nil, false
 	}
 
 	rows, ok := rowsData.(QueryRows)
 	if !ok {
-		return nil, fmt.Errorf(errorJSONResponseRowsNotFound, res.Data, QueryContextRowsKey)
+		return nil, false
 	}
 
-	return rows, nil
+	return rows, true
 }
 
 // HasRow returns true when the response has a specified row, otherwise false.
@@ -126,9 +125,12 @@ func (res *QueryContext) HasRow(row any) error {
 		return fmt.Errorf(errorJSONResponseHasNoRow, row, rowMap)
 	}
 
-	resRows, err := res.Rows()
-	if err != nil {
-		return err
+	resRows, ok := res.Rows()
+	if !ok {
+		if len(rowMap) == 0 {
+			return nil
+		}
+		return fmt.Errorf(errorJSONResponseHasNoRow, row, res.Data)
 	}
 
 	var deepEqual func(iv1 any, iv2 any) bool

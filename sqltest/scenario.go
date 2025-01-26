@@ -120,9 +120,9 @@ func (scn *Scenario) Cases() ([]*ScenarioCase, error) {
 		if !ok {
 			bindings = []any{} // empty bindings
 		}
-		rows, err := content.Rows()
-		if err != nil {
-			return nil, err
+		rows, ok := content.Rows()
+		if !ok {
+			rows = []any{} // empty rows
 		}
 		scnCase := NewScenarioCaseWith(
 			WithScenarioCaseQuery(query),
@@ -138,9 +138,9 @@ func (scn *Scenario) Cases() ([]*ScenarioCase, error) {
 func (scn *Scenario) ExpectedRows() ([]QueryRows, error) {
 	rows := make([]QueryRows, 0)
 	for _, content := range scn.contents {
-		v, err := content.Rows()
-		if err != nil {
-			return nil, err
+		v, ok := content.Rows()
+		if !ok {
+			v = []any{} // empty rows
 		}
 		rows = append(rows, v)
 	}
