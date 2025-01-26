@@ -106,6 +106,34 @@ func (scn *Scenario) Bindings() []QueryBindings {
 	return bindings
 }
 
+// Cases returns the loaded scenario cases.
+func (scn *Scenario) Cases() ([]*ScenarioCase, error) {
+	scnCases := make([]*ScenarioCase, 0)
+	queries := scn.queries
+	contents := scn.contents
+	if len(queries) != len(contents) {
+		return nil, fmt.Errorf(errorInvalidScenarioCases, len(queries), len(contents))
+	}
+	for n, query := range queries {
+		content := contents[n]
+		bindings, ok := content.Bindings()
+		if !ok {
+			bindings = []any{} // empty bindings
+		}
+		rows, err := content.Rows()
+		if err != nil {
+			return nil, err
+		}
+		scnCase := NewScenarioCaseWith(
+			WithScenarioCaseQuery(query),
+			WithScenarioCaseBindings(bindings),
+			WithScenarioCaseRows(rows),
+		)
+		scnCases = append(scnCases, scnCase)
+	}
+	return scnCases, nil
+}
+
 // ExpectedRows returns the loaded scenario expected rows.
 func (scn *Scenario) ExpectedRows() ([]QueryRows, error) {
 	rows := make([]QueryRows, 0)
