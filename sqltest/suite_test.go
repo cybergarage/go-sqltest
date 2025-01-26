@@ -26,11 +26,11 @@ func TestEmbedSuite(t *testing.T) {
 		t.Error(err)
 		return
 	}
-	for _, tst := range suite.tests {
-		t.Run(tst.Name(), func(t *testing.T) {
-			scn := tst.Scenario
+	for _, runner := range suite.ScenarioTesters() {
+		t.Run(runner.Name(), func(t *testing.T) {
+			scn := runner.Scenario
 			if scn == nil || (len(scn.Queries()) == 0) {
-				t.Errorf("%s scenario is empty", tst.Name())
+				t.Errorf("%s scenario is empty", runner.Name())
 			}
 		})
 	}
