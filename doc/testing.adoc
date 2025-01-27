@@ -15,5 +15,7 @@ Scenario tests are defined in a `.qst` file. Each test consists of a sequence of
 == Reference
 
 - https://www.sqlite.org/testing.html[SQLite Testing]
+- https://dev.mysql.com/doc/dev/mysql-server/9.2.0/PAGE_MYSQL_TEST_RUN.html[The MySQL Test Framework]
+- https://wiki.postgresql.org/wiki/Test_Frameworks[Test Frameworks - PostgreSQL wiki]
 - https://cassandra.apache.org/_/development/testing.html[Cassandra Testing]
 - https://www.scylladb.com/product/technology/scylla-testing/[Scylla Testing]
