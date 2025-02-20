@@ -1,14 +1,16 @@
 # Changelog
 
-## v1.5.x (2025-xx-xx)
+## v1.6.x (2025-xx-xx)
 ### Added
 - New scenario tests:
   - `pgbench`
   - ALTER query tests
 
-## v1.4.3 (2025-02-XX)
+## v1.5.0 (2025-02-XX)
 ### Improved
 - Enhanced scenario format to support bind parameters.
+### Updated
+- Updated `RunEmbedSuites` to include bind parameter tests. 
 
 ## v1.4.3 (2024-12-11)
 ### Added
