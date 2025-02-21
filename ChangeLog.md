@@ -6,7 +6,7 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.5.0 (2025-02-XX)
+## v1.5.0 (2025-02-21)
 ### Improved
 - Enhanced scenario format to support bind parameters.
 ### Updated
