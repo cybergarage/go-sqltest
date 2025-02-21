@@ -1,4 +1,4 @@
-# go-sqltest
+JSON response# go-sqltest
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/go-sqltest)
 [![test](https://github.com/cybergarage/go-sqltest/actions/workflows/make.yml/badge.svg)](https://github.com/cybergarage/go-sqltest/actions/workflows/make.yml)
@@ -28,5 +28,5 @@ A scenario test consists of a combination of a query and an expected response; t
 scenario-test = (query, response)*
 query = SQL
 response = JSON response
+JSON response　= (bindings? rows?)
 ```
-
