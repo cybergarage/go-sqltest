@@ -44,6 +44,7 @@ func (client *PqClient) Open() error {
 	dsParams := []string{
 		"host=" + client.Host,
 		"port=" + strconv.Itoa(client.Port),
+		"connect_timeout=" + strconv.Itoa(0),
 	}
 	if 0 < len(client.User) {
 		dsParams = append(dsParams, "user="+client.User)
