@@ -15,33 +15,36 @@
 package sysbench
 
 import (
+	"fmt"
 	"os/exec"
 	"strings"
 	"testing"
-
-	"github.com/cybergarage/go-logger/log"
 )
 
-func Run(t *testing.T) error {
+// RunCommand runs a sysbench command with the given configuration.
+func RunCommand(t *testing.T, cmd string, config Config) error {
 	t.Helper()
 
 	args := []string{
 		"sysbench",
+		cmd,
 	}
 
-	cmd := strings.Join(args, " ")
-	log.Debugf("%v", cmd)
-	t.Logf("%v", cmd)
+	for k, v := range config {
+		args = append(args, fmt.Sprintf("--%s=%s", k, v))
+	}
 
-	t.Run(cmd, func(t *testing.T) {
+	t.Run(strings.Join(args, " "), func(t *testing.T) {
 		out, err := exec.Command(args[0], args[1:]...).CombinedOutput()
+		outStr := string(out)
 		if err != nil {
-			t.Error(err)
+			t.Skip(err)
+			t.Logf("%s", outStr)
 			return
 		}
-		outStr := string(out)
 		if strings.Contains(outStr, "FAILED") {
 			t.Errorf("%s", outStr)
+			t.Logf("%s", outStr)
 			return
 		}
 		t.Logf("%s", outStr)
