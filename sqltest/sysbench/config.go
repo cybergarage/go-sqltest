@@ -16,9 +16,10 @@ package sysbench
 
 const (
 	// https://github.com/akopytov/sysbench
-	ConfigThreads = "threads"
-	ConfigEvents  = "events"
-	ConfigTime    = "time"
+	ConfigThreads   = "threads"
+	ConfigEvents    = "events"
+	ConfigTime      = "time"
+	ConfigTableSize = "table-size"
 )
 
 const (
@@ -46,6 +47,7 @@ func NewDefaultConfig() Config {
 	cfg.SetThreads("1")
 	cfg.SetEvents("0")
 	cfg.SetTime("1")
+	cfg.Set(ConfigTableSize, "10000")
 	return cfg
 }
 
@@ -67,4 +69,9 @@ func (config Config) SetEvents(value string) {
 // SetTime sets the time.
 func (config Config) SetTime(value string) {
 	config.Set(ConfigTime, value)
+}
+
+// SetTableSize sets the table size.
+func (config Config) SetTableSize(value string) {
+	config.Set(ConfigTableSize, value)
 }
