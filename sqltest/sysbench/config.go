@@ -16,20 +16,20 @@ package sysbench
 
 const (
 	// https://github.com/akopytov/sysbench
-	CONFIG_THREADS = "threads"
-	CONFIG_EVENTS  = "events"
-	CONFIG_TIME    = "time"
+	ConfigThreads = "threads"
+	ConfigEvents  = "events"
+	ConfigTime    = "time"
 )
 
 const (
 	// https://github.com/akopytov/sysbench/tree/master/src/lua
-	OLTP_DELETE       = "oltp_delete"
-	OLTP_INSERT       = "oltp_insert"
-	OLTP_READ_ONLY    = "oltp_read_only"
-	OLTP_READ_WRITE   = "oltp_read_write"
-	OLTP_UPDATE_INDEX = "oltp_update_index"
-	OLTP_WRITE_ONLY   = "oltp_write_only"
-	OLTP_COMMON       = "oltp_common"
+	OltpDelete      = "oltp_delete"
+	OltpInsert      = "oltp_insert"
+	OltpReadOnly    = "oltp_read_only"
+	OltpReadWrite   = "oltp_read_write"
+	OltpUpdateIndex = "oltp_update_index"
+	OltpWriteOnly   = "oltp_write_only"
+	OltpCommon      = "oltp_common"
 )
 
 // Config represents a sysbench configuration.
@@ -43,13 +43,28 @@ func NewConfig() Config {
 // NewDefaultConfig returns a new default config.
 func NewDefaultConfig() Config {
 	cfg := NewConfig()
-	cfg.Set(CONFIG_THREADS, "1")
-	cfg.Set(CONFIG_EVENTS, "0")
-	cfg.Set(CONFIG_TIME, "1")
+	cfg.SetThreads("1")
+	cfg.SetEvents("0")
+	cfg.SetTime("1")
 	return cfg
 }
 
 // Set sets a config value.
 func (config Config) Set(name string, value string) {
 	config[name] = value
+}
+
+// SetThreads sets the number of threads.
+func (config Config) SetThreads(value string) {
+	config.Set(ConfigThreads, value)
+}
+
+// SetEvents sets the number of events.
+func (config Config) SetEvents(value string) {
+	config.Set(ConfigEvents, value)
+}
+
+// SetTime sets the time.
+func (config Config) SetTime(value string) {
+	config.Set(ConfigTime, value)
 }
