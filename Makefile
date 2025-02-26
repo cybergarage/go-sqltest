@@ -37,6 +37,7 @@ SCENARIO_HELPER=${SCENARIO_ROOT}/embed
 SCENARIO_MAKEFILE=${SCENARIO_ROOT}/Makefile
 
 .PHONY: test format vet lint clean
+.IGNORE: lint
 
 all: test
 
