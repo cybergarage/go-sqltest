@@ -12,13 +12,40 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sqltest
+package sysbench
 
 import (
+	"os/exec"
+	"strings"
 	"testing"
+
+	"github.com/cybergarage/go-logger/log"
 )
 
-func RunSysbench(t *testing.T) error {
+func Run(t *testing.T) error {
 	t.Helper()
+
+	args := []string{
+		"sysbench",
+	}
+
+	cmd := strings.Join(args, " ")
+	log.Debugf("%v", cmd)
+	t.Logf("%v", cmd)
+
+	t.Run(cmd, func(t *testing.T) {
+		out, err := exec.Command(args[0], args[1:]...).CombinedOutput()
+		if err != nil {
+			t.Error(err)
+			return
+		}
+		outStr := string(out)
+		if strings.Contains(outStr, "FAILED") {
+			t.Errorf("%s", outStr)
+			return
+		}
+		t.Logf("%s", outStr)
+	})
+
 	return nil
 }
