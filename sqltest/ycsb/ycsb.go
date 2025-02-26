@@ -1,10 +1,10 @@
-// Copyright (C) 2019 The go-mysql Authors. All rights reserved.
+// Copyright (C) 2025 The go-sqltest Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//    http://www.apache.org/licenses/LICENSE-2.0
+//  http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package sqltest
+package ycsb
 
 import (
 	"os"
@@ -25,22 +25,20 @@ import (
 )
 
 const (
-	ycsbTestRowCount = 1000
-)
-
-const (
 	ycsbRoot            = "YCSB_ROOT"
 	ycsbDBPropertiesEnv = "YCSB_DB_PROPERTIES"
 	ycsbWorkloadEnv     = "YCSB_WORKLOAD"
-	ycsbDatabaseName    = "ycsb"
+	DatabaseName        = "ycsb"
 	ycsbDefaultWorkload = "workloada"
 )
 
-var SetUpQueries []string = []string{
-	"CREATE TABLE IF NOT EXISTS usertable (YCSB_KEY VARCHAR(255) PRIMARY KEY, FIELD0 TEXT, FIELD1 TEXT, FIELD2 TEXT, FIELD3 TEXT, FIELD4 TEXT, FIELD5 TEXT, FIELD6 TEXT, FIELD7 TEXT, FIELD8 TEXT, FIELD9 TEXT);",
+func SetUpQueries() []string {
+	return []string{
+		"CREATE TABLE IF NOT EXISTS usertable (YCSB_KEY VARCHAR(255) PRIMARY KEY, FIELD0 TEXT, FIELD1 TEXT, FIELD2 TEXT, FIELD3 TEXT, FIELD4 TEXT, FIELD5 TEXT, FIELD6 TEXT, FIELD7 TEXT, FIELD8 TEXT, FIELD9 TEXT);",
+	}
 }
 
-func RunYCSBWorkload(t *testing.T, defaultWorkload string) error {
+func RunWorkload(t *testing.T, defaultWorkload string) error {
 	t.Helper()
 	outputYcsbParams := func(t *testing.T, ycsbEnvs []string, ycsbParams []string) {
 		t.Helper()
