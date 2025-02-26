@@ -34,7 +34,9 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 		args = append(args, fmt.Sprintf("--%s=%s", k, v))
 	}
 
-	t.Run(strings.Join(args, " "), func(t *testing.T) {
+	cmdStr := strings.Join(args, " ")
+	// t.Logf("Running %s", cmdStr)
+	t.Run(cmdStr, func(t *testing.T) {
 		out, err := exec.Command(args[0], args[1:]...).CombinedOutput()
 		outStr := string(out)
 		if err != nil {

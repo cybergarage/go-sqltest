@@ -27,7 +27,7 @@ const (
 	OltpDelete      = "oltp_delete"
 	OltpInsert      = "oltp_insert"
 	OltpReadOnly    = "oltp_read_only"
-	OltpReadWrite   = "oltp_read_write"
+	git   = "oltp_read_write"
 	OltpUpdateIndex = "oltp_update_index"
 	OltpWriteOnly   = "oltp_write_only"
 	OltpCommon      = "oltp_common"
