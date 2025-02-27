@@ -18,7 +18,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"time"
 
 	"github.com/cybergarage/go-logger/log"
 	"github.com/cybergarage/go-sqltest/sqltest"
@@ -77,7 +76,7 @@ func main() {
 	}
 	log.Infof("scenario loaded : %s", scenarioTest.Name())
 
-	testDBName := fmt.Sprintf("%s%d", "sqltest", time.Now().UnixNano())
+	testDBName := sqltest.GenerateTempDBName(sqltest.TestDBNamePrefix)
 	client.SetDatabase(testDBName)
 
 	err = client.Open()

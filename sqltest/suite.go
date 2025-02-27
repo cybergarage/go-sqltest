@@ -19,7 +19,6 @@ import (
 	"regexp"
 	"strings"
 	"testing"
-	"time"
 
 	test "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 	"github.com/cybergarage/go-sqltest/sqltest/util"
@@ -257,7 +256,7 @@ func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTester) error {
 	var err error
 	client := suite.client
 
-	testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
+	testDBName := GenerateTempDBName(TestDBNamePrefix)
 
 	client.SetDatabase(testDBName)
 

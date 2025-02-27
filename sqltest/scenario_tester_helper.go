@@ -15,10 +15,8 @@
 package sqltest
 
 import (
-	"fmt"
 	"path"
 	"testing"
-	"time"
 )
 
 func RunScenarioFiles(t *testing.T, testFilenames []string) {
@@ -34,8 +32,7 @@ func RunScenarioFiles(t *testing.T, testFilenames []string) {
 					return
 				}
 
-				testDBName := fmt.Sprintf("%s%d", TestDBNamePrefix, time.Now().UnixNano())
-
+				testDBName := GenerateTempDBName(TestDBNamePrefix)
 				client := NewMySQLClient()
 				client.SetDatabase(testDBName)
 
