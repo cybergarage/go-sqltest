@@ -40,34 +40,41 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 		return fmt.Sprintf("--%s=%s", k, v)
 	}
 
-	title := []string{program}
-	for k, v := range config {
-		title = append(title, toCommandParam(k, v))
+	toCommandLineArgs := func(config Config) []string {
+		args := []string{}
+		for k, v := range config {
+			args = append(args, toCommandParam(k, v))
+		}
+		return args
 	}
-	titleStr := strings.Join(title, " ")
-	t.Run(titleStr, func(t *testing.T) {
+
+	toCommandLine := func(prgram string, args []string) string {
+		cmdLine := []string{prgram}
+		cmdLine = append(cmdLine, args...)
+		return strings.Join(cmdLine, " ")
+	}
+
+	t.Run(fmt.Sprintf("%s (%s)", program, cmd), func(t *testing.T) {
 		subCmds := []string{
 			"prepare",
 			"run",
 			"cleanup",
 		}
 		for _, subCmd := range subCmds {
-			args := []string{}
-			for k, v := range config {
-				args = append(args, toCommandParam(k, v))
-			}
+			args := toCommandLineArgs(config)
+			args = append(args, cmd)
 			args = append(args, subCmd)
 			t.Run(subCmd, func(t *testing.T) {
 				out, err := exec.Command(program, args...).CombinedOutput()
 				outStr := string(out)
 				if err != nil {
-					t.Skip(err)
+					t.Logf("%s", toCommandLine(program, args))
+					t.Error(err)
 					t.Logf("%s", outStr)
 					return
 				}
 				if strings.Contains(outStr, "FAILED") {
 					t.Errorf("%s", outStr)
-					t.Logf("%s", outStr)
 					return
 				}
 				t.Logf("%s", outStr)
