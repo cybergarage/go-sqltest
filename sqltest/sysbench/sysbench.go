@@ -19,7 +19,17 @@ import (
 	"os/exec"
 	"strings"
 	"testing"
+	"time"
 )
+
+const (
+	dbNamePrefix = "sysbench"
+)
+
+// GenerateTempDBName returns a temporary database name.
+func GenerateTempDBName() string {
+	return fmt.Sprintf("%s%d", dbNamePrefix, time.Now().UnixNano())
+}
 
 // RunCommand runs a sysbench command with the given configuration.
 func RunCommand(t *testing.T, cmd string, config Config) error {
