@@ -23,7 +23,8 @@ import (
 )
 
 const (
-	dbNamePrefix = "sysbench"
+	program      = "sysbench"
+	dbNamePrefix = program
 )
 
 // GenerateTempDBName returns a temporary database name.
@@ -35,31 +36,43 @@ func GenerateTempDBName() string {
 func RunCommand(t *testing.T, cmd string, config Config) error {
 	t.Helper()
 
-	args := []string{
-		"sysbench",
-		cmd,
+	toCommandParam := func(k, v string) string {
+		return fmt.Sprintf("--%s=%s", k, v)
 	}
 
+	title := []string{program}
 	for k, v := range config {
-		args = append(args, fmt.Sprintf("--%s=%s", k, v))
+		title = append(title, toCommandParam(k, v))
 	}
-
-	cmdStr := strings.Join(args, " ")
-	// t.Logf("Running %s", cmdStr)
-	t.Run(cmdStr, func(t *testing.T) {
-		out, err := exec.Command(args[0], args[1:]...).CombinedOutput()
-		outStr := string(out)
-		if err != nil {
-			t.Skip(err)
-			t.Logf("%s", outStr)
-			return
+	titleStr := strings.Join(title, " ")
+	t.Run(titleStr, func(t *testing.T) {
+		subCmds := []string{
+			"prepare",
+			"run",
+			"cleanup",
 		}
-		if strings.Contains(outStr, "FAILED") {
-			t.Errorf("%s", outStr)
-			t.Logf("%s", outStr)
-			return
+		for _, subCmd := range subCmds {
+			args := []string{}
+			for k, v := range config {
+				args = append(args, toCommandParam(k, v))
+			}
+			args = append(args, subCmd)
+			t.Run(subCmd, func(t *testing.T) {
+				out, err := exec.Command(program, args...).CombinedOutput()
+				outStr := string(out)
+				if err != nil {
+					t.Skip(err)
+					t.Logf("%s", outStr)
+					return
+				}
+				if strings.Contains(outStr, "FAILED") {
+					t.Errorf("%s", outStr)
+					t.Logf("%s", outStr)
+					return
+				}
+				t.Logf("%s", outStr)
+			})
 		}
-		t.Logf("%s", outStr)
 	})
 
 	return nil
