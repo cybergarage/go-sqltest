@@ -46,7 +46,7 @@ func NewDefaultConfig() Config {
 	cfg := NewConfig()
 	cfg.SetThreads("1")
 	cfg.SetEvents("0")
-	cfg.SetTime("1")
+	cfg.SetTime("10")
 	cfg.Set(ConfigTableSize, "10000")
 	return cfg
 }
