@@ -64,7 +64,7 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 			args := toCommandLineArgs(config)
 			args = append(args, cmd)
 			args = append(args, subCmd)
-			t.Run(subCmd, func(t *testing.T) {
+			r := t.Run(subCmd, func(t *testing.T) {
 				out, err := exec.Command(program, args...).CombinedOutput()
 				outStr := string(out)
 				if err != nil {
@@ -79,6 +79,9 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 				}
 				t.Logf("%s", outStr)
 			})
+			if !r {
+				break
+			}
 		}
 	})
 
