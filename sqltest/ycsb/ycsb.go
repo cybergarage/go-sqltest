@@ -76,7 +76,7 @@ func RunWorkload(t *testing.T, defaultWorkload string) error {
 	ycsbCmd := filepath.Join(ycsbPath, "bin/ycsb.sh")
 	_, err := os.Stat(ycsbCmd)
 	if err != nil {
-		t.Error(err)
+		t.Skip(err)
 		return err
 	}
 
