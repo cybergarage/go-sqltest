@@ -36,6 +36,13 @@ func GenerateTempDBName() string {
 func RunCommand(t *testing.T, cmd string, config Config) error {
 	t.Helper()
 
+	path, err := exec.LookPath(program)
+	if err != nil {
+		t.Skipf("%s is not installed: %v", program, err)
+		return nil
+	}
+	t.Logf("%s is installed at %s", program, path)
+
 	toCommandParam := func(k, v string) string {
 		return fmt.Sprintf("--%s=%s", k, v)
 	}
