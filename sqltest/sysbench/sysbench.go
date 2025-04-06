@@ -32,6 +32,16 @@ func GenerateTempDBName() string {
 	return fmt.Sprintf("%s%d", dbNamePrefix, time.Now().UnixNano())
 }
 
+// User returns the default user for sysbench.
+func User() string {
+	return "sbuser"
+}
+
+// Password returns the default password for sysbench.
+func Password() string {
+	return "sbpassword"
+}
+
 // RunCommand runs a sysbench command with the given configuration.
 func RunCommand(t *testing.T, cmd string, config Config) error {
 	t.Helper()
