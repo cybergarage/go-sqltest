@@ -21,6 +21,7 @@ const (
 	ConfigTime      = "time"
 	ConfigTableSize = "table-size"
 	ConfigDBDriver  = "db-driver"
+	ConfigDBDebug   = "db-debug"
 )
 
 const (
@@ -80,4 +81,9 @@ func (config Config) SetTableSize(value string) {
 // SetDBDriver sets the database driver.
 func (config Config) SetDBDriver(value string) {
 	config.Set(ConfigDBDriver, value)
+}
+
+// SetDBDebug sets the database debug.
+func (config Config) SetDBDebug(value string) {
+	config.Set(ConfigDBDebug, value)
 }
