@@ -20,6 +20,7 @@ const (
 	ConfigEvents    = "events"
 	ConfigTime      = "time"
 	ConfigTableSize = "table-size"
+	ConfigDBDriver  = "db-driver"
 )
 
 const (
@@ -74,4 +75,9 @@ func (config Config) SetTime(value string) {
 // SetTableSize sets the table size.
 func (config Config) SetTableSize(value string) {
 	config.Set(ConfigTableSize, value)
+}
+
+// SetDBDriver sets the database driver.
+func (config Config) SetDBDriver(value string) {
+	config.Set(ConfigDBDriver, value)
 }
