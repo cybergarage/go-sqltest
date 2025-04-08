@@ -93,6 +93,6 @@ func (config Config) SetDBDriver(value string) {
 }
 
 // SetDBDebug sets the database debug.
-func (config Config) SetDBDebug(value string) {
-	config.Set(ConfigDBDebug, value)
+func (config Config) SetDBDebug(value bool) {
+	config.SetBool(ConfigDBDebug, value)
 }
