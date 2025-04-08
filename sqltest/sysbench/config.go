@@ -58,6 +58,15 @@ func (config Config) Set(name string, value string) {
 	config[name] = value
 }
 
+// SetBool sets a config value as a boolean.
+func (config Config) SetBool(key string, value bool) {
+	if value {
+		config.Set(key, "on")
+		return
+	}
+	config.Set(key, "off")
+}
+
 // SetThreads sets the number of threads.
 func (config Config) SetThreads(value string) {
 	config.Set(ConfigThreads, value)
