@@ -14,6 +14,8 @@
 
 package sysbench
 
+import "strconv"
+
 const (
 	// https://github.com/akopytov/sysbench
 	ConfigThreads   = "threads"
@@ -46,10 +48,10 @@ func NewConfig() Config {
 // NewDefaultConfig returns a new default config.
 func NewDefaultConfig() Config {
 	cfg := NewConfig()
-	cfg.SetThreads("1")
-	cfg.SetEvents("0")
-	cfg.SetTime("10")
-	cfg.Set(ConfigTableSize, "10000")
+	cfg.SetThreads(DefaultThreads)
+	cfg.SetEvents(DefaultEvents)
+	cfg.SetTime(DefaultTime)
+	cfg.SetTableSize(DefaultTableSize)
 	return cfg
 }
 
@@ -68,23 +70,23 @@ func (config Config) SetBool(key string, value bool) {
 }
 
 // SetThreads sets the number of threads.
-func (config Config) SetThreads(value string) {
-	config.Set(ConfigThreads, value)
+func (config Config) SetThreads(v int) {
+	config.Set(ConfigThreads, strconv.Itoa(v))
 }
 
 // SetEvents sets the number of events.
-func (config Config) SetEvents(value string) {
-	config.Set(ConfigEvents, value)
+func (config Config) SetEvents(v int) {
+	config.Set(ConfigEvents, strconv.Itoa(v))
 }
 
 // SetTime sets the time.
-func (config Config) SetTime(value string) {
-	config.Set(ConfigTime, value)
+func (config Config) SetTime(v int) {
+	config.Set(ConfigTime, strconv.Itoa(v))
 }
 
 // SetTableSize sets the table size.
-func (config Config) SetTableSize(value string) {
-	config.Set(ConfigTableSize, value)
+func (config Config) SetTableSize(v int) {
+	config.Set(ConfigTableSize, strconv.Itoa(v))
 }
 
 // SetDBDriver sets the database driver.
