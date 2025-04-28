@@ -8,6 +8,7 @@
 
 ## v1.5.1 (2025-XX-XX)
 - Update PqClient to set connect_timeout
+- Fix PqClient not to use `IF NOT EXISTS` for `CREATE DATABASE` statements.
 
 ## v1.5.0 (2025-02-21)
 ### Improved
