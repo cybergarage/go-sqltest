@@ -122,7 +122,7 @@ func (client *PqClient) Query(query string, args ...any) (*sql.Rows, error) {
 
 // CreateDatabase creates a specified database.
 func (client *PqClient) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
+	query := fmt.Sprintf("CREATE DATABASE %s", name)
 	rows, err := client.Query(query)
 	if err != nil {
 		return err
