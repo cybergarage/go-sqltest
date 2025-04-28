@@ -126,7 +126,7 @@ func (client *PgxClient) Query(query string, args ...any) (pgx.Rows, error) {
 
 // CreateDatabase creates a specified database.
 func (client *PgxClient) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
+	query := fmt.Sprintf("CREATE DATABASE %s", name)
 	rows, err := client.Query(query)
 	if err != nil {
 		return err
