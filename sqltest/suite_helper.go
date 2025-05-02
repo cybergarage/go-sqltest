@@ -33,3 +33,17 @@ func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
 
 	return suite.Test(t)
 }
+
+// RunEmbedSuitesWith runs the embedded test suites with the specified options.
+func RunEmbedSuitesWith(t *testing.T, opts ...SuiteOption) error {
+	t.Helper()
+
+	suite, err := NewSuiteWith(
+		append(opts, WithSuiteEmbeds())...,
+	)
+	if err != nil {
+		t.Error(err)
+	}
+
+	return suite.Test(t)
+}
