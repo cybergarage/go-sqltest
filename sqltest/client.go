@@ -44,12 +44,22 @@ type ClientTLSConfig interface {
 	SetRootCertFile(file string)
 }
 
+// ClientQueryConfig represents a client query configuration interface.
+type ClientQueryConfig interface {
+	// SetPreparedStatementEnabled sets the prepared statement enabled flag.
+	SetPreparedStatementEnabled(enabled bool)
+	// IsPreparedStatementEnabled returns true if prepared statements are enabled.
+	IsPreparedStatementEnabled() bool
+}
+
 // Client represents a client interface for SQL databases.
 type Client interface {
 	// ClientConfig represents a client configuration interface.
 	ClientConfig
 	// ClientTLSConfig represents a client TLS configuration interface.
 	ClientTLSConfig
+	// ClientQueryConfig represents a client query configuration interface.
+	ClientQueryConfig
 	// Open opens a database specified by the internal configuration.
 	Open() error
 	// Close closes the opened database.

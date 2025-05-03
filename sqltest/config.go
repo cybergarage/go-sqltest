@@ -30,16 +30,18 @@ type Config struct {
 	Database string
 	*AuthConfig
 	*TLSConfig
+	*QueryConfig
 }
 
 // NewDefaultConfig returns a default configuration instance.
 func NewDefaultConfig() *Config {
 	config := &Config{
-		Host:       defaultHost,
-		Port:       0,
-		Database:   "",
-		AuthConfig: NewAuthConfig(),
-		TLSConfig:  NewTLSConfig(),
+		Host:        defaultHost,
+		Port:        0,
+		Database:    "",
+		AuthConfig:  NewAuthConfig(),
+		TLSConfig:   NewTLSConfig(),
+		QueryConfig: NewQueryConfig(),
 	}
 
 	user, err := user.Current()
