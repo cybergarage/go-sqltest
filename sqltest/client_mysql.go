@@ -31,15 +31,15 @@ const (
 
 // MySQLClient represents a client for MySQL server.
 type MySQLClient struct {
-	*Config
+	*sqlClient
 	db *sql.DB
 }
 
 // NewMySQLClient returns a client instance.
 func NewMySQLClient() Client {
 	client := &MySQLClient{
-		Config: NewDefaultConfig(),
-		db:     nil,
+		sqlClient: newSQLClient(),
+		db:        nil,
 	}
 	client.SetPort(defaultMysqlPort)
 	return client
@@ -106,29 +106,6 @@ func (client *MySQLClient) Open() error {
 	return nil
 }
 
-// Close closes opens a database specified by the internal configuration.
-func (client *MySQLClient) Close() error {
-	if client.db == nil {
-		return nil
-	}
-	if err := client.db.Close(); err != nil {
-		return err
-	}
-	client.db = nil
-	return nil
-}
-
-// Ping pings the opened database.
-func (client *MySQLClient) Ping() error {
-	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return err
-		}
-	}
-	return client.db.Ping()
-}
-
 // Query executes a query that returns rows.
 func (client *MySQLClient) Query(query string, args ...any) (*sql.Rows, error) {
 	if client.db == nil {
@@ -138,40 +115,4 @@ func (client *MySQLClient) Query(query string, args ...any) (*sql.Rows, error) {
 		}
 	}
 	return client.db.Query(query, args...)
-}
-
-// CreateDatabase creates a specified database.
-func (client *MySQLClient) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE IF NOT EXISTS %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	err = rows.Err()
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-// DropDatabase dtops a specified database.
-func (client *MySQLClient) DropDatabase(name string) error {
-	query := fmt.Sprintf("DROP DATABASE IF EXISTS %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	err = rows.Err()
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-// Use sets a target database.
-func (client *MySQLClient) Use(name string) error {
-	client.Database = name
-	return nil
 }

@@ -16,7 +16,6 @@ package sqltest
 
 import (
 	"database/sql"
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -25,15 +24,15 @@ import (
 
 // PqClient represents a client for PostgreSQL server.
 type PqClient struct {
-	*Config
+	*sqlClient
 	db *sql.DB
 }
 
 // NewPqClient returns a new lib/pq client.
 func NewPqClient() *PqClient {
 	client := &PqClient{
-		Config: NewDefaultConfig(),
-		db:     nil,
+		sqlClient: newSQLClient(),
+		db:        nil,
 	}
 	client.SetPort(defaultPostgresPort)
 	return client
@@ -87,28 +86,6 @@ func (client *PqClient) Open() error {
 	return nil
 }
 
-// DB returns a connected database instance.
-func (client *PqClient) DB() *sql.DB {
-	return client.db
-}
-
-// Close closes opens a database specified by the internal configuration.
-func (client *PqClient) Close() error {
-	if client.db == nil {
-		return nil
-	}
-	if err := client.db.Close(); err != nil {
-		return err
-	}
-	client.db = nil
-	return nil
-}
-
-// Ping pings the opened database.
-func (client *PqClient) Ping() error {
-	return client.db.Ping()
-}
-
 // Query executes a query that returns rows.
 func (client *PqClient) Query(query string, args ...any) (*sql.Rows, error) {
 	if client.db == nil {
@@ -118,40 +95,4 @@ func (client *PqClient) Query(query string, args ...any) (*sql.Rows, error) {
 		}
 	}
 	return client.db.Query(query, args...)
-}
-
-// CreateDatabase creates a specified database.
-func (client *PqClient) CreateDatabase(name string) error {
-	query := fmt.Sprintf("CREATE DATABASE %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	err = rows.Err()
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-// DropDatabase dtops a specified database.
-func (client *PqClient) DropDatabase(name string) error {
-	query := fmt.Sprintf("DROP DATABASE IF EXISTS %s", name)
-	rows, err := client.Query(query)
-	if err != nil {
-		return err
-	}
-	defer rows.Close()
-	err = rows.Err()
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-// Use sets a target database.
-func (client *PqClient) Use(name string) error {
-	client.SetDatabase(name)
-	return nil
 }
