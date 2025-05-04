@@ -14,6 +14,10 @@
 
 package sqltest
 
+import (
+	"errors"
+)
+
 const (
 	errorInvalidScenarioCases          = "query cases [%d] are not equal with result cases [%d]"
 	errorClientNotFound                = "client for testing is not found"
@@ -27,3 +31,6 @@ const (
 	errorJSONResponseUnmatchedRowCount = errorQueryPrefix + "JSON response row count (%v) is unmatched to (%v)"
 	errorJSONResponseHasUnexpectedRows = errorQueryPrefix + "JSON response has unexpected rows (%v)"
 )
+
+// ErrNotImplemented is returned when a method is not implemented.
+var ErrNotImplemented = errors.New("not implemented")
