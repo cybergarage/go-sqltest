@@ -69,12 +69,12 @@ func (client *sqlClient) Query(query string, args ...any) (*sql.Rows, error) {
 			return nil, err
 		}
 	}
-	if !client.IsPreparedStatementEnabled() {
-		stmt := NewStatement(query)
-		query = stmt.Bind(args...)
-		args = []any{}
+	if client.IsPreparedStatementEnabled() {
+		return client.db.Query(query, args...)
 	}
-	return client.db.Query(query, args...)
+	stmt := NewStatement(query)
+	query = stmt.Bind(args...)
+	return client.db.Query(query)
 }
 
 // CreateDatabase creates a specified database.
