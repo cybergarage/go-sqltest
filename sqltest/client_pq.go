@@ -25,14 +25,12 @@ import (
 // PqClient represents a client for PostgreSQL server.
 type PqClient struct {
 	*sqlClient
-	db *sql.DB
 }
 
 // NewPqClient returns a new lib/pq client.
 func NewPqClient() *PqClient {
 	client := &PqClient{
 		sqlClient: newSQLClient(),
-		db:        nil,
 	}
 	client.SetPort(defaultPostgresPort)
 	return client

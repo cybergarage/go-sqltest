@@ -32,14 +32,12 @@ const (
 // MySQLClient represents a client for MySQL server.
 type MySQLClient struct {
 	*sqlClient
-	db *sql.DB
 }
 
 // NewMySQLClient returns a client instance.
 func NewMySQLClient() Client {
 	client := &MySQLClient{
 		sqlClient: newSQLClient(),
-		db:        nil,
 	}
 	client.SetPort(defaultMysqlPort)
 	return client
