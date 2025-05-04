@@ -32,11 +32,12 @@ func NewStatement(stmt string) *Statement {
 }
 
 // Bind binds the specified arguments to the statement.
-func (s *Statement) Bind(args ...any) *Statement {
+func (s *Statement) Bind(args ...any) string {
+	query := s.stmt
 	for _, arg := range args {
-		s.stmt = strings.Replace(s.stmt, "?", fmt.Sprintf("%v", arg), 1)
+		query = strings.Replace(query, "?", fmt.Sprintf("%v", arg), 1)
 	}
-	return s
+	return query
 }
 
 // String returns the statement string.
