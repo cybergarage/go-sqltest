@@ -69,6 +69,11 @@ func (client *sqlClient) Query(query string, args ...any) (*sql.Rows, error) {
 			return nil, err
 		}
 	}
+	if !client.IsPreparedStatementEnabled() {
+		stmt := NewStatement(query)
+		query = stmt.Bind(args...)
+		args = []any{}
+	}
 	return client.db.Query(query, args...)
 }
 
