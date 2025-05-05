@@ -83,14 +83,3 @@ func (client *PqClient) Open() error {
 	client.db = db
 	return nil
 }
-
-// Query executes a query that returns rows.
-func (client *PqClient) Query(query string, args ...any) (*sql.Rows, error) {
-	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return nil, err
-		}
-	}
-	return client.db.Query(query, args...)
-}
