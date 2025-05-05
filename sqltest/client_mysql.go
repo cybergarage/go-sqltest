@@ -103,14 +103,3 @@ func (client *MySQLClient) Open() error {
 
 	return nil
 }
-
-// Query executes a query that returns rows.
-func (client *MySQLClient) Query(query string, args ...any) (*sql.Rows, error) {
-	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return nil, err
-		}
-	}
-	return client.db.Query(query, args...)
-}
