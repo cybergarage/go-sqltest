@@ -73,7 +73,10 @@ func (client *sqlClient) Query(query string, args ...any) (*sql.Rows, error) {
 		return client.db.Query(query, args...)
 	}
 	stmt := NewStatement(query)
-	query = stmt.Bind(args...)
+	query, err := stmt.Bind(args...)
+	if err != nil {
+		return nil, err
+	}
 	return client.db.Query(query)
 }
 

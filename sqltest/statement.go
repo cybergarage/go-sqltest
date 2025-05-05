@@ -15,8 +15,9 @@
 package sqltest
 
 import (
-	"fmt"
 	"strings"
+
+	"github.com/cybergarage/go-safecast/safecast"
 )
 
 // Statement represents a prepared statement.
@@ -32,12 +33,16 @@ func NewStatement(stmt string) *Statement {
 }
 
 // Bind binds the specified arguments to the statement.
-func (s *Statement) Bind(args ...any) string {
+func (s *Statement) Bind(args ...any) (string, error) {
 	query := s.stmt
 	for _, arg := range args {
-		query = strings.Replace(query, "?", fmt.Sprintf("%v", arg), 1)
+		var str string
+		if err := safecast.ToString(arg, &str); err != nil {
+			return "", err
+		}
+		query = strings.Replace(query, "?", str, 1)
 	}
-	return query
+	return query, nil
 }
 
 // String returns the statement string.
