@@ -4,7 +4,7 @@ go 1.24
 
 require (
 	github.com/cybergarage/go-logger v1.3.8
-	github.com/cybergarage/go-safecast v1.2.5
+	github.com/cybergarage/go-safecast v0.0.0-20250505141721-792b7ef47a42
 	github.com/go-sql-driver/mysql v1.9.0
 	github.com/jackc/pgx/v5 v5.5.5
 	github.com/lib/pq v1.10.9
