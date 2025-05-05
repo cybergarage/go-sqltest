@@ -16,6 +16,7 @@ package sqltest
 
 import (
 	"strings"
+	"time"
 
 	"github.com/cybergarage/go-safecast/safecast"
 )
@@ -39,6 +40,10 @@ func (s *Statement) Bind(args ...any) (string, error) {
 		var str string
 		if err := safecast.ToString(arg, &str); err != nil {
 			return "", err
+		}
+		switch arg.(type) {
+		case string, time.Time:
+			str = "'" + str + "'"
 		}
 		query = strings.Replace(query, "?", str, 1)
 	}
