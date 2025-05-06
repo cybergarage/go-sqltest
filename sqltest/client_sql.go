@@ -53,10 +53,7 @@ func (client *sqlClient) Close() error {
 // Ping pings the opened database.
 func (client *sqlClient) Ping() error {
 	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return err
-		}
+		return ErrConnectionNotOpened
 	}
 	return client.db.Ping()
 }
@@ -64,10 +61,7 @@ func (client *sqlClient) Ping() error {
 // Query executes a query that returns rows.
 func (client *sqlClient) Query(query string, args ...any) (*sql.Rows, error) {
 	if client.db == nil {
-		err := client.Open()
-		if err != nil {
-			return nil, err
-		}
+		return nil, ErrConnectionNotOpened
 	}
 	if client.IsPreparedStatementEnabled() {
 		return client.db.Query(query, args...)
