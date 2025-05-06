@@ -34,3 +34,6 @@ const (
 
 // ErrNotImplemented is returned when a method is not implemented.
 var ErrNotImplemented = errors.New("not implemented")
+
+// ErrConnectionNotOpened is returned when the connection is not opened.
+var ErrConnectionNotOpened = errors.New("connection is not opened")
