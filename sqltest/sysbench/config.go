@@ -38,15 +38,21 @@ const (
 )
 
 // Config represents a sysbench configuration.
-type Config map[string]string
+type Config struct {
+	skipOnError bool
+	confMap     map[string]string
+}
 
 // NewConfig returns a new config.
-func NewConfig() Config {
-	return Config{}
+func NewConfig() *Config {
+	return &Config{
+		skipOnError: false,
+		confMap:     make(map[string]string),
+	}
 }
 
 // NewDefaultConfig returns a new default config.
-func NewDefaultConfig() Config {
+func NewDefaultConfig() *Config {
 	cfg := NewConfig()
 	cfg.SetThreads(DefaultThreads)
 	cfg.SetEvents(DefaultEvents)
@@ -55,13 +61,38 @@ func NewDefaultConfig() Config {
 	return cfg
 }
 
+// SetSkipOnError sets the skip on error flag.
+func (config *Config) SetSkipOnError(enabled bool) {
+	config.skipOnError = enabled
+}
+
+// SkipOnError returns true if skip on error is enabled.
+func (config *Config) SkipOnError() bool {
+	return config.skipOnError
+}
+
 // Set sets a config value.
-func (config Config) Set(name string, value string) {
-	config[name] = value
+func (config *Config) Set(name string, value string) {
+	config.confMap[name] = value
+}
+
+// Keys returns all config keys.
+func (config *Config) Keys() []string {
+	keys := make([]string, 0, len(config.confMap))
+	for k := range config.confMap {
+		keys = append(keys, k)
+	}
+	return keys
+}
+
+// Value returns a config value.
+func (config *Config) Value(name string) (string, bool) {
+	value, ok := config.confMap[name]
+	return value, ok
 }
 
 // SetBool sets a config value as a boolean.
-func (config Config) SetBool(key string, value bool) {
+func (config *Config) SetBool(key string, value bool) {
 	if value {
 		config.Set(key, "on")
 		return
@@ -70,31 +101,31 @@ func (config Config) SetBool(key string, value bool) {
 }
 
 // SetThreads sets the number of threads.
-func (config Config) SetThreads(v int) {
+func (config *Config) SetThreads(v int) {
 	config.Set(ConfigThreads, strconv.Itoa(v))
 }
 
 // SetEvents sets the number of events.
-func (config Config) SetEvents(v int) {
+func (config *Config) SetEvents(v int) {
 	config.Set(ConfigEvents, strconv.Itoa(v))
 }
 
 // SetTime sets the time.
-func (config Config) SetTime(v int) {
+func (config *Config) SetTime(v int) {
 	config.Set(ConfigTime, strconv.Itoa(v))
 }
 
 // SetTableSize sets the table size.
-func (config Config) SetTableSize(v int) {
+func (config *Config) SetTableSize(v int) {
 	config.Set(ConfigTableSize, strconv.Itoa(v))
 }
 
 // SetDBDriver sets the database driver.
-func (config Config) SetDBDriver(value string) {
+func (config *Config) SetDBDriver(value string) {
 	config.Set(ConfigDBDriver, value)
 }
 
 // SetDBDebug sets the database debug.
-func (config Config) SetDBDebug(value bool) {
+func (config *Config) SetDBDebug(value bool) {
 	config.SetBool(ConfigDBDebug, value)
 }

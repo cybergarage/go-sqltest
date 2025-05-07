@@ -43,7 +43,7 @@ func Password() string {
 }
 
 // RunCommand runs a sysbench command with the given configuration.
-func RunCommand(t *testing.T, cmd string, config Config) error {
+func RunCommand(t *testing.T, cmd string, config *Config) error {
 	t.Helper()
 
 	path, err := exec.LookPath(program)
@@ -57,10 +57,14 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 		return fmt.Sprintf("--%s=%s", k, v)
 	}
 
-	toCommandLineArgs := func(config Config) []string {
+	toCommandLineArgs := func(config *Config) []string {
 		args := []string{}
-		for k, v := range config {
-			args = append(args, toCommandParam(k, v))
+		for _, key := range config.Keys() {
+			val, ok := config.Value(key)
+			if !ok {
+				continue
+			}
+			args = append(args, toCommandParam(key, val))
 		}
 		return args
 	}
@@ -86,12 +90,22 @@ func RunCommand(t *testing.T, cmd string, config Config) error {
 				outStr := string(out)
 				if err != nil {
 					t.Logf("%s", toCommandLine(program, args))
-					t.Error(err)
+					if config.SkipOnError() {
+						t.Logf("skip on error")
+						t.Logf("%s", err)
+					} else {
+						t.Error(err)
+					}
 					t.Logf("%s", outStr)
 					return
 				}
 				if strings.Contains(outStr, "FAILED") {
-					t.Errorf("%s", outStr)
+					if config.SkipOnError() {
+						t.Logf("skip on error")
+						t.Logf("%s", err)
+					} else {
+						t.Errorf("%s", outStr)
+					}
 					return
 				}
 				t.Logf("%s", outStr)
