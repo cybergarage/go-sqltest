@@ -34,6 +34,8 @@ func main() {
 		host     = flag.String("host", "localhost", "Database host")
 		protocol = flag.String("protocol", "pg", "Database type (mysql|pg)")
 		port     = flag.Int("port", 0, "Database port")
+		user     = flag.String("user", "", "Database user")
+		password = flag.String("password", "", "Database password")
 	)
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage: sqltest [options] <scenario file>\n")
@@ -66,6 +68,12 @@ func main() {
 
 	client.SetHost(*host)
 	client.SetPort(*port)
+	if 0 < len(*user) {
+		client.SetUser(*user)
+	}
+	if 0 < len(*password) {
+		client.SetPassword(*password)
+	}
 
 	scenarioPath := args[0]
 
