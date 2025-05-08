@@ -258,8 +258,27 @@ func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTester) error {
 
 	testDBName := GenerateTempDBName(TestDBNamePrefix)
 
-	client.SetDatabase(testDBName)
+	// Create a test database
 
+	err = client.Open()
+	if err != nil {
+		t.Error(err)
+		return err
+	}
+
+	err = client.CreateDatabase(testDBName)
+	if err != nil {
+		t.Error(err)
+	}
+
+	err = client.Close()
+	if err != nil {
+		t.Error(err)
+	}
+
+	// Run the scenario test
+
+	client.SetDatabase(testDBName)
 	err = client.Open()
 	if err != nil {
 		t.Error(err)
@@ -271,16 +290,20 @@ func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTester) error {
 		if err != nil {
 			t.Error(err)
 		}
-	}()
 
-	err = client.CreateDatabase(testDBName)
-	if err != nil {
-		t.Error(err)
-		return err
-	}
+		client.SetDatabase("")
+		err = client.Open()
+		if err != nil {
+			t.Error(err)
+			return
+		}
 
-	defer func() {
-		err := client.DropDatabase(testDBName)
+		err = client.DropDatabase(testDBName)
+		if err != nil {
+			t.Error(err)
+		}
+
+		err = client.Close()
 		if err != nil {
 			t.Error(err)
 		}
