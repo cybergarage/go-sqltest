@@ -224,25 +224,13 @@ func (suite *Suite) ExtractScenarioMatchingTests(regexes ...string) ([]*Scenario
 	return tests, nil
 }
 
-// Run runs all loaded scenario tests. The method stops the testing when a scenario test is aborted, and the following tests are not run.
-func (suite *Suite) Run() error {
-	for _, test := range suite.testers {
-		test.SetClient(suite.client)
-		err := test.Run()
-		if err != nil {
-			return fmt.Errorf("%s : %w", test.Name(), err)
-		}
-	}
-	return nil
-}
-
 // Test runs all loaded scenario tests with regular expressions for scenarios. The method stops the testing when a scenario test is aborted, and the following tests are not run.
 func (suite *Suite) Test(t *testing.T) error {
 	var err error
 	t.Run(TestRunDescription, func(t *testing.T) {
-		for _, test := range suite.testers {
-			t.Run(test.Name(), func(t *testing.T) {
-				err = suite.TestScenario(t, test)
+		for _, tester := range suite.testers {
+			t.Run(tester.Name(), func(t *testing.T) {
+				err = suite.TestScenario(t, tester)
 			})
 		}
 	})
