@@ -45,6 +45,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) < 1 {
+		printError(fmt.Errorf("missing scenario file"))
 		flag.Usage()
 		return
 	}
