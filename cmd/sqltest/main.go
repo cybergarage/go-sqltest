@@ -27,6 +27,10 @@ func printError(err error) {
 	log.Error(err)
 }
 
+func printMessage(msg string) {
+	log.Info(msg)
+}
+
 func main() {
 	log.SetSharedLogger(log.NewStdoutLogger(log.LevelInfo))
 
@@ -86,8 +90,32 @@ func main() {
 	log.Infof("scenario loaded : %s", scenarioTest.Name())
 
 	testDBName := sqltest.GenerateTempDBName(sqltest.TestDBNamePrefix)
-	client.SetDatabase(testDBName)
 
+	log.Infof("test database name : %s", testDBName)
+
+	// Create a test database
+
+	err = client.Open()
+	if err != nil {
+		printError(err)
+		return
+	}
+
+	createDbErr := client.CreateDatabase(testDBName)
+
+	err = client.Close()
+	if err != nil {
+		printError(err)
+	}
+
+	if createDbErr != nil {
+		printError(fmt.Errorf("failed to create database %s : %s", testDBName, createDbErr.Error()))
+		return
+	}
+
+	// Run the scenario test
+
+	client.SetDatabase(testDBName)
 	err = client.Open()
 	if err != nil {
 		printError(err)
@@ -99,16 +127,20 @@ func main() {
 		if err != nil {
 			printError(err)
 		}
-	}()
 
-	err = client.CreateDatabase(testDBName)
-	if err != nil {
-		printError(err)
-		return
-	}
+		client.SetDatabase("")
+		err = client.Open()
+		if err != nil {
+			printError(err)
+			return
+		}
 
-	defer func() {
-		err := client.DropDatabase(testDBName)
+		err = client.DropDatabase(testDBName)
+		if err != nil {
+			printError(err)
+		}
+
+		err = client.Close()
 		if err != nil {
 			printError(err)
 		}
