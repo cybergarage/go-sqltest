@@ -34,8 +34,37 @@ func RunScenarioFiles(t *testing.T, testFilenames []string) {
 
 				testDBName := GenerateTempDBName(TestDBNamePrefix)
 				client := NewMySQLClient()
-				client.SetDatabase(testDBName)
 
+				// Create a test database
+
+				err = client.Open()
+				if err != nil {
+					t.Error(err)
+					return
+				}
+
+				createDbErr := client.CreateDatabase(testDBName)
+
+				err = client.Close()
+				if err != nil {
+					t.Error(err)
+				}
+
+				if createDbErr != nil {
+					t.Error(createDbErr)
+					return
+				}
+
+				defer func() {
+					err := client.Close()
+					if err != nil {
+						t.Error(err)
+					}
+				}()
+
+				// Run the scenario test
+
+				client.SetDatabase(testDBName)
 				err = client.Open()
 				if err != nil {
 					t.Error(err)
@@ -47,16 +76,20 @@ func RunScenarioFiles(t *testing.T, testFilenames []string) {
 					if err != nil {
 						t.Error(err)
 					}
-				}()
 
-				err = client.CreateDatabase(testDBName)
-				if err != nil {
-					t.Error(err)
-					return
-				}
+					client.SetDatabase("")
+					err = client.Open()
+					if err != nil {
+						t.Error(err)
+						return
+					}
 
-				defer func() {
-					err := client.DropDatabase(testDBName)
+					err = client.DropDatabase(testDBName)
+					if err != nil {
+						t.Error(err)
+					}
+
+					err = client.Close()
 					if err != nil {
 						t.Error(err)
 					}
