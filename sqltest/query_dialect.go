@@ -105,6 +105,21 @@ func (to QueryDialect) String() string {
 	}
 }
 
+// IsDialectQuery checks if the given SQL query is a dialect-specific query.
+func IsDialectQuery(query string) bool {
+	tokens := strings.Split(query, " ")
+	for n, token := range tokens {
+		tokens[n] = strings.ToUpper(token)
+	}
+	switch {
+	case 2 < len(tokens):
+		if tokens[0] == "CREATE" && tokens[1] == "TABLE" {
+			return true
+		}
+	}
+	return false
+}
+
 // DialectQueryFor returns the SQL query string for the specified dialect.
 func DialectQueryFor(query string, dialect QueryDialect) string {
 	if dialect == QueryDialectNone {

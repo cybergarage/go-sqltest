@@ -62,6 +62,9 @@ func TestDialectQuery(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("%s->%d", tt.query, tt.dialect), func(t *testing.T) {
+			if !IsDialectQuery(tt.query) {
+				t.Fatalf("IsDialectQuery(%q) = false; want true", tt.query)
+			}
 			got := DialectQueryFor(tt.query, tt.dialect)
 			if got != tt.expected {
 				t.Errorf("DialectQueryFor(%q, %d) -> %v; want %v", tt.query, tt.dialect, got, tt.expected)
