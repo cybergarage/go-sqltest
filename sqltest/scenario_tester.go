@@ -178,8 +178,9 @@ func (tester *ScenarioTester) Run() error {
 	testCases := scenario.Cases()
 	for n, testCase := range testCases {
 		query := testCase.Query()
-		log.Infof("[%d] %s", n, query)
-		rows, err := client.Query(query.DialectString(tester.queryDialect), query.Arguments()...)
+		dialectQuery := query.DialectString(tester.queryDialect)
+		log.Infof("[%d] %s", n, dialectQuery)
+		rows, err := client.Query(dialectQuery, query.Arguments()...)
 		if err != nil {
 			errTraceMsg := errTraceMsg(n)
 			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, query)
