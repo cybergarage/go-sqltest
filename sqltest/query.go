@@ -14,7 +14,9 @@
 
 package sqltest
 
-import "strings"
+import (
+	"strings"
+)
 
 // Query represents a SQL query with its arguments.
 type Query struct {
@@ -37,6 +39,10 @@ func (q *Query) String() string {
 
 // DialectString returns the SQL query string for the specified dialect.
 func (q *Query) DialectString(dialect QueryDialect) string {
+	if dialect == QueryDialectNone {
+		return q.query
+	}
+
 	isDialectQuery := func(query string) bool {
 		tokens := strings.Split(query, " ")
 		for n, token := range tokens {
@@ -55,14 +61,7 @@ func (q *Query) DialectString(dialect QueryDialect) string {
 		return q.query
 	}
 
-	switch dialect {
-	case QueryDialectMySQL:
-		return q.query
-	case QueryDialectPostgreSQL:
-		return q.query
-	default:
-		return q.query
-	}
+	return DialectStringFor(q.query, dialect)
 }
 
 // Aarguments returns the arguments for the SQL query.

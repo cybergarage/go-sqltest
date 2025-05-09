@@ -72,11 +72,6 @@ func init() {
 	}
 }
 
-// ListQueryDataTypes returns a list of supported query data types.
-func ListQueryDataTypes() []string {
-	return queryDataTypes
-}
-
 // NewQueryDialect returns a new QueryDialect instance.
 func NewQueryDataTypeFor(dt string, to QueryDialect) (string, error) {
 	dt = strings.ToUpper(strings.TrimSpace(dt))
@@ -108,4 +103,20 @@ func (to QueryDialect) String() string {
 	default:
 		return "unknown"
 	}
+}
+
+// DialectStringFor returns the SQL query string for the specified dialect.
+func DialectStringFor(query string, dialect QueryDialect) string {
+	if dialect == QueryDialectNone {
+		return query
+	}
+	dialectQuery := query
+	for _, dt := range queryDataTypes {
+		mappedType, err := NewQueryDataTypeFor(dt, dialect)
+		if err != nil {
+			continue
+		}
+		dialectQuery = strings.ReplaceAll(dialectQuery, dt, mappedType)
+	}
+	return dialectQuery
 }
