@@ -46,7 +46,7 @@ func WithScenarioBytes(name string, b []byte) ScenarioOption {
 // Scenario represents a scenario.
 type Scenario struct {
 	filename string
-	queries  []*Query
+	queries  []string
 	contents []*QueryContext
 	cases    []*ScenarioCase
 }
@@ -55,7 +55,7 @@ type Scenario struct {
 func NewScenario() *Scenario {
 	file := &Scenario{
 		filename: "",
-		queries:  []*Query{},
+		queries:  []string{},
 		contents: []*QueryContext{},
 		cases:    []*ScenarioCase{},
 	}
@@ -90,7 +90,7 @@ func (scn *Scenario) Name() string {
 }
 
 // Queries returns the loaded scenario queries.
-func (scn *Scenario) Queries() []*Query {
+func (scn *Scenario) Queries() []string {
 	return scn.queries
 }
 
@@ -184,7 +184,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
 	var err error
 
-	scn.queries = make([]*Query, 0)
+	scn.queries = make([]string, 0)
 	scn.contents = make([]*QueryContext, 0)
 	scn.cases = make([]*ScenarioCase, 0)
 
@@ -194,8 +194,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if len(queryStr) == 0 {
 			return
 		}
-		query := NewQueryWith(strings.TrimSpace(queryStr))
-		scn.queries = append(scn.queries, query)
+		scn.queries = append(scn.queries, strings.TrimSpace(queryStr))
 		queryStr = ""
 	}
 
@@ -256,7 +255,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 				rows = []any{} // empty rows
 			}
 			scnCase := NewScenarioCaseWith(
-				WithScenarioCaseQuery(query),
+				WithScenarioCaseQuery(NewQueryWith(query, bindings)),
 				WithScenarioCaseBindings(bindings),
 				WithScenarioCaseRows(rows),
 			)
@@ -278,7 +277,7 @@ func (scn *Scenario) String() string {
 	var str string
 	nResults := len(scn.contents)
 	for n, query := range scn.queries {
-		str += query.String() + "\n"
+		str += query + "\n"
 		if n < nResults {
 			str += scn.contents[n].String() + "\n"
 		}
