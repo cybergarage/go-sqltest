@@ -16,10 +16,13 @@ package sqltest
 
 import (
 	_ "embed"
+	"strings"
 )
 
 //go:embed data/query_data_types.csv
 var queryDataTypeBytes []byte
+
+var queryDataTypeMap map[string]map[QueryDialect]string
 
 // QueryDialect represents the SQL dialect used in a query.
 type QueryDialect int
@@ -33,14 +36,66 @@ const (
 	QueryDialectPostgreSQL
 )
 
+func init() {
+	queryDataTypeMap = make(map[string]map[QueryDialect]string)
+
+	csvLines := strings.Split(string(queryDataTypeBytes), "\n")
+	headers := strings.Split(csvLines[0], ",")
+	for _, line := range csvLines[1:] {
+		fields := strings.Split(line, ",")
+		dataType := fields[0]
+		for i := 1; i < len(fields); i++ {
+			if strings.TrimSpace(fields[i]) == "" {
+				continue
+			}
+			dialect := headers[i]
+			mappedType := fields[i]
+			var dialectEnum QueryDialect
+			switch dialect {
+			case "MySQL":
+				dialectEnum = QueryDialectMySQL
+			case "PostgreSQL":
+				dialectEnum = QueryDialectPostgreSQL
+			default:
+				continue
+			}
+			if _, exists := queryDataTypeMap[dataType]; !exists {
+				queryDataTypeMap[dataType] = make(map[QueryDialect]string)
+			}
+			queryDataTypeMap[dataType][dialectEnum] = mappedType
+		}
+	}
+}
+
 // NewQueryDialect returns a new QueryDialect instance.
 func NewQueryDataTypeFor(dt string, to QueryDialect) (string, error) {
+	dt = strings.ToUpper(strings.TrimSpace(dt))
 	switch to {
 	case QueryDialectMySQL:
+		if mappedType, exists := queryDataTypeMap[dt][QueryDialectMySQL]; exists {
+			return mappedType, nil
+		}
 		return dt, nil
 	case QueryDialectPostgreSQL:
+		if mappedType, exists := queryDataTypeMap[dt][QueryDialectPostgreSQL]; exists {
+			return mappedType, nil
+		}
 		return dt, nil
 	default:
-		return "", nil
+		return dt, nil
+	}
+}
+
+// String returns the string representation of the QueryDialect.
+func (to QueryDialect) String() string {
+	switch to {
+	case QueryDialectNone:
+		return "none"
+	case QueryDialectMySQL:
+		return "mysql"
+	case QueryDialectPostgreSQL:
+		return "postgresql"
+	default:
+		return "unknown"
 	}
 }
