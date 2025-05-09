@@ -42,14 +42,6 @@ func WithScenarioCaseQuery(query *Query) ScenarioCaseOption {
 	}
 }
 
-// WithScenarioCaseBindings returns a scenario case option to set bindings.
-func WithScenarioCaseBindings(bindings []any) ScenarioCaseOption {
-	return func(sc *ScenarioCase) error {
-		sc.bindings = bindings
-		return nil
-	}
-}
-
 // WithScenarioCaseRows returns a scenario case option to set rows.
 func WithScenarioCaseRows(rows QueryRows) ScenarioCaseOption {
 	return func(sc *ScenarioCase) error {

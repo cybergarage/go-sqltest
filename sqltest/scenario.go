@@ -256,7 +256,6 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 			}
 			scnCase := NewScenarioCaseWith(
 				WithScenarioCaseQuery(NewQueryWith(query, bindings)),
-				WithScenarioCaseBindings(bindings),
 				WithScenarioCaseRows(rows),
 			)
 			scnCases = append(scnCases, scnCase)
