@@ -72,6 +72,11 @@ func init() {
 	}
 }
 
+// ListQueryDataTypes returns a list of supported query data types.
+func ListQueryDataTypes() []string {
+	return queryDataTypes
+}
+
 // NewQueryDialect returns a new QueryDialect instance.
 func NewQueryDataTypeFor(dt string, to QueryDialect) (string, error) {
 	dt = strings.ToUpper(strings.TrimSpace(dt))
