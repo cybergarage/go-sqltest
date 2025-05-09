@@ -19,7 +19,7 @@ import (
 	"testing"
 )
 
-func TestNewQueryDataTypeFor(t *testing.T) {
+func TestQueryDataTypeFor(t *testing.T) {
 	tests := []struct {
 		dt       string
 		to       QueryDialect
@@ -42,6 +42,29 @@ func TestNewQueryDataTypeFor(t *testing.T) {
 			}
 			if got != tt.expected {
 				t.Errorf("NewQueryDataTypeFor(%q, %d) = %q; want %q", tt.dt, tt.to, got, tt.expected)
+			}
+		})
+	}
+}
+
+func TestDialectQuery(t *testing.T) {
+	tests := []struct {
+		query    string
+		dialect  QueryDialect
+		expected string
+	}{
+		{
+			"CREATE TABLE test (ctext TEXT,cint INT PRIMARY KEY, cfloat FLOAT, cdouble DOUBLE, cdatetime DATETIME)",
+			QueryDialectPostgreSQL,
+			"CREATE TABLE test (ctext TEXT,cint INTEGER PRIMARY KEY, cfloat REAL, cdouble DOUBLE PRECISION, cdatetime TIMESTAMP)",
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(fmt.Sprintf("%s->%d", tt.query, tt.dialect), func(t *testing.T) {
+			got := DialectQueryFor(tt.query, tt.dialect)
+			if got != tt.expected {
+				t.Errorf("DialectQueryFor(%q, %d) = %v; want %v", tt.query, tt.dialect, got, tt.expected)
 			}
 		})
 	}
