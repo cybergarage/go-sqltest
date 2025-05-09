@@ -29,13 +29,13 @@ type ScenarioCaseOption func(*ScenarioCase) error
 
 // ScenarioCase represents a scenario case.
 type ScenarioCase struct {
-	query    string
+	query    *Query
 	bindings []any
 	rows     QueryRows
 }
 
 // WithScenarioCaseQuery returns a scenario case option to set a query.
-func WithScenarioCaseQuery(query string) ScenarioCaseOption {
+func WithScenarioCaseQuery(query *Query) ScenarioCaseOption {
 	return func(sc *ScenarioCase) error {
 		sc.query = query
 		return nil
@@ -61,7 +61,7 @@ func WithScenarioCaseRows(rows QueryRows) ScenarioCaseOption {
 // NewScenarioCase returns a scenario case instance.
 func NewScenarioCaseWith(opts ...ScenarioCaseOption) *ScenarioCase {
 	sc := &ScenarioCase{
-		query:    "",
+		query:    nil,
 		bindings: []any{},
 		rows:     QueryRows{},
 	}
@@ -72,7 +72,7 @@ func NewScenarioCaseWith(opts ...ScenarioCaseOption) *ScenarioCase {
 }
 
 // Query returns a query of the scenario case.
-func (sc *ScenarioCase) Query() string {
+func (sc *ScenarioCase) Query() *Query {
 	return sc.query
 }
 

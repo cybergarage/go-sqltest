@@ -27,7 +27,7 @@ type Line = string
 type ScenarioOption func(*Scenario) error
 
 // ScenarioStepHandler represents a scenario step handler.
-type ScenarioStepHandler func(*Scenario, int, string, error)
+type ScenarioStepHandler func(*Scenario, int, *Query, error)
 
 // WithScenarioFile returns a scenario option to load the specified scenario file.
 func WithScenarioFile(filename string) ScenarioOption {
@@ -46,7 +46,7 @@ func WithScenarioBytes(name string, b []byte) ScenarioOption {
 // Scenario represents a scenario.
 type Scenario struct {
 	filename string
-	queries  []string
+	queries  []*Query
 	contents []*QueryContext
 	cases    []*ScenarioCase
 }
@@ -55,7 +55,7 @@ type Scenario struct {
 func NewScenario() *Scenario {
 	file := &Scenario{
 		filename: "",
-		queries:  []string{},
+		queries:  []*Query{},
 		contents: []*QueryContext{},
 		cases:    []*ScenarioCase{},
 	}
@@ -90,7 +90,7 @@ func (scn *Scenario) Name() string {
 }
 
 // Queries returns the loaded scenario queries.
-func (scn *Scenario) Queries() []string {
+func (scn *Scenario) Queries() []*Query {
 	return scn.queries
 }
 
@@ -184,7 +184,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 	var queryStr, resultStr string
 	var err error
 
-	scn.queries = make([]string, 0)
+	scn.queries = make([]*Query, 0)
 	scn.contents = make([]*QueryContext, 0)
 	scn.cases = make([]*ScenarioCase, 0)
 
@@ -194,7 +194,8 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if len(queryStr) == 0 {
 			return
 		}
-		scn.queries = append(scn.queries, strings.TrimSpace(queryStr))
+		query := NewQuery(strings.TrimSpace(queryStr))
+		scn.queries = append(scn.queries, query)
 		queryStr = ""
 	}
 
@@ -277,7 +278,7 @@ func (scn *Scenario) String() string {
 	var str string
 	nResults := len(scn.contents)
 	for n, query := range scn.queries {
-		str += query + "\n"
+		str += query.String() + "\n"
 		if n < nResults {
 			str += scn.contents[n].String() + "\n"
 		}

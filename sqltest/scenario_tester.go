@@ -158,7 +158,7 @@ func (tester *ScenarioTester) Run() error {
 		return errors.New(errorClientNotFound)
 	}
 
-	stepHandler := func(n int, query string, err error) error {
+	stepHandler := func(n int, query *Query, err error) error {
 		if tester.stepHandler != nil {
 			tester.stepHandler(scenario, n, query, err)
 		}
@@ -179,7 +179,7 @@ func (tester *ScenarioTester) Run() error {
 	for n, testCase := range testCases {
 		query := testCase.Query()
 		log.Infof("[%d] %s", n, query)
-		rows, err := client.Query(query, testCase.Bindings()...)
+		rows, err := client.Query(query.String(), testCase.Bindings()...)
 		if err != nil {
 			errTraceMsg := errTraceMsg(n)
 			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, query)
