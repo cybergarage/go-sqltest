@@ -6,11 +6,15 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.5.1 (2025-XX-XX)
-- Update PqClient to set connect_timeout
-- Fix PqClient not to use `IF NOT EXISTS` for `CREATE DATABASE` statements.
-- Remove deprecated functions
+## v1.6.0 (2025-05-XX)
 - Update StepHandler to pass query with bind parameters
+- Remove deprecated functions
+
+## v1.5.1 (2025-04-28)
+### Improved
+- PqClient
+  - Added connect_timeout option.
+  - Fix not to use `IF NOT EXISTS` for `CREATE DATABASE` statements.
 
 ## v1.5.0 (2025-02-21)
 ### Improved
