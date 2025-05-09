@@ -105,8 +105,8 @@ func (to QueryDialect) String() string {
 	}
 }
 
-// DialectStringFor returns the SQL query string for the specified dialect.
-func DialectStringFor(query string, dialect QueryDialect) string {
+// DialectQueryFor returns the SQL query string for the specified dialect.
+func DialectQueryFor(query string, dialect QueryDialect) string {
 	if dialect == QueryDialectNone {
 		return query
 	}
