@@ -33,6 +33,18 @@ func (q *Query) String() string {
 	return q.query
 }
 
+// DialectString returns the SQL query string for the specified dialect.
+func (q *Query) DialectString(dialect QueryDialect) string {
+	switch dialect {
+	case QueryDialectMySQL:
+		return q.query
+	case QueryDialectPostgreSQL:
+		return q.query
+	default:
+		return q.query
+	}
+}
+
 // Aarguments returns the arguments for the SQL query.
 func (q *Query) Arguments() []any {
 	return q.args
