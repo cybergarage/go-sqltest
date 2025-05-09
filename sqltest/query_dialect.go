@@ -14,6 +14,13 @@
 
 package sqltest
 
+import (
+	_ "embed"
+)
+
+//go:embed data/query_data_types.csv
+var queryDataTypeBytes []byte
+
 // QueryDialect represents the SQL dialect used in a query.
 type QueryDialect int
 
@@ -25,3 +32,15 @@ const (
 	// QueryDialectSQLite represents the SQLite SQL dialect.
 	QueryDialectPostgreSQL
 )
+
+// NewQueryDialect returns a new QueryDialect instance.
+func NewQueryDataTypeFor(dt string, to QueryDialect) (string, error) {
+	switch to {
+	case QueryDialectMySQL:
+		return dt, nil
+	case QueryDialectPostgreSQL:
+		return dt, nil
+	default:
+		return "", nil
+	}
+}
