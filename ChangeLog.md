@@ -7,6 +7,7 @@
   - ALTER query tests
 
 ## v1.6.0 (2025-05-XX)
+- Update ScenarioTester::Run() to use dialect query string
 - Update StepHandler to pass query with bind parameters
 - Remove deprecated functions
 
