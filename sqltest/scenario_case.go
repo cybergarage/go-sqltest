@@ -68,11 +68,6 @@ func (sc *ScenarioCase) Query() *Query {
 	return sc.query
 }
 
-// Bindings returns bindings of the scenario case.
-func (sc *ScenarioCase) Bindings() []any {
-	return sc.bindings
-}
-
 // Rows returns rows of the scenario case.
 func (sc *ScenarioCase) Rows() QueryRows {
 	return sc.rows
