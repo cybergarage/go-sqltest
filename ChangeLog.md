@@ -10,6 +10,7 @@
 - Update PqClient to set connect_timeout
 - Fix PqClient not to use `IF NOT EXISTS` for `CREATE DATABASE` statements.
 - Remove deprecated functions
+- Update StepHandler to pass query with bind parameters
 
 ## v1.5.0 (2025-02-21)
 ### Improved
