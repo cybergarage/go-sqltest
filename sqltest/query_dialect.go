@@ -22,6 +22,7 @@ import (
 //go:embed data/query_data_types.csv
 var queryDataTypeBytes []byte
 
+var queryDataTypes []string
 var queryDataTypeMap map[string]map[QueryDialect]string
 
 // QueryDialect represents the SQL dialect used in a query.
@@ -44,6 +45,10 @@ func init() {
 	for _, line := range csvLines[1:] {
 		fields := strings.Split(line, ",")
 		dataType := fields[0]
+		if strings.TrimSpace(dataType) == "" {
+			continue
+		}
+		queryDataTypes = append(queryDataTypes, dataType)
 		for i := 1; i < len(fields); i++ {
 			if strings.TrimSpace(fields[i]) == "" {
 				continue
