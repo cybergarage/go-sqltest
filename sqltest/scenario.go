@@ -194,7 +194,7 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 		if len(queryStr) == 0 {
 			return
 		}
-		query := NewQuery(strings.TrimSpace(queryStr))
+		query := NewQueryWith(strings.TrimSpace(queryStr))
 		scn.queries = append(scn.queries, query)
 		queryStr = ""
 	}

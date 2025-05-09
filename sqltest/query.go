@@ -14,13 +14,14 @@
 
 package sqltest
 
+// Query represents a SQL query with its arguments.
 type Query struct {
 	query string
 	args  []any
 }
 
-// NewQuery creates a new Query instance with the given SQL query and arguments.
-func NewQuery(query string, args ...any) *Query {
+// NewQueryWith creates a new Query instance with the given SQL query and arguments.
+func NewQueryWith(query string, args ...any) *Query {
 	return &Query{
 		query: query,
 		args:  args,
