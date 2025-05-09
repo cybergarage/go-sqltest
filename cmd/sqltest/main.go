@@ -55,14 +55,18 @@ func main() {
 	}
 
 	var client sqltest.Client
+	queryDialect := sqltest.QueryDialectNone
+
 	switch *protocol {
 	case "mysql":
 		client = sqltest.NewMySQLClient()
+		queryDialect = sqltest.QueryDialectMySQL
 		if *port == 0 {
 			*port = 3306
 		}
 	case "pg":
 		client = sqltest.NewPostgresClient()
+		queryDialect = sqltest.QueryDialectPostgreSQL
 		if *port == 0 {
 			*port = 5432
 		}
@@ -82,7 +86,10 @@ func main() {
 
 	scenarioPath := args[0]
 
-	scenarioTest, err := sqltest.NewScenarioTesterWithFile(scenarioPath)
+	scenarioTest, err := sqltest.NewScenarioTesterWith(
+		sqltest.WithScenarioTesterFile(scenarioPath),
+		sqltest.WithScenarioTesterQueryDialect(queryDialect),
+	)
 	if err != nil {
 		printError(err)
 		return
