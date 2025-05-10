@@ -18,29 +18,38 @@ import (
 	"testing"
 
 	"github.com/cybergarage/go-logger/log"
-	"github.com/cybergarage/go-postgresql/postgresqltest/server"
 	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
 func TestEmbedSuitesForDebug(t *testing.T) {
 	log.SetStdoutDebugEnbled(true)
 
-	server := server.NewServer()
-	err := server.Start()
-	if err != nil {
-		t.Error(err)
-		return
-	}
-	defer server.Stop()
+	// server := server.NewServer()
+	// err := server.Start()
+	// if err != nil {
+	// 	t.Error(err)
+	// 	return
+	// }
+	// defer server.Stop()
 
 	client := sqltest.NewPostgresClient()
 	client.SetPreparedStatementEnabled(false)
+	client.SetUser("postgres")
+	client.SetPassword("passwd")
 
 	testRegexes := []string{
+		// "SmplTxnText",
+		// "SmplCrudInt",
 		// "SmplCrud.*",
 	}
 
-	if err := sqltest.RunEmbedSuites(t, client, testRegexes...); err != nil {
+	opts := []sqltest.SuiteOption{
+		sqltest.WithSuiteClient(client),
+		sqltest.WithSuiteRegexes(testRegexes...),
+		sqltest.WithSuiteQueryDialect(sqltest.QueryDialectPostgreSQL),
+	}
+
+	if err := sqltest.RunEmbedSuitesWith(t, opts...); err != nil {
 		t.Error(err)
 	}
 }
