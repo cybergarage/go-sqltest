@@ -93,7 +93,9 @@ func WithSuiteStepHandler(handler ScenarioStepHandler) SuiteOption {
 // WithSuiteQueryDialect returns a SuiteOption that sets the query dialect for the Suite.
 func WithSuiteQueryDialect(dialect QueryDialect) SuiteOption {
 	return func(suite *Suite) error {
-		suite.queryDialect = dialect
+		for _, test := range suite.testers {
+			test.SetQueryDialect(dialect)
+		}
 		return nil
 	}
 }
@@ -103,7 +105,6 @@ type Suite struct {
 	testers      []*ScenarioTester
 	client       Client
 	errorHandler SuiteErrorHandler
-	queryDialect QueryDialect
 }
 
 // NewSuite returns a scenario test suite instance.
@@ -112,7 +113,6 @@ func NewSuite() *Suite {
 		testers:      make([]*ScenarioTester, 0),
 		client:       nil,
 		errorHandler: nil,
-		queryDialect: QueryDialectNone,
 	}
 	return suite
 }
