@@ -34,7 +34,13 @@ func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
 func RunEmbedSuitesWith(t *testing.T, opts ...SuiteOption) error {
 	t.Helper()
 
-	suite, err := NewSuiteWith(opts...)
+	embedOpts := []SuiteOption{
+		WithSuiteEmbeds(),
+	}
+
+	embedOpts = append(embedOpts, opts...)
+
+	suite, err := NewSuiteWith(embedOpts...)
 	if err != nil {
 		return err
 	}
