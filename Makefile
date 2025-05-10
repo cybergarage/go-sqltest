@@ -74,6 +74,17 @@ build:
 install:
 	go install -v -gcflags=${GCFLAGS} ${BINS}
 
+%.md : %.adoc
+	asciidoctor -b docbook -a leveloffset=+1 -o - $< | pandoc -t markdown_strict --wrap=none -f docbook > $@
+
+csvs := $(wildcard doc/*/*.csv) $(wildcard ${PKG_ROOT}/data/*.csv)
+
+docs := $(patsubst %.adoc,%.md,$(wildcard doc/*.adoc))
+
+doc_touch: $(csvs)
+	touch doc/*.adoc
+
+doc: doc_touch $(docs)
+
 clean:
 	go clean -i ${PKG}
-
