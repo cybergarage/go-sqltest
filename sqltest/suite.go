@@ -217,19 +217,24 @@ func (suite *Suite) ExtractScenarioTests(regexpNames ...string) ([]*ScenarioTest
 	return tests, nil
 }
 
+// ExtractScenarioMatchingTests returns scenario tests with the specified regexes.
 func (suite *Suite) ExtractScenarioMatchingTests(regexes ...string) ([]*ScenarioTester, error) {
 	tests := make([]*ScenarioTester, 0)
-	for _, test := range suite.testers {
-		for _, regex := range regexes {
-			re, err := regexp.Compile(regex)
-			if err != nil {
-				return tests, err
-			}
+	for _, regex := range regexes {
+		re, err := regexp.Compile(regex)
+		if err != nil {
+			return tests, err
+		}
+		regexTests := make([]*ScenarioTester, 0)
+		for _, test := range suite.testers {
 			if re.MatchString(test.Name()) {
-				tests = append(tests, test)
-				continue
+				regexTests = append(regexTests, test)
 			}
 		}
+		if len(regexTests) == 0 {
+			return nil, fmt.Errorf("no tests found matching regex: %s", regex)
+		}
+		tests = append(tests, regexTests...)
 	}
 	return tests, nil
 }
