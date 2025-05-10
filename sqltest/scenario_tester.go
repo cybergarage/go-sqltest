@@ -183,7 +183,7 @@ func (tester *ScenarioTester) Run() error {
 		rows, err := client.Query(dialectQuery, query.Arguments()...)
 		if err != nil {
 			errTraceMsg := errTraceMsg(n)
-			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, query)
+			errTraceMsg += fmt.Sprintf(errorQueryPrefix, n, dialectQuery)
 			errTraceMsg += "\n"
 			return stepHandler(n, query, fmt.Errorf("%s%w", errTraceMsg, err))
 		}
