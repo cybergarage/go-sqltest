@@ -119,6 +119,11 @@ func (tester *ScenarioTester) SetStepHandler(handler ScenarioStepHandler) {
 	tester.stepHandler = handler
 }
 
+// SetQueryDialect sets a query dialect for testing.
+func (tester *ScenarioTester) SetQueryDialect(dialect QueryDialect) {
+	tester.queryDialect = dialect
+}
+
 // Name returns the loaded senario name.
 func (tester *ScenarioTester) Name() string {
 	return tester.scenario.Name()
