@@ -22,7 +22,7 @@ import (
 	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
-func TestEmbedSuites(t *testing.T) {
+func TestEmbedSuitesForDebug(t *testing.T) {
 	log.SetStdoutDebugEnbled(true)
 
 	server := server.NewServer()
