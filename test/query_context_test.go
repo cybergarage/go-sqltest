@@ -18,6 +18,8 @@ import (
 	"encoding/json"
 	"reflect"
 	"testing"
+
+	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
 func TestQueryContext(t *testing.T) {
@@ -27,7 +29,7 @@ func TestQueryContext(t *testing.T) {
 		"{ \"rows\" : [ { \"k\" : \"0\", \"v1\" : \"0\", \"v2\" : \"0\" }, { \"k\" : \"1\", \"v1\" : \"1\", \"v2\" : \"1\" } ]}",
 	}
 
-	res := NewQueryContext()
+	res := sqltest.NewQueryContext()
 	for _, jsonStr := range testJSONStrs {
 		err := res.ParseString(jsonStr)
 		if err != nil {
@@ -37,13 +39,13 @@ func TestQueryContext(t *testing.T) {
 }
 
 func TestQueryContextBindings(t *testing.T) {
-	testBindings := QueryBindings{
+	testBindings := sqltest.QueryBindings{
 		"0",
 		"1",
 		"2",
 	}
-	testResData := QueryContextData{
-		QueryContextBindingsKey: testBindings,
+	testResData := sqltest.QueryContextData{
+		sqltest.QueryContextBindingsKey: testBindings,
 	}
 
 	jsonStr, err := json.Marshal(testResData)
@@ -52,7 +54,7 @@ func TestQueryContextBindings(t *testing.T) {
 		return
 	}
 
-	res := NewQueryContext()
+	res := sqltest.NewQueryContext()
 	err = res.ParseString(string(jsonStr))
 	if err != nil {
 		t.Error(err)
@@ -72,20 +74,20 @@ func TestQueryContextBindings(t *testing.T) {
 }
 
 func TestQueryContextRows(t *testing.T) {
-	testRows := QueryRows{
-		QueryResponseRow{
+	testRows := sqltest.QueryRows{
+		sqltest.QueryResponseRow{
 			"k":  0,
 			"v1": 0,
 			"v2": 0,
 		},
-		QueryResponseRow{
+		sqltest.QueryResponseRow{
 			"k":  1,
 			"v1": 1,
 			"v2": 1,
 		},
 	}
-	testResData := QueryContextData{
-		QueryContextRowsKey: testRows,
+	testResData := sqltest.QueryContextData{
+		sqltest.QueryContextRowsKey: testRows,
 	}
 
 	jsonStr, err := json.Marshal(testResData)
@@ -94,7 +96,7 @@ func TestQueryContextRows(t *testing.T) {
 		return
 	}
 
-	res := NewQueryContext()
+	res := sqltest.NewQueryContext()
 	err = res.ParseString(string(jsonStr))
 	if err != nil {
 		t.Error(err)
