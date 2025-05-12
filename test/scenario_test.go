@@ -17,13 +17,14 @@ package sqltest
 import (
 	"testing"
 
+	"github.com/cybergarage/go-sqltest/sqltest"
 	scenarios "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
 func TestEmbedScenario(t *testing.T) {
 	for name, scnBytes := range scenarios.EmbedScenarios {
 		t.Run(name, func(t *testing.T) {
-			scn := NewScenario()
+			scn := sqltest.NewScenario()
 			err := scn.ParseBytes(name, scnBytes)
 			if err != nil {
 				t.Error(err)
