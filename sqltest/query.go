@@ -21,7 +21,7 @@ type Query struct {
 }
 
 // NewQueryWith creates a new Query instance with the given SQL query and arguments.
-func NewQueryWith(query string, args ...any) *Query {
+func NewQueryWith(query string, args []any) *Query {
 	return &Query{
 		query: query,
 		args:  args,
