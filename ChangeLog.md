@@ -6,7 +6,7 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.6.0 (2025-05-XX)
+## v1.6.0 (2025-05-12)
 ### Improved
 - Client
   - Supported different dialect queries (MySQL, PostgreSQL).
