@@ -7,8 +7,13 @@
   - ALTER query tests
 
 ## v1.6.0 (2025-05-XX)
-- Update ScenarioTester::Run() to use dialect query string
-- Update StepHandler to pass query with bind parameters
+### Improved
+- Client
+  - Supported different dialect queries (MySQL, PostgreSQL).
+- ScenarioTester
+  - Updated ScenarioTester::Run() to use dialect query string
+  - Update StepHandler to pass query with bind parameters
+### Changed
 - Remove deprecated functions
 
 ## v1.5.1 (2025-04-28)
