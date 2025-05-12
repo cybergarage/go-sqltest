@@ -17,26 +17,28 @@ package sqltest
 import (
 	"fmt"
 	"testing"
+
+	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
 func TestQueryDataTypeFor(t *testing.T) {
 	tests := []struct {
 		dt       string
-		to       QueryDialect
+		to       sqltest.QueryDialect
 		expected string
 	}{
-		{"VARCHAR", QueryDialectMySQL, "VARCHAR"},
-		{"VARCHAR", QueryDialectPostgreSQL, "VARCHAR"},
-		{"INT", QueryDialectMySQL, "INT"},
-		{"INT", QueryDialectPostgreSQL, "INTEGER"},
-		{"FLOAT", QueryDialectMySQL, "FLOAT"},
-		{"FLOAT", QueryDialectPostgreSQL, "REAL"},
-		{"DOUBLE", QueryDialectPostgreSQL, "DOUBLE PRECISION"},
+		{"VARCHAR", sqltest.QueryDialectMySQL, "VARCHAR"},
+		{"VARCHAR", sqltest.QueryDialectPostgreSQL, "VARCHAR"},
+		{"INT", sqltest.QueryDialectMySQL, "INT"},
+		{"INT", sqltest.QueryDialectPostgreSQL, "INTEGER"},
+		{"FLOAT", sqltest.QueryDialectMySQL, "FLOAT"},
+		{"FLOAT", sqltest.QueryDialectPostgreSQL, "REAL"},
+		{"DOUBLE", sqltest.QueryDialectPostgreSQL, "DOUBLE PRECISION"},
 	}
 
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("%s->%s", tt.dt, tt.to), func(t *testing.T) {
-			got, err := NewQueryDataTypeFor(tt.dt, tt.to)
+			got, err := sqltest.NewQueryDataTypeFor(tt.dt, tt.to)
 			if err != nil {
 				t.Fatalf("NewQueryDataTypeFor(%q, %d) = _, %v; want _, nil", tt.dt, tt.to, err)
 			}
@@ -50,22 +52,22 @@ func TestQueryDataTypeFor(t *testing.T) {
 func TestDialectQuery(t *testing.T) {
 	tests := []struct {
 		query    string
-		dialect  QueryDialect
+		dialect  sqltest.QueryDialect
 		expected string
 	}{
 		{
 			"CREATE TABLE test (ctext TEXT,cint INT PRIMARY KEY, cfloat FLOAT, cdouble DOUBLE, cdatetime DATETIME)",
-			QueryDialectPostgreSQL,
+			sqltest.QueryDialectPostgreSQL,
 			"CREATE TABLE test (ctext TEXT,cint INTEGER PRIMARY KEY, cfloat REAL, cdouble DOUBLE PRECISION, cdatetime TIMESTAMP)",
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("%s->%d", tt.query, tt.dialect), func(t *testing.T) {
-			if !IsDialectQuery(tt.query) {
+			if !sqltest.IsDialectQuery(tt.query) {
 				t.Fatalf("IsDialectQuery(%q) = false; want true", tt.query)
 			}
-			got := DialectQueryFor(tt.query, tt.dialect)
+			got := sqltest.DialectQueryFor(tt.query, tt.dialect)
 			if got != tt.expected {
 				t.Errorf("DialectQueryFor(%q, %d) -> %v; want %v", tt.query, tt.dialect, got, tt.expected)
 			}
