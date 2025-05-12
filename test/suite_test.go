@@ -17,11 +17,12 @@ package sqltest
 import (
 	"testing"
 
+	"github.com/cybergarage/go-sqltest/sqltest"
 	scenarios "github.com/cybergarage/go-sqltest/sqltest/scenarios"
 )
 
 func TestEmbedSuite(t *testing.T) {
-	_, err := NeweEmbedSuite(scenarios.EmbedScenarios)
+	_, err := sqltest.NeweEmbedSuite(scenarios.EmbedScenarios)
 	if err != nil {
 		t.Error(err)
 		return
