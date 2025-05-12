@@ -32,7 +32,7 @@ BINS=\
         ${BIN_CMD_ID}
 
 TEST_SRC_ROOT=test
-TEST_PKG=${MODULE_ROOT}/${PKG_NAME}
+TEST_PKG=${MODULE_ROOT}/${TEST_SRC_ROOT}
 
 SCENARIO_ROOT=${PKG_ROOT}/scenarios
 SCENARIO_HELPER=${SCENARIO_ROOT}/embed
@@ -56,13 +56,13 @@ version:
 	-git commit ${PKG_ROOT}/version.go -m "Update version"
 
 format: version
-	gofmt -s -w ${PKG_ROOT} ${BIN_ROOT} ${SCENARIO_ROOT}
+	gofmt -s -w ${PKG_ROOT} ${${TEST_SRC_ROOT}} ${BIN_ROOT} ${SCENARIO_ROOT}
 
 vet: format
 	go vet ${PKG}
 
 lint: format
-	golangci-lint run ${PKG_ROOT}/... ${BIN_ROOT}/...
+	golangci-lint run ${PKG_ROOT}/... ${BIN_ROOT}/... ${TEST_SRC_ROOT}/... --timeout 5m
 
 test: scenarios lint
 	go test -v -p 1 -timeout 10m -cover -coverpkg=${PKG}/... -coverprofile=${PKG_COVER}.out ${PKG}/... ${TEST_PKG}/...
