@@ -16,8 +16,10 @@ package sqltest
 
 import (
 	"testing"
+
+	"github.com/cybergarage/go-sqltest/sqltest"
 )
 
 func TestDefaultConfig(t *testing.T) {
-	NewDefaultConfig()
+	sqltest.NewDefaultConfig()
 }
