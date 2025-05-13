@@ -86,29 +86,32 @@ func RunCommand(t *testing.T, cmd string, config *Config) error {
 			args = append(args, cmd)
 			args = append(args, subCmd)
 			t.Run(subCmd, func(t *testing.T) {
+				t.Log(toCommandLine(program, args))
 				out, err := exec.Command(program, args...).CombinedOutput()
 				outStr := string(out)
 				if err != nil {
-					t.Logf("%s", toCommandLine(program, args))
 					if config.SkipOnError() {
-						t.Logf("skip on error")
-						t.Logf("%s", err)
+						t.Skip(toCommandLine(program, args))
+						t.Skip(err)
+						t.Skip(outStr)
 					} else {
+						t.Error(toCommandLine(program, args))
 						t.Error(err)
+						t.Error(outStr)
 					}
-					t.Errorf("%s", outStr)
 					return
 				}
 				if strings.Contains(outStr, "FAILED") {
 					if config.SkipOnError() {
-						t.Logf("skip on error")
-						t.Logf("%s", err)
+						t.Skip(toCommandLine(program, args))
+						t.Skip(err)
 					} else {
-						t.Errorf("%s", outStr)
+						t.Error(toCommandLine(program, args))
+						t.Error(outStr)
 					}
 					return
 				}
-				t.Logf("%s", outStr)
+				t.Log(outStr)
 			})
 		}
 	})
