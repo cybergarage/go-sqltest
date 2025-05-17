@@ -82,10 +82,10 @@ func RunCommand(t *testing.T, cmd string, config *Config) error {
 			"cleanup",
 		}
 		for _, subCmd := range subCmds {
-			args := toCommandLineArgs(config)
-			args = append(args, cmd)
-			args = append(args, subCmd)
 			t.Run(subCmd, func(t *testing.T) {
+				args := toCommandLineArgs(config)
+				args = append(args, cmd)
+				args = append(args, subCmd)
 				t.Log(toCommandLine(program, args))
 				out, err := exec.Command(program, args...).CombinedOutput()
 				outStr := string(out)
@@ -112,6 +112,12 @@ func RunCommand(t *testing.T, cmd string, config *Config) error {
 					return
 				}
 				t.Log(outStr)
+				if t.Skipped() {
+					t.Logf("Test skipped: %s", subCmd)
+				}
+				if t.Failed() {
+					t.Logf("Test failed: %s", subCmd)
+				}
 			})
 		}
 	})
