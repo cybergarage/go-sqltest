@@ -15,10 +15,10 @@
 package sqltest
 
 import (
+	"database/sql"
 	"errors"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/cybergarage/go-logger/log"
 )
@@ -214,20 +214,23 @@ func (tester *ScenarioTester) Run() error {
 		for n, columnType := range columnTypes {
 			s := strings.ToUpper(columnType.DatabaseTypeName())
 			switch {
+			case strings.HasPrefix(s, "BOOL"):
+				var v sql.NullBool
+				values[n] = &v
 			case (0 <= strings.Index(s, "INT")):
-				var v int
+				var v sql.NullInt64
 				values[n] = &v
 			case strings.HasPrefix(s, "FLOAT") || strings.HasPrefix(s, "DOUBLE"):
-				var v float64
+				var v sql.NullFloat64
 				values[n] = &v
 			case strings.HasPrefix(s, "TEXT") || (0 <= strings.Index(s, "VARCHAR")):
-				var v string
+				var v sql.NullString
 				values[n] = &v
 			case strings.HasPrefix(s, "BLOB") || strings.HasPrefix(s, "BINARY"):
-				var v []byte
+				var v sql.NullByte
 				values[n] = &v
 			case strings.HasPrefix(s, "TIMESTAMP") || strings.HasPrefix(s, "DATETIME"):
-				var v time.Time
+				var v sql.NullTime
 				values[n] = &v
 			default:
 				var v any
@@ -245,14 +248,42 @@ func (tester *ScenarioTester) Run() error {
 			row := map[string]any{}
 			for i := 0; i < columnCnt; i++ {
 				switch v := values[i].(type) {
-				case *int:
-					row[columns[i]] = *v
-				case *float64:
-					row[columns[i]] = *v
-				case *string:
-					row[columns[i]] = *v
-				case *time.Time:
-					row[columns[i]] = *v
+				case *sql.NullBool:
+					if v.Valid {
+						row[columns[i]] = v.Bool
+					} else {
+						row[columns[i]] = nil
+					}
+				case *sql.NullInt64:
+					if v.Valid {
+						row[columns[i]] = int(v.Int64)
+					} else {
+						row[columns[i]] = nil
+					}
+				case *sql.NullFloat64:
+					if v.Valid {
+						row[columns[i]] = v.Float64
+					} else {
+						row[columns[i]] = nil
+					}
+				case *sql.NullString:
+					if v.Valid {
+						row[columns[i]] = v.String
+					} else {
+						row[columns[i]] = nil
+					}
+				case *sql.NullByte:
+					if v.Valid {
+						row[columns[i]] = v.Byte
+					} else {
+						row[columns[i]] = nil
+					}
+				case *sql.NullTime:
+					if v.Valid {
+						row[columns[i]] = v.Time
+					} else {
+						row[columns[i]] = nil
+					}
 				case *any:
 					row[columns[i]] = *v
 				default:
