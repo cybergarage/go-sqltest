@@ -10,6 +10,7 @@
 ### Improved
 - ScenarioTester
   - Update to perform flexible column name matching when comparing rows
+  - Update to support nil responses
 
 ## v1.6.0 (2025-05-12)
 ### Improved
