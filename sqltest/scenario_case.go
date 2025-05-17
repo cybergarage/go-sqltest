@@ -191,21 +191,35 @@ func (sc *ScenarioCase) HasRow(row any) error {
 		return sv1 == sv2
 	}
 
-	expectedRows := sc.Rows()
-
-	for _, expectedRow := range expectedRows {
-		expectedRowMap, ok := expectedRow.(QueryResponseRow)
-		if !ok {
-			continue
+	deepEqualRows := func(row1, row2 QueryResponseRow) bool {
+		if reflect.DeepEqual(row1, row2) {
+			return true
 		}
 
-		if reflect.DeepEqual(rowMap, expectedRowMap) {
-			return nil
+		rowValue := func(row QueryResponseRow, key string) (any, bool) {
+			value, ok := row[key]
+			if ok {
+				return value, ok
+			}
+
+			key = strings.ToLower(key)
+			for k, v := range row {
+				k = strings.ToLower(k)
+				if strings.EqualFold(k, key) {
+					return v, true
+				}
+				if strings.HasPrefix(k, key) {
+					return v, true
+				}
+			}
+
+			return nil, false
 		}
 
 		hasAllColumn := true
-		for rowKey, rowData := range rowMap {
-			expectedRowData, ok := expectedRowMap[rowKey]
+
+		for rowKey, rowData := range row1 {
+			expectedRowData, ok := rowValue(row2, rowKey)
 			if !ok {
 				hasAllColumn = false
 				break
@@ -217,7 +231,18 @@ func (sc *ScenarioCase) HasRow(row any) error {
 			}
 		}
 
-		if hasAllColumn {
+		return hasAllColumn
+	}
+
+	expectedRows := sc.Rows()
+
+	for _, expectedRow := range expectedRows {
+		expectedRowMap, ok := expectedRow.(QueryResponseRow)
+		if !ok {
+			continue
+		}
+
+		if deepEqualRows(rowMap, expectedRowMap) || deepEqualRows(expectedRowMap, rowMap) {
 			return nil
 		}
 	}
