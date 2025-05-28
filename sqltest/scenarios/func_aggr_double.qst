@@ -40,7 +40,7 @@ SELECT SUM(cdouble) FROM test_double;
 	"rows" :
 	[
 		{
-			"SUM(cdouble)" : null
+			"SUM(cdouble)" : 0
 		}
 	]
 }

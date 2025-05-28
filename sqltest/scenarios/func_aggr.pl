@@ -52,7 +52,7 @@ print "{\n";
 print "}\n";
 
 my @sels = ("COUNT(*)", "AVG($column_name)", "SUM($column_name)", "MIN($column_name)", "MAX($column_name)");
-my @expecteds = (0, "null", "null", "null", "null");
+my @expecteds = (0, "null", 0, "null", "null");
 
 for (my $n = 0; $n < @sels; $n++){
   my $sel = $sels[$n];

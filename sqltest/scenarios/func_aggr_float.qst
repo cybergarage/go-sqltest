@@ -40,7 +40,7 @@ SELECT SUM(cfloat) FROM test_float;
 	"rows" :
 	[
 		{
-			"SUM(cfloat)" : null
+			"SUM(cfloat)" : 0
 		}
 	]
 }

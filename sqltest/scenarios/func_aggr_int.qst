@@ -40,7 +40,7 @@ SELECT SUM(cint) FROM test_int;
 	"rows" :
 	[
 		{
-			"SUM(cint)" : null
+			"SUM(cint)" : 0
 		}
 	]
 }
