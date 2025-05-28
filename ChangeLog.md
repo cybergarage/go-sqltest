@@ -11,6 +11,8 @@
 - ScenarioTester
   - Update to perform flexible column name matching when comparing rows
   - Update to support nil responses
+- Scenario tests
+  - Update aggregate tests to return 0 for AVG() when there are no rows
 
 ## v1.6.0 (2025-05-12)
 ### Improved
