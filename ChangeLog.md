@@ -6,7 +6,7 @@
   - `pgbench`
   - ALTER query tests
 
-## v1.6.1 (2025-05-XX)
+## v1.6.1 (2025-05-30)
 ### Improved
 - ScenarioTester
   - Update to perform flexible column name matching when comparing rows
