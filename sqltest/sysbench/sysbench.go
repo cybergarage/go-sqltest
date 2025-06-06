@@ -27,6 +27,12 @@ const (
 	dbNamePrefix = program
 )
 
+// IsInstalled checks if sysbench is installed on the system.
+func IsInstalled() bool {
+	_, err := exec.LookPath(program)
+	return err == nil
+}
+
 // GenerateTempDBName returns a temporary database name.
 func GenerateTempDBName() string {
 	return fmt.Sprintf("%s%d", dbNamePrefix, time.Now().UnixNano())
