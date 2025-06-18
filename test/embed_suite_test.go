@@ -22,7 +22,7 @@ import (
 )
 
 func TestEmbedSuitesForDebug(t *testing.T) {
-	log.SetStdoutDebugEnbled(true)
+	log.EnableStdoutDebug(true)
 
 	// server := server.NewServer()
 	// err := server.Start()
