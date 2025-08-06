@@ -55,7 +55,7 @@ func main() {
 	}
 
 	var client sqltest.Client
-	var queryDialect sqltest.QueryDialect
+	queryDialect := sqltest.QueryDialectNone
 
 	switch *protocol {
 	case "mysql":
@@ -108,15 +108,15 @@ func main() {
 		return
 	}
 
-	createDBErr := client.CreateDatabase(testDBName)
+	createDbErr := client.CreateDatabase(testDBName)
 
 	err = client.Close()
 	if err != nil {
 		printError(err)
 	}
 
-	if createDBErr != nil {
-		printError(fmt.Errorf("failed to create database %s : %s", testDBName, createDBErr.Error()))
+	if createDbErr != nil {
+		printError(fmt.Errorf("failed to create database %s : %s", testDBName, createDbErr.Error()))
 		return
 	}
 
