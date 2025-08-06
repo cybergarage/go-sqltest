@@ -173,7 +173,7 @@ func (tester *ScenarioTester) Run() error {
 	errTraceMsg := func(n int) string {
 		queries := scenario.Queries()
 		errTraceMsg := tester.Name() + "\n"
-		for i := 0; i < n; i++ {
+		for i := range n {
 			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, queries[i])
 			errTraceMsg += "\n"
 		}
@@ -246,7 +246,7 @@ func (tester *ScenarioTester) Run() error {
 			}
 
 			row := map[string]any{}
-			for i := 0; i < columnCnt; i++ {
+			for i := range columnCnt {
 				switch v := values[i].(type) {
 				case *sql.NullBool:
 					if v.Valid {

@@ -98,7 +98,7 @@ func (sc *ScenarioCase) HasRow(row any) error {
 		uint8sToString := func(ui8s []uint8) string {
 			bytesLen := len(ui8s)
 			bytes := make([]byte, bytesLen)
-			for n := 0; n < bytesLen; n++ {
+			for n := range bytesLen {
 				bytes[n] = ui8s[n]
 			}
 			return string(bytes)

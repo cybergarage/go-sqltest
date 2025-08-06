@@ -43,15 +43,15 @@ func RunScenarioFiles(t *testing.T, testFilenames []string) {
 					return
 				}
 
-				createDbErr := client.CreateDatabase(testDBName)
+				createDBErr := client.CreateDatabase(testDBName)
 
 				err = client.Close()
 				if err != nil {
 					t.Error(err)
 				}
 
-				if createDbErr != nil {
-					t.Error(createDbErr)
+				if createDBErr != nil {
+					t.Error(createDBErr)
 					return
 				}
 
