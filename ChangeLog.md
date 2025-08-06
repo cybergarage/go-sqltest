@@ -6,6 +6,9 @@
   - `pgbench`
   - ALTER query tests
 
+## v1.6.2 (2025-XX-XX)
+- Fix golangci-lint warnings
+
 ## v1.6.1 (2025-05-30)
 ### Improved
 - ScenarioTester
