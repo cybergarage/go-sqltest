@@ -1,6 +1,10 @@
 module github.com/cybergarage/go-sqltest
 
-go 1.25
+<<<<<<< HEAD
+go 1.22
+=======
+go 1.22
+>>>>>>> b248831 (Update go.mod)
 
 require (
 	github.com/cybergarage/go-logger v1.3.11
