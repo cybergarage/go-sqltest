@@ -173,7 +173,7 @@ func (tester *ScenarioTester) Run() error {
 	errTraceMsg := func(n int) string {
 		queries := scenario.Queries()
 		errTraceMsg := tester.Name() + "\n"
-		for i := 0; i < n; i++ {
+		for i := range n {
 			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, queries[i])
 			errTraceMsg += "\n"
 		}
@@ -211,30 +211,30 @@ func (tester *ScenarioTester) Run() error {
 
 		// NOTE: Run() supports only the following standard column types yet.
 		values := make([]any, columnCnt)
-		for n, columnType := range columnTypes {
-			s := strings.ToUpper(columnType.DatabaseTypeName())
+		for i := range columnCnt {
+			s := strings.ToUpper(columnTypes[i].DatabaseTypeName())
 			switch {
 			case strings.HasPrefix(s, "BOOL"):
 				var v sql.NullBool
-				values[n] = &v
+				values[i] = &v
 			case (0 <= strings.Index(s, "INT")):
 				var v sql.NullInt64
-				values[n] = &v
+				values[i] = &v
 			case strings.HasPrefix(s, "FLOAT") || strings.HasPrefix(s, "DOUBLE"):
 				var v sql.NullFloat64
-				values[n] = &v
+				values[i] = &v
 			case strings.HasPrefix(s, "TEXT") || (0 <= strings.Index(s, "VARCHAR")):
 				var v sql.NullString
-				values[n] = &v
+				values[i] = &v
 			case strings.HasPrefix(s, "BLOB") || strings.HasPrefix(s, "BINARY"):
 				var v sql.NullByte
-				values[n] = &v
+				values[i] = &v
 			case strings.HasPrefix(s, "TIMESTAMP") || strings.HasPrefix(s, "DATETIME"):
 				var v sql.NullTime
-				values[n] = &v
+				values[i] = &v
 			default:
 				var v any
-				values[n] = &v
+				values[i] = &v
 			}
 		}
 
@@ -246,7 +246,7 @@ func (tester *ScenarioTester) Run() error {
 			}
 
 			row := map[string]any{}
-			for i := 0; i < columnCnt; i++ {
+			for i := range columnCnt {
 				switch v := values[i].(type) {
 				case *sql.NullBool:
 					if v.Valid {
