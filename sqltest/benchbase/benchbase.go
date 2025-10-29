@@ -28,18 +28,20 @@ const (
 	benchbaseConfigEnv    = "BENCHBASE_CONFIG"
 	benchbaseBenchEnv     = "BENCHBASE_BENCH"
 	DatabaseName          = "benchbase"
+	defaultBenchbaseRoot  = "./"
 	benchbaseDefaultBench = "tpcc"
+	benchbaseJarFile      = "benchbase.jar"
 )
 
 // Installed checks if BenchBase is properly installed and accessible.
 func Installed() bool {
 	root := os.Getenv(benchbaseRoot)
 	if root == "" {
-		return false
+		root = defaultBenchbaseRoot
 	}
 
 	// Check for jar file
-	jarPath := filepath.Join(root, "benchbase.jar")
+	jarPath := filepath.Join(root, benchbaseJarFile)
 	if _, err := os.Stat(jarPath); err != nil {
 		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
 		if globErr != nil || len(matches) == 0 {
@@ -84,7 +86,7 @@ func RunWorkload(t *testing.T, defaultBench string) error {
 	}
 
 	// Resolve jar: try explicit benchbase.jar, then glob benchbase-*.jar.
-	jarPath := filepath.Join(root, "benchbase.jar")
+	jarPath := filepath.Join(root, benchbaseJarFile)
 	if _, err := os.Stat(jarPath); err != nil {
 		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
 		if globErr != nil {
