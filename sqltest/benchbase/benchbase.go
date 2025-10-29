@@ -15,13 +15,12 @@
 package benchbase
 
 import (
+	"errors"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"strings"
 	"testing"
-
-	"github.com/cybergarage/go-logger/log"
+	"time"
 )
 
 const (
@@ -38,85 +37,80 @@ func SetUpQueries() []string {
 	}
 }
 
+// RunWorkload runs a BenchBase benchmark using a single java -jar invocation:
+//
+//	java -jar benchbase.jar -b <bench> -c <config> --create=true --load=true --execute=true
+//
+// Environment variables:
+//
+//	BENCHBASE_ROOT  : Root directory where benchbase jar & config/ reside
+//	BENCHBASE_CONFIG: Relative path under BENCHBASE_ROOT to config XML (defaults to config/postgres/sample_tpcc_config.xml)
+//	BENCHBASE_BENCH : Benchmark name (defaults to value passed as defaultBench)
 func RunWorkload(t *testing.T, defaultBench string) error {
 	t.Helper()
-	outputBenchbaseParams := func(t *testing.T, benchbaseEnvs []string, benchbaseParams []string) {
-		t.Helper()
-		for n, benchbaseEnv := range benchbaseEnvs {
-			t.Logf("%s = %s", benchbaseEnv, benchbaseParams[n])
+
+	// Gather parameters from environment or defaults.
+	root := os.Getenv(benchbaseRoot)
+	if root == "" {
+		return errors.New("BENCHBASE_ROOT is not specified")
+	}
+
+	bench := os.Getenv(benchbaseBenchEnv)
+	if bench == "" {
+		bench = defaultBench
+	}
+
+	configRel := os.Getenv(benchbaseConfigEnv)
+	if configRel == "" {
+		// Provide more realistic default path aligning with example command.
+		configRel = "config/postgres/sample_tpcc_config.xml"
+	}
+
+	// Resolve jar: try explicit benchbase.jar, then glob benchbase-*.jar.
+	jarPath := filepath.Join(root, "benchbase.jar")
+	if _, err := os.Stat(jarPath); err != nil {
+		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
+		if globErr != nil {
+			return globErr
 		}
-	}
-
-	benchbaseEnvs := []string{
-		benchbaseRoot,
-		benchbaseConfigEnv,
-		benchbaseBenchEnv,
-	}
-
-	benchbaseParams := []string{
-		"",
-		"config.xml",
-		defaultBench,
-	}
-
-	for n, benchbaseEnv := range benchbaseEnvs {
-		if v, ok := os.LookupEnv(benchbaseEnv); ok {
-			benchbaseParams[n] = v
+		if len(matches) == 0 {
+			return errors.New("benchbase jar not found (benchbase.jar or benchbase-*.jar)")
 		}
-		if len(benchbaseParams[n]) == 0 {
-			outputBenchbaseParams(t, benchbaseEnvs, benchbaseParams)
-			t.Skipf("%s is not specified", benchbaseEnv)
-			return nil
-		}
+		jarPath = matches[0]
 	}
 
-	outputBenchbaseParams(t, benchbaseEnvs, benchbaseParams)
-
-	benchbasePath := benchbaseParams[0]
-	benchbaseCmd := filepath.Join(benchbasePath, "bin/benchbase")
-	_, err := os.Stat(benchbaseCmd)
-	if err != nil {
-		t.Skip(err)
+	configPath := filepath.Join(root, configRel)
+	if _, err := os.Stat(configPath); err != nil {
 		return err
 	}
 
-	bench := benchbaseParams[2]
-	configFile := benchbaseParams[1]
-	configPath := filepath.Join(benchbasePath, "config", configFile)
-
-	benchbaseArgs := []string{
-		benchbaseCmd,
-		"",
-		"--bench",
-		bench,
-		"--config",
-		configPath,
+	args := []string{
+		"-jar", jarPath,
+		"-b", bench,
+		"-c", configPath,
+		"--create=true",
+		"--load=true",
+		"--execute=true",
 	}
 
-	benchbaseWorkloadCmds := []string{
-		"load",
-		"execute",
+	t.Logf("benchbase root    : %s", root)
+	t.Logf("benchbase jar     : %s", jarPath)
+	t.Logf("benchbase bench   : %s", bench)
+	t.Logf("benchbase config  : %s", configPath)
+	t.Logf("benchbase command : java %v", args)
+
+	start := time.Now()
+	cmd := exec.Command("java", args...)
+	out, err := cmd.CombinedOutput()
+	dur := time.Since(start)
+
+	if err != nil {
+		// Return full output for debugging.
+		return errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
 	}
 
-	for _, benchbaseWorkloadCmd := range benchbaseWorkloadCmds {
-		t.Run(benchbaseWorkloadCmd, func(t *testing.T) {
-			benchbaseArgs[1] = benchbaseWorkloadCmd
-			cmdStr := strings.Join(benchbaseArgs, " ")
-			log.Debugf("%v", cmdStr)
-			t.Logf("%v", cmdStr)
-			out, err := exec.Command(benchbaseCmd, benchbaseArgs[1:]...).CombinedOutput()
-			if err != nil {
-				t.Error(err)
-				return
-			}
-			outStr := string(out)
-			if strings.Contains(outStr, "FAILED") || strings.Contains(outStr, "ERROR") {
-				t.Errorf("%s", outStr)
-				return
-			}
-			t.Logf("%s", outStr)
-		})
-	}
+	t.Logf("benchbase duration: %s", dur)
+	t.Logf("benchbase output:\n%s", string(out))
 
 	return nil
 }
