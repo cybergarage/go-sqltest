@@ -31,10 +31,27 @@ const (
 	benchbaseDefaultBench = "tpcc"
 )
 
-func SetUpQueries() []string {
-	return []string{
-		"CREATE DATABASE IF NOT EXISTS benchbase;",
+// Installed checks if BenchBase is properly installed and accessible.
+func Installed() bool {
+	root := os.Getenv(benchbaseRoot)
+	if root == "" {
+		return false
 	}
+
+	// Check for jar file
+	jarPath := filepath.Join(root, "benchbase.jar")
+	if _, err := os.Stat(jarPath); err != nil {
+		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
+		if globErr != nil || len(matches) == 0 {
+			return false
+		}
+		jarPath = matches[0]
+	}
+
+	// Test if java and benchbase jar are accessible
+	cmd := exec.Command("java", "-jar", jarPath, "-h")
+	err := cmd.Run()
+	return err == nil
 }
 
 // RunWorkload runs a BenchBase benchmark using a single java -jar invocation:
