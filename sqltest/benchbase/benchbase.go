@@ -24,13 +24,14 @@ import (
 )
 
 const (
-	benchbaseRoot         = "BENCHBASE_ROOT"
-	benchbaseConfigEnv    = "BENCHBASE_CONFIG"
-	benchbaseBenchEnv     = "BENCHBASE_BENCH"
-	DatabaseName          = "benchbase"
-	defaultBenchbaseRoot  = "./"
-	benchbaseDefaultBench = "tpcc"
-	benchbaseJarFile      = "benchbase.jar"
+	benchbaseRoot        = "BENCHBASE_ROOT"
+	benchbaseConfigEnv   = "BENCHBASE_CONFIG"
+	benchbaseBenchEnv    = "BENCHBASE_BENCH"
+	DatabaseName         = "benchbase"
+	defaultBenchbaseRoot = "./"
+	defaultBench         = "tpcc"
+	defaultConfig        = "tpcc_config.xml"
+	benchbaseJarFile     = "benchbase.jar"
 )
 
 // Installed checks if BenchBase is properly installed and accessible.
@@ -39,18 +40,7 @@ func Installed() bool {
 	if root == "" {
 		root = defaultBenchbaseRoot
 	}
-
-	// Check for jar file
 	jarPath := filepath.Join(root, benchbaseJarFile)
-	if _, err := os.Stat(jarPath); err != nil {
-		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
-		if globErr != nil || len(matches) == 0 {
-			return false
-		}
-		jarPath = matches[0]
-	}
-
-	// Test if java and benchbase jar are accessible
 	cmd := exec.Command("java", "-jar", jarPath, "-h")
 	err := cmd.Run()
 	return err == nil
@@ -63,15 +53,15 @@ func Installed() bool {
 // Environment variables:
 //
 //	BENCHBASE_ROOT  : Root directory where benchbase jar & config/ reside
-//	BENCHBASE_CONFIG: Relative path under BENCHBASE_ROOT to config XML (defaults to config/postgres/sample_tpcc_config.xml)
-//	BENCHBASE_BENCH : Benchmark name (defaults to value passed as defaultBench)
-func RunWorkload(t *testing.T, defaultBench string) error {
+//	BENCHBASE_CONFIG: Relative path under BENCHBASE_ROOT to config XML (defaults to tpcc_config.xml)
+//	BENCHBASE_BENCH : Benchmark name (defaults to value passed as tpcc)
+func RunWorkload(t *testing.T) error {
 	t.Helper()
 
 	// Gather parameters from environment or defaults.
 	root := os.Getenv(benchbaseRoot)
 	if root == "" {
-		return errors.New("BENCHBASE_ROOT is not specified")
+		root = defaultBenchbaseRoot
 	}
 
 	bench := os.Getenv(benchbaseBenchEnv)
@@ -81,27 +71,11 @@ func RunWorkload(t *testing.T, defaultBench string) error {
 
 	configRel := os.Getenv(benchbaseConfigEnv)
 	if configRel == "" {
-		// Provide more realistic default path aligning with example command.
-		configRel = "config/postgres/sample_tpcc_config.xml"
+		configRel = defaultConfig
 	}
 
-	// Resolve jar: try explicit benchbase.jar, then glob benchbase-*.jar.
 	jarPath := filepath.Join(root, benchbaseJarFile)
-	if _, err := os.Stat(jarPath); err != nil {
-		matches, globErr := filepath.Glob(filepath.Join(root, "benchbase-*.jar"))
-		if globErr != nil {
-			return globErr
-		}
-		if len(matches) == 0 {
-			return errors.New("benchbase jar not found (benchbase.jar or benchbase-*.jar)")
-		}
-		jarPath = matches[0]
-	}
-
 	configPath := filepath.Join(root, configRel)
-	if _, err := os.Stat(configPath); err != nil {
-		return err
-	}
 
 	args := []string{
 		"-jar", jarPath,
