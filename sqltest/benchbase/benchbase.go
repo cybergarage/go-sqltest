@@ -55,7 +55,7 @@ func IsInstalled() bool {
 //	BENCHBASE_ROOT  : Root directory where benchbase jar & config/ reside
 //	BENCHBASE_CONFIG: Relative path under BENCHBASE_ROOT to config XML (defaults to tpcc_config.xml)
 //	BENCHBASE_BENCH : Benchmark name (defaults to value passed as tpcc)
-func RunWorkload(t *testing.T) error {
+func RunWorkload(t *testing.T, benches ...string) error {
 	t.Helper()
 
 	// Gather parameters from environment or defaults.
@@ -64,9 +64,12 @@ func RunWorkload(t *testing.T) error {
 		root = defaultBenchbaseRoot
 	}
 
-	bench := os.Getenv(benchbaseBenchEnv)
-	if bench == "" {
-		bench = defaultBench
+	if len(benches) == 0 {
+		bench := os.Getenv(benchbaseBenchEnv)
+		if bench == "" {
+			bench = defaultBench
+		}
+		benches = []string{bench}
 	}
 
 	configRel := os.Getenv(benchbaseConfigEnv)
@@ -77,33 +80,34 @@ func RunWorkload(t *testing.T) error {
 	jarPath := filepath.Join(root, benchbaseJarFile)
 	configPath := filepath.Join(root, configRel)
 
-	args := []string{
-		"-jar", jarPath,
-		"-b", bench,
-		"-c", configPath,
-		"--create=true",
-		"--load=true",
-		"--execute=true",
+	for _, bench := range benches {
+		args := []string{
+			"-jar", jarPath,
+			"-b", bench,
+			"-c", configPath,
+			"--create=true",
+			"--load=true",
+			"--execute=true",
+		}
+
+		t.Logf("benchbase root    : %s", root)
+		t.Logf("benchbase jar     : %s", jarPath)
+		t.Logf("benchbase bench   : %s", bench)
+		t.Logf("benchbase config  : %s", configPath)
+		t.Logf("benchbase command : java %v", args)
+
+		start := time.Now()
+		cmd := exec.Command("java", args...)
+		out, err := cmd.CombinedOutput()
+		dur := time.Since(start)
+
+		if err != nil {
+			// Return full output for debugging.
+			return errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+		}
+
+		t.Logf("benchbase duration: %s", dur)
+		t.Logf("benchbase output:\n%s", string(out))
 	}
-
-	t.Logf("benchbase root    : %s", root)
-	t.Logf("benchbase jar     : %s", jarPath)
-	t.Logf("benchbase bench   : %s", bench)
-	t.Logf("benchbase config  : %s", configPath)
-	t.Logf("benchbase command : java %v", args)
-
-	start := time.Now()
-	cmd := exec.Command("java", args...)
-	out, err := cmd.CombinedOutput()
-	dur := time.Since(start)
-
-	if err != nil {
-		// Return full output for debugging.
-		return errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
-	}
-
-	t.Logf("benchbase duration: %s", dur)
-	t.Logf("benchbase output:\n%s", string(out))
-
 	return nil
 }
