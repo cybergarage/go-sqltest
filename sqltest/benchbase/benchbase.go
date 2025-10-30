@@ -34,8 +34,8 @@ const (
 	benchbaseJarFile     = "benchbase.jar"
 )
 
-// Installed checks if BenchBase is properly installed and accessible.
-func Installed() bool {
+// IsInstalled checks if BenchBase is properly installed and accessible.
+func IsInstalled() bool {
 	root := os.Getenv(benchbaseRoot)
 	if root == "" {
 		root = defaultBenchbaseRoot
