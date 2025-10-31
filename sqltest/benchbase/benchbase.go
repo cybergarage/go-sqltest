@@ -21,6 +21,8 @@ import (
 	"path/filepath"
 	"testing"
 	"time"
+
+	"github.com/cybergarage/go-logger/log"
 )
 
 const (
@@ -47,9 +49,6 @@ func IsInstalled() bool {
 }
 
 // RunWorkload runs a BenchBase benchmark using a single java -jar invocation:
-//
-//	java -jar benchbase.jar -b <bench> -c <config> --create=true --load=true --execute=true
-//
 // Environment variables:
 //
 //	BENCHBASE_ROOT  : Root directory where benchbase jar & config/ reside
@@ -103,6 +102,7 @@ func RunWorkload(t *testing.T, benches ...string) error {
 
 		if err != nil {
 			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+			log.Error(err)
 			t.Skip(err)
 			return err
 		}
