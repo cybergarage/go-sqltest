@@ -100,6 +100,7 @@ func RunWorkload(t *testing.T, benches ...string) error {
 
 		if err != nil {
 			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+			t.Logf("command: %s", cmd.Args)
 			t.Logf("error: \n%s", err.Error())
 			t.Skip(err)
 			return err
