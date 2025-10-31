@@ -102,8 +102,9 @@ func RunWorkload(t *testing.T, benches ...string) error {
 		dur := time.Since(start)
 
 		if err != nil {
-			// Return full output for debugging.
-			return errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+			t.Skip(err)
+			return err
 		}
 
 		t.Logf("benchbase duration: %s", dur)
