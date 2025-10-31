@@ -19,8 +19,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"testing"
 	"time"
+
+	"github.com/cybergarage/go-logger/log"
 )
 
 const (
@@ -47,7 +50,7 @@ func IsInstalled() bool {
 }
 
 // RunWorkload runs a BenchBase benchmark using a single java -jar invocation:
-// Environment variables:
+// Environment variables
 //
 //	BENCHBASE_ROOT  : Root directory where benchbase jar & config/ reside
 //	BENCHBASE_CONFIG: Relative path under BENCHBASE_ROOT to config XML (defaults to tpcc_config.xml)
@@ -99,8 +102,12 @@ func RunWorkload(t *testing.T, benches ...string) error {
 		dur := time.Since(start)
 
 		if err != nil {
-			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
+			errOut := string(out)
+			for _, line := range strings.Split(errOut, "\n") {
+				log.Errorf("%s", line)
+			}
 			t.Logf("command: %s", cmd.Args)
+			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + errOut)
 			t.Logf("error: \n%s", err.Error())
 			t.Skip(err)
 			return err
