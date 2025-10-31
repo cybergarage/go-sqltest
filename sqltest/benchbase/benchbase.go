@@ -100,11 +100,7 @@ func RunWorkload(t *testing.T, benches ...string) error {
 
 		if err != nil {
 			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
-<<<<<<< HEAD
-			t.Logf("error: \n%s", err.Error())
-=======
 			t.Logf("error: \n%s", string(out))
->>>>>>> ad8660e (test: Update benchbase.RunWorkload())
 			t.Skip(err)
 			return err
 		}
