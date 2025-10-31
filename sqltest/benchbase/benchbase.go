@@ -21,8 +21,6 @@ import (
 	"path/filepath"
 	"testing"
 	"time"
-
-	"github.com/cybergarage/go-logger/log"
 )
 
 const (
@@ -102,7 +100,7 @@ func RunWorkload(t *testing.T, benches ...string) error {
 
 		if err != nil {
 			err := errors.New("benchbase execution failed: " + err.Error() + "\n" + string(out))
-			log.Error(err)
+			t.Logf("error: \n%s", err.Error())
 			t.Skip(err)
 			return err
 		}
