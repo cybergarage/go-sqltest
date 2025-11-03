@@ -30,7 +30,7 @@ const (
 	benchbaseRoot        = "BENCHBASE_ROOT"
 	benchbaseConfigEnv   = "BENCHBASE_CONFIG"
 	benchbaseBenchEnv    = "BENCHBASE_BENCH"
-	DatabaseName         = "benchbase"
+	databaseName         = "benchbase"
 	defaultBenchbaseRoot = "./"
 	defaultBench         = "tpcc"
 	defaultConfig        = "tpcc_config.xml"
@@ -47,6 +47,11 @@ func IsInstalled() bool {
 	cmd := exec.Command("java", "-jar", jarPath, "-h")
 	err := cmd.Run()
 	return err == nil
+}
+
+// DatabaseName returns the default database name used by BenchBase.
+func DatabaseName() string {
+	return databaseName
 }
 
 // RunWorkload runs a BenchBase benchmark using a single java -jar invocation:
