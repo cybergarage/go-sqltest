@@ -34,10 +34,8 @@ func RunEmbedSuites(t *testing.T, client Client, regexes ...string) error {
 func RunEmbedSuitesWith(t *testing.T, opts ...SuiteOption) error {
 	t.Helper()
 
-	embedOpts := []SuiteOption{
-		WithSuiteEmbeds(),
-	}
-
+	embedOpts := make([]SuiteOption, 0, 1+len(opts))
+	embedOpts = append(embedOpts, WithSuiteEmbeds())
 	embedOpts = append(embedOpts, opts...)
 
 	suite, err := NewSuiteWith(embedOpts...)

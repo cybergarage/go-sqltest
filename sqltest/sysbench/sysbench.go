@@ -76,7 +76,8 @@ func RunCommand(t *testing.T, cmd string, config *Config) error {
 	}
 
 	toCommandLine := func(prgram string, args []string) string {
-		cmdLine := []string{prgram}
+		cmdLine := make([]string, 0, 1+len(args))
+		cmdLine = append(cmdLine, prgram)
 		cmdLine = append(cmdLine, args...)
 		return strings.Join(cmdLine, " ")
 	}
