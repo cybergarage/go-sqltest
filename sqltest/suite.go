@@ -117,7 +117,7 @@ func NewSuite() *Suite {
 	return suite
 }
 
-// NewSuite returns a scenario test suite instance with the specified options.
+// NewSuiteWith returns a scenario test suite instance with the specified options.
 func NewSuiteWith(opts ...SuiteOption) (*Suite, error) {
 	suite := NewSuite()
 	for _, opt := range opts {
@@ -252,7 +252,7 @@ func (suite *Suite) Test(t *testing.T) error {
 	return err
 }
 
-// RunScenarioTest runs the specified test.
+// TestScenario runs the specified test.
 func (suite *Suite) TestScenario(t *testing.T, test *ScenarioTester) error {
 	t.Helper()
 

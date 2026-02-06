@@ -13,6 +13,6 @@
 // limitations under the License.
 
 /*
-sqltest is a scenario testing framework for evaluating MySQL compatibility.
+Package sqltest is a scenario testing framework for evaluating MySQL compatibility.
 */
 package sqltest

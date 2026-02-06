@@ -17,7 +17,8 @@ package sysbench
 import "strconv"
 
 const (
-	// https://github.com/akopytov/sysbench
+	// ConfigThreads is a sysbench configuration option.
+	// See: https://github.com/akopytov/sysbench
 	ConfigThreads   = "threads"
 	ConfigEvents    = "events"
 	ConfigTime      = "time"
@@ -27,7 +28,8 @@ const (
 )
 
 const (
-	// https://github.com/akopytov/sysbench/tree/master/src/lua
+	// OltpDelete is a sysbench OLTP test.
+	// See: https://github.com/akopytov/sysbench/tree/master/src/lua
 	OltpDelete      = "oltp_delete"
 	OltpInsert      = "oltp_insert"
 	OltpReadOnly    = "oltp_read_only"

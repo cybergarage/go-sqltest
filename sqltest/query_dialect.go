@@ -33,7 +33,7 @@ const (
 	QueryDialectNone QueryDialect = iota
 	// QueryDialectMySQL represents the MySQL SQL dialect.
 	QueryDialectMySQL
-	// QueryDialectSQLite represents the SQLite SQL dialect.
+	// QueryDialectPostgreSQL represents the PostgreSQL SQL dialect.
 	QueryDialectPostgreSQL
 )
 
@@ -72,7 +72,7 @@ func init() {
 	}
 }
 
-// NewQueryDialect returns a new QueryDialect instance.
+// NewQueryDataTypeFor returns a new QueryDialect instance.
 func NewQueryDataTypeFor(dt string, to QueryDialect) (string, error) {
 	dt = strings.ToUpper(strings.TrimSpace(dt))
 	switch to {

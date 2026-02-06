@@ -44,7 +44,7 @@ func (q *Query) DialectString(dialect QueryDialect) string {
 	return DialectQueryFor(q.query, dialect)
 }
 
-// Aarguments returns the arguments for the SQL query.
+// Arguments returns the arguments for the SQL query.
 func (q *Query) Arguments() []any {
 	return q.args
 }

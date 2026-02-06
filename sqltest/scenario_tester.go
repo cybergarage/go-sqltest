@@ -46,7 +46,7 @@ func WithScenarioTesterClient(client Client) ScenarioTesterOption {
 	}
 }
 
-// WithScenarioTesterClient returns a scenario tester option to set a client.
+// WithScenarioTesterFile returns a scenario tester option to set a client.
 func WithScenarioTesterFile(filename string) ScenarioTesterOption {
 	return func(tester *ScenarioTester) error {
 		return tester.LoadFile(filename)

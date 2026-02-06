@@ -18,7 +18,7 @@ import (
 	_ "embed"
 )
 
-// EmbedTests is a map of test names and test queries.
+// EmbedScenarios is a map of test names and test queries.
 var EmbedScenarios = map[string][]byte{
 	"SelectOrderDouble": selectOrderDouble,
 	"FuncAggrFloat":     funcAggrFloat,

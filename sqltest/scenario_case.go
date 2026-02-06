@@ -50,7 +50,7 @@ func WithScenarioCaseRows(rows QueryRows) ScenarioCaseOption {
 	}
 }
 
-// NewScenarioCase returns a scenario case instance.
+// NewScenarioCaseWith returns a scenario case instance.
 func NewScenarioCaseWith(opts ...ScenarioCaseOption) *ScenarioCase {
 	sc := &ScenarioCase{
 		query:    nil,
