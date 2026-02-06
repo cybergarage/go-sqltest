@@ -20,6 +20,7 @@ import (
 	"database/sql"
 	"fmt"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/go-sql-driver/mysql"
@@ -68,12 +69,13 @@ func (client *MySQLClient) Open() error {
 		})
 	}
 
-	dbURL := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
+	var dbURL strings.Builder
+	dbURL.WriteString(fmt.Sprintf("%s:%s@tcp(%s:%d)/%s",
 		client.User,
 		client.Password,
 		client.Host,
 		client.Port,
-		client.Database)
+		client.Database))
 
 	dbURLParams := []string{
 		"parseTime=true",
@@ -83,13 +85,13 @@ func (client *MySQLClient) Open() error {
 	}
 
 	if dbURLParamCnt := len(dbURLParams); 0 < dbURLParamCnt {
-		dbURL += "?" + dbURLParams[0]
+		dbURL.WriteString("?" + dbURLParams[0])
 		for n := 1; n < dbURLParamCnt; n++ {
-			dbURL += "&" + dbURLParams[n]
+			dbURL.WriteString("&" + dbURLParams[n])
 		}
 	}
 
-	db, err := sql.Open("mysql", dbURL)
+	db, err := sql.Open("mysql", dbURL.String())
 	if err != nil {
 		return err
 	}

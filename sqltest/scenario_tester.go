@@ -172,12 +172,13 @@ func (tester *ScenarioTester) Run() error {
 
 	errTraceMsg := func(n int) string {
 		queries := scenario.Queries()
-		errTraceMsg := tester.Name() + "\n"
+		var errTraceMsg strings.Builder
+		errTraceMsg.WriteString(tester.Name() + "\n")
 		for i := range n {
-			errTraceMsg += fmt.Sprintf(goodQueryPrefix, i, queries[i])
-			errTraceMsg += "\n"
+			errTraceMsg.WriteString(fmt.Sprintf(goodQueryPrefix, i, queries[i]))
+			errTraceMsg.WriteString("\n")
 		}
-		return errTraceMsg
+		return errTraceMsg.String()
 	}
 
 	testCases := scenario.Cases()

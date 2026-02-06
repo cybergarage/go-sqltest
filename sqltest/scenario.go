@@ -169,7 +169,7 @@ func (scn *Scenario) ParseBytes(name string, b []byte) error {
 
 func (scn *Scenario) parseByteLines(fileBytes []byte) ([]Line, error) {
 	lines := make([]Line, 0)
-	for _, line := range strings.Split(string(fileBytes), "\n") {
+	for line := range strings.SplitSeq(string(fileBytes), "\n") {
 		// Skip blank or comment lines
 		if len(line) == 0 || strings.HasPrefix(line, "-") {
 			continue
@@ -273,13 +273,13 @@ func (scn *Scenario) ParseLineStrings(lines []string) error {
 
 // String returns the string representation.
 func (scn *Scenario) String() string {
-	var str string
+	var str strings.Builder
 	nResults := len(scn.contents)
 	for n, query := range scn.queries {
-		str += query + "\n"
+		str.WriteString(query + "\n")
 		if n < nResults {
-			str += scn.contents[n].String() + "\n"
+			str.WriteString(scn.contents[n].String() + "\n")
 		}
 	}
-	return str
+	return str.String()
 }

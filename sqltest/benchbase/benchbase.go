@@ -108,7 +108,7 @@ func RunWorkload(t *testing.T, benches ...string) error {
 
 		if err != nil {
 			errOut := string(out)
-			for _, line := range strings.Split(errOut, "\n") {
+			for line := range strings.SplitSeq(errOut, "\n") {
 				log.Errorf("%s", line)
 			}
 			t.Logf("command: %s", cmd.Args)

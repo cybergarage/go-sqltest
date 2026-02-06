@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"net"
 	"strconv"
+	"strings"
 
 	"github.com/jackc/pgx/v5"
 )
@@ -41,11 +42,12 @@ func NewPgxClient() *PgxClient {
 
 // Open opens a database specified by the client.
 func (client *PgxClient) Open() error { // nolint: nosprintfhostport
-	url := fmt.Sprintf("postgres://%s:%s@%s/%s",
+	var url strings.Builder
+	url.WriteString(fmt.Sprintf("postgres://%s:%s@%s/%s",
 		client.User,
 		client.Password,
 		net.JoinHostPort(client.Host, strconv.Itoa(client.Port)),
-		client.Database)
+		client.Database))
 
 	urlParams := []string{}
 	switch client.Auth {
@@ -72,13 +74,13 @@ func (client *PgxClient) Open() error { // nolint: nosprintfhostport
 	}
 
 	if urlParamCnt := len(urlParams); 0 < urlParamCnt {
-		url += "?" + urlParams[0]
+		url.WriteString("?" + urlParams[0])
 		for n := 1; n < urlParamCnt; n++ {
-			url += "&" + urlParams[n]
+			url.WriteString("&" + urlParams[n])
 		}
 	}
 
-	conn, err := pgx.Connect(context.Background(), url)
+	conn, err := pgx.Connect(context.Background(), url.String())
 	if err != nil {
 		return err
 	}
