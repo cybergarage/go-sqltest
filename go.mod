@@ -3,7 +3,7 @@ module github.com/cybergarage/go-sqltest
 go 1.25
 
 require (
-	github.com/cybergarage/go-logger v1.3.11
+	github.com/cybergarage/go-logger v1.3.12
 	github.com/cybergarage/go-safecast v1.3.3
 	github.com/go-sql-driver/mysql v1.9.0
 	github.com/jackc/pgx/v5 v5.5.5
