@@ -115,7 +115,7 @@ func (scn *Scenario) Cases() []*ScenarioCase {
 
 // ExpectedRows returns the loaded scenario expected rows.
 func (scn *Scenario) ExpectedRows() ([]QueryRows, error) {
-	rows := make([]QueryRows, 0)
+	rows := make([]QueryRows, 0, len(scn.contents))
 	for _, content := range scn.contents {
 		v, ok := content.Rows()
 		if !ok {
